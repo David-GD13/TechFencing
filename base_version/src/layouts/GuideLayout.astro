@@ -1,0 +1,302 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import DifficultyBadge from '../components/DifficultyBadge.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  level: 1 | 2 | 3 | 4 | 5;
+  nextGuide?: { href: string; label: string };
+  prevGuide?: { href: string; label: string };
+}
+
+const { title, description, level, nextGuide, prevGuide } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} activePage="guides">
+
+  <article class="guide">
+    <header class="guide-header">
+      <div class="container">
+        <div class="guide-meta">
+          <a href="/guides/browsers" class="guide-breadcrumb">Guides</a>
+          <span class="guide-separator">/</span>
+          <DifficultyBadge level={level} />
+        </div>
+        <h1 class="guide-title glitch-hover" data-text={title}>{title}</h1>
+        {description && <p class="guide-description">{description}</p>}
+      </div>
+    </header>
+
+    <div class="flowing-line"></div>
+
+    <div class="container guide-body">
+      <div class="guide-content">
+        <slot />
+      </div>
+
+      <aside class="guide-sidebar">
+        <nav class="guide-nav" aria-label="Guide navigation">
+          <h3 class="guide-nav-title">All Guides</h3>
+          <ul class="guide-nav-list">
+            <li><a href="/guides/browsers">Browsers</a></li>
+            <li><a href="/guides/linux">Linux</a></li>
+            <li><a href="/guides/de-google">De-Google</a></li>
+            <li><a href="/guides/self-hosting">Self-Hosting</a></li>
+            <li><a href="/guides/open-source-alternatives">Open-Source Alternatives</a></li>
+            <li><a href="/guides/fix-youtube">Fix YouTube</a></li>
+            <li><a href="/guides/control-your-phone">Control Your Phone</a></li>
+            <li><a href="/guides/own-your-ai">Own Your AI</a></li>
+            <li><a href="/guides/ricing">Ricing</a></li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+
+    {(prevGuide || nextGuide) && (
+      <div class="container guide-pagination">
+        <div class="flowing-line" style="margin-bottom: var(--space-6);"></div>
+        <div class="pagination-inner">
+          {prevGuide ? (
+            <a href={prevGuide.href} class="pagination-link pagination-prev">
+              <span class="pagination-label">← Previous</span>
+              <span class="pagination-title">{prevGuide.label}</span>
+            </a>
+          ) : <div />}
+          {nextGuide ? (
+            <a href={nextGuide.href} class="pagination-link pagination-next">
+              <span class="pagination-label">Next →</span>
+              <span class="pagination-title">{nextGuide.label}</span>
+            </a>
+          ) : <div />}
+        </div>
+      </div>
+    )}
+  </article>
+
+</BaseLayout>
+
+<style>
+  .guide-header {
+    padding: var(--space-12) 0 var(--space-6);
+  }
+
+  .guide-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .guide-breadcrumb {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    text-decoration: none;
+  }
+
+  .guide-breadcrumb:hover {
+    color: var(--text-accent);
+  }
+
+  .guide-separator {
+    color: var(--text-muted);
+    opacity: 0.4;
+  }
+
+  .guide-title {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .guide-description {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    max-width: 700px;
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Guide Body Layout */
+  .guide-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
+  }
+
+  @media (min-width: 1024px) {
+    .guide-body {
+      grid-template-columns: 1fr 250px;
+    }
+  }
+
+  /* Guide Content */
+  .guide-content {
+    min-width: 0;
+  }
+
+  .guide-content :global(h2) {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-10);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border-muted);
+  }
+
+  .guide-content :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .guide-content :global(h3) {
+    font-size: var(--text-xl);
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+  }
+
+  .guide-content :global(p) {
+    margin-bottom: var(--space-4);
+    line-height: var(--leading-relaxed);
+  }
+
+  .guide-content :global(ul),
+  .guide-content :global(ol) {
+    margin-bottom: var(--space-4);
+  }
+
+  .guide-content :global(.step) {
+    padding: var(--space-6);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-4);
+  }
+
+  .guide-content :global(.step-number) {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    margin-bottom: var(--space-2);
+    display: block;
+  }
+
+  .guide-content :global(.downsides) {
+    padding: var(--space-6);
+    background: rgba(255, 26, 26, 0.03);
+    border: 1px dashed var(--border-muted);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-8);
+  }
+
+  .guide-content :global(.downsides h2),
+  .guide-content :global(.downsides h3) {
+    color: var(--text-accent);
+    border-bottom: none;
+    margin-top: 0;
+  }
+
+  /* Sidebar */
+  .guide-sidebar {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .guide-sidebar {
+      display: block;
+      position: sticky;
+      top: 80px;
+      align-self: start;
+    }
+  }
+
+  .guide-nav {
+    padding: var(--space-4);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  .guide-nav-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    margin-bottom: var(--space-3);
+  }
+
+  .guide-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .guide-nav-list li {
+    margin-bottom: 0;
+  }
+
+  .guide-nav-list a {
+    display: block;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .guide-nav-list a:hover {
+    color: var(--text-accent);
+    background: rgba(255, 26, 26, 0.05);
+  }
+
+  /* Pagination */
+  .guide-pagination {
+    padding-bottom: var(--space-8);
+  }
+
+  .pagination-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .pagination-link {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-4);
+    text-decoration: none;
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+    max-width: 45%;
+  }
+
+  .pagination-link:hover {
+    border-color: var(--border-primary);
+    background: var(--bg-card);
+  }
+
+  .pagination-next {
+    text-align: right;
+    margin-left: auto;
+  }
+
+  .pagination-label {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+  }
+
+  .pagination-title {
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+  }
+</style>

@@ -1,0 +1,622 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GlitchText from '../../components/GlitchText.astro';
+import Card from '../../components/Card.astro';
+---
+
+<BaseLayout title="Layer 3: Behavioral Control" activePage="bible" description="It's not just what tools you use — it's how you use them. This is where PewDiePie coined 'tech fencing.'">
+
+  <!-- ====== HERO ====== -->
+  <section class="hero-sm">
+    <div class="container">
+      <div class="layer-badge">// LAYER 3 OF 3 — WHERE IT ALL STARTED</div>
+      <GlitchText text="Behavioral Control" tag="h1" class="page-title" />
+      <p class="page-subtitle">
+        You can run Linux, self-host everything, and de-Google your entire life —
+        but if you still open Instagram 47 times a day on autopilot, you haven't fixed
+        anything. This is the layer where PewDiePie coined the term <strong>"tech fencing"</strong>,
+        and it might be the most important one.
+      </p>
+      <p class="page-source">
+        Based on: PewDiePie's <em>"I Fixed YouTube!"</em>
+      </p>
+    </div>
+  </section>
+
+  <div class="flowing-line"></div>
+
+  <!-- ====== THE CORE INSIGHT ====== -->
+  <section class="section">
+    <div class="container">
+      <GlitchText text="The Core Insight" tag="h2" class="section-heading" hoverOnly />
+      <div class="content-block">
+        <p>
+          Layers 1 and 2 are about <em>what</em> tools and services you use. Layer 3 is about
+          <em>how</em> you use them. This distinction matters because you can have the most
+          privacy-respecting setup in the world and still lose three hours to a YouTube rabbit
+          hole you didn't choose.
+        </p>
+        <p>
+          PewDiePie realized something that sounds obvious but isn't: the problem isn't just
+          that Big Tech collects your data. The problem is that these platforms are
+          <strong>engineered to hijack your behavior</strong>. The infinite scroll, the
+          autoplay, the algorithmically curated feed — these aren't features, they're traps.
+          They're designed by teams of psychologists and data scientists to keep you engaged
+          as long as possible.
+        </p>
+        <p class="quote-block">
+          "I catch myself opening apps without even thinking about it."
+          <span class="quote-attr">— PewDiePie, "I Fixed YouTube!"</span>
+        </p>
+        <p>
+          That quote is the whole ball game. The algorithm doesn't need to be smarter than you.
+          It just needs to catch you in that 2-second window when you're on autopilot — when
+          your thumb opens Twitter before your brain has a say. The solution? Make that
+          2-second window a 6-second window. That's enough time for your brain to catch up
+          and ask: "Wait, do I actually want to do this?"
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== THE TWO PILLARS ====== -->
+  <section class="section">
+    <div class="container">
+      <GlitchText text="The Two Pillars" tag="h2" class="section-heading" hoverOnly />
+      <p class="section-intro">
+        Every technique in Layer 3 comes back to two ideas. These are the foundation
+        of tech fencing.
+      </p>
+
+      <div class="grid grid-2">
+        <div class="pillar-card">
+          <div class="pillar-number">01</div>
+          <h3 class="pillar-title">Friction</h3>
+          <div class="flowing-line"></div>
+          <p>
+            Add small, intentional delays between you and addictive content. Not enough to
+            prevent you from accessing it — just enough to make the action <em>conscious</em>
+            instead of automatic. A 5-second profile switch. A DNS blocker that shows a
+            warning page. Removing app icons from your home screen. These tiny speed bumps
+            break the autopilot loop.
+          </p>
+          <p>
+            The apps are designed for <strong>zero friction</strong> — tap, scroll, consume.
+            Your job is to add friction back. Not a wall, just a speed bump.
+          </p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-number">02</div>
+          <h3 class="pillar-title">Filtering</h3>
+          <div class="flowing-line"></div>
+          <p>
+            Remove the algorithm's power to choose what you see. Strip the YouTube homepage.
+            Unfollow everyone on social media and rebuild with RSS feeds. Block entire
+            categories of content at the DNS level. Replace curated feeds with chronological
+            ones you control.
+          </p>
+          <p>
+            The algorithm shows you what keeps you engaged longest. <strong>You</strong> should
+            decide what you see based on what you actually value — not what a machine learning
+            model predicts will keep your eyeballs glued.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PEWDIEPIE'S TECHNIQUES ====== -->
+  <section class="section">
+    <div class="container">
+      <GlitchText text="PewDiePie's Techniques" tag="h2" class="section-heading" hoverOnly />
+      <p class="section-intro">
+        Here's exactly what PewDiePie set up on his own devices. All of these are things
+        you can do today.
+      </p>
+
+      <div class="techniques-list">
+        <div class="technique-item">
+          <div class="technique-type">Friction</div>
+          <div class="technique-body">
+            <h3>Second Phone Profile</h3>
+            <p>
+              PewDiePie set up a second user profile on his phone (GrapheneOS makes this
+              easy, but stock Android supports it too). His "distracting" apps — YouTube,
+              social media, etc. — live only on the second profile. Switching profiles takes
+              5-6 seconds. That's it. Five to six seconds of staring at a loading screen.
+            </p>
+            <p>
+              It sounds trivial, but those 5-6 seconds are enough to break the autopilot.
+              Your brain goes from "thumb moved before I thought about it" to "I'm consciously
+              choosing to switch profiles to open this app." Most of the time, you'll decide
+              it's not worth it. That's the whole trick.
+            </p>
+          </div>
+        </div>
+
+        <div class="technique-item">
+          <div class="technique-type">Filtering</div>
+          <div class="technique-body">
+            <h3>DNS Blockers</h3>
+            <p>
+              At the network level, PewDiePie blocks ads, trackers, and specific distracting
+              domains using DNS filtering (Pi-Hole or similar). This means even if you try to
+              open a blocked site, it simply doesn't resolve. You get a blank page instead of
+              a dopamine hit. It's filtering at the infrastructure level — the most powerful
+              kind because you can't easily bypass it in a moment of weakness.
+            </p>
+          </div>
+        </div>
+
+        <div class="technique-item">
+          <div class="technique-type">Filtering</div>
+          <div class="technique-body">
+            <h3>Unhook Extension</h3>
+            <p>
+              The Unhook browser extension strips YouTube down to its bones. No recommended
+              videos. No trending. No homepage feed. No comments (optional). No autoplay.
+              You see a search bar and your subscriptions — that's it. YouTube becomes a
+              tool you use intentionally instead of a slot machine you pull by accident.
+            </p>
+          </div>
+        </div>
+
+        <div class="technique-item">
+          <div class="technique-type">Filtering</div>
+          <div class="technique-body">
+            <h3>RSS Feeds</h3>
+            <p>
+              Instead of subscribing to channels on YouTube (where the algorithm decides what
+              to show you), PewDiePie switched to RSS feeds. Every YouTube channel has an RSS
+              feed. Put them in an RSS reader like Miniflux, Feeder, or Newsboat and you get
+              a chronological list of every video — no algorithm, no "recommended for you,"
+              no manipulation. You see what you subscribed to, in order, nothing more.
+            </p>
+          </div>
+        </div>
+
+        <div class="technique-item">
+          <div class="technique-type">Friction + Filtering</div>
+          <div class="technique-body">
+            <h3>Unfollowing Everything</h3>
+            <p>
+              PewDiePie unfollowed everyone on social media platforms. Not unfriended —
+              unfollowed. This nukes the feed. There's nothing to scroll. If you want to see
+              what someone posted, you have to <em>go to their profile intentionally</em>.
+              This is friction and filtering combined: the feed is empty (filtering), and
+              checking someone requires deliberate action (friction).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== THE ALGO BRAIN ====== -->
+  <section class="section">
+    <div class="container">
+      <GlitchText text="The Algo Brain Problem" tag="h2" class="section-heading" hoverOnly />
+      <div class="content-block">
+        <p>
+          Here's why this matters beyond privacy. Every time you open an app and let the
+          algorithm decide what you see, you're outsourcing a decision to a system that
+          doesn't care about your wellbeing. It cares about engagement — which usually means
+          outrage, anxiety, or content so perfectly tuned to your interests that you can't
+          stop watching.
+        </p>
+        <p>
+          Over time, this rewires how you think. You stop choosing what to consume and start
+          reacting to what's presented. You lose the muscle of <em>deciding</em>. PewDiePie
+          noticed this when he caught himself opening apps automatically — his thumb would
+          navigate to YouTube before his conscious mind had even formed an intention. That's
+          not a personal failing. That's a multi-billion-dollar attention economy working
+          exactly as designed.
+        </p>
+        <p>
+          Friction breaks this cycle. It re-inserts your conscious mind into the loop.
+          A 5-second delay doesn't stop you from watching YouTube — it stops you from watching
+          YouTube <em>without deciding to</em>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== HONEST DOWNSIDES ====== -->
+  <section class="section">
+    <div class="container">
+      <GlitchText text="Honest Downsides" tag="h2" class="section-heading" hoverOnly />
+      <p class="section-intro">
+        Layer 3 sounds elegant. Living it is messier. Here's what actually sucks.
+      </p>
+
+      <div class="downsides-list">
+        <div class="downside-item">
+          <div class="downside-icon">X</div>
+          <div class="downside-content">
+            <h3>It Requires Constant Vigilance</h3>
+            <p>
+              Unlike Layers 1 and 2, which are "set it up once and it works," behavioral
+              control is a daily practice. You'll find yourself disabling the Unhook extension
+              "just this once." You'll switch to the distracting profile "real quick" and
+              emerge 45 minutes later. The friction helps, but your brain is creative and will
+              find workarounds. This is an ongoing battle, not a one-time fix.
+            </p>
+          </div>
+        </div>
+
+        <div class="downside-item">
+          <div class="downside-icon">X</div>
+          <div class="downside-content">
+            <h3>You'll Miss Some Content</h3>
+            <p>
+              When you strip the algorithm and move to RSS, you'll miss things. The algorithm
+              was actually good at surfacing new creators and content you didn't know you
+              wanted. RSS gives you only what you explicitly subscribe to. You'll need to
+              actively seek out new voices, ask for recommendations from actual humans, and
+              accept that your content diet will be narrower (but more intentional).
+            </p>
+          </div>
+        </div>
+
+        <div class="downside-item">
+          <div class="downside-icon">X</div>
+          <div class="downside-content">
+            <h3>Initial Setup Is Tedious</h3>
+            <p>
+              Unfollowing everyone on every platform. Finding RSS feeds for all your channels.
+              Configuring DNS blockers. Setting up phone profiles. Installing and configuring
+              extensions. The initial setup takes a solid afternoon, maybe a weekend. It's not
+              hard — it's just tedious. And you'll probably need to tweak things for weeks
+              after as you discover what works and what's too aggressive.
+            </p>
+          </div>
+        </div>
+
+        <div class="downside-item">
+          <div class="downside-icon">X</div>
+          <div class="downside-content">
+            <h3>People Will Think You're Weird</h3>
+            <p>
+              "Why can't you just check Instagram?" "Why do you have a whole separate phone
+              profile?" "Why is your YouTube blank?" Be prepared to explain yourself or just
+              shrug it off. Most people haven't thought about their relationship with technology
+              at this level, and your setup will seem extreme to them. It's fine. You're not
+              doing this for them.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== NEXT STEPS ====== -->
+  <section class="section">
+    <div class="container">
+      <GlitchText text="Build Your Fence" tag="h2" class="section-heading" hoverOnly />
+      <p class="section-intro">
+        Start with one technique. The second phone profile or the Unhook extension are
+        the biggest bang for your time.
+      </p>
+
+      <div class="grid grid-2">
+        <Card title="Guide: Fix YouTube" href="/guides/fix-youtube" accent>
+          <p>
+            Strip the algorithm from YouTube. Install Unhook, set up RSS feeds for
+            your channels, and turn YouTube from a slot machine into a library.
+          </p>
+        </Card>
+
+        <Card title="Guide: Browsers & Extensions" href="/guides/browsers" accent>
+          <p>
+            Your browser is your window to the internet. Make sure that window has
+            good blinds. Firefox, uBlock Origin, and the extensions that matter.
+          </p>
+        </Card>
+      </div>
+
+      <div class="layer-nav">
+        <a href="/bible/layer-2-services" class="btn btn-secondary">Back: Layer 2</a>
+        <a href="/guides/browsers" class="btn btn-primary">Start Building — 5 Minutes</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ---- Hero SM ---- */
+  .hero-sm {
+    padding: var(--space-12) 0 var(--space-8);
+    text-align: center;
+  }
+
+  .layer-badge {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    margin-bottom: var(--space-4);
+    opacity: 0.7;
+  }
+
+  :global(.page-title) {
+    font-size: var(--text-5xl);
+    margin-bottom: var(--space-6);
+  }
+
+  .page-subtitle {
+    max-width: 700px;
+    margin: 0 auto var(--space-4);
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .page-source {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .page-source em {
+    color: var(--text-accent);
+    font-style: normal;
+  }
+
+  /* ---- Sections ---- */
+  :global(.section-heading) {
+    font-size: var(--text-3xl);
+    text-align: center;
+    margin-bottom: var(--space-6);
+    color: var(--text-primary);
+  }
+
+  .section-intro {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto var(--space-10);
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .content-block {
+    max-width: 750px;
+    margin: 0 auto var(--space-10);
+  }
+
+  .content-block p {
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-base);
+  }
+
+  .content-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---- Quote Block ---- */
+  .quote-block {
+    padding: var(--space-4) var(--space-6);
+    border-left: 3px solid var(--text-accent);
+    background: rgba(255, 26, 26, 0.05);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    font-style: italic;
+    font-size: var(--text-lg) !important;
+    color: var(--text-primary) !important;
+    margin: var(--space-6) 0 !important;
+  }
+
+  .quote-attr {
+    display: block;
+    margin-top: var(--space-2);
+    font-style: normal;
+    font-size: var(--text-xs) !important;
+    color: var(--text-accent) !important;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    opacity: 0.7;
+  }
+
+  /* ---- Pillars ---- */
+  .pillar-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    position: relative;
+  }
+
+  .pillar-number {
+    font-family: var(--font-display);
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    color: var(--text-accent);
+    opacity: 0.15;
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-6);
+    line-height: 1;
+  }
+
+  .pillar-title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+
+  .pillar-card p {
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-3);
+  }
+
+  .pillar-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---- Techniques ---- */
+  .techniques-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .technique-item {
+    display: flex;
+    gap: var(--space-5);
+    align-items: flex-start;
+    padding: var(--space-6);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  .technique-type {
+    flex-shrink: 0;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    opacity: 0.6;
+    padding: var(--space-2) 0;
+  }
+
+  @media (max-width: 767px) {
+    .technique-item {
+      flex-direction: column;
+    }
+
+    .technique-type {
+      writing-mode: horizontal-tb;
+      transform: none;
+    }
+  }
+
+  .technique-body h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+
+  .technique-body p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-3);
+  }
+
+  .technique-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---- Downsides ---- */
+  .downsides-list {
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .downside-item {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    padding: var(--space-5);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--text-accent);
+  }
+
+  .downside-icon {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--text-accent);
+    opacity: 0.6;
+    line-height: 1.4;
+  }
+
+  .downside-content h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+
+  .downside-content p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ---- Layer Nav ---- */
+  .layer-nav {
+    text-align: center;
+    margin-top: var(--space-10);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+  }
+
+  .btn-primary {
+    background: var(--text-accent);
+    color: var(--bg-base);
+    border: 2px solid var(--text-accent);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-white);
+    color: var(--bg-base);
+    border-color: var(--color-white);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-muted);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--border-primary);
+    color: var(--text-accent);
+  }
+</style>

@@ -1,0 +1,34 @@
+---
+interface Props {
+  name: string;
+  size?: number;
+  class?: string;
+  label?: string;
+}
+
+const { name, size = 24, class: className = '', label } = Astro.props;
+---
+
+<svg
+  class:list={['icon', className]}
+  width={size}
+  height={size}
+  aria-hidden={!label}
+  aria-label={label}
+  role={label ? 'img' : 'presentation'}
+>
+  <use href={`/icons/icons.svg#${name}`} />
+</svg>
+
+<style>
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+</style>

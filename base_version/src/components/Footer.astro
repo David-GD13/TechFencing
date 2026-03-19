@@ -1,0 +1,146 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="flowing-line"></div>
+
+  <div class="footer-inner container">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h3 class="footer-heading">[TF] TechFencing</h3>
+        <p class="footer-tagline">
+          Build your fence. Own your data. Control your digital life.
+        </p>
+        <p class="footer-credit">
+          Inspired by <strong>PewDiePie's</strong> tech journey.
+          We're learning too.
+        </p>
+      </div>
+
+      <div class="footer-section">
+        <h4 class="footer-heading">The Bible</h4>
+        <ul class="footer-links">
+          <li><a href="/bible/layer-1-os">Layer 1: OS Control</a></li>
+          <li><a href="/bible/layer-2-services">Layer 2: Service Control</a></li>
+          <li><a href="/bible/layer-3-behavior">Layer 3: Behavioral Control</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="/tldr">TL;DR — Just Watch</a></li>
+          <li><a href="/arsenal">Our Savior's Arsenal</a></li>
+          <li><a href="/glossary">Glossary</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4 class="footer-heading">Start Here</h4>
+        <ul class="footer-links">
+          <li><a href="/guides/browsers">Switch Your Browser (5 min)</a></li>
+          <li><a href="/guides/fix-youtube">Fix YouTube</a></li>
+          <li><a href="/guides/linux">Try Linux</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        &copy; {currentYear} TechFencing. Not affiliated with PewDiePie.
+        Just fans who listened.
+      </p>
+      <p class="footer-motto">
+        "The best time to build a fence was yesterday. The second best time is now."
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--space-16);
+    border-top: 1px solid var(--border-muted);
+    background: rgba(10, 0, 0, 0.6);
+  }
+
+  .footer-inner {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-8);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    margin-bottom: var(--space-12);
+  }
+
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+  }
+
+  .footer-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    margin-bottom: var(--space-4);
+  }
+
+  .footer-tagline {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-3);
+  }
+
+  .footer-credit {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: var(--space-2);
+  }
+
+  .footer-links a {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    transition: color var(--transition-fast);
+  }
+
+  .footer-links a:hover {
+    color: var(--text-accent);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border-muted);
+    padding-top: var(--space-6);
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .footer-motto {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--text-accent) !important;
+    opacity: 0.6;
+  }
+</style>

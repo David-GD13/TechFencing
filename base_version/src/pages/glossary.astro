@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GlitchText from '../components/GlitchText.astro';
+
+// Glossary data — also used by the tooltip system
+const glossary: Record<string, string> = {
+  "algo brain": "The state of having your attention and behavior shaped by algorithmic feeds — scrolling without intent, clicking bait, opening apps reflexively.",
+  "arch linux": "An advanced Linux distribution known for its simplicity (in design, not setup) and rolling-release model. PewDiePie uses it on his laptop and Steam Deck.",
+  "bootable usb": "A USB drive configured to start (boot) a computer into a different operating system. Used to install Linux.",
+  "cli": "Command Line Interface. A text-based way of interacting with your computer using typed commands instead of clicking. Looks like hacking in movies.",
+  "daily driver": "The device or software you use every day for real work, not just testing.",
+  "de-google": "The process of systematically replacing Google services with privacy-respecting alternatives.",
+  "desktop environment": "The graphical interface of a Linux system — the taskbar, file manager, settings, etc. Examples: GNOME, KDE, Cinnamon.",
+  "distro": "Short for 'distribution.' A version of Linux packaged with specific software and design choices. Like flavors of ice cream — same base, different experience.",
+  "dns blocker": "Software that blocks ads and trackers at the network level by intercepting domain name requests. Pi-Hole is the most popular one.",
+  "docker": "A tool that runs applications in isolated containers. Makes self-hosting much easier — each service runs in its own box.",
+  "dotfiles": "Configuration files (usually starting with a dot, like .bashrc) that control how your Linux system looks and behaves. Sharing dotfiles is part of ricing culture.",
+  "dual-boot": "Running two operating systems on one computer. You choose which one to start when you turn on the machine.",
+  "eww": "ElKowar's Wacky Widgets. A custom widget system used in Linux desktop ricing for creating custom UI elements.",
+  "f-droid": "An app store for Android that only hosts free and open-source software. The Google Play Store alternative for privacy-focused phone users.",
+  "friction": "One of the Two Pillars. Adding intentional delays to break automatic behavior — like a 5-second profile switch on your phone to stop reflexive app-opening.",
+  "filtering": "One of the Two Pillars. Removing noise and unwanted content from your digital life — through self-hosting, extensions, DNS blocking, or unfollowing.",
+  "grapheneos": "A privacy and security-focused mobile operating system based on Android. Only works on Google Pixel phones. PewDiePie uses it on his Pixel 9.",
+  "hyprland": "A dynamic tiling Wayland compositor (window manager). Known for smooth animations and heavy customization. PewDiePie's window manager of choice.",
+  "linux mint": "A beginner-friendly Linux distribution based on Ubuntu. PewDiePie's recommendation for first-time Linux users and his daily driver on his main desktop.",
+  "local llm": "A Large Language Model running on your own hardware instead of a cloud service. Your prompts and data never leave your machine.",
+  "nextcloud": "Self-hosted cloud storage and collaboration platform. Replaces Google Drive, Calendar, Contacts, and more.",
+  "ollama": "A tool that makes running local AI models as easy as running a Docker container. The easiest entry point for local AI.",
+  "package manager": "Software that installs, updates, and removes programs on Linux. apt (Debian/Ubuntu/Mint), pacman (Arch), dnf (Fedora).",
+  "pi-hole": "A DNS-level ad and tracker blocker that runs on a Raspberry Pi (or any Linux machine). Blocks ads for every device on your network.",
+  "raspberry pi": "A small, cheap single-board computer. The Raspberry Pi 5 is popular for self-hosting. PewDiePie runs his server stack on one.",
+  "ricing": "Customizing the visual appearance of your Linux desktop. Named after the car modding culture term. Deep rabbit hole. You've been warned.",
+  "rofi": "An application launcher for Linux. Type a few letters, hit enter, and your app opens. Replaces the Start menu / app dock concept.",
+  "rss": "Really Simple Syndication. A protocol that lets you subscribe to websites and get updates without an algorithm deciding what you see. The original 'feed' before social media ruined the word.",
+  "self-hosting": "Running your own server to provide services (email, cloud storage, passwords) instead of relying on a company's servers.",
+  "tech fencing": "The practice of building deliberate barriers between yourself and technology designed to exploit your attention and data. Coined by PewDiePie in his 'I Fixed YouTube!' video.",
+  "tiling window manager": "A window manager that automatically arranges windows like tiles instead of stacking them. No overlapping. Keyboard-driven. Examples: Hyprland, i3, Sway.",
+  "unhook": "A browser extension that removes the YouTube homepage feed, recommendations, and Shorts. A key friction/filtering tool in the tech fencing toolkit.",
+  "vaultwarden": "A self-hosted, open-source password manager compatible with Bitwarden clients. PewDiePie self-hosts his on a Raspberry Pi (setup took 2 days).",
+  "vllm": "A fast, memory-efficient inference engine for large language models. PewDiePie runs it on his 10-GPU rig for local AI.",
+  "vps": "Virtual Private Server. A server you rent from a hosting company instead of running hardware at home. Alternative to Raspberry Pi for self-hosting.",
+  "waybar": "A customizable status bar for Wayland compositors. Shows system info, workspaces, clock, etc. Part of the ricing toolkit.",
+};
+
+const sortedTerms = Object.entries(glossary).sort(([a], [b]) => a.localeCompare(b));
+const letters = [...new Set(sortedTerms.map(([term]) => term[0].toUpperCase()))];
+---
+
+<BaseLayout title="Glossary" description="Jargon-free definitions for every technical term on this site.">
+
+  <section class="hero-sm">
+    <div class="container">
+      <GlitchText text="Glossary" tag="h1" class="page-title" />
+      <p class="page-subtitle">
+        Tech jargon can feel like a different language. Here's every term we use,
+        explained like you're a normal person and not a sysadmin.
+      </p>
+    </div>
+  </section>
+
+  <div class="flowing-line"></div>
+
+  <section class="section">
+    <div class="container glossary-container">
+
+      <nav class="letter-nav" aria-label="Jump to letter">
+        {letters.map(letter => (
+          <a href={`#letter-${letter}`} class="letter-link">{letter}</a>
+        ))}
+      </nav>
+
+      <div class="glossary-list">
+        {letters.map(letter => (
+          <div class="letter-group" id={`letter-${letter}`}>
+            <h2 class="letter-heading">{letter}</h2>
+            {sortedTerms
+              .filter(([term]) => term[0].toUpperCase() === letter)
+              .map(([term, definition]) => (
+                <div class="glossary-entry" id={term.replace(/\s+/g, '-').toLowerCase()}>
+                  <dt class="glossary-term">{term}</dt>
+                  <dd class="glossary-definition">{definition}</dd>
+                </div>
+              ))}
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero-sm {
+    padding: var(--space-12) 0 var(--space-8);
+    text-align: center;
+  }
+
+  :global(.page-title) {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-subtitle {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .glossary-container {
+    max-width: 800px;
+  }
+
+  /* Letter Nav */
+  .letter-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+    padding: var(--space-4);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  .letter-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .letter-link:hover {
+    color: var(--text-accent);
+    background: rgba(255, 26, 26, 0.1);
+  }
+
+  /* Glossary List */
+  .glossary-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .letter-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    color: var(--text-accent);
+    opacity: 0.3;
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border-muted);
+  }
+
+  .glossary-entry {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid rgba(255, 26, 26, 0.08);
+  }
+
+  .glossary-entry:last-child {
+    border-bottom: none;
+  }
+
+  .glossary-term {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: capitalize;
+    margin-bottom: var(--space-2);
+  }
+
+  .glossary-definition {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+    padding: 0;
+  }
+</style>

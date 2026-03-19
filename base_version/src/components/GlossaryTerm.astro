@@ -1,0 +1,25 @@
+---
+interface Props {
+  term: string;
+  class?: string;
+}
+
+const { term, class: className = '' } = Astro.props;
+---
+
+<span class:list={['glossary-term-inline', className]} data-glossary-term={term.toLowerCase()}>
+  <slot />
+</span>
+
+<style>
+  .glossary-term-inline {
+    border-bottom: 1px dotted rgba(255, 26, 26, 0.5);
+    cursor: help;
+    position: relative;
+    transition: border-color var(--transition-fast);
+  }
+
+  .glossary-term-inline:hover {
+    border-color: var(--text-accent);
+  }
+</style>

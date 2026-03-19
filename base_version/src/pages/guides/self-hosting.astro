@@ -1,0 +1,235 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="Self-Host Your Services"
+  description="Run your own server. Own your data for real."
+  level={4}
+  prevGuide={{ href: "/guides/de-google", label: "De-Google Your Life" }}
+  nextGuide={{ href: "/guides/open-source-alternatives", label: "Open-Source Alternatives" }}
+>
+
+  <h2>Why Self-Host?</h2>
+  <p>
+    De-Googling is great, but if you replace Google Drive with Proton Drive, you've just moved your data
+    from one company to another. The real power move is running your own services on your own hardware.
+    When you self-host, your passwords, your files, your photos, and your data live on a machine that
+    sits in your house. No company can lock you out, raise prices, change terms of service, or mine your
+    data for ads.
+  </p>
+  <p>
+    PewDiePie's self-hosting journey was, in his own words, painful. His Vaultwarden setup "took 2 days"
+    and involved a lot of staring at a "spinny circle" that wouldn't load. But once it was running, he
+    described it as one of the most satisfying things he's done with technology. His setup: a Raspberry
+    Pi 5 as his main server, with a Steam Deck as a secondary server for experimentation.
+  </p>
+  <p>
+    You don't need to be a sysadmin. Docker has made self-hosting dramatically easier. If you can copy
+    and paste commands into a terminal, you can self-host.
+  </p>
+
+  <h2>Hardware: What You Need</h2>
+
+  <div class="step">
+    <span class="step-number">Step 1</span>
+    <h3>Get a Raspberry Pi 5</h3>
+    <p>
+      The Raspberry Pi 5 is a tiny computer the size of a credit card that costs about $60-80. It's
+      powerful enough to run a dozen self-hosted services simultaneously. PewDiePie uses one as his
+      main server. You'll also need:
+    </p>
+    <ul>
+      <li><strong>A microSD card (32 GB minimum, 64 GB recommended)</strong> — This is your "hard drive." Get a fast one (A2 speed class).</li>
+      <li><strong>A USB-C power supply</strong> — The official Raspberry Pi 5 power supply is best (5V 5A). Using a random phone charger can cause instability.</li>
+      <li><strong>An ethernet cable</strong> — WiFi works but ethernet is more reliable for a server.</li>
+      <li><strong>Optional: An external SSD</strong> — If you're hosting files (Nextcloud, Immich), you'll want more storage than a microSD card provides. A 1 TB USB SSD is about $60.</li>
+    </ul>
+    <p>
+      <strong>Alternative: Old laptop or desktop.</strong> Any old computer with at least 4 GB of RAM can
+      be a server. Install a lightweight Linux distro on it and follow the same Docker steps below. The
+      downside is power consumption — a Pi uses about 5 watts, while an old laptop uses 30-60 watts.
+    </p>
+    <p>
+      <strong>Alternative: VPS (Virtual Private Server).</strong> PewDiePie mentioned Hostinger as a
+      sponsor. A VPS is a virtual machine in a data center that you rent. Advantages: always on, has
+      a public IP (easier for remote access), no hardware maintenance. Disadvantages: your data is on
+      someone else's hardware, and there's a monthly cost ($5-15/month). Good for services you need to
+      access from anywhere.
+    </p>
+  </div>
+
+  <h2>Setting Up Your Server</h2>
+
+  <div class="step">
+    <span class="step-number">Step 2</span>
+    <h3>Install the OS</h3>
+    <p>
+      Download the <strong>Raspberry Pi Imager</strong> from raspberrypi.com. Insert your microSD card,
+      open the Imager, and select <strong>Raspberry Pi OS Lite (64-bit)</strong> — you don't need a
+      desktop environment for a server. Before writing, click the gear icon to:
+    </p>
+    <ul>
+      <li>Set a hostname (e.g., "homeserver")</li>
+      <li>Enable SSH (so you can control it from your main computer)</li>
+      <li>Set a username and password</li>
+      <li>Configure WiFi (if not using ethernet)</li>
+    </ul>
+    <p>
+      Write the image, put the microSD in the Pi, plug in ethernet and power. After a minute, you should
+      be able to SSH in from your main computer: <code>ssh username@homeserver.local</code>
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 3</span>
+    <h3>Install Docker</h3>
+    <p>
+      Docker lets you run applications in isolated containers. Instead of installing software directly
+      on the OS (which can create conflicts and mess things up), each service runs in its own container
+      with its own dependencies. Think of it like running each app in its own mini virtual machine.
+    </p>
+    <p>Run these commands on your Pi:</p>
+    <ul>
+      <li><code>curl -fsSL https://get.docker.com -o get-docker.sh</code></li>
+      <li><code>sudo sh get-docker.sh</code></li>
+      <li><code>sudo usermod -aG docker $USER</code></li>
+      <li>Log out and back in for the group change to take effect</li>
+    </ul>
+    <p>
+      Also install <strong>Docker Compose</strong>, which lets you define multiple containers in a single
+      YAML file: <code>sudo apt install docker-compose-plugin</code>
+    </p>
+  </div>
+
+  <h2>Services to Self-Host</h2>
+
+  <div class="step">
+    <span class="step-number">Step 4</span>
+    <h3>Vaultwarden — Password Manager</h3>
+    <p>
+      This is the one PewDiePie said "took 2 days" and had the dreaded "spinny circle." Vaultwarden is
+      a lightweight, self-hosted implementation of the Bitwarden password manager. It's compatible with
+      all Bitwarden apps (browser extensions, mobile apps, desktop apps) but runs on your own hardware.
+    </p>
+    <p>
+      The "2 days" part was mostly about getting HTTPS working (Vaultwarden requires it for security).
+      Here's the trick that saves you time: use <strong>Caddy</strong> as a reverse proxy — it handles
+      HTTPS certificates automatically.
+    </p>
+    <p>
+      Create a <code>docker-compose.yml</code> file that defines Vaultwarden and Caddy together.
+      Vaultwarden runs on port 80 inside its container, Caddy sits in front and handles HTTPS. Point a
+      domain or subdomain at your server's IP, and Caddy gets a free Let's Encrypt certificate for you.
+    </p>
+    <p>
+      <strong>Why this matters:</strong> Your passwords are the keys to your entire digital life. Having
+      them on Google's servers or LastPass (which has been breached multiple times) is a real risk.
+      Self-hosted Vaultwarden means your encrypted password vault lives on your hardware.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 5</span>
+    <h3>Nextcloud — Cloud Storage</h3>
+    <p>
+      Nextcloud is your Google Drive replacement. Files, contacts, calendar, notes, and more — all
+      self-hosted. It has desktop sync clients (like Dropbox) and mobile apps.
+    </p>
+    <p>
+      Deploy it with Docker using the official Nextcloud image and a MariaDB or PostgreSQL database.
+      Connect an external SSD for file storage — the microSD card is not ideal for heavy file operations.
+    </p>
+    <p>
+      Nextcloud can be slow on a Raspberry Pi with many users, but for personal use (1-3 users), it
+      works fine. If performance is an issue, consider running it on a more powerful machine or VPS.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 6</span>
+    <h3>Pi-Hole — DNS-Level Ad Blocking</h3>
+    <p>
+      Pi-Hole blocks ads and trackers at the DNS level for your entire network. Every device connected
+      to your home WiFi — phones, tablets, smart TVs, IoT devices — gets ad blocking without installing
+      anything on the device itself.
+    </p>
+    <p>
+      Set up Pi-Hole in Docker, then change your router's DNS settings to point at your Pi's IP address.
+      Pi-Hole comes with a web dashboard where you can see exactly what's being blocked (spoiler: your
+      smart TV phones home to tracking servers hundreds of times per day).
+    </p>
+    <p>
+      <strong>Bonus:</strong> Pi-Hole can also block YouTube ads at the DNS level, though Google constantly
+      changes their ad-serving domains to circumvent this. It works better as a complement to uBlock
+      Origin than a replacement.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 7</span>
+    <h3>File Browser — Simple File Access</h3>
+    <p>
+      If Nextcloud feels like overkill and you just want a simple web interface to browse and download
+      files from your server, File Browser is a lightweight alternative. One Docker container, minimal
+      configuration, and you've got a clean web-based file manager.
+    </p>
+  </div>
+
+  <h2>PewDiePie's Setup</h2>
+  <p>For reference, here's what PewDiePie runs:</p>
+  <ul>
+    <li><strong>Raspberry Pi 5</strong> — Main server running Vaultwarden, Pi-Hole, and other services</li>
+    <li><strong>Steam Deck</strong> — Secondary server for experimentation (yes, a Steam Deck can run Docker)</li>
+    <li><strong>Hostinger VPS</strong> — For services that need to be accessible from outside his home network</li>
+  </ul>
+  <p>
+    You don't need all of this. Start with a Pi, get Vaultwarden and Pi-Hole running, and expand
+    from there. Each new service you add is another piece of your data you've taken back.
+  </p>
+
+  <h2>Remote Access</h2>
+  <p>
+    If you want to access your self-hosted services from outside your home, you have options:
+  </p>
+  <ul>
+    <li><strong>Tailscale</strong> — Creates a private VPN between your devices. Free for personal use. By far the easiest option.</li>
+    <li><strong>Cloudflare Tunnels</strong> — Exposes your services to the internet through Cloudflare's network without opening ports on your router.</li>
+    <li><strong>WireGuard</strong> — A fast, modern VPN you run on your server. More setup than Tailscale but no third-party dependency.</li>
+    <li><strong>Port forwarding + Dynamic DNS</strong> — The traditional approach. Works but exposes your server directly to the internet, which has security implications.</li>
+  </ul>
+
+  <div class="downsides">
+    <h2>Honest Downsides</h2>
+    <ul>
+      <li>
+        <strong>Maintenance is on you.</strong> When Google Drive goes down, Google fixes it. When your
+        Nextcloud goes down at 2 AM, you fix it. You need to update containers, monitor disk space,
+        and handle backups. It's not a lot of work once things are running, but it's not zero.
+      </li>
+      <li>
+        <strong>Uptime is your responsibility.</strong> If your power goes out, your Pi goes offline, and
+        your password manager stops syncing. If your microSD card dies (and they do), you lose everything
+        that isn't backed up. Set up automatic backups to an external drive or remote location.
+      </li>
+      <li>
+        <strong>Initial setup is genuinely hard.</strong> PewDiePie wasn't exaggerating about the "2 days"
+        for Vaultwarden. Getting HTTPS, DNS, reverse proxies, and Docker networking to all work together
+        is where most people get stuck. The good news: once it works, it just keeps working.
+      </li>
+      <li>
+        <strong>Security is your responsibility.</strong> A misconfigured self-hosted service exposed to
+        the internet is worse than using Google. Keep software updated, use strong passwords, and don't
+        expose services to the internet unless you know what you're doing. Tailscale is the safest option
+        for remote access.
+      </li>
+      <li>
+        <strong>A Raspberry Pi has limits.</strong> It's fine for a handful of services and 1-3 users.
+        If you want to run Immich (photo AI processing), a media server (Jellyfin), and Nextcloud all
+        at once, you'll want something more powerful — an old PC, a mini server like an Intel NUC, or
+        a VPS.
+      </li>
+    </ul>
+  </div>
+
+</GuideLayout>

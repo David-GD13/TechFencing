@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GlitchText from '../components/GlitchText.astro';
+---
+
+<BaseLayout title="About TechFencing" description="Who made this, why, and what we're trying to do.">
+
+  <section class="hero-sm">
+    <div class="container">
+      <GlitchText text="About" tag="h1" class="page-title" />
+    </div>
+  </section>
+
+  <div class="flowing-line"></div>
+
+  <section class="section">
+    <div class="container about-content">
+
+      <div class="about-block">
+        <h2 class="glitch-hover" data-text="Who We Are">Who We Are</h2>
+        <p>
+          We're fans. That's it. We watched PewDiePie's tech videos — the Linux
+          one, the de-Google one, the "I Fixed YouTube!" one — and we actually
+          did the stuff he talked about. We switched to Firefox. We installed Linux.
+          We set up a Pi and self-hosted our passwords.
+        </p>
+        <p>
+          We are not cybersecurity experts. We are not Linux veterans. We're people
+          who were tired of feeling like products and decided to do something about
+          it. This site is our attempt to organize everything we learned so you
+          don't have to piece it together from 3-hour YouTube videos.
+        </p>
+      </div>
+
+      <div class="about-block">
+        <h2 class="glitch-hover" data-text="Why This Exists">Why This Exists</h2>
+        <p>
+          In March 2026, PewDiePie published "I Fixed YouTube!" and coined the term
+          <strong>"tech fencing"</strong> — the practice of building barriers between
+          yourself and the technology designed to exploit your attention and data.
+        </p>
+        <p>
+          The video resonated. People wanted to do it. But the information was spread
+          across multiple videos, each over an hour long, with specific tool names
+          dropped casually and setup instructions buried in tangents about nuclear
+          reactors and anime.
+        </p>
+        <p>
+          This site gathers all of that into one place. Every recommendation is
+          sourced from PewDiePie's videos with citations and timestamps. Every guide
+          includes honest downsides. Every page is written for someone who might be
+          doing this for the first time.
+        </p>
+      </div>
+
+      <div class="about-block">
+        <h2 class="glitch-hover" data-text="What We Believe">What We Believe</h2>
+        <ul class="belief-list">
+          <li>
+            <strong>Privacy is not paranoia.</strong> You lock your front door. You
+            close the blinds. Wanting control over your digital life is the same
+            impulse.
+          </li>
+          <li>
+            <strong>Progress over perfection.</strong> Switching your browser is
+            better than doing nothing. You don't need to install Linux on day one.
+          </li>
+          <li>
+            <strong>Honesty over evangelism.</strong> If something sucks, we say so.
+            If PewDiePie still uses Google Maps, we mention it. We're not here to
+            sell you on a lifestyle — we're here to give you information.
+          </li>
+          <li>
+            <strong>Learning is the point.</strong> We're still figuring this out.
+            Every guide is written by someone who recently went through the same
+            process. If we got something wrong, that's a feature — it means we're
+            still learning.
+          </li>
+        </ul>
+      </div>
+
+      <div class="about-block">
+        <h2 class="glitch-hover" data-text="Disclaimers">Disclaimers</h2>
+        <ul class="disclaimer-list">
+          <li>This site is <strong>not affiliated with PewDiePie</strong>. We're fans who organized his publicly available content.</li>
+          <li>We note when products are <strong>PewDiePie sponsors</strong> (Hostinger, Incogni) so you can factor that into your decisions.</li>
+          <li>We don't run analytics on this site. No cookies, no tracking, no Google Analytics. Practice what you preach.</li>
+          <li>This site is open to contributions. If you spot an error, have a better alternative, or want to improve a guide — reach out.</li>
+        </ul>
+      </div>
+
+      <div class="about-sign-off">
+        <div class="flowing-line"></div>
+        <p>
+          "The best time to build a fence was yesterday.<br />
+          The second best time is now."
+        </p>
+        <p class="sign-off-credit">— TechFencing.com, est. 2026</p>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero-sm {
+    padding: var(--space-12) 0 var(--space-6);
+    text-align: center;
+  }
+
+  :global(.page-title) {
+    font-size: var(--text-4xl);
+  }
+
+  .about-content {
+    max-width: 750px;
+  }
+
+  .about-block {
+    margin-bottom: var(--space-12);
+  }
+
+  .about-block h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .about-block p {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .belief-list,
+  .disclaimer-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .belief-list li,
+  .disclaimer-list li {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid rgba(255, 26, 26, 0.1);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .belief-list li:last-child,
+  .disclaimer-list li:last-child {
+    border-bottom: none;
+  }
+
+  .about-sign-off {
+    text-align: center;
+    padding: var(--space-8) 0;
+  }
+
+  .about-sign-off p {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--text-accent);
+    font-size: var(--text-lg);
+    margin-top: var(--space-6);
+    line-height: var(--leading-relaxed);
+  }
+
+  .sign-off-credit {
+    font-size: var(--text-xs) !important;
+    color: var(--text-muted) !important;
+    opacity: 0.5;
+    margin-top: var(--space-2) !important;
+  }
+</style>

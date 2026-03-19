@@ -1,0 +1,546 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GlitchText from '../../components/GlitchText.astro';
+import Card from '../../components/Card.astro';
+---
+
+<BaseLayout title="Layer 2: Service Control" activePage="bible" description="Your data lives on someone else's computer. PewDiePie de-Googled his life — here's how he did it and what broke.">
+
+  <!-- ====== HERO ====== -->
+  <section class="hero-sm">
+    <div class="container">
+      <div class="layer-badge">// LAYER 2 OF 3</div>
+      <GlitchText text="Service Control" tag="h1" class="page-title" />
+      <p class="page-subtitle">
+        "The cloud" is just someone else's computer. Your passwords, photos, emails,
+        documents, notes — they all live on Google's servers. Google reads them.
+        Google trains AI on them. Google profits from them. And if Google decides to
+        lock your account one day, all of it disappears.
+      </p>
+      <p class="page-source">
+        Based on: PewDiePie's <em>"I de-Googled my life"</em>
+      </p>
+    </div>
+  </section>
+
+  <div class="flowing-line"></div>
+
+  <!-- ====== WHY SERVICES MATTER ====== -->
+  <section class="section">
+    <div class="container">
+      <GlitchText text="Why Services Matter" tag="h2" class="section-heading" hoverOnly />
+      <div class="content-block">
+        <p>
+          Layer 1 was about your OS — the software running on your machine. Layer 2 is about
+          everything <em>off</em> your machine. Every time you save a file to Google Drive,
+          send a Gmail, store a password in Chrome, or take a photo that auto-uploads to
+          Google Photos — you're handing your data to a corporation that makes money by
+          knowing everything about you.
+        </p>
+        <p>
+          PewDiePie's approach was brutally simple: if you can replace a Google service with
+          something you host yourself, you should. Not because self-hosting is easy (it's not),
+          but because the alternative is trusting a company that has been fined billions for
+          privacy violations and still hasn't changed.
+        </p>
+        <p>
+          The goal isn't perfection. PewDiePie himself still uses YouTube ("I literally can't
+          escape") and admits Google Maps is still the best navigation app. The goal is to
+          <strong>own what you can</strong> and be conscious of what you're trading for the rest.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== THE SELF-HOSTED STACK ====== -->
+  <section class="section">
+    <div class="container">
+      <GlitchText text="PewDiePie's Self-Hosted Stack" tag="h2" class="section-heading" hoverOnly />
+      <p class="section-intro">
+        Here's what PewDiePie actually replaced Google with — and the pain level of each.
+      </p>
+
+      <div class="grid grid-2">
+        <Card title="Vaultwarden" accent>
+          <p>
+            <strong>Replaces: Google Password Manager / Chrome passwords</strong>
+          </p>
+          <p>
+            A self-hosted Bitwarden-compatible password manager. All your passwords live on
+            your own server instead of Google's. The Bitwarden apps work seamlessly with it
+            across all devices.
+          </p>
+          <p class="pain-level">
+            Pain level: HIGH. PewDiePie stared at a "spinny circle" for two days trying to
+            get this working. Two. Days. It was the hardest part of his entire de-Google
+            journey. But once it works, it works beautifully.
+          </p>
+        </Card>
+
+        <Card title="Nextcloud" accent>
+          <p>
+            <strong>Replaces: Google Drive / Google Photos</strong>
+          </p>
+          <p>
+            Your own cloud storage. Upload files, sync photos, share documents — all on
+            hardware you control. It even has a Google Docs-like collaborative editor
+            (though it's not as polished).
+          </p>
+          <p class="pain-level">
+            Pain level: Medium. Easier to set up than Vaultwarden, but you need to think
+            about storage space and backups.
+          </p>
+        </Card>
+
+        <Card title="File Browser" accent>
+          <p>
+            <strong>Replaces: Google Drive (simple file access)</strong>
+          </p>
+          <p>
+            A lightweight web-based file manager for your server. Less feature-heavy than
+            Nextcloud, but perfect for quick access to files without the overhead. Think of
+            it as a simple, fast file explorer in your browser.
+          </p>
+          <p class="pain-level">
+            Pain level: Low. One of the easiest self-hosted apps to set up.
+          </p>
+        </Card>
+
+        <Card title="Joplin" accent>
+          <p>
+            <strong>Replaces: Google Keep / Google Docs (notes)</strong>
+          </p>
+          <p>
+            An open-source note-taking app with Markdown support, sync, and encryption.
+            PewDiePie self-hosts the sync server. One catch — Joplin's server needs an x86
+            processor, so he runs it on his Steam Deck server, not his Raspberry Pi (which
+            uses ARM). This is the kind of gotcha you'll hit with self-hosting.
+          </p>
+          <p class="pain-level">
+            Pain level: Medium. The app itself is great. The self-hosted sync server has
+            architecture requirements that might surprise you.
+          </p>
+        </Card>
+
+        <Card title="Self-Hosted Email" accent>
+          <p>
+            <strong>Replaces: Gmail</strong>
+          </p>
+          <p>
+            The nuclear option. Running your own email server means Google can't read your
+            emails or use them for ad targeting. It also means you're responsible for spam
+            filtering, deliverability, backups, and uptime. PewDiePie did it. Most people
+            recommend a privacy-focused provider like ProtonMail or Tuta instead.
+          </p>
+          <p class="pain-level">
+            Pain level: VERY HIGH. Self-hosted email is a meme in the self-hosting
+            community for a reason. Consider ProtonMail as a sane middle ground.
+          </p>
+        </Card>
+
+        <Card title="GrapheneOS" accent>
+          <p>
+            <strong>Replaces: Stock Android (Google's phone OS)</strong>
+          </p>
+          <p>
+            A privacy-focused Android fork that runs on Pixel phones. PewDiePie flashed it
+            on a Pixel 9. No Google Play Services by default — you can optionally sandbox
+            them for apps that require it. The phone works normally, just without Google
+            watching everything you do.
+          </p>
+          <p class="pain-level">
+            Pain level: Medium. The flash process is straightforward. Learning to live
+            without certain Google-dependent apps takes adjustment.
+          </p>
+        </Card>
+
+        <Card title="Kodi" accent>
+          <p>
+            <strong>Replaces: Google TV / Chromecast</strong>
+          </p>
+          <p>
+            An open-source media center. PewDiePie uses it to replace Google TV, which
+            tracks everything you watch and serves you targeted ads on your own television.
+            Kodi just plays your media without the surveillance.
+          </p>
+          <p class="pain-level">
+            Pain level: Low. Install it, point it at your media, done.
+          </p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SELF-HOSTING EXPLAINED ====== -->
+  <section class="section">
+    <div class="container">
+      <GlitchText text="What Is Self-Hosting?" tag="h2" class="section-heading" hoverOnly />
+      <div class="content-block">
+        <p>
+          Self-hosting means running services on hardware <strong>you</strong> own and control.
+          Instead of your passwords living on Google's servers, they live on a Raspberry Pi
+          in your closet or a VPS (Virtual Private Server) you rent. Instead of Google reading
+          your files, they sit on your own Nextcloud instance.
+        </p>
+        <p>
+          You can self-host on a Raspberry Pi ($35-80), an old laptop, or a VPS from a
+          provider like Hostinger (which PewDiePie sponsors — take that for what it's worth).
+          The key is: <em>you</em> decide what runs, <em>you</em> decide who has access,
+          and if you want to delete your data, it's actually deleted — not "deleted" in the
+          way Google means it (which is "we'll keep it for 60 days and also in our backups
+          forever").
+        </p>
+        <p>
+          It's more work. It's more responsibility. But it's <em>yours</em>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== HONEST DOWNSIDES ====== -->
+  <section class="section">
+    <div class="container">
+      <GlitchText text="Honest Downsides" tag="h2" class="section-heading" hoverOnly />
+      <p class="section-intro">
+        De-Googling is not a smooth ride. Here's what PewDiePie hit — and what you'll hit too.
+      </p>
+
+      <div class="downsides-list">
+        <div class="downside-item">
+          <div class="downside-icon">X</div>
+          <div class="downside-content">
+            <h3>The Vaultwarden Spinny Circle of Doom</h3>
+            <p>
+              PewDiePie spent two entire days staring at a loading spinner trying to get
+              Vaultwarden running. Two days. For a password manager. Self-hosting has moments
+              like this where you question every life decision that led you here. The community
+              is helpful, but you <em>will</em> hit walls that take hours to debug.
+            </p>
+          </div>
+        </div>
+
+        <div class="downside-item">
+          <div class="downside-icon">X</div>
+          <div class="downside-content">
+            <h3>Google Maps Is Still King</h3>
+            <p>
+              PewDiePie tried an open-source alternative to Google Maps and was 30 minutes
+              late to where he was going. Thirty minutes. OpenStreetMap-based navigation has
+              gotten better, but in many regions it's still noticeably worse than Google Maps.
+              Some people keep Google Maps as their one exception. That's okay.
+            </p>
+          </div>
+        </div>
+
+        <div class="downside-item">
+          <div class="downside-icon">X</div>
+          <div class="downside-content">
+            <h3>YouTube: The Inescapable One</h3>
+            <p>
+              "I literally can't escape." PewDiePie still uses YouTube. His career is on
+              YouTube. Most creators he watches are on YouTube. There's no real open-source
+              alternative with the same content library. You can use frontends like Invidious
+              or FreeTube to reduce tracking, but the content still comes from Google's servers.
+              This is the one service where the best answer is damage control, not replacement.
+            </p>
+          </div>
+        </div>
+
+        <div class="downside-item">
+          <div class="downside-icon">X</div>
+          <div class="downside-content">
+            <h3>Architecture Gotchas</h3>
+            <p>
+              PewDiePie couldn't run Joplin's sync server on his Raspberry Pi because it
+              requires x86 and the Pi uses ARM. These kinds of compatibility issues come up
+              constantly in self-hosting. Always check if the software you want supports your
+              hardware before committing to a setup.
+            </p>
+          </div>
+        </div>
+
+        <div class="downside-item">
+          <div class="downside-icon">X</div>
+          <div class="downside-content">
+            <h3>You're the IT Department Now</h3>
+            <p>
+              When Google goes down, you complain on Twitter and wait. When your self-hosted
+              setup goes down, <em>you</em> fix it. At 2 AM. Because your password manager
+              is offline and you can't log into anything. Backups become your responsibility.
+              Uptime becomes your responsibility. Security updates become your responsibility.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SPONSORS NOTE ====== -->
+  <section class="section">
+    <div class="container">
+      <div class="sponsor-note">
+        <h3>A Note on Sponsors</h3>
+        <div class="flowing-line"></div>
+        <p>
+          PewDiePie used <strong>Hostinger</strong> for his VPS (Virtual Private Server) setup
+          and <strong>Incogni</strong> for data removal from data brokers. Both were sponsors
+          of his videos. We mention them because he genuinely used them in his setup, but
+          we're not affiliated with either. Do your own research — there are plenty of
+          alternatives for VPS hosting (Hetzner, DigitalOcean, Linode) and data removal
+          services. Sponsorships don't make products bad, but they do mean someone got paid
+          to recommend them. Just keep that in mind.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== NEXT STEPS ====== -->
+  <section class="section">
+    <div class="container">
+      <GlitchText text="Start De-Googling" tag="h2" class="section-heading" hoverOnly />
+      <p class="section-intro">
+        You don't have to replace everything at once. Start with one service and expand from there.
+      </p>
+
+      <div class="grid grid-2">
+        <Card title="Guide: De-Google Your Life" href="/guides/de-google" accent>
+          <p>
+            A prioritized checklist of which Google services to replace first and
+            what to replace them with. Start with the easiest wins.
+          </p>
+        </Card>
+
+        <Card title="Guide: Self-Hosting" href="/guides/self-hosting" accent>
+          <p>
+            Set up your first self-hosted service. We walk you through Vaultwarden
+            so it takes hours, not days. (We learned from PewDiePie's pain.)
+          </p>
+        </Card>
+
+        <Card title="Guide: Control Your Phone" href="/guides/control-your-phone" accent>
+          <p>
+            Flash GrapheneOS, set up a second profile for friction, and reconfigure
+            your phone to work for you instead of against you.
+          </p>
+        </Card>
+
+        <Card title="Guide: Open-Source Alternatives" href="/guides/open-source-alternatives" accent>
+          <p>
+            A comprehensive list of open-source replacements for every common
+            proprietary app. Some are great. Some are terrible. We tell you which.
+          </p>
+        </Card>
+      </div>
+
+      <div class="layer-nav">
+        <a href="/bible/layer-1-os" class="btn btn-secondary">Back: Layer 1</a>
+        <a href="/bible/layer-3-behavior" class="btn btn-primary">Next: Layer 3 — Behavioral Control</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ---- Hero SM ---- */
+  .hero-sm {
+    padding: var(--space-12) 0 var(--space-8);
+    text-align: center;
+  }
+
+  .layer-badge {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    margin-bottom: var(--space-4);
+    opacity: 0.7;
+  }
+
+  :global(.page-title) {
+    font-size: var(--text-5xl);
+    margin-bottom: var(--space-6);
+  }
+
+  .page-subtitle {
+    max-width: 700px;
+    margin: 0 auto var(--space-4);
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .page-source {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .page-source em {
+    color: var(--text-accent);
+    font-style: normal;
+  }
+
+  /* ---- Sections ---- */
+  :global(.section-heading) {
+    font-size: var(--text-3xl);
+    text-align: center;
+    margin-bottom: var(--space-6);
+    color: var(--text-primary);
+  }
+
+  .section-intro {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto var(--space-10);
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .content-block {
+    max-width: 750px;
+    margin: 0 auto var(--space-10);
+  }
+
+  .content-block p {
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+    font-size: var(--text-base);
+  }
+
+  .content-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---- Pain Level ---- */
+  .pain-level {
+    margin-top: var(--space-3) !important;
+    padding: var(--space-3);
+    background: rgba(255, 26, 26, 0.05);
+    border-left: 2px solid var(--text-accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-style: italic;
+  }
+
+  /* ---- Downsides ---- */
+  .downsides-list {
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .downside-item {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    padding: var(--space-5);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--text-accent);
+  }
+
+  .downside-icon {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--text-accent);
+    opacity: 0.6;
+    line-height: 1.4;
+  }
+
+  .downside-content h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+
+  .downside-content p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ---- Sponsor Note ---- */
+  .sponsor-note {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: var(--space-6);
+    background: var(--bg-card);
+    border: 1px dashed var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  .sponsor-note h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+
+  .sponsor-note p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ---- Layer Nav ---- */
+  .layer-nav {
+    text-align: center;
+    margin-top: var(--space-10);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+  }
+
+  .btn-primary {
+    background: var(--text-accent);
+    color: var(--bg-base);
+    border: 2px solid var(--text-accent);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-white);
+    color: var(--bg-base);
+    border-color: var(--color-white);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-muted);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--border-primary);
+    color: var(--text-accent);
+  }
+</style>

@@ -1,0 +1,324 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GlitchText from '../components/GlitchText.astro';
+---
+
+<BaseLayout title="The Damned" activePage="damned" description="Browsers, apps, and services we don't recommend — and the honest reasons why.">
+
+  <section class="hero-sm">
+    <div class="container">
+      <GlitchText text="The Damned" tag="h1" class="page-title" />
+      <p class="page-subtitle">
+        These aren't "bad" in a vacuum. Some are genuinely good products. But
+        they all take something from you — your data, your attention, or your
+        autonomy. Here's what, why, and what to use instead.
+      </p>
+    </div>
+  </section>
+
+  <div class="flowing-line"></div>
+
+  <!-- OH HELL NO TIER -->
+  <section class="section">
+    <div class="container">
+      <h2 class="tier-label tier-hell">Tier: OH HELL NO</h2>
+      <p class="tier-desc">These are actively hostile to your privacy. Using them on a privacy site would be... ironic.</p>
+
+      <div class="damned-list">
+        <div class="damned-item">
+          <div class="damned-header">
+            <h3>Google Chrome</h3>
+            <span class="damned-verdict">Blocked on this site</span>
+          </div>
+          <p>
+            The most popular browser in the world — and Google's primary data
+            collection tool. Every search, every page visit, every bookmark is
+            fed into Google's advertising machine. Chrome is free because
+            <em>you</em> are the product.
+          </p>
+          <div class="damned-instead">
+            <strong>Use instead:</strong> Firefox, Brave, or LibreWolf
+          </div>
+        </div>
+
+        <div class="damned-item">
+          <div class="damned-header">
+            <h3>Microsoft Edge</h3>
+            <span class="damned-verdict">Blocked on this site</span>
+          </div>
+          <p>
+            Chrome's sibling wearing a Microsoft suit. Built on Chromium, ships
+            with telemetry enabled by default, auto-imports your Chrome data,
+            pushes Bing and Microsoft 365 at every opportunity. The "recommended
+            browser" pop-ups in Windows are the digital equivalent of a pushy
+            salesperson.
+          </p>
+          <div class="damned-instead">
+            <strong>Use instead:</strong> Firefox, Brave, or LibreWolf
+          </div>
+        </div>
+
+        <div class="damned-item">
+          <div class="damned-header">
+            <h3>Opera / Opera GX</h3>
+            <span class="damned-verdict">Blocked on this site</span>
+          </div>
+          <p>
+            Once a beloved independent browser, now owned by a Chinese consortium
+            with a history of predatory lending apps. Opera GX is the "gaming
+            browser" that's more about marketing than performance. It looks cool
+            but sends your data to servers you don't control.
+          </p>
+          <div class="damned-instead">
+            <strong>Use instead:</strong> Firefox with a custom theme, or Brave
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SURVEILLANCE TIER -->
+  <section class="section">
+    <div class="container">
+      <h2 class="tier-label tier-surveillance">Tier: The Surveillance State</h2>
+      <p class="tier-desc">Services that build a comprehensive profile of who you are.</p>
+
+      <div class="damned-list">
+        <div class="damned-item">
+          <div class="damned-header">
+            <h3>Google Services (as a whole)</h3>
+            <span class="damned-verdict">Replace gradually</span>
+          </div>
+          <p>
+            Gmail knows who you talk to. Drive knows what you create. Maps knows
+            where you go. Calendar knows your schedule. Photos knows your face.
+            Search knows what you think about. Together, Google knows more about
+            you than you do.
+          </p>
+          <p>
+            The honest tradeoff: Google's products are <em>really good</em>.
+            PewDiePie himself still uses Google Maps because "it's too good"
+            and YouTube because "I literally can't escape." De-Googling is a
+            journey, not a switch you flip.
+          </p>
+          <div class="damned-instead">
+            <strong>Use instead:</strong> See our <a href="/guides/de-google">De-Google guide</a> for service-by-service replacements
+          </div>
+        </div>
+
+        <div class="damned-item">
+          <div class="damned-header">
+            <h3>Windows 10/11</h3>
+            <span class="damned-verdict">Replace when ready</span>
+          </div>
+          <p>
+            Telemetry you can't fully disable. Ads in the Start menu. Forced
+            updates that restart during your work. Bundled apps you didn't ask
+            for. Recall (AI that screenshots everything you do). Copilot that
+            watches your activity. Microsoft has turned your OS into an
+            advertising and data collection platform.
+          </p>
+          <div class="damned-instead">
+            <strong>Use instead:</strong> Linux Mint (see our <a href="/guides/linux">Linux guide</a>)
+          </div>
+        </div>
+
+        <div class="damned-item">
+          <div class="damned-header">
+            <h3>Social Media Feeds (Algorithmic)</h3>
+            <span class="damned-verdict">Fence them</span>
+          </div>
+          <p>
+            Instagram's Explore tab. TikTok's For You page. YouTube's homepage.
+            Twitter/X's algorithmic timeline. These aren't showing you what you
+            want — they're showing you what keeps you scrolling. The algorithm
+            optimizes for engagement (rage, outrage, anxiety), not for your wellbeing.
+          </p>
+          <div class="damned-instead">
+            <strong>Use instead:</strong> RSS feeds, chronological timelines, or just... don't. See our <a href="/guides/fix-youtube">Fix YouTube guide</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRICKY TIER -->
+  <section class="section">
+    <div class="container">
+      <h2 class="tier-label tier-tricky">Tier: It's Complicated</h2>
+      <p class="tier-desc">Not evil, but come with tradeoffs you should understand.</p>
+
+      <div class="damned-list">
+        <div class="damned-item">
+          <div class="damned-header">
+            <h3>WhatsApp</h3>
+            <span class="damned-verdict">Use with awareness</span>
+          </div>
+          <p>
+            End-to-end encrypted messages, which is good. But owned by Meta,
+            which collects metadata (who you talk to, when, how often). Your
+            message content is private; your social graph is not.
+          </p>
+          <div class="damned-instead">
+            <strong>Better option:</strong> Signal (truly private, recommended by privacy experts worldwide)
+          </div>
+        </div>
+
+        <div class="damned-item">
+          <div class="damned-header">
+            <h3>Discord</h3>
+            <span class="damned-verdict">Use with awareness</span>
+          </div>
+          <p>
+            Great for communities, terrible for privacy. Messages aren't
+            end-to-end encrypted. Discord scans your running processes. Your
+            data is used for targeted advertising. But let's be honest — there's
+            no real alternative for gaming communities yet.
+          </p>
+          <div class="damned-instead">
+            <strong>Better option:</strong> Matrix/Element for tech communities, or accept the tradeoff
+          </div>
+        </div>
+
+        <div class="damned-item">
+          <div class="damned-header">
+            <h3>macOS / iOS</h3>
+            <span class="damned-verdict">Better than Windows, but not free</span>
+          </div>
+          <p>
+            Apple is better on privacy than Google and Microsoft, but it's still
+            a walled garden. iCloud data is not fully end-to-end encrypted by
+            default. You can't easily sideload apps. You don't own the hardware
+            in any meaningful sense — Apple decides what you can install.
+          </p>
+          <div class="damned-instead">
+            <strong>Better option:</strong> Linux (desktop), GrapheneOS (phone)
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container disclaimer-footer">
+      <p>
+        Remember: the goal isn't moral purity. It's awareness. Use what you
+        need, replace what you can, and understand what you're trading.
+        PewDiePie still uses Google Maps and YouTube. The fence isn't about
+        perfection — it's about choice.
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero-sm {
+    padding: var(--space-12) 0 var(--space-8);
+    text-align: center;
+  }
+
+  :global(.page-title) {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-subtitle {
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Tier Labels */
+  .tier-label {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-2);
+  }
+
+  .tier-hell { color: #ef4444; }
+  .tier-surveillance { color: #f97316; }
+  .tier-tricky { color: #fbbf24; }
+
+  .tier-desc {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-6);
+  }
+
+  /* Damned List */
+  .damned-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .damned-item {
+    padding: var(--space-6);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  .damned-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .damned-header h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--text-primary);
+    text-transform: uppercase;
+  }
+
+  .damned-verdict {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-sm);
+  }
+
+  .damned-item p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .damned-instead {
+    margin-top: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    background: rgba(255, 26, 26, 0.05);
+    border-left: 2px solid var(--border-primary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+
+  .damned-instead a {
+    color: var(--text-accent);
+  }
+
+  .disclaimer-footer {
+    text-align: center;
+    max-width: 600px;
+  }
+
+  .disclaimer-footer p {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    font-style: italic;
+    line-height: var(--leading-relaxed);
+  }
+</style>

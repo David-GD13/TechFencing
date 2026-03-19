@@ -1,0 +1,230 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="Install Linux"
+  description="Replace Windows with an OS that actually respects you."
+  level={3}
+  prevGuide={{ href: "/guides/browsers", label: "Switch Your Browser" }}
+  nextGuide={{ href: "/guides/de-google", label: "De-Google Your Life" }}
+>
+
+  <h2>Why Linux?</h2>
+  <p>
+    Windows 11 has ads in the Start menu. It tracks your activity through "Diagnostic Data." It forces
+    you to create a Microsoft account. It decides when to restart your computer for updates. It ships with
+    Candy Crush pre-installed on a $2000 machine. Microsoft's own operating system treats you like a
+    tenant in your own house.
+  </p>
+  <p>
+    Linux is an operating system that you actually own. No ads. No telemetry (unless you opt in). No
+    forced updates. No Microsoft account. No corporation deciding what you can and can't do with your
+    own hardware. PewDiePie switched to Linux and called it one of the best tech decisions he's made — he
+    runs Linux Mint on his desktop and Arch Linux on his laptop.
+  </p>
+  <p>
+    Is it harder than Windows? In some ways, yes. But the gap has closed dramatically. If you can follow
+    instructions and aren't afraid to Google error messages, you can use Linux daily.
+  </p>
+
+  <h2>Choose Your Distro</h2>
+  <p>
+    A "distro" (distribution) is a version of Linux packaged with different software and configurations.
+    Think of it like this: Linux is the engine, and a distro is the complete car built around it.
+  </p>
+
+  <h3>Linux Mint — Start Here</h3>
+  <p>
+    This is what PewDiePie uses on his main desktop and what he recommends for beginners. Mint looks
+    and feels like Windows. The Start menu is where you expect it. File management works the same way.
+    Installing software is actually easier than Windows (there's an app store). If you've never used
+    Linux before, use Mint. Don't overthink it.
+  </p>
+
+  <h3>Ubuntu — The Most Popular</h3>
+  <p>
+    Ubuntu is the most widely used desktop Linux distro. It has the biggest community, which means
+    the most tutorials and Stack Overflow answers when something goes wrong. The downside: Canonical
+    (the company behind Ubuntu) has made some questionable decisions around Snap packages and telemetry.
+    Mint is based on Ubuntu but strips out the controversial stuff.
+  </p>
+
+  <h3>Fedora — Cutting Edge</h3>
+  <p>
+    Fedora ships newer software than Mint or Ubuntu. It's backed by Red Hat and tends to be where new
+    Linux features land first. Good if you want the latest and greatest, but slightly less beginner-friendly.
+  </p>
+
+  <h3>Arch Linux — The Deep End</h3>
+  <p>
+    PewDiePie runs Arch on his laptop. Arch is a "build it yourself" distro — you install it from a
+    command line and add every component manually. It teaches you how Linux actually works at a deep level.
+    Do not start with Arch. Come back to it after you've used Mint for a few months and want to understand
+    what's happening under the hood.
+  </p>
+
+  <h2>Step-by-Step Installation</h2>
+
+  <div class="step">
+    <span class="step-number">Step 1</span>
+    <h3>Download Linux Mint</h3>
+    <p>
+      Go to <strong>linuxmint.com/download.php</strong> and download the Cinnamon edition (the default).
+      You'll get an ISO file — this is a disc image that contains the entire operating system. It's about
+      2.5 GB.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 2</span>
+    <h3>Create a Bootable USB</h3>
+    <p>
+      You need a USB drive (at least 4 GB) and a tool to write the ISO to it. Download
+      <strong>balenaEtcher</strong> (balena.io/etcher) — it's the simplest option. Open Etcher, select the
+      ISO file you downloaded, select your USB drive, and click "Flash." This takes about 5 minutes. Your
+      USB drive will be wiped, so make sure there's nothing important on it.
+    </p>
+    <p>
+      Alternative tools: <strong>Rufus</strong> (Windows only, more options), <strong>Ventoy</strong>
+      (lets you put multiple ISOs on one USB — great if you want to try several distros).
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 3</span>
+    <h3>Boot from USB</h3>
+    <p>
+      Restart your computer and boot from the USB drive. You'll need to press a key during startup to
+      access the boot menu — usually <strong>F12</strong>, <strong>F2</strong>, <strong>Esc</strong>, or
+      <strong>Del</strong> depending on your motherboard. Select the USB drive from the boot menu.
+    </p>
+    <p>
+      Mint will boot into a "live" environment — this is a fully working version of the OS running from
+      the USB drive. Nothing is installed yet. You can try it out, see if your WiFi works, see if the
+      display looks right. Take your time here.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 4</span>
+    <h3>Decide: Dual-Boot or Full Install</h3>
+    <p>
+      <strong>Dual-boot</strong> means keeping Windows alongside Linux. Every time you restart, you choose
+      which OS to boot into. This is the safe option if you're not sure about fully committing. The Mint
+      installer makes this easy — it will detect Windows and offer to shrink the Windows partition.
+    </p>
+    <p>
+      <strong>Full install</strong> means wiping Windows entirely. More disk space for Linux, cleaner
+      setup, no temptation to fall back. If you've backed up everything important and you're ready to
+      commit, go for it.
+    </p>
+    <p>
+      Double-click the "Install Linux Mint" icon on the desktop and follow the installer. It's a
+      graphical wizard — pick your language, timezone, keyboard layout, username, and where to install.
+      The whole process takes about 15-20 minutes.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 5</span>
+    <h3>Learn Basic Terminal Commands</h3>
+    <p>
+      You can use Linux Mint without ever touching the terminal — it has a graphical app for almost
+      everything. But learning a few commands will make your life much easier and is essential for
+      following most Linux tutorials online.
+    </p>
+    <ul>
+      <li><strong>sudo apt update</strong> — Refresh the list of available software updates</li>
+      <li><strong>sudo apt upgrade</strong> — Install all available updates</li>
+      <li><strong>sudo apt install [package]</strong> — Install a program (e.g., <code>sudo apt install vlc</code>)</li>
+      <li><strong>ls</strong> — List files in the current directory</li>
+      <li><strong>cd [folder]</strong> — Change directory</li>
+      <li><strong>cp [source] [destination]</strong> — Copy a file</li>
+      <li><strong>mv [source] [destination]</strong> — Move or rename a file</li>
+      <li><strong>rm [file]</strong> — Delete a file (careful — no recycle bin)</li>
+      <li><strong>man [command]</strong> — Read the manual for any command</li>
+    </ul>
+    <p>
+      The package manager (<strong>apt</strong> on Mint/Ubuntu) is one of the best things about Linux.
+      Instead of going to a website, downloading an installer, and clicking through a wizard, you just
+      type <code>sudo apt install firefox</code> and it's done. If you end up on Arch later, the
+      package manager is <strong>pacman</strong> (e.g., <code>sudo pacman -S firefox</code>).
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 6</span>
+    <h3>Install Your Essential Software</h3>
+    <p>
+      Mint comes with a lot pre-installed (Firefox, LibreOffice, a text editor, media player), but here
+      are some things you might want to add:
+    </p>
+    <ul>
+      <li><strong>Flatpak</strong> — Already installed on Mint. Lets you install apps in sandboxed containers from Flathub.</li>
+      <li><strong>VLC</strong> — Best media player, handles everything: <code>sudo apt install vlc</code></li>
+      <li><strong>Timeshift</strong> — Already on Mint. Create system snapshots so you can roll back if something breaks.</li>
+      <li><strong>OBS Studio</strong> — Screen recording and streaming: <code>flatpak install flathub com.obsproject.Studio</code></li>
+      <li><strong>Steam</strong> — Yes, gaming on Linux works. Valve's Proton compatibility layer runs most Windows games.</li>
+    </ul>
+  </div>
+
+  <h2>Desktop Environments</h2>
+  <p>
+    One of the best things about Linux is that you can completely change how your desktop looks and works.
+    These aren't themes — they're entirely different interfaces.
+  </p>
+  <ul>
+    <li><strong>Cinnamon</strong> (Mint default) — Traditional Windows-like layout. Taskbar at the bottom, start menu, system tray. Familiar and functional.</li>
+    <li><strong>GNOME</strong> (Ubuntu/Fedora default) — macOS-like workflow with activities overview. Modern but polarizing.</li>
+    <li><strong>KDE Plasma</strong> — The most customizable desktop environment. You can make it look like anything. Heavy on options, which some people love and others find overwhelming.</li>
+    <li><strong>XFCE</strong> — Lightweight and fast. Great for older hardware.</li>
+  </ul>
+  <p>
+    Stick with Cinnamon for now. You can always try others later — that's the beauty of Linux.
+    And if you get really deep into customization, check out the <a href="/guides/ricing">Ricing guide</a>
+    for tiling window managers.
+  </p>
+
+  <div class="downsides">
+    <h2>Honest Downsides</h2>
+    <p>Linux is great, but we're not going to lie to you about the rough edges:</p>
+    <ul>
+      <li>
+        <strong>Adobe software doesn't run on Linux.</strong> Photoshop, Premiere, Illustrator — none of
+        them. The alternatives are GIMP (or PhotoGIMP, a plugin that makes GIMP's interface match
+        Photoshop), Kdenlive/DaVinci Resolve for video editing, and Inkscape for vector graphics. They're
+        good, but they're not Adobe. If your livelihood depends on Adobe, this is a real problem.
+      </li>
+      <li>
+        <strong>Some games don't work.</strong> Specifically, games with kernel-level anti-cheat (Valorant,
+        Fortnite, FACEIT CS2) won't run on Linux. Most other Steam games work fine through Proton — check
+        protondb.com before you switch. PewDiePie acknowledged this is a real issue.
+      </li>
+      <li>
+        <strong>Adobe charges ~$65 to cancel your subscription.</strong> PewDiePie specifically called
+        this out. If you're on an annual plan paid monthly, Adobe hits you with an early termination fee.
+        Factor this into your switch cost.
+      </li>
+      <li>
+        <strong>The learning curve is real.</strong> You will encounter situations where the solution is
+        "open a terminal and type these commands." This can feel intimidating at first. But every problem
+        you solve teaches you something, and the Linux community is incredibly helpful — forums, Reddit
+        (r/linuxmint, r/linux4noobs), and wikis are your best friends.
+      </li>
+      <li>
+        <strong>Hardware compatibility can be hit or miss.</strong> Most things work out of the box, but
+        some WiFi cards, printers, and peripherals need extra drivers. Nvidia GPUs work but require
+        proprietary drivers (Mint makes this easy in Driver Manager). If possible, test with the live
+        USB before committing.
+      </li>
+      <li>
+        <strong>Microsoft Office doesn't exist on Linux.</strong> LibreOffice handles most Word/Excel/
+        PowerPoint files fine, but complex formatting sometimes breaks. If you need exact Microsoft Office
+        compatibility, use the web versions (Office 365 works in the browser) or run Windows in a virtual
+        machine.
+      </li>
+    </ul>
+  </div>
+
+</GuideLayout>

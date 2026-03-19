@@ -1,0 +1,239 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="Open-Source Alternatives"
+  description="A catalog of replacements for every app you're giving up."
+  level={2}
+  prevGuide={{ href: "/guides/self-hosting", label: "Self-Host Your Services" }}
+  nextGuide={{ href: "/guides/fix-youtube", label: "Fix YouTube" }}
+>
+
+  <h2>Why Open-Source?</h2>
+  <p>
+    Open-source software means the code is public. Anyone can read it, audit it, and verify it does
+    what it says it does. When PewDiePie says "if you can replace it with something open-source, you
+    should," this is why — you can't hide spyware in code that everyone can see.
+  </p>
+  <p>
+    Closed-source software is a black box. You trust the company's word that it's not doing anything
+    shady. Open-source software is transparent by design. That doesn't mean all open-source software
+    is good (some of it is terrible), but at least the bad ones are honestly bad instead of secretly bad.
+  </p>
+  <p>
+    This page is a reference catalog. Bookmark it and come back whenever you need to replace something.
+    We've marked which tools PewDiePie actually uses versus which are community recommendations.
+  </p>
+
+  <h2>Productivity</h2>
+
+  <h3>LibreOffice</h3>
+  <p>
+    The big one. LibreOffice replaces Microsoft Word, Excel, PowerPoint, and Access. It opens and saves
+    Microsoft file formats (.docx, .xlsx, .pptx). The interface is functional if a bit dated — think
+    "Microsoft Office 2010." It's pre-installed on Linux Mint.
+  </p>
+  <p>
+    <strong>Best for:</strong> Solo work, writing, spreadsheets, presentations. Handles 95% of what
+    most people need from an office suite.
+  </p>
+
+  <h3>CryptPad</h3>
+  <p>
+    An encrypted, web-based collaborative editor. Supports rich text documents, spreadsheets, presentations,
+    kanban boards, and more. This is your Google Docs replacement for real-time collaboration. You can
+    self-host it or use the free tier at cryptpad.fr (1 GB storage).
+  </p>
+  <p>
+    <strong>Best for:</strong> Collaborative editing when you need multiple people in the same document.
+  </p>
+
+  <h3>Obsidian</h3>
+  <p>
+    A markdown-based note-taking app that stores everything as plain text files on your local machine.
+    No cloud, no lock-in — your notes are just .md files you can open in any text editor. Has a massive
+    plugin ecosystem. Not technically open-source (the app is free but source-available), but your data
+    is always yours.
+  </p>
+  <p><strong>Best for:</strong> Note-taking, personal knowledge management, writing.</p>
+
+  <h3>Joplin</h3>
+  <p>
+    Open-source note-taking that replaces Evernote or Google Keep. Supports markdown, syncs across devices
+    (via Nextcloud, Dropbox, or Joplin Cloud), and has end-to-end encryption. Fully open-source.
+  </p>
+  <p><strong>Best for:</strong> People who want Evernote-style note-taking with sync, but open-source.</p>
+
+  <h2>Communication</h2>
+
+  <h3>Signal</h3>
+  <p>
+    End-to-end encrypted messaging. Replaces WhatsApp, Telegram, and iMessage for private conversations.
+    The protocol is open-source, the apps are open-source, and the encryption is gold-standard. PewDiePie
+    has mentioned Signal as a recommended messaging app.
+  </p>
+  <p><strong>Best for:</strong> Messaging friends and family who are willing to install it.</p>
+
+  <h3>Matrix / Element</h3>
+  <p>
+    Matrix is a decentralized communication protocol (like email — anyone can run a server). Element is
+    the most popular Matrix client. Think "open-source Slack/Discord." You can host your own server or
+    use a public one. Supports text, voice, video, and end-to-end encryption.
+  </p>
+  <p>
+    <strong>Best for:</strong> Group communication, communities, or replacing Slack/Discord with
+    something you control.
+  </p>
+
+  <h2>Media</h2>
+
+  <h3>VLC</h3>
+  <p>
+    The legendary media player. Plays literally every audio and video format in existence. No codecs to
+    install, no nonsense. Available on every platform. If you're not using VLC, start.
+  </p>
+  <p><strong>Best for:</strong> Playing local media files. The undisputed king.</p>
+
+  <h3>Jellyfin</h3>
+  <p>
+    A self-hosted media server. Think "your own Netflix" for your movie and TV collection. Streams to
+    any device with a web browser or a Jellyfin app. Automatically fetches metadata, artwork, and
+    subtitles. Completely free, no premium tier, no tracking. Replaces Plex (which has gone increasingly
+    corporate).
+  </p>
+  <p><strong>Best for:</strong> Streaming your own media library to all your devices.</p>
+
+  <h3>Kodi</h3>
+  <p>
+    A media center application that turns any computer into a home theater. Supports plugins for live TV,
+    music, photos, and more. Great for a dedicated media PC connected to your TV.
+  </p>
+  <p><strong>Best for:</strong> A living room media center setup.</p>
+
+  <h2>Passwords</h2>
+
+  <h3>Vaultwarden (self-hosted)</h3>
+  <p>
+    PewDiePie's choice. A lightweight Bitwarden-compatible server you run yourself. Works with all
+    official Bitwarden browser extensions and mobile apps. See the
+    <a href="/guides/self-hosting">Self-Hosting guide</a> for setup details.
+  </p>
+  <p><strong>Best for:</strong> People who self-host and want full control over their password vault.</p>
+
+  <h3>KeePassXC</h3>
+  <p>
+    A local-only password manager. Your vault is a single encrypted file on your computer. No server,
+    no sync, no cloud — just a file you can put on a USB drive, Syncthing folder, or Nextcloud. Has
+    a browser extension and works on Windows, macOS, and Linux.
+  </p>
+  <p><strong>Best for:</strong> People who want the simplest, most secure option and don't mind
+  managing sync themselves.</p>
+
+  <h3>Bitwarden (cloud)</h3>
+  <p>
+    If you don't want to self-host, Bitwarden's cloud service has a free tier that's genuinely good.
+    Open-source client apps, end-to-end encryption, and a reasonable $10/year for premium features.
+    A massive upgrade from using Chrome's built-in password manager.
+  </p>
+  <p><strong>Best for:</strong> People who want a password manager that "just works" without self-hosting.</p>
+
+  <h2>Cloud Storage & Sync</h2>
+
+  <h3>Nextcloud</h3>
+  <p>
+    The Swiss Army knife of self-hosted services. File storage, calendar, contacts, notes, office suite,
+    photos, and more. It tries to replace the entire Google ecosystem in one package. Sometimes it
+    succeeds brilliantly; sometimes it's clunky. See <a href="/guides/self-hosting">Self-Hosting</a>.
+  </p>
+  <p><strong>Best for:</strong> A comprehensive Google/Dropbox replacement for self-hosters.</p>
+
+  <h3>Syncthing</h3>
+  <p>
+    Peer-to-peer file synchronization. No server, no cloud — files sync directly between your devices
+    over an encrypted connection. Set up a folder on your laptop and desktop, and they stay in sync
+    automatically. Beautifully simple and incredibly reliable.
+  </p>
+  <p><strong>Best for:</strong> Keeping folders synchronized across devices without any server.</p>
+
+  <h2>Email</h2>
+
+  <h3>ProtonMail</h3>
+  <p>
+    End-to-end encrypted email from Switzerland. The best Gmail replacement for most people. Free tier
+    available, paid tier ($10/month) includes calendar, drive, and VPN. PewDiePie uses ProtonMail.
+  </p>
+  <p><strong>Best for:</strong> Anyone replacing Gmail who wants privacy without self-hosting email.</p>
+
+  <h3>Thunderbird</h3>
+  <p>
+    A desktop email client by Mozilla. Works with any email provider (ProtonMail, Gmail, your own server).
+    Recently got a major redesign and is genuinely good again. Open-source, full-featured, supports
+    calendars and contacts.
+  </p>
+  <p><strong>Best for:</strong> Managing multiple email accounts from one desktop application.</p>
+
+  <h2>Browsers</h2>
+
+  <h3>Firefox</h3>
+  <p>
+    Mozilla's open-source browser. The most balanced choice for privacy and compatibility. PewDiePie uses
+    Firefox. See the <a href="/guides/browsers">Browser guide</a> for full details.
+  </p>
+
+  <h3>LibreWolf</h3>
+  <p>
+    Firefox with all telemetry stripped and privacy settings maxed out of the box. No Mozilla telemetry,
+    no Pocket, no sponsored content.
+  </p>
+
+  <h3>Brave</h3>
+  <p>
+    Chromium-based browser with built-in ad blocking. Good for people who need Chrome extension
+    compatibility. Has a crypto token (BAT) that some people don't love, but you can ignore it entirely.
+  </p>
+
+  <h2>Quick Reference: What PewDiePie Actually Uses</h2>
+  <p>Based on his videos, PewDiePie's personal stack includes:</p>
+  <ul>
+    <li><strong>OS:</strong> Linux Mint (desktop), Arch Linux (laptop)</li>
+    <li><strong>Browser:</strong> Firefox / LibreWolf</li>
+    <li><strong>Search:</strong> DuckDuckGo</li>
+    <li><strong>Email:</strong> ProtonMail</li>
+    <li><strong>Passwords:</strong> Vaultwarden (self-hosted)</li>
+    <li><strong>Server:</strong> Raspberry Pi 5 + Steam Deck</li>
+    <li><strong>DNS blocking:</strong> Pi-Hole</li>
+    <li><strong>YouTube extensions:</strong> Unhook, SponsorBlock</li>
+    <li><strong>Phone:</strong> GrapheneOS on Google Pixel</li>
+    <li><strong>Desktop:</strong> Hyprland (tiling window manager)</li>
+    <li><strong>AI:</strong> vLLM on a 10-GPU rig with custom YouTube extension</li>
+  </ul>
+
+  <div class="downsides">
+    <h2>Honest Downsides</h2>
+    <ul>
+      <li>
+        <strong>Open-source doesn't mean polished.</strong> Many open-source apps have clunky interfaces,
+        confusing documentation, and features that feel half-finished. The best ones (Firefox, VLC,
+        Signal) are excellent. The rest range from "good enough" to "you'll miss the commercial version."
+      </li>
+      <li>
+        <strong>Network effects are real.</strong> It doesn't matter how good Signal is if everyone you
+        know uses WhatsApp. Matrix is great but empty without your community. The hardest part of
+        switching isn't the software — it's convincing other people to switch with you.
+      </li>
+      <li>
+        <strong>Some categories have no great option.</strong> Photo editing (GIMP vs. Photoshop), video
+        editing (Kdenlive vs. Premiere), and music production (Ardour vs. Logic/Ableton) are areas where
+        the open-source options are functional but not competitive with the commercial leaders.
+      </li>
+      <li>
+        <strong>Free can cost more in time.</strong> The time you spend configuring, troubleshooting,
+        and learning open-source tools has value. For some people, paying for a polished commercial
+        product is the better trade-off. That's okay. Use open-source where it works well for you
+        and don't feel guilty about the rest.
+      </li>
+    </ul>
+  </div>
+
+</GuideLayout>
