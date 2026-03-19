@@ -1,42 +1,46 @@
 /* ============================================
    TechFencing Design Tokens
+   Dionysus-inspired cool palette
    ============================================ */
 
 :root {
-  /* ---- Primitive Colors ---- */
-  --color-red-50: #fff1f1;
-  --color-red-100: #ffd6d6;
-  --color-red-200: #ffaaaa;
-  --color-red-300: #ff6b6b;
-  --color-red-400: #ff3333;
-  --color-red-500: #ff1a1a;
-  --color-red-600: #ff003c;
-  --color-red-700: #cc0000;
-  --color-red-800: #660000;
-  --color-red-900: #1a0000;
-  --color-red-950: #0a0000;
-  --color-black: #050000;
-  --color-white: #ffffff;
-  --color-cyan: #00ff88;
+  /* ---- Primitive Colors (Dionysus / Nord-inspired) ---- */
+  --color-blue-50: #e8f4fd;
+  --color-blue-100: #c4e1f6;
+  --color-blue-200: #9cdef2;
+  --color-blue-300: #88c0d0;
+  --color-blue-400: #61afef;
+  --color-blue-500: #56b6c2;
+  --color-blue-600: #4c9aaf;
+  --color-blue-700: #3b7a8f;
+  --color-blue-800: #2e5a6a;
+  --color-blue-900: #1e3a4a;
+  --color-blue-950: #0f1d25;
+  --color-charcoal: #1a1d23;
+  --color-white: #eceff4;
+  --color-peach: #fab387;
+  --color-gold: #e5c07b;
+  --color-green: #a3be8c;
+  --color-red: #e06c75;
 
   /* ---- Semantic Colors ---- */
-  --bg-base: var(--color-black);
-  --bg-surface: #140000;
-  --bg-surface-hover: #200000;
-  --bg-overlay: rgba(10, 0, 0, 0.85);
-  --bg-card: #140000;
-  --bg-card-hover: #1c0000;
+  --bg-base: var(--color-charcoal);
+  --bg-surface: #282c34;
+  --bg-surface-hover: #2e3440;
+  --bg-overlay: rgba(26, 29, 35, 0.9);
+  --bg-card: #282c34;
+  --bg-card-hover: #2e3440;
 
   --text-primary: var(--color-white);
-  --text-secondary: var(--color-red-100);
-  --text-accent: var(--color-red-500);
-  --text-muted: rgba(255, 255, 255, 0.5);
-  --text-link: var(--color-red-400);
+  --text-secondary: var(--color-blue-200);
+  --text-accent: var(--color-blue-400);
+  --text-muted: rgba(236, 239, 244, 0.5);
+  --text-link: var(--color-blue-400);
   --text-link-hover: var(--color-white);
 
-  --border-primary: var(--color-red-500);
+  --border-primary: var(--color-blue-400);
   --border-secondary: var(--color-white);
-  --border-muted: rgba(255, 26, 26, 0.3);
+  --border-muted: rgba(97, 175, 239, 0.2);
 
   /* ---- Typography ---- */
   --font-display: 'JetBrains Mono', 'Courier New', monospace;
@@ -59,8 +63,8 @@
 
   --tracking-tight: -0.02em;
   --tracking-normal: 0;
-  --tracking-wide: 0.05em;
-  --tracking-wider: 0.1em;
+  --tracking-wide: 0.03em;
+  --tracking-wider: 0.06em;
 
   /* ---- Spacing (4px base) ---- */
   --space-1: 0.25rem;
@@ -83,10 +87,10 @@
   --radius-xl: 16px;
 
   /* ---- Shadows ---- */
-  --shadow-card: 6px 6px 0 rgba(255, 26, 26, 0.2);
-  --shadow-card-hover: 8px 8px 0 rgba(255, 26, 26, 0.35);
-  --shadow-glow: 0 0 20px rgba(255, 26, 26, 0.15);
-  --shadow-glow-strong: 0 0 40px rgba(255, 26, 26, 0.3);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px rgba(97, 175, 239, 0.1);
+  --shadow-glow-strong: 0 0 40px rgba(97, 175, 239, 0.2);
 
   /* ---- Transitions ---- */
   --transition-fast: 150ms ease-out;
@@ -95,12 +99,12 @@
 
   /* ---- Z-Index Scale ---- */
   --z-base: 0;
+  --z-shader: -1;
   --z-dropdown: 50;
   --z-sticky: 80;
   --z-nav: 100;
   --z-tooltip: 1400;
   --z-overlay: 9000;
-  --z-crt: 9998;
   --z-blocker: 9999;
 
   /* ---- Layout ---- */

@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GlitchText from '../components/GlitchText.astro';
+import WavyShader from '../components/WavyShader.astro';
 ---
 
 <BaseLayout title="About TechFencing" description="Who made this, why, and what we're trying to do.">
 
   <section class="hero-sm">
-    <div class="container">
+    <WavyShader position="absolute" />
+    <div class="container" style="position:relative;z-index:1;">
       <GlitchText text="About" tag="h1" class="page-title" />
     </div>
   </section>
@@ -107,6 +109,8 @@ import GlitchText from '../components/GlitchText.astro';
   .hero-sm {
     padding: var(--space-12) 0 var(--space-6);
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
 
   :global(.page-title) {
@@ -141,7 +145,7 @@ import GlitchText from '../components/GlitchText.astro';
   .belief-list li,
   .disclaimer-list li {
     padding: var(--space-4) 0;
-    border-bottom: 1px solid rgba(255, 26, 26, 0.1);
+    border-bottom: 1px solid rgba(97, 175, 239, 0.08);
     font-size: var(--text-sm);
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);

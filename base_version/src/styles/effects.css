@@ -1,76 +1,9 @@
 /* ============================================
    TechFencing Visual Effects
-   Diagonal waves, CRT overlay, glitch text
+   Glitch text, flowing line, tape accent
    ============================================ */
 
-/* ---- Diagonal Wavy Background ---- */
-body {
-  background-image:
-    /* Diagonal wave layer 1 — primary red waves */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M-20,60 C30,40 70,80 120,60 S210,40 260,60' stroke='rgba(255,26,26,0.06)' fill='none' stroke-width='1.5' transform='rotate(-45 100 100)'/%3E%3Cpath d='M-20,100 C30,80 70,120 120,100 S210,80 260,100' stroke='rgba(255,26,26,0.04)' fill='none' stroke-width='1' transform='rotate(-45 100 100)'/%3E%3Cpath d='M-20,140 C30,120 70,160 120,140 S210,120 260,140' stroke='rgba(255,26,26,0.06)' fill='none' stroke-width='1.5' transform='rotate(-45 100 100)'/%3E%3C/svg%3E"),
-    /* Diagonal wave layer 2 — offset for depth */
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath d='M-20,50 C20,30 60,70 100,50 S180,30 220,50' stroke='rgba(255,26,26,0.035)' fill='none' stroke-width='1' transform='rotate(-40 80 80)'/%3E%3Cpath d='M-20,110 C20,90 60,130 100,110 S180,90 220,110' stroke='rgba(255,26,26,0.035)' fill='none' stroke-width='1' transform='rotate(-40 80 80)'/%3E%3C/svg%3E"),
-    /* Diagonal stripe pattern */
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 40px,
-      rgba(255, 26, 26, 0.015) 40px,
-      rgba(255, 26, 26, 0.015) 42px
-    ),
-    /* Fine CRT scanlines */
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(255, 0, 0, 0.02) 2px,
-      rgba(255, 0, 0, 0.02) 4px
-    );
-  background-size: 200px 200px, 160px 160px, 100% 100%, 100% 4px;
-  background-attachment: fixed;
-  animation: diagonal-flow 40s linear infinite;
-}
-
-@keyframes diagonal-flow {
-  0% {
-    background-position: 0 0, 0 0, 0 0, 0 0;
-  }
-  100% {
-    background-position: 200px 200px, -160px 160px, 0 0, 0 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body {
-    animation: none;
-  }
-}
-
-/* ---- CRT Overlay (Global) ---- */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: var(--z-crt);
-  background:
-    /* Scanlines */
-    repeating-linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.08) 0px,
-      rgba(0, 0, 0, 0.08) 1px,
-      transparent 1px,
-      transparent 3px
-    ),
-    /* Vignette */
-    radial-gradient(
-      ellipse at center,
-      transparent 50%,
-      rgba(0, 0, 0, 0.35) 100%
-    );
-}
-
-/* ---- Glitch Text Effect ---- */
+/* ---- Glitch Text Effect (always-on, subtle) ---- */
 .glitch-text {
   position: relative;
   display: inline-block;
@@ -88,46 +21,48 @@ body::after {
 }
 
 .glitch-text::before {
-  color: var(--color-red-600);
-  animation: glitch-slice-1 4s infinite linear;
+  color: var(--color-blue-400);
+  animation: glitch-slice-1 8s infinite linear;
   clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
   z-index: -1;
+  opacity: 0.6;
 }
 
 .glitch-text::after {
-  color: var(--color-cyan);
-  animation: glitch-slice-2 4s infinite linear;
+  color: var(--color-blue-500);
+  animation: glitch-slice-2 8s infinite linear;
   clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
   z-index: -1;
+  opacity: 0.6;
 }
 
 @keyframes glitch-slice-1 {
   0%, 100% { transform: translate(0); }
-  2% { transform: translate(3px, -1px); }
-  4% { transform: translate(-3px, 1px); }
+  2% { transform: translate(1px, -1px); }
+  4% { transform: translate(-1px, 1px); }
   6% { transform: translate(0); }
   40% { transform: translate(0); }
-  42% { transform: translate(-2px, 1px); }
-  44% { transform: translate(2px, -1px); }
+  42% { transform: translate(-1px, 0); }
+  44% { transform: translate(1px, 0); }
   46% { transform: translate(0); }
   80% { transform: translate(0); }
-  82% { transform: translate(4px, 0); }
-  84% { transform: translate(-4px, 0); }
+  82% { transform: translate(1px, 0); }
+  84% { transform: translate(-1px, 0); }
   86% { transform: translate(0); }
 }
 
 @keyframes glitch-slice-2 {
   0%, 100% { transform: translate(0); }
-  2% { transform: translate(-3px, 1px); }
-  4% { transform: translate(3px, -1px); }
+  2% { transform: translate(-1px, 1px); }
+  4% { transform: translate(1px, -1px); }
   6% { transform: translate(0); }
   40% { transform: translate(0); }
-  42% { transform: translate(2px, -1px); }
-  44% { transform: translate(-2px, 1px); }
+  42% { transform: translate(1px, 0); }
+  44% { transform: translate(-1px, 0); }
   46% { transform: translate(0); }
   80% { transform: translate(0); }
-  82% { transform: translate(-4px, 0); }
-  84% { transform: translate(4px, 0); }
+  82% { transform: translate(-1px, 0); }
+  84% { transform: translate(1px, 0); }
   86% { transform: translate(0); }
 }
 
@@ -151,22 +86,22 @@ body::after {
 }
 
 .glitch-hover::before {
-  color: var(--color-red-600);
+  color: var(--color-blue-400);
   clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
 }
 
 .glitch-hover::after {
-  color: var(--color-cyan);
+  color: var(--color-blue-500);
   clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
 }
 
 .glitch-hover:hover::before {
-  opacity: 1;
+  opacity: 0.7;
   animation: glitch-slice-1 0.5s linear;
 }
 
 .glitch-hover:hover::after {
-  opacity: 1;
+  opacity: 0.7;
   animation: glitch-slice-2 0.5s linear;
 }
 
@@ -180,16 +115,16 @@ body::after {
   }
 }
 
-/* ---- Flowing Red Line Accent ---- */
+/* ---- Flowing Line Accent ---- */
 .flowing-line {
   width: 100%;
   height: 2px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    var(--color-red-500) 20%,
-    var(--color-red-600) 50%,
-    var(--color-red-500) 80%,
+    var(--color-blue-400) 20%,
+    var(--color-blue-500) 50%,
+    var(--color-blue-400) 80%,
     transparent 100%
   );
   background-size: 200% 100%;
@@ -222,8 +157,8 @@ body::after {
   height: 24px;
   background: repeating-linear-gradient(
     -45deg,
-    rgba(255, 26, 26, 0.2),
-    rgba(255, 26, 26, 0.2) 4px,
+    rgba(97, 175, 239, 0.12),
+    rgba(97, 175, 239, 0.12) 4px,
     transparent 4px,
     transparent 8px
   );
@@ -231,9 +166,9 @@ body::after {
   pointer-events: none;
 }
 
-/* ---- Pulse Glow ---- */
+/* ---- Pulse Glow (subtle) ---- */
 .pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+  animation: pulse-glow 4s ease-in-out infinite;
 }
 
 @keyframes pulse-glow {

@@ -45,10 +45,10 @@ function createTooltip(): HTMLDivElement {
     z-index: 1400;
     max-width: 300px;
     padding: 12px 16px;
-    background: #1a0000;
-    border: 1px solid rgba(255, 26, 26, 0.3);
+    background: #282c34;
+    border: 1px solid rgba(97, 175, 239, 0.2);
     border-radius: 8px;
-    color: #ffd6d6;
+    color: #9cdef2;
     font-size: 0.8rem;
     line-height: 1.5;
     pointer-events: none;
@@ -66,7 +66,7 @@ function showTooltip(term: string, rect: DOMRect) {
   const definition = glossaryData[term];
   if (!definition) return;
 
-  tooltipEl.innerHTML = `<strong style="color:#ff1a1a;font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${term}</strong><br/>${definition}`;
+  tooltipEl.innerHTML = `<strong style="color:#61afef;font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">${term}</strong><br/>${definition}`;
   tooltipEl.style.opacity = '1';
 
   // Position: above the term, centered

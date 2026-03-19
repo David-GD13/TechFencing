@@ -3,12 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import GlitchText from '../components/GlitchText.astro';
 import Card from '../components/Card.astro';
 import DifficultyBadge from '../components/DifficultyBadge.astro';
+import WavyShader from '../components/WavyShader.astro';
 ---
 
 <BaseLayout title="Build Your Tech Fence" activePage="home">
 
   <!-- ====== HERO SECTION ====== -->
   <section class="hero">
+    <WavyShader position="absolute" />
     <div class="container hero-inner">
       <div class="hero-label">// INSPIRED BY PEWDIEPIE'S TECH JOURNEY</div>
       <GlitchText text="Build Your Tech Fence" tag="h1" class="hero-title" />
@@ -234,10 +236,13 @@ import DifficultyBadge from '../components/DifficultyBadge.astro';
     padding: var(--space-20) 0 var(--space-16);
     text-align: center;
     position: relative;
+    overflow: hidden;
   }
 
   .hero-inner {
     max-width: 800px;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-label {
@@ -254,7 +259,7 @@ import DifficultyBadge from '../components/DifficultyBadge.astro';
     font-size: var(--text-5xl);
     color: var(--text-primary);
     text-shadow:
-      3px 3px 0 rgba(255, 0, 60, 0.3),
+      3px 3px 0 rgba(97, 175, 239, 0.3),
       -1px -1px 0 rgba(0, 0, 0, 0.5);
     margin-bottom: var(--space-6);
   }
@@ -429,11 +434,11 @@ import DifficultyBadge from '../components/DifficultyBadge.astro';
     width: 2px;
     background: linear-gradient(
       to bottom,
-      #4ade80,
-      #60a5fa,
-      #fbbf24,
-      #f97316,
-      #ef4444
+      #a3be8c,
+      #88c0d0,
+      #e5c07b,
+      #fab387,
+      #e06c75
     );
     opacity: 0.3;
   }
@@ -506,8 +511,8 @@ import DifficultyBadge from '../components/DifficultyBadge.astro';
     height: 20px;
     background: repeating-linear-gradient(
       -45deg,
-      rgba(255, 26, 26, 0.15),
-      rgba(255, 26, 26, 0.15) 4px,
+      rgba(97, 175, 239, 0.1),
+      rgba(97, 175, 239, 0.1) 4px,
       transparent 4px,
       transparent 8px
     );
