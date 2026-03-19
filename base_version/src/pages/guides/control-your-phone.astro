@@ -1,0 +1,241 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="Control Your Phone"
+  description="Your phone is the biggest attention thief. Time to fence it."
+  level={3}
+  prevGuide={{ href: "/guides/fix-youtube", label: "Fix YouTube" }}
+  nextGuide={{ href: "/guides/own-your-ai", label: "Own Your AI" }}
+>
+
+  <h2>Why Your Phone Is the Problem</h2>
+  <p>
+    You can install Linux on your computer, de-Google your email, and fence YouTube — but if your phone
+    is still a dopamine delivery device in your pocket, you haven't solved the real problem. Your phone
+    is with you every waking minute. It buzzes, it notifies, it tempts. Every app on it was designed by
+    a team whose job is to get you to pick it up.
+  </p>
+  <p>
+    PewDiePie's approach to phones is one of the most practical ideas in the whole tech-fencing concept:
+    the <strong>second user profile</strong>. On Android, you can create a separate user profile on the
+    same phone. Put all your distracting apps (social media, YouTube, games) on the second profile. To
+    access them, you have to switch profiles — a process that takes 5-6 seconds and requires intentional
+    action.
+  </p>
+  <p>
+    Five seconds doesn't sound like much. But that tiny bit of friction is enough to make your brain
+    pause and ask "do I actually want to do this?" PewDiePie said he catches himself reaching for apps
+    dozens of times a day and stopping because of that pause. That's the fence working.
+  </p>
+
+  <h2>Option A: GrapheneOS (The Full Solution)</h2>
+
+  <div class="step">
+    <span class="step-number">Step 1</span>
+    <h3>What Is GrapheneOS?</h3>
+    <p>
+      GrapheneOS is a privacy-focused Android operating system that replaces the stock Google Android on
+      your phone. It's Android without Google. No Google Play Services running in the background, no
+      constant location tracking, no advertising ID, no Google account required.
+    </p>
+    <p>
+      PewDiePie uses GrapheneOS on a Google Pixel phone. Yes, the irony — the most private Android OS
+      runs best on Google's own hardware. That's because Pixel phones have the best security features
+      (verified boot, hardware security module) and GrapheneOS supports them exclusively.
+    </p>
+    <p>
+      <strong>You need a Google Pixel phone.</strong> GrapheneOS only works on Pixel devices (Pixel 4
+      and newer). If you don't have a Pixel and don't want to buy one, skip to Option B below.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 2</span>
+    <h3>Flash GrapheneOS</h3>
+    <p>
+      GrapheneOS has a web-based installer at <strong>grapheneos.org/install/web</strong> that makes
+      flashing surprisingly easy. Connect your Pixel to your computer via USB, follow the guided steps
+      in the browser, and it handles everything. The whole process takes about 15 minutes.
+    </p>
+    <p>Before you start:</p>
+    <ul>
+      <li>Back up everything on your phone</li>
+      <li>Charge your phone to at least 80%</li>
+      <li>Enable OEM unlocking in Developer Options (Settings &rarr; About Phone &rarr; tap Build Number 7 times &rarr; Developer Options &rarr; OEM Unlocking)</li>
+      <li>Use a USB-C to USB-C cable if possible (more reliable than USB-A)</li>
+    </ul>
+    <p>
+      The installer unlocks your bootloader, flashes GrapheneOS, and re-locks the bootloader for security.
+      When it's done, you have a clean Android phone with zero Google services.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 3</span>
+    <h3>Set Up the Second User Profile</h3>
+    <p>
+      This is PewDiePie's key friction technique. On GrapheneOS (and stock Android), go to
+      <strong>Settings &rarr; System &rarr; Multiple Users</strong> and create a second user profile.
+    </p>
+    <p>Your two profiles should be organized like this:</p>
+    <ul>
+      <li>
+        <strong>Main profile:</strong> Essential apps only. Phone, messaging (Signal), email (ProtonMail),
+        calendar, maps, camera, music. Nothing that wastes your time.
+      </li>
+      <li>
+        <strong>Second profile:</strong> Everything distracting. Social media, YouTube, Reddit, games,
+        news apps. These are the apps you want but don't want easy access to.
+      </li>
+    </ul>
+    <p>
+      To switch profiles, you pull down the notification shade and tap your user icon, then select the
+      other profile. It takes about 5-6 seconds. That delay is the fence. Every time you want to open
+      Instagram or YouTube, you have to make a deliberate choice to switch.
+    </p>
+    <p>
+      <strong>Pro tip:</strong> You can install sandboxed Google Play Services on GrapheneOS in the
+      second profile only. This means apps that require Google Play (banking apps, some social media
+      apps) still work, but they're sandboxed — they can't access your main profile's data.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 4</span>
+    <h3>Install Apps via F-Droid</h3>
+    <p>
+      F-Droid is an app store for open-source Android apps. No Google account needed. On GrapheneOS,
+      it's your primary source for apps. Some highlights:
+    </p>
+    <ul>
+      <li><strong>NewPipe</strong> — YouTube without ads, tracking, or Google account. Background playback and downloads included.</li>
+      <li><strong>Feeder</strong> — RSS reader for following YouTube channels and blogs without algorithms.</li>
+      <li><strong>OsmAnd</strong> — Offline maps based on OpenStreetMap.</li>
+      <li><strong>Signal</strong> — Encrypted messaging (also available directly from signal.org).</li>
+      <li><strong>K-9 Mail</strong> — Open-source email client (now officially Thunderbird for Android).</li>
+      <li><strong>Obtainium</strong> — Gets APK updates directly from GitHub releases, so you can install apps that aren't on F-Droid.</li>
+    </ul>
+    <p>
+      For apps that aren't on F-Droid and need Google Play, install the <strong>Aurora Store</strong>
+      from F-Droid — it's an open-source Google Play client that lets you download Play Store apps
+      without a Google account.
+    </p>
+  </div>
+
+  <h2>Option B: Fence Your Stock Phone</h2>
+  <p>
+    Don't have a Pixel? Not ready to flash a new OS? You can still fence your phone significantly
+    without changing your operating system.
+  </p>
+
+  <div class="step">
+    <span class="step-number">Step 5</span>
+    <h3>Use the Built-In Second Profile</h3>
+    <p>
+      Stock Android (Samsung, OnePlus, most Android phones) supports multiple user profiles. The same
+      friction technique works: <strong>Settings &rarr; System &rarr; Multiple Users</strong>. Some
+      manufacturers hide this option — you may need to search your phone's settings for "users" or
+      "multiple users."
+    </p>
+    <p>
+      Samsung phones have a feature called <strong>Secure Folder</strong> that serves a similar purpose —
+      a separate, locked space for apps. Not as clean as a full second profile, but it adds friction.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 6</span>
+    <h3>Disable Tracking</h3>
+    <p>On any Android phone, do these immediately:</p>
+    <ul>
+      <li><strong>Delete your advertising ID:</strong> Settings &rarr; Privacy &rarr; Ads &rarr; Delete advertising ID</li>
+      <li><strong>Disable location history:</strong> Settings &rarr; Location &rarr; Google Location History &rarr; Turn off</li>
+      <li><strong>Revoke unnecessary permissions:</strong> Settings &rarr; Apps &rarr; for each app, review and revoke permissions it doesn't need</li>
+      <li><strong>Disable activity tracking:</strong> Go to myactivity.google.com and pause Web & App Activity, Location History, and YouTube History</li>
+    </ul>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 7</span>
+    <h3>Remove Bloatware</h3>
+    <p>
+      Most phones come with pre-installed apps you can't uninstall (Facebook, Netflix, carrier apps).
+      You can disable them: <strong>Settings &rarr; Apps &rarr; [app] &rarr; Disable</strong>. This
+      stops them from running in the background and removes them from your app drawer.
+    </p>
+    <p>
+      For apps that can't even be disabled, you can use ADB (Android Debug Bridge) from a computer to
+      fully remove them: <code>adb shell pm uninstall -k --user 0 com.package.name</code>. Search for
+      your phone model's specific bloatware removal guide.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 8</span>
+    <h3>Install NetGuard Firewall</h3>
+    <p>
+      NetGuard is an open-source firewall for Android that blocks apps from accessing the internet. No
+      root required — it works by creating a local VPN on your phone. You can selectively allow or block
+      internet access per app.
+    </p>
+    <p>
+      This is powerful: you can install apps that work offline (games, calculators, note-taking) and
+      block their internet access so they can't phone home with your data. Many apps that don't need
+      internet still send analytics data — NetGuard stops that.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 9</span>
+    <h3>Replace Stock Apps</h3>
+    <p>Your phone's default apps are often data collection tools. Replace them:</p>
+    <ul>
+      <li><strong>Keyboard:</strong> Replace GBoard (Google's keyboard that sends everything you type to Google) with <strong>OpenBoard</strong> or <strong>FlorisBoard</strong> from F-Droid. Fully offline, no data collection.</li>
+      <li><strong>Launcher:</strong> Replace your home screen with <strong>Lawnchair</strong> or <strong>KISS Launcher</strong> (minimalist, search-based). A minimal launcher reduces the urge to mindlessly browse apps.</li>
+      <li><strong>Camera:</strong> <strong>Open Camera</strong> from F-Droid. Full-featured, no tracking.</li>
+      <li><strong>File manager:</strong> <strong>Material Files</strong> from F-Droid.</li>
+    </ul>
+  </div>
+
+  <div class="downsides">
+    <h2>Honest Downsides</h2>
+    <ul>
+      <li>
+        <strong>GrapheneOS only works on Pixel phones.</strong> If you have a Samsung, OnePlus, or any
+        other Android phone, you can't use GrapheneOS. There are alternatives like CalyxOS and
+        LineageOS, but they don't have GrapheneOS's security model and support fewer devices.
+      </li>
+      <li>
+        <strong>Some banking apps don't work.</strong> A few banking and payment apps check for Google
+        Play Services or detect custom ROMs and refuse to run. GrapheneOS's sandboxed Play Services
+        fix most of these, but not all. Check your specific banking app's compatibility before switching.
+      </li>
+      <li>
+        <strong>Push notifications can be unreliable.</strong> Without Google Play Services, push
+        notifications depend on the app's own implementation. Some apps handle this well (Signal works
+        perfectly). Others don't get notifications until you open them. GrapheneOS's sandboxed Play
+        Services in the second profile can help, but it's not as seamless as stock Android.
+      </li>
+      <li>
+        <strong>The second profile trick requires discipline.</strong> Just like the YouTube fence, this
+        only works if you maintain it. If you start putting "just one more app" in your main profile,
+        the fence erodes. PewDiePie himself admits he still catches himself mindlessly reaching for
+        his phone — the difference is now there's a barrier.
+      </li>
+      <li>
+        <strong>Camera quality can be slightly worse.</strong> Google Pixel cameras rely on Google's
+        processing algorithms. On GrapheneOS, you lose some of Google Camera's post-processing magic.
+        The photos are still good, but the computational photography (Night Sight, Magic Eraser)
+        requires Google Camera, which you may or may not want to install.
+      </li>
+      <li>
+        <strong>You're trading convenience for control.</strong> Every friction point you add to your
+        phone is also friction for legitimate use. Switching profiles to check something quickly is
+        annoying by design. That's the point — but it's still annoying.
+      </li>
+    </ul>
+  </div>
+
+</GuideLayout>

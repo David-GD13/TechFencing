@@ -1,0 +1,404 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GlitchText from '../components/GlitchText.astro';
+import Card from '../components/Card.astro';
+---
+
+<BaseLayout title="Our Savior's Arsenal" activePage="arsenal" description="Every piece of hardware and software PewDiePie actually uses in his tech setup.">
+
+  <section class="hero-sm">
+    <div class="container">
+      <div class="hero-label">// VERIFIED FROM HIS VIDEOS</div>
+      <GlitchText text="Our Savior's Arsenal" tag="h1" class="page-title" />
+      <p class="page-subtitle">
+        Everything PewDiePie actually uses. Not theoretical recommendations —
+        this is his real, daily-driver setup. Verified from his videos with timestamps.
+      </p>
+    </div>
+  </section>
+
+  <div class="flowing-line"></div>
+
+  <!-- HARDWARE -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-label glitch-hover" data-text="Hardware">Hardware</h2>
+
+      <div class="grid grid-2">
+        <Card title="Desktop PC" accent>
+          <p><strong>OS:</strong> Arch Linux</p>
+          <p>The main workhorse. Originally ran Linux Mint, then ascended to Arch.
+          This is where most of the content creation happens.</p>
+        </Card>
+
+        <Card title="Laptop" accent>
+          <p><strong>OS:</strong> Arch Linux + Hyprland</p>
+          <p>Tiling window manager setup. The "nuclear reactor control panel" rice
+          that made every Linux user's jaw drop. Running Hyprland with custom
+          Waybar, EWW widgets, and Rofi launcher.</p>
+        </Card>
+
+        <Card title="Raspberry Pi 5" accent>
+          <p><strong>Role:</strong> Self-hosting server</p>
+          <p>Runs the core self-hosted stack: Vaultwarden, Nextcloud, File Browser,
+          Pi-Hole. The little box that replaced Google's entire cloud for him.</p>
+        </Card>
+
+        <Card title="Steam Deck" accent>
+          <p><strong>OS:</strong> Arch Linux (not SteamOS)</p>
+          <p>Wiped SteamOS and installed clean Arch. Used as a secondary server
+          for services that need x86 (like Joplin). Also still games on it.</p>
+        </Card>
+
+        <Card title="Google Pixel 9" accent>
+          <p><strong>OS:</strong> GrapheneOS</p>
+          <p>Running a privacy-focused fork of Android. Two user profiles — main
+          and a secondary "distraction" profile with a 5-6 second switch delay
+          for friction.</p>
+        </Card>
+
+        <Card title="10-GPU Rig" accent>
+          <p><strong>Role:</strong> AI / Compute</p>
+          <p>The supercomputer. Runs vLLM for local AI models and a custom YouTube
+          extension. Also contributes to Folding@Home for scientific research.</p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOFTWARE -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-label glitch-hover" data-text="Software Stack">Software Stack</h2>
+
+      <div class="grid grid-3">
+        <div class="stack-item">
+          <h3>Browser</h3>
+          <p class="stack-pick">Firefox</p>
+          <p>With uBlock Origin, Unhook, and custom privacy settings. No Chrome in sight.</p>
+        </div>
+
+        <div class="stack-item">
+          <h3>Search Engine</h3>
+          <p class="stack-pick">DuckDuckGo</p>
+          <p>No tracking, no filter bubbles. It just searches.</p>
+        </div>
+
+        <div class="stack-item">
+          <h3>Password Manager</h3>
+          <p class="stack-pick">Vaultwarden</p>
+          <p>Self-hosted on Raspberry Pi. Took 2 days of "spinny circle" to set up.
+          Worth every frustrating minute.</p>
+        </div>
+
+        <div class="stack-item">
+          <h3>Cloud Storage</h3>
+          <p class="stack-pick">Nextcloud + File Browser</p>
+          <p>Both self-hosted. Nextcloud for sync, File Browser for a simple web
+          file manager.</p>
+        </div>
+
+        <div class="stack-item">
+          <h3>Notes</h3>
+          <p class="stack-pick">Joplin</p>
+          <p>Runs on the Steam Deck (not Pi — needs x86). Open-source Evernote
+          replacement.</p>
+        </div>
+
+        <div class="stack-item">
+          <h3>Email</h3>
+          <p class="stack-pick">Self-hosted</p>
+          <p>Custom domain, self-hosted email server. Full control over the inbox.</p>
+        </div>
+
+        <div class="stack-item">
+          <h3>TV / Media</h3>
+          <p class="stack-pick">Kodi</p>
+          <p>Replaced Google TV. Open-source media center that doesn't track your
+          viewing habits.</p>
+        </div>
+
+        <div class="stack-item">
+          <h3>AI</h3>
+          <p class="stack-pick">vLLM</p>
+          <p>Running on the 10-GPU rig. Built a custom YouTube extension powered
+          by local models. No data leaves his network.</p>
+        </div>
+
+        <div class="stack-item">
+          <h3>DNS Blocker</h3>
+          <p class="stack-pick">Pi-Hole</p>
+          <p>Network-wide ad and tracker blocking. Every device on his network is
+          protected.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERMINAL TOOLS -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-label glitch-hover" data-text="Terminal & Rice">Terminal & Rice</h2>
+
+      <div class="grid grid-2">
+        <div class="terminal-group">
+          <h3>Terminal Setup</h3>
+          <ul>
+            <li><strong>Shell:</strong> Zsh</li>
+            <li><strong>Multiplexer:</strong> Tmux</li>
+            <li><strong>System Monitor:</strong> Btop</li>
+            <li><strong>Search:</strong> grep (he's a purist)</li>
+            <li><strong>Boot Analysis:</strong> systemd-analyze</li>
+          </ul>
+        </div>
+
+        <div class="terminal-group">
+          <h3>Desktop Rice</h3>
+          <ul>
+            <li><strong>Window Manager:</strong> Hyprland</li>
+            <li><strong>Status Bar:</strong> Waybar</li>
+            <li><strong>Widgets:</strong> EWW</li>
+            <li><strong>Launcher:</strong> Rofi</li>
+            <li><strong>Special:</strong> Custom daemon for taskbar auto-hide</li>
+          </ul>
+          <p class="rice-note">Theme: "Nuclear reactor control dashboard"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSORS -->
+  <section class="section">
+    <div class="container">
+      <div class="sponsor-note">
+        <h2 class="section-label">A Note About Sponsors</h2>
+        <p>
+          PewDiePie has sponsors. We're transparent about this. The following
+          services were sponsored in his videos, but he also genuinely uses them.
+          We note them here so you can make informed decisions.
+        </p>
+
+        <div class="grid grid-2" style="margin-top: var(--space-6);">
+          <div class="sponsor-item">
+            <h3>Hostinger</h3>
+            <span class="sponsor-badge">Sponsor</span>
+            <p>VPS hosting for self-hosting services. PewDiePie uses it for his
+            personal website and recommends it as an alternative to home-hosting
+            for people who don't want to run a Raspberry Pi.</p>
+          </div>
+
+          <div class="sponsor-item">
+            <h3>Incogni</h3>
+            <span class="sponsor-badge">Sponsor</span>
+            <p>Data removal service that contacts data brokers on your behalf to
+            delete your personal information. A privacy service, but one that
+            requires you to trust them with your info to remove it elsewhere.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STILL USES -->
+  <section class="section">
+    <div class="container">
+      <div class="still-uses">
+        <h2 class="section-label glitch-hover" data-text="What He Still Uses">What He Still Uses (Honestly)</h2>
+        <p>
+          Even our savior isn't perfect. Here's what he couldn't fully replace:
+        </p>
+        <ul>
+          <li><strong>Google Maps</strong> — "It's too good." The alternative was so bad he was 30 minutes late.</li>
+          <li><strong>YouTube</strong> — "I literally can't escape." But he fenced it with Unhook, RSS, and DNS blocking.</li>
+        </ul>
+        <p class="still-uses-note">
+          If PewDiePie can admit his compromises, so can you. The goal isn't
+          perfection — it's awareness.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero-sm {
+    padding: var(--space-12) 0 var(--space-8);
+    text-align: center;
+  }
+
+  .hero-label {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    margin-bottom: var(--space-4);
+    opacity: 0.7;
+  }
+
+  :global(.page-title) {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-subtitle {
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .section-label {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-6);
+  }
+
+  /* Stack Items */
+  .stack-item {
+    padding: var(--space-5);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  .stack-item h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    margin-bottom: var(--space-1);
+  }
+
+  .stack-pick {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--text-accent);
+    font-weight: 700;
+    margin-bottom: var(--space-2) !important;
+  }
+
+  .stack-item p:last-child {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+
+  /* Terminal Groups */
+  .terminal-group {
+    padding: var(--space-6);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  .terminal-group h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+
+  .terminal-group ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .terminal-group li {
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid rgba(255, 26, 26, 0.1);
+    font-size: var(--text-sm);
+  }
+
+  .terminal-group li:last-child {
+    border-bottom: none;
+  }
+
+  .rice-note {
+    margin-top: var(--space-4) !important;
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    opacity: 0.6;
+    font-style: italic;
+  }
+
+  /* Sponsors */
+  .sponsor-note {
+    padding: var(--space-6);
+    background: rgba(255, 26, 26, 0.03);
+    border: 1px dashed var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  .sponsor-note > p {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+  }
+
+  .sponsor-item {
+    padding: var(--space-5);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    position: relative;
+  }
+
+  .sponsor-item h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+
+  .sponsor-badge {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-3);
+  }
+
+  .sponsor-item p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+
+  /* Still Uses */
+  .still-uses {
+    padding: var(--space-8);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  .still-uses ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .still-uses li {
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid rgba(255, 26, 26, 0.1);
+    font-size: var(--text-sm);
+  }
+
+  .still-uses-note {
+    margin-top: var(--space-4) !important;
+    font-style: italic;
+    color: var(--text-muted) !important;
+    font-size: var(--text-sm) !important;
+  }
+</style>

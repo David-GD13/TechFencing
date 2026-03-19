@@ -1,0 +1,15 @@
+---
+interface Props {
+  text: string;
+  tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'span';
+  class?: string;
+  hoverOnly?: boolean;
+}
+
+const { text, tag: Tag = 'h2', class: className = '', hoverOnly = false } = Astro.props;
+const glitchClass = hoverOnly ? 'glitch-hover' : 'glitch-text';
+---
+
+<Tag class:list={[glitchClass, className]} data-text={text}>
+  {text}
+</Tag>

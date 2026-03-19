@@ -1,0 +1,50 @@
+---
+interface Props {
+  video: string;
+  timestamp?: string;
+  url: string;
+  quote?: string;
+  n: number;
+}
+
+const { video, timestamp, url, quote, n } = Astro.props;
+const fullUrl = timestamp ? `${url}?t=${timestampToSeconds(timestamp)}` : url;
+
+function timestampToSeconds(ts: string): number {
+  const parts = ts.split(':').map(Number);
+  if (parts.length === 2) return parts[0] * 60 + parts[1];
+  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  return 0;
+}
+---
+
+<a
+  href={fullUrl}
+  class="citation-ref"
+  target="_blank"
+  rel="noopener noreferrer"
+  title={`${video}${timestamp ? ` at ${timestamp}` : ''}${quote ? ` — "${quote}"` : ''}`}
+  data-citation-video={video}
+  data-citation-timestamp={timestamp}
+  data-citation-quote={quote}
+>
+  [{n}]
+</a>
+
+<style>
+  .citation-ref {
+    font-family: var(--font-display);
+    font-size: 0.7em;
+    color: var(--text-accent);
+    text-decoration: none;
+    vertical-align: super;
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
+    cursor: pointer;
+  }
+
+  .citation-ref:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+</style>

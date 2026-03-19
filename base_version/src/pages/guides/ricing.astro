@@ -1,0 +1,286 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="Rice Your Desktop"
+  description="The rabbit hole. Make your desktop look like a nuclear reactor control panel."
+  level={5}
+  prevGuide={{ href: "/guides/own-your-ai", label: "Own Your AI" }}
+>
+
+  <h2>What Is Ricing?</h2>
+  <p>
+    "Ricing" is the art of customizing your Linux desktop to look and behave exactly how you want it.
+    The term comes from the car modding community ("Race Inspired Cosmetic Enhancements") and was
+    adopted by the Linux community for the same idea — making something look cool, sometimes at the
+    expense of practicality.
+  </p>
+  <p>
+    Ricing goes far beyond changing your wallpaper or adjusting the taskbar color. It means replacing
+    your entire desktop environment with a tiling window manager, configuring custom status bars,
+    building widgets, writing scripts, and spending an unreasonable number of hours getting your terminal
+    transparency just right.
+  </p>
+  <p>
+    PewDiePie described his rice as looking like a "nuclear reactor control dashboard." That's the
+    aesthetic — dense, information-rich, cyberpunk, deeply personalized. His setup: Hyprland as the
+    window manager, Waybar for the status bar, EWW for widgets, Rofi as the application launcher,
+    and a custom daemon that auto-hides the taskbar.
+  </p>
+  <p>
+    This is the deepest rabbit hole on this site. You have been warned.
+  </p>
+
+  <h2>The Foundation: Tiling Window Managers</h2>
+  <p>
+    A traditional desktop environment (Cinnamon, GNOME, KDE) gives you floating windows that you drag
+    around and resize manually. A tiling window manager automatically arranges your windows to fill
+    the entire screen with no overlapping. Open a terminal and it fills the screen. Open a second
+    window and both get half the screen. Open a third and they split again.
+  </p>
+  <p>
+    This sounds restrictive, but it's actually incredibly efficient once you get used to it. Every pixel
+    of your screen is used. You navigate between windows with keyboard shortcuts. No mouse needed for
+    window management. Power users find they can never go back to floating windows.
+  </p>
+
+  <div class="step">
+    <span class="step-number">Step 1</span>
+    <h3>Choose Your Window Manager</h3>
+    <p>There are two major protocols for window managers on Linux: X11 (old) and Wayland (new). Wayland is the future.</p>
+
+    <h3>Hyprland (Wayland) — PewDiePie's Choice</h3>
+    <p>
+      Hyprland is a dynamic tiling window manager for Wayland with smooth animations, rounded corners,
+      and blur effects. It's what PewDiePie uses. The configuration is done through a single text file
+      (<code>~/.config/hypr/hyprland.conf</code>) where you define keybindings, window rules, monitor
+      settings, and animations.
+    </p>
+    <p>
+      Hyprland is relatively new but has exploded in popularity because it looks gorgeous while being
+      highly functional. It's the window manager most responsible for making ricing mainstream.
+    </p>
+
+    <h3>i3 (X11) — The Classic</h3>
+    <p>
+      i3 is the most established tiling window manager. It's rock-solid, well-documented, and the
+      easiest to learn. If you're brand new to tiling WMs, i3 is a safe starting point. Configuration
+      is a simple text file. Hundreds of tutorials exist.
+    </p>
+
+    <h3>Sway (Wayland) — i3 for Wayland</h3>
+    <p>
+      Sway is a drop-in replacement for i3 that runs on Wayland instead of X11. If you like i3's
+      philosophy but want Wayland benefits (better HiDPI, smoother rendering, better security), Sway
+      is the answer. Most i3 configs work in Sway with minimal changes.
+    </p>
+
+    <h3>dwm (X11) — The Minimalist</h3>
+    <p>
+      dwm is configured by editing C source code and recompiling. Yes, really. It's under 2000 lines of
+      code. You add features by applying patches (diffs). It's the most minimalist option and appeals to
+      people who want absolute control. Not for beginners.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 2</span>
+    <h3>Install Hyprland</h3>
+    <p>
+      On Arch Linux (PewDiePie's laptop distro): <code>sudo pacman -S hyprland</code>
+    </p>
+    <p>
+      On other distros, check the <strong>Hyprland wiki</strong> (wiki.hyprland.org) for installation
+      instructions. Some distros require building from source or using third-party repositories.
+    </p>
+    <p>
+      After installing, log out of your current desktop environment and at the login screen, select
+      "Hyprland" as your session. When you log in, you'll see... a blank screen with your wallpaper.
+      Don't panic. Press <strong>Super + Q</strong> (or whatever the default terminal keybinding is)
+      to open a terminal. From here, everything is configured through text files and keybindings.
+    </p>
+    <p>
+      The first hour with a tiling WM is disorienting. The second hour, things start to click. By the
+      end of the first day, you'll be faster than you ever were with floating windows.
+    </p>
+  </div>
+
+  <h2>The Layers of a Rice</h2>
+
+  <div class="step">
+    <span class="step-number">Step 3</span>
+    <h3>Status Bar: Waybar or Polybar</h3>
+    <p>
+      The status bar is the strip at the top (or bottom) of your screen that shows system information:
+      time, battery, CPU usage, workspace indicators, network status, and whatever else you want.
+    </p>
+    <p>
+      <strong>Waybar</strong> (PewDiePie's choice) is a Wayland-native status bar that's highly
+      customizable. You configure it with JSON (what to show) and CSS (how it looks). You can add
+      custom modules that run scripts and display their output. PewDiePie's Waybar shows system stats,
+      workspaces, and custom information modules.
+    </p>
+    <p>
+      <strong>Polybar</strong> is the X11 equivalent. If you're using i3, Polybar is the standard choice.
+      Similar concept: configuration files define modules, each module shows information.
+    </p>
+    <p>
+      The status bar is where a lot of the "nuclear reactor" aesthetic comes from — dense information
+      presented in monospace fonts with color-coded indicators.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 4</span>
+    <h3>Application Launcher: Rofi or Wofi</h3>
+    <p>
+      Instead of a start menu, tiling WM users use launchers — overlay search bars that let you type
+      the name of an application and launch it. Press a keybinding, type "fire," hit enter, and Firefox
+      launches.
+    </p>
+    <p>
+      <strong>Rofi</strong> (PewDiePie's choice) is the most popular and most themeable. It can also
+      serve as a window switcher, SSH client selector, clipboard manager, and power menu. Rofi themes
+      are written in a CSS-like language, and the community has produced hundreds of themes.
+    </p>
+    <p>
+      <strong>Wofi</strong> is a simpler Wayland-native alternative. Less customizable, but it works
+      well and requires minimal configuration.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 5</span>
+    <h3>Widgets: EWW</h3>
+    <p>
+      <strong>EWW (Elkowar's Wacky Widgets)</strong> is a widget system that lets you build custom
+      overlays and panels for your desktop. Think: a music player widget, a system monitor dashboard,
+      a calendar overlay, a notification center — anything you can imagine.
+    </p>
+    <p>
+      EWW widgets are defined in a custom markup language (Yuck) and styled with CSS. PewDiePie uses
+      EWW for custom widgets on his desktop. It's powerful but has a learning curve — you'll be writing
+      scripts and markup to create each widget.
+    </p>
+    <p>
+      Alternative: <strong>AGS (Aylur's GTK Shell)</strong> lets you build widgets in JavaScript/TypeScript.
+      Some people find this more approachable than EWW's custom language.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 6</span>
+    <h3>Terminal and Shell</h3>
+    <p>
+      Your terminal emulator is where you'll spend a lot of time. Popular choices:
+    </p>
+    <ul>
+      <li><strong>Kitty</strong> — GPU-accelerated, supports images, ligatures, and splits. Highly configurable.</li>
+      <li><strong>Alacritty</strong> — GPU-accelerated, minimal, fast. Config in TOML. No tabs or splits (use a multiplexer).</li>
+      <li><strong>WezTerm</strong> — GPU-accelerated, configurable in Lua, supports tabs, splits, and multiplexing built in.</li>
+      <li><strong>Foot</strong> — Wayland-native, very lightweight and fast. Good default for Hyprland.</li>
+    </ul>
+    <p>
+      Your shell is what runs inside the terminal. <strong>Zsh</strong> with <strong>Oh My Zsh</strong>
+      or <strong>Starship</strong> prompt is the most common setup. <strong>Fish</strong> is an alternative
+      that's user-friendly out of the box with autosuggestions and syntax highlighting.
+    </p>
+    <p>
+      A properly riced terminal usually includes: a custom color scheme (Catppuccin, Gruvbox, Tokyo Night,
+      Nord are popular), a Nerd Font (font with built-in icons), and tools like <strong>neofetch</strong>
+      (displays system info in ASCII art) or <strong>fastfetch</strong> (faster alternative).
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 7</span>
+    <h3>Dotfiles Management</h3>
+    <p>
+      All of your rice lives in configuration files ("dotfiles" — because they're in directories that
+      start with a dot, like <code>~/.config/</code>). Managing these files is essential because:
+    </p>
+    <ul>
+      <li>You'll want to back up your configuration</li>
+      <li>You'll want to restore it if you reinstall</li>
+      <li>You'll want to share it (r/unixporn is the subreddit for showing off rices)</li>
+      <li>You'll want version history as you tweak things</li>
+    </ul>
+    <p>
+      The standard approach: create a <strong>Git repository</strong> for your dotfiles. Use a tool like
+      <strong>GNU Stow</strong> to symlink them from the repo to their expected locations. When you change
+      something, commit it. When you reinstall, clone the repo and run Stow.
+    </p>
+    <p>
+      Alternative: a bare Git repo (<code>git init --bare ~/.dotfiles</code>) with a custom alias. This
+      is more manual but doesn't require any extra tools.
+    </p>
+  </div>
+
+  <h2>PewDiePie's Rice</h2>
+  <p>For reference, here's PewDiePie's setup as shown in his videos:</p>
+  <ul>
+    <li><strong>Window Manager:</strong> Hyprland</li>
+    <li><strong>Status Bar:</strong> Waybar</li>
+    <li><strong>Widgets:</strong> EWW</li>
+    <li><strong>Launcher:</strong> Rofi</li>
+    <li><strong>Custom feature:</strong> A daemon that auto-hides the taskbar when windows are open, showing it only on empty workspaces</li>
+    <li><strong>Aesthetic:</strong> "Nuclear reactor control dashboard" — dark theme, dense information, monospace fonts, color-coded indicators</li>
+  </ul>
+  <p>
+    He spent significant time building this setup. It's not something you throw together in an afternoon.
+    But that's part of the appeal — your desktop becomes something you've crafted, not something a
+    corporation handed you.
+  </p>
+
+  <h2>Where to Find Inspiration</h2>
+  <ul>
+    <li><strong>r/unixporn</strong> — The main subreddit for desktop rices. People post screenshots and share their dotfiles. This is where you'll get ideas and steal configurations.</li>
+    <li><strong>Hyprland Wiki</strong> (wiki.hyprland.org) — Comprehensive documentation for Hyprland configuration.</li>
+    <li><strong>ArchWiki</strong> — The best documentation in the Linux world. Entries for every tool mentioned here.</li>
+    <li><strong>GitHub dotfiles repos</strong> — Search "dotfiles hyprland" or "dotfiles rice" for complete configurations you can study and adapt.</li>
+  </ul>
+
+  <div class="downsides">
+    <h2>Honest Downsides</h2>
+    <ul>
+      <li>
+        <strong>This is an infinite time sink.</strong> Ricing never ends. You'll tweak one thing, which
+        requires adjusting another thing, which reveals a bug in a third thing, and suddenly it's 4 AM
+        and you've been adjusting terminal padding for two hours. PewDiePie himself acknowledges spending
+        way too much time on his rice. If you have addictive tendencies toward tinkering, be warned.
+      </li>
+      <li>
+        <strong>Things break with updates.</strong> Hyprland is under active development and breaking
+        changes happen. A system update might change how a config option works, break a plugin, or require
+        you to rewrite part of your setup. This is less of an issue with mature tools like i3 but very
+        real with Hyprland and EWW.
+      </li>
+      <li>
+        <strong>The learning curve is steep.</strong> Tiling window managers require keyboard-driven
+        navigation. You need to memorize keybindings, learn configuration file syntax, and understand
+        how Wayland/X11 works. The first few days feel like learning to type again. It gets better, but
+        the initial investment is significant.
+      </li>
+      <li>
+        <strong>Screen sharing can be problematic.</strong> Wayland screen sharing is still maturing. Some
+        video call apps (Zoom, Teams) may not handle Wayland screen sharing well. Hyprland supports the
+        xdg-desktop-portal protocol, but you may need extra configuration. This is a real issue if you
+        do video calls for work.
+      </li>
+      <li>
+        <strong>Some apps don't play well with tiling.</strong> Dialog boxes, pop-ups, floating windows
+        from certain apps (looking at you, GIMP) can behave strangely in tiling WMs. You'll need to
+        write window rules to handle specific apps. Most WMs support floating windows as an override,
+        but it requires per-app configuration.
+      </li>
+      <li>
+        <strong>You become insufferable.</strong> Once you rice your desktop, you'll want to show everyone.
+        You'll look at other people's Windows or macOS desktops with pity. You'll judge people by their
+        terminal font choices. You'll say things like "I use Arch, by the way" unironically. There is no
+        cure for this. Welcome to the community.
+      </li>
+    </ul>
+  </div>
+
+</GuideLayout>

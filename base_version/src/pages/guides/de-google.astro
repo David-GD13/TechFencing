@@ -1,0 +1,219 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="De-Google Your Life"
+  description="Replace Google services with alternatives you can actually trust."
+  level={2}
+  prevGuide={{ href: "/guides/linux", label: "Install Linux" }}
+  nextGuide={{ href: "/guides/self-hosting", label: "Self-Host Your Services" }}
+>
+
+  <h2>The Google Problem</h2>
+  <p>
+    Think about how many Google products you use: Gmail, Google Drive, Google Maps, Google Calendar,
+    Google Photos, Chrome, Google Search, YouTube, Google Docs, Google Contacts, Google Keep,
+    Android with Google Play. Each one of these is a data pipeline flowing straight to Google's
+    advertising machine.
+  </p>
+  <p>
+    PewDiePie described it perfectly — Google knows where you are, where you've been, who you email,
+    what you search for, what you write in your documents, what photos you take, what appointments you
+    have, and what you watch. That's not a service provider. That's a surveillance company you happen
+    to get free email from.
+  </p>
+  <p>
+    De-Googling doesn't mean going off-grid. It means replacing Google's services with alternatives
+    that don't monetize your personal data. Some replacements are great. Some are... honestly not.
+    We'll tell you which is which.
+  </p>
+
+  <h2>Map Your Google Services</h2>
+
+  <div class="step">
+    <span class="step-number">Step 1</span>
+    <h3>Audit What You Actually Use</h3>
+    <p>
+      Before you start replacing things, figure out what you actually depend on. Go to
+      <strong>myaccount.google.com</strong> and look at your activity dashboard. Check Google Takeout
+      (takeout.google.com) to download all your data — emails, photos, documents, everything. You'll
+      want this backup before you start migrating.
+    </p>
+    <p>
+      Make a list. Be honest about which services you use daily vs. occasionally. Prioritize replacing
+      the daily ones first.
+    </p>
+  </div>
+
+  <h2>The Replacement Map</h2>
+  <p>Here's every major Google service and what to replace it with, ranked by how good the replacement actually is.</p>
+
+  <div class="step">
+    <span class="step-number">Step 2</span>
+    <h3>Gmail &rarr; ProtonMail</h3>
+    <p>
+      ProtonMail is end-to-end encrypted email based in Switzerland. The free tier gives you 1 GB of
+      storage and 1 email address. The paid plan (Proton Unlimited, ~$10/month) gives you 500 GB,
+      15 email addresses, and includes Proton Calendar, Proton Drive, and Proton VPN.
+    </p>
+    <p>
+      <strong>Migration tip:</strong> Don't switch overnight. Set up email forwarding from Gmail to your
+      new ProtonMail address. Over the next few months, update your email address on every service you
+      use. This gradual approach means you never miss an important email.
+    </p>
+    <p><strong>Quality rating: Excellent.</strong> ProtonMail is genuinely good. The web interface is
+    clean, the mobile apps work well, and the security is real.</p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 3</span>
+    <h3>Google Drive &rarr; Nextcloud / Proton Drive</h3>
+    <p>
+      Nextcloud is a self-hosted cloud storage solution (see the <a href="/guides/self-hosting">Self-Hosting
+      guide</a> for setup). If you don't want to self-host, Proton Drive comes with your Proton subscription
+      and is end-to-end encrypted. For simple file syncing between devices, Syncthing is peer-to-peer
+      and never touches a server.
+    </p>
+    <p><strong>Quality rating: Good.</strong> Proton Drive is polished but has less storage than Google.
+    Nextcloud is powerful but requires self-hosting. Syncthing is excellent for device-to-device sync.</p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 4</span>
+    <h3>Chrome &rarr; Firefox</h3>
+    <p>
+      You've already done this if you followed the <a href="/guides/browsers">Browser guide</a>. If not,
+      go do that first. It's the easiest win on this entire site.
+    </p>
+    <p><strong>Quality rating: Excellent.</strong> Firefox is a fantastic browser. No compromises here.</p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 5</span>
+    <h3>Google Search &rarr; DuckDuckGo</h3>
+    <p>
+      DuckDuckGo doesn't track your searches, doesn't build a profile, and doesn't filter results based
+      on what it thinks you want. Use <strong>!g</strong> bangs when you need Google results for a
+      specific query.
+    </p>
+    <p><strong>Quality rating: Good.</strong> 90% of the time it's fine. The other 10%, you'll use !g.</p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 6</span>
+    <h3>Google Maps &rarr; OsmAnd / Organic Maps</h3>
+    <p>
+      This is the one that hurt PewDiePie the most. He switched to OsmAnd (based on OpenStreetMap data)
+      and was <strong>30 minutes late</strong> to where he was going because the navigation was that bad.
+      Google Maps is genuinely one of the hardest services to replace because Google has spent billions
+      on map data, real-time traffic, and business listings.
+    </p>
+    <p>
+      <strong>OsmAnd</strong> is free, open-source, and works offline. It's great for hiking, cycling,
+      and areas where OpenStreetMap data is good (most of Europe, urban areas worldwide). For driving
+      navigation in less-mapped areas, it struggles.
+    </p>
+    <p>
+      <strong>Organic Maps</strong> is another OpenStreetMap-based option with a cleaner interface.
+      Good for walking and general navigation.
+    </p>
+    <p><strong>Quality rating: Poor to mediocre.</strong> Let's be honest — this is where de-Googling
+    hurts the most. PewDiePie himself still uses Google Maps for driving. If you need reliable turn-by-turn
+    navigation, you might keep Google Maps as a reluctant exception.</p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 7</span>
+    <h3>Google Photos &rarr; Immich / Nextcloud</h3>
+    <p>
+      <strong>Immich</strong> is a self-hosted Google Photos replacement that's genuinely impressive.
+      It has face recognition, location-based browsing, memories, sharing, and a mobile app that does
+      automatic photo backup. It looks and feels like Google Photos. You need to self-host it (see the
+      <a href="/guides/self-hosting">Self-Hosting guide</a>).
+    </p>
+    <p>
+      If you don't want to self-host, Nextcloud has a photos feature, though it's less polished than Immich.
+    </p>
+    <p><strong>Quality rating: Very good (Immich).</strong> One of the best open-source replacements out there.</p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 8</span>
+    <h3>Google Calendar &rarr; Proton Calendar</h3>
+    <p>
+      Proton Calendar comes with your Proton subscription. It's encrypted, syncs with the Proton mobile
+      app, and handles CalDAV for third-party clients. If you self-host, Nextcloud Calendar is also solid.
+    </p>
+    <p><strong>Quality rating: Good.</strong> Does everything a calendar needs to do. Sharing with non-Proton
+    users is slightly clunky.</p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 9</span>
+    <h3>Google Docs &rarr; LibreOffice / CryptPad</h3>
+    <p>
+      <strong>LibreOffice</strong> is a full office suite that runs locally on your machine. It handles
+      Word, Excel, and PowerPoint files. It's free and open-source. The interface is dated but functional.
+    </p>
+    <p>
+      <strong>CryptPad</strong> is an encrypted, web-based collaborative editing tool — the closest
+      replacement for the real-time collaboration feature of Google Docs. You can self-host it or use
+      the free tier at cryptpad.fr.
+    </p>
+    <p><strong>Quality rating: Good for solo work, mediocre for collaboration.</strong> If you need
+    real-time collaboration with non-technical people, this is a weak spot.</p>
+  </div>
+
+  <h2>The Migration Strategy</h2>
+  <p>Don't try to do everything at once. Here's the order that makes the most sense:</p>
+  <ol>
+    <li><strong>Week 1:</strong> Browser and search (you've already done this)</li>
+    <li><strong>Week 2:</strong> Set up ProtonMail, start forwarding Gmail</li>
+    <li><strong>Week 3:</strong> Move your files to Nextcloud or Proton Drive</li>
+    <li><strong>Week 4:</strong> Switch calendar, start updating email addresses on services</li>
+    <li><strong>Ongoing:</strong> As each account gets moved to ProtonMail, update it and move on</li>
+  </ol>
+  <p>
+    The full migration takes 2-3 months if you do it properly. That's fine. This is a marathon, not a sprint.
+    Every service you move is one less data pipeline to Google.
+  </p>
+
+  <div class="downsides">
+    <h2>Honest Downsides</h2>
+    <ul>
+      <li>
+        <strong>Google Maps is irreplaceable for driving.</strong> PewDiePie was 30 minutes late because
+        of OsmAnd. The real-time traffic data, business hours, reviews, and street-level imagery simply
+        don't exist in the open-source world at the same quality. You may need to keep Google Maps as
+        a guilty exception.
+      </li>
+      <li>
+        <strong>The free tier of ProtonMail is limiting.</strong> 1 GB of storage fills up fast. You'll
+        likely need to pay for Proton Unlimited ($10/month) to make it your primary email. That's $120/year
+        for something Google gives you for "free" (in exchange for your soul).
+      </li>
+      <li>
+        <strong>Collaborative document editing is worse.</strong> If you work with people who use Google
+        Docs, sending them a CryptPad link is a harder sell than "just share it on Google Docs." The
+        network effect is real.
+      </li>
+      <li>
+        <strong>Some Google services have no good replacement.</strong> Google Translate, Google Scholar,
+        Google Flights — these are services where Google's data advantage is so massive that alternatives
+        feel primitive.
+      </li>
+      <li>
+        <strong>Android without Google Play Services is its own adventure.</strong> See the
+        <a href="/guides/control-your-phone">Control Your Phone guide</a> for that rabbit hole. Most
+        people keep a Google account on their phone while de-Googling everything else.
+      </li>
+      <li>
+        <strong>You'll feel the friction.</strong> Logging into a new email, forgetting which password
+        manager has which account, realizing your calendar invite went to the wrong address — these little
+        annoyances are real. They fade after a month, but the first few weeks are rough.
+      </li>
+    </ul>
+  </div>
+
+</GuideLayout>

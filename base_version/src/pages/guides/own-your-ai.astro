@@ -1,0 +1,192 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="Own Your AI"
+  description="Run AI models locally. No data leaves your machine."
+  level={4}
+  prevGuide={{ href: "/guides/control-your-phone", label: "Control Your Phone" }}
+  nextGuide={{ href: "/guides/ricing", label: "Rice Your Desktop" }}
+>
+
+  <h2>Why Local AI Matters</h2>
+  <p>
+    Every time you use ChatGPT, Claude, or Gemini, your prompts — your questions, your writing, your
+    code, your private thoughts — travel to a company's server. OpenAI, Anthropic, and Google process
+    your data on their infrastructure. Their privacy policies say various reassuring things. But the
+    point of building a tech fence is to not have to trust promises. The point is to not send the data
+    in the first place.
+  </p>
+  <p>
+    Running AI locally means your conversations never leave your machine. No server logs, no training
+    data extraction, no corporate access. The AI runs on your hardware, processes your prompt, and the
+    data stays with you.
+  </p>
+  <p>
+    PewDiePie took this to an extreme. He built a 10-GPU rig running vLLM and created a custom YouTube
+    extension powered by his local AI setup. That's overkill for most people. But the beauty of local AI
+    in 2025-2026 is that you don't need a rig like that. A single decent GPU and a tool called Ollama
+    gets you surprisingly far.
+  </p>
+
+  <h2>What You Need</h2>
+  <p>
+    Local AI runs on your GPU (graphics card). The more GPU memory (VRAM) you have, the larger and
+    smarter the models you can run. Here's a rough guide:
+  </p>
+  <ul>
+    <li><strong>8 GB VRAM (RTX 3060/4060):</strong> Can run 7B parameter models well. Think basic assistant tasks, summarization, simple coding help.</li>
+    <li><strong>12 GB VRAM (RTX 3060 12GB/4070):</strong> Can run 13B models. Noticeably smarter, better at nuanced tasks.</li>
+    <li><strong>16-24 GB VRAM (RTX 4070 Ti/4090):</strong> Can run 30B+ models with quantization. Approaching cloud AI quality for many tasks.</li>
+    <li><strong>No dedicated GPU:</strong> You can still run small models (3B-7B) on CPU, but it will be slow. Apple Silicon Macs (M1/M2/M3) actually handle this well thanks to unified memory.</li>
+  </ul>
+
+  <h2>Getting Started</h2>
+
+  <div class="step">
+    <span class="step-number">Step 1</span>
+    <h3>Install Ollama</h3>
+    <p>
+      Ollama is the easiest way to run LLMs locally. It handles downloading models, managing them,
+      and running them with a simple command-line interface. Think of it as the "Docker for AI models."
+    </p>
+    <p>
+      Go to <strong>ollama.com</strong> and download the installer for your OS. On Linux, you can
+      install it with one command:
+    </p>
+    <ul>
+      <li><code>curl -fsSL https://ollama.com/install.sh | sh</code></li>
+    </ul>
+    <p>
+      That's it. Ollama runs as a service in the background and provides a local API that other tools
+      can connect to.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 2</span>
+    <h3>Download and Run Your First Model</h3>
+    <p>
+      Open a terminal and run:
+    </p>
+    <ul>
+      <li><code>ollama run llama3.1</code> — Meta's Llama 3.1 8B. Great all-rounder. Good at conversation, summarization, and general tasks.</li>
+    </ul>
+    <p>
+      The first time you run a model, Ollama downloads it (a few GB). After that, it starts instantly.
+      You're now chatting with an AI that runs entirely on your hardware. Nothing leaves your machine.
+    </p>
+    <p>Other models to try:</p>
+    <ul>
+      <li><strong>mistral</strong> — Mistral 7B. Fast, good at structured tasks and coding.</li>
+      <li><strong>phi3</strong> — Microsoft's Phi-3. Small but surprisingly capable. Great for limited hardware.</li>
+      <li><strong>codellama</strong> — Specialized for code generation and understanding.</li>
+      <li><strong>llama3.1:70b</strong> — The 70B parameter version of Llama. Much smarter, but needs ~40GB VRAM or heavy quantization.</li>
+      <li><strong>deepseek-coder-v2</strong> — Excellent for programming tasks.</li>
+      <li><strong>gemma2</strong> — Google's open model. Good general performance.</li>
+    </ul>
+    <p>
+      Browse all available models at <strong>ollama.com/library</strong>. Start with the default (usually
+      7B-8B parameter) versions and move up if your hardware can handle it.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 3</span>
+    <h3>Set Up Open WebUI</h3>
+    <p>
+      Chatting in the terminal works, but a web interface is much nicer. <strong>Open WebUI</strong>
+      (formerly Ollama WebUI) gives you a ChatGPT-like interface for your local models. It supports
+      conversation history, multiple chats, model switching, system prompts, and file uploads.
+    </p>
+    <p>Install it with Docker (assuming you have Docker from the <a href="/guides/self-hosting">Self-Hosting guide</a>):</p>
+    <ul>
+      <li><code>docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main</code></li>
+    </ul>
+    <p>
+      Open <strong>http://localhost:3000</strong> in your browser, create an account (local only — no data
+      leaves your machine), and you're in. Select your downloaded model from the dropdown and start chatting.
+    </p>
+    <p>
+      Open WebUI can also connect to OpenAI's API if you occasionally want to use cloud models for
+      complex tasks — but that's optional and defeats the privacy purpose.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 4</span>
+    <h3>Practical Use Cases</h3>
+    <p>Local AI isn't just a novelty. Here are things you can actually do with it:</p>
+    <ul>
+      <li><strong>Private brainstorming:</strong> Bounce ideas off the AI without worrying about data leaks. Business plans, journal entries, personal questions — all stay on your machine.</li>
+      <li><strong>Code assistance:</strong> Use Codellama or DeepSeek Coder as a local Copilot alternative. Many code editors (VS Code, Neovim) have plugins that connect to Ollama.</li>
+      <li><strong>Document summarization:</strong> Feed in PDFs, articles, or notes and get summaries. Open WebUI supports file uploads for this.</li>
+      <li><strong>Email drafting:</strong> Write emails without your drafts passing through a third-party server.</li>
+      <li><strong>Learning and research:</strong> Ask questions about topics you're studying. The AI's knowledge is baked into the model weights — no internet needed.</li>
+    </ul>
+  </div>
+
+  <h2>PewDiePie's Setup (Advanced)</h2>
+  <p>
+    For context on the extreme end: PewDiePie runs <strong>vLLM</strong> on a 10-GPU rig. vLLM is a
+    high-performance inference engine that's much faster than Ollama for serving large models. He built
+    a custom YouTube browser extension that uses his local AI to summarize videos, answer questions about
+    video content, and help with research.
+  </p>
+  <p>
+    This is a serious setup — we're talking about thousands of dollars in GPUs and significant technical
+    knowledge. It's impressive, but it's not what most people need. The point is that the same concept
+    applies at any scale: whether you're running a 7B model on a laptop or a 70B model on a GPU cluster,
+    your data stays local.
+  </p>
+
+  <h2>Beyond Chatbots</h2>
+  <p>Local AI isn't just about text chat. Here are other things you can run locally:</p>
+  <ul>
+    <li><strong>Stable Diffusion (image generation):</strong> Run ComfyUI or Automatic1111 locally to generate images without sending your prompts to Midjourney or DALL-E. Needs 8GB+ VRAM.</li>
+    <li><strong>Whisper (speech-to-text):</strong> OpenAI's Whisper model runs locally and transcribes audio with remarkable accuracy. Great for transcribing meetings, lectures, or your own recordings.</li>
+    <li><strong>Coqui TTS (text-to-speech):</strong> Generate natural-sounding speech from text, locally.</li>
+    <li><strong>LocalAI:</strong> A drop-in replacement for OpenAI's API that runs everything locally. Any tool that integrates with the OpenAI API can be pointed at LocalAI instead.</li>
+  </ul>
+
+  <div class="downsides">
+    <h2>Honest Downsides</h2>
+    <ul>
+      <li>
+        <strong>You need decent hardware.</strong> Running AI locally requires a GPU with enough VRAM.
+        If your computer has no dedicated GPU or an older card with 4GB VRAM, the experience will be
+        painfully slow. Apple Silicon Macs are an exception — they handle local AI well thanks to unified
+        memory architecture.
+      </li>
+      <li>
+        <strong>Models are large.</strong> A 7B model is about 4 GB. A 13B model is about 7 GB. A 70B
+        model is 40+ GB. If you want to try several models, you'll need significant disk space. Ollama
+        stores models in its cache, so they add up.
+      </li>
+      <li>
+        <strong>Local models aren't as good as GPT-4 or Claude for complex tasks.</strong> Open-source
+        models have improved dramatically, but for tasks that require deep reasoning, nuanced understanding,
+        or very long contexts, cloud models still have an edge. A local 7B model is roughly comparable to
+        GPT-3.5 in capability. A local 70B model approaches GPT-4 for many tasks but still falls short
+        on the hardest ones.
+      </li>
+      <li>
+        <strong>No internet access.</strong> Local models can't browse the web, check current events, or
+        access real-time information. Their knowledge is frozen at whatever date the training data cut off.
+        This is a feature for privacy, but a limitation for research.
+      </li>
+      <li>
+        <strong>Power consumption.</strong> Running a GPU at full load while chatting with an AI uses
+        significantly more power than typing a query into ChatGPT. A high-end GPU can draw 300-450 watts.
+        PewDiePie's 10-GPU rig probably uses as much power as a small apartment.
+      </li>
+      <li>
+        <strong>It's evolving fast.</strong> The local AI landscape changes monthly. Models get better,
+        tools get replaced, new approaches emerge. What's the best setup today might not be in six months.
+        That's exciting but also means more maintenance and learning.
+      </li>
+    </ul>
+  </div>
+
+</GuideLayout>

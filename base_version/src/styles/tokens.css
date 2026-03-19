@@ -1,0 +1,124 @@
+/* ============================================
+   TechFencing Design Tokens
+   ============================================ */
+
+:root {
+  /* ---- Primitive Colors ---- */
+  --color-red-50: #fff1f1;
+  --color-red-100: #ffd6d6;
+  --color-red-200: #ffaaaa;
+  --color-red-300: #ff6b6b;
+  --color-red-400: #ff3333;
+  --color-red-500: #ff1a1a;
+  --color-red-600: #ff003c;
+  --color-red-700: #cc0000;
+  --color-red-800: #660000;
+  --color-red-900: #1a0000;
+  --color-red-950: #0a0000;
+  --color-black: #050000;
+  --color-white: #ffffff;
+  --color-cyan: #00ff88;
+
+  /* ---- Semantic Colors ---- */
+  --bg-base: var(--color-black);
+  --bg-surface: #140000;
+  --bg-surface-hover: #200000;
+  --bg-overlay: rgba(10, 0, 0, 0.85);
+  --bg-card: #140000;
+  --bg-card-hover: #1c0000;
+
+  --text-primary: var(--color-white);
+  --text-secondary: var(--color-red-100);
+  --text-accent: var(--color-red-500);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --text-link: var(--color-red-400);
+  --text-link-hover: var(--color-white);
+
+  --border-primary: var(--color-red-500);
+  --border-secondary: var(--color-white);
+  --border-muted: rgba(255, 26, 26, 0.3);
+
+  /* ---- Typography ---- */
+  --font-display: 'JetBrains Mono', 'Courier New', monospace;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: clamp(2rem, 5vw, 3rem);
+  --text-5xl: clamp(2.5rem, 6vw, 3.5rem);
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.8;
+
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+  --tracking-wider: 0.1em;
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* ---- Border Radius ---- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* ---- Shadows ---- */
+  --shadow-card: 6px 6px 0 rgba(255, 26, 26, 0.2);
+  --shadow-card-hover: 8px 8px 0 rgba(255, 26, 26, 0.35);
+  --shadow-glow: 0 0 20px rgba(255, 26, 26, 0.15);
+  --shadow-glow-strong: 0 0 40px rgba(255, 26, 26, 0.3);
+
+  /* ---- Transitions ---- */
+  --transition-fast: 150ms ease-out;
+  --transition-normal: 200ms ease-out;
+  --transition-slow: 300ms ease-out;
+
+  /* ---- Z-Index Scale ---- */
+  --z-base: 0;
+  --z-dropdown: 50;
+  --z-sticky: 80;
+  --z-nav: 100;
+  --z-tooltip: 1400;
+  --z-overlay: 9000;
+  --z-crt: 9998;
+  --z-blocker: 9999;
+
+  /* ---- Layout ---- */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1200px;
+  --container-padding: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --container-padding: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --container-padding: var(--space-8);
+  }
+}

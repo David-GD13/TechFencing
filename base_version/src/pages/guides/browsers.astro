@@ -1,0 +1,225 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="Switch Your Browser"
+  description="The easiest first step. 5 minutes to escape Google's tracking."
+  level={1}
+  nextGuide={{ href: "/guides/linux", label: "Install Linux" }}
+>
+
+  <h2>Why Your Browser Matters</h2>
+  <p>
+    Your browser is the single most important piece of software on your computer. Every website you visit,
+    every search you make, every form you fill out — it all goes through your browser. If you're using
+    Google Chrome, congratulations: you're running a program made by an advertising company whose entire
+    business model is knowing everything about you.
+  </p>
+  <p>
+    Chrome isn't free because Google is generous. Chrome is free because <strong>you are the product</strong>.
+    Every tab you open feeds Google's profile of you. Your browsing history, your bookmarks, your passwords,
+    your autofill data — all of it flows back to Google's servers where it's used to sell ads targeted at you.
+  </p>
+  <p>
+    The good news? Switching your browser is the single easiest thing on this entire site. Five minutes
+    and you've already built the first section of your tech fence.
+  </p>
+
+  <h2>Pick Your New Browser</h2>
+  <p>You have three solid options. Pick one and move on — don't overthink it.</p>
+
+  <h3>Firefox — The Balanced Choice</h3>
+  <p>
+    Mozilla Firefox is the most popular privacy-focused browser. It's open-source, backed by a nonprofit,
+    and has a massive extension library. It's what PewDiePie uses alongside LibreWolf. Firefox works on
+    Windows, macOS, Linux, Android, and iOS. It syncs across devices with a Firefox account (encrypted,
+    not sold to advertisers). For most people, this is the right answer.
+  </p>
+
+  <h3>LibreWolf — Firefox But Stricter</h3>
+  <p>
+    LibreWolf is a fork of Firefox with all telemetry removed and privacy settings cranked to maximum
+    out of the box. No Mozilla telemetry, no Pocket integration, no sponsored shortcuts. It's Firefox
+    for people who don't want to spend 20 minutes tweaking about:config settings. The downside is it
+    doesn't auto-update as smoothly as Firefox, and you lose Firefox Sync by default.
+  </p>
+
+  <h3>Brave — The Easy Switch from Chrome</h3>
+  <p>
+    Brave is built on Chromium (the same engine as Chrome) so all your Chrome extensions work. It has a
+    built-in ad blocker and tracker blocker. The interface will feel instantly familiar if you're coming
+    from Chrome. The controversy: Brave has its own crypto token (BAT) and opt-in ads. Some privacy
+    purists don't trust it. But it's still a massive upgrade from Chrome.
+  </p>
+
+  <h2>Step-by-Step Setup</h2>
+
+  <div class="step">
+    <span class="step-number">Step 1</span>
+    <h3>Install Your New Browser</h3>
+    <p>
+      Go to <strong>firefox.com</strong>, <strong>librewolf.net</strong>, or <strong>brave.com</strong>
+      and download the installer. Run it. That's it. Don't uninstall Chrome yet — you'll want it as a
+      fallback for the first week while you adjust.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 2</span>
+    <h3>Import Your Data</h3>
+    <p>
+      When you first launch your new browser, it will offer to import bookmarks, passwords, and history
+      from Chrome. Say yes. This takes about 30 seconds and means you're not starting from scratch.
+      In Firefox, go to <strong>Settings &rarr; Import Data</strong> if you missed the prompt.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 3</span>
+    <h3>Change Your Default Search Engine</h3>
+    <p>
+      Go to your browser settings and change the default search engine from Google to
+      <strong>DuckDuckGo</strong>. In Firefox: <strong>Settings &rarr; Search &rarr; Default Search Engine
+      &rarr; DuckDuckGo</strong>. DuckDuckGo doesn't track your searches, doesn't build a profile on you,
+      and doesn't filter results based on what it thinks you want to see.
+    </p>
+    <p>
+      If DuckDuckGo's results aren't good enough for a specific query, you can always prefix your search
+      with <strong>!g</strong> to get Google results through DuckDuckGo (though Google will still see that
+      search). Other bangs: <strong>!w</strong> for Wikipedia, <strong>!yt</strong> for YouTube,
+      <strong>!r</strong> for Reddit.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 4</span>
+    <h3>Install uBlock Origin</h3>
+    <p>
+      This is non-negotiable. uBlock Origin is the best ad and tracker blocker available. It's free,
+      open-source, and blocks ads, trackers, malware domains, and annoyances. Go to your browser's
+      extension store and search for <strong>uBlock Origin</strong> (not "uBlock" — that's a different,
+      inferior extension).
+    </p>
+    <p>
+      For Firefox: <strong>addons.mozilla.org</strong> &rarr; search "uBlock Origin" &rarr; Add to Firefox.<br>
+      For Brave: Brave has a built-in blocker, but uBlock Origin is still better. Install it from the
+      Chrome Web Store.
+    </p>
+    <p>
+      <strong>Important note:</strong> Google is actively killing ad blockers in Chrome through Manifest V3.
+      This is one of the biggest reasons to leave Chrome — uBlock Origin will eventually stop working
+      properly there. Firefox has committed to supporting Manifest V2 extensions indefinitely.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 5</span>
+    <h3>Install Unhook for YouTube</h3>
+    <p>
+      This is the extension that PewDiePie highlighted in his "I Fixed YouTube" video. Unhook lets you
+      selectively remove parts of the YouTube interface: the homepage feed, the recommended sidebar,
+      Shorts, trending, comments — whatever you want. The idea is to turn YouTube from a slot machine
+      into a tool you use intentionally.
+    </p>
+    <p>
+      Search for <strong>"Unhook - Remove YouTube Recommended"</strong> in your browser's extension store.
+      After installing, open the extension settings and disable: Homepage Feed, Recommended Videos,
+      Shorts, and Trending. You can still search for videos and visit channels directly — you just won't
+      be ambushed by the algorithm anymore.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 6</span>
+    <h3>Consider Extra Privacy Extensions</h3>
+    <p>These are optional but worth considering:</p>
+    <ul>
+      <li>
+        <strong>Privacy Badger</strong> (by the EFF) — Learns to block invisible trackers as you browse.
+        Works alongside uBlock Origin without conflicts.
+      </li>
+      <li>
+        <strong>HTTPS Everywhere</strong> — Forces encrypted connections where possible. Note: Firefox
+        now has this built-in (Settings &rarr; Privacy &rarr; HTTPS-Only Mode), so you may not need the
+        extension.
+      </li>
+      <li>
+        <strong>SponsorBlock</strong> — Auto-skips sponsored segments in YouTube videos. Community-powered
+        and surprisingly accurate. PewDiePie recommends this one.
+      </li>
+      <li>
+        <strong>ClearURLs</strong> — Strips tracking parameters from URLs. When you click a link from
+        Google search results, there's usually a bunch of tracking garbage appended to the URL. This
+        removes it.
+      </li>
+    </ul>
+    <p>
+      Don't go overboard with extensions. Each one you add increases your browser's fingerprint
+      (ironically making you more trackable in some ways). The core three — uBlock Origin, Unhook,
+      and SponsorBlock — are enough for most people.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 7</span>
+    <h3>Set Your New Browser as Default</h3>
+    <p>
+      Make your new browser the system default so every link you click opens in it instead of Chrome.
+      On Windows: <strong>Settings &rarr; Apps &rarr; Default Apps &rarr; Web browser</strong>.
+      On macOS: <strong>System Preferences &rarr; General &rarr; Default web browser</strong>.
+      On Linux, your desktop environment's settings will have this option.
+    </p>
+    <p>
+      After a week of using your new browser without issues, uninstall Chrome. If you need a Chromium-based
+      browser as a fallback for that one weird site, keep Brave around for that purpose.
+    </p>
+  </div>
+
+  <h2>What You've Gained</h2>
+  <p>In about five minutes of work, you've accomplished:</p>
+  <ul>
+    <li>Stopped feeding Google your entire browsing history</li>
+    <li>Blocked ads and trackers on every website you visit</li>
+    <li>Made your YouTube experience intentional instead of algorithmic</li>
+    <li>Started using a search engine that doesn't profile you</li>
+    <li>Protected yourself from Manifest V3 killing your ad blocker</li>
+  </ul>
+  <p>
+    This is the foundation. Everything else on this site builds on top of this. You went from "ignorant"
+    to "savior of your own browsing experience" in the time it takes to make a cup of coffee.
+  </p>
+
+  <div class="downsides">
+    <h2>Honest Downsides</h2>
+    <p>We're not going to pretend this is all sunshine. Here's what might annoy you:</p>
+    <ul>
+      <li>
+        <strong>Some websites break with strict privacy settings.</strong> Banking sites, government portals,
+        and some e-commerce sites may not work properly. You'll occasionally need to disable uBlock Origin
+        for a specific site (click the extension icon &rarr; click the power button to whitelist).
+      </li>
+      <li>
+        <strong>Chrome extensions don't all work in Firefox.</strong> If you're switching to Firefox or
+        LibreWolf, some Chrome-only extensions won't be available. Most popular ones have Firefox versions,
+        but niche ones might not. Brave avoids this problem since it's Chromium-based.
+      </li>
+      <li>
+        <strong>DuckDuckGo results aren't always as good as Google's.</strong> For most searches, they're
+        fine. For very specific, localized, or time-sensitive queries, Google is still better. Use the
+        <strong>!g</strong> bang when you need to.
+      </li>
+      <li>
+        <strong>You lose Google's password sync ecosystem.</strong> If you were relying on Chrome's built-in
+        password manager, you'll need an alternative. We recommend Vaultwarden (covered in the self-hosting
+        guide) or Bitwarden's free cloud tier as a start.
+      </li>
+      <li>
+        <strong>YouTube without recommendations feels empty at first.</strong> You'll open YouTube and see...
+        nothing. That's the point. But it takes a few days to adjust to actually deciding what you want to
+        watch instead of being fed content. Stick with it.
+      </li>
+    </ul>
+  </div>
+
+</GuideLayout>

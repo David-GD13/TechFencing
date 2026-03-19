@@ -1,0 +1,209 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+
+<GuideLayout
+  title="Fix YouTube"
+  description="The video that coined 'tech fencing.' Take back your attention."
+  level={2}
+  prevGuide={{ href: "/guides/open-source-alternatives", label: "Open-Source Alternatives" }}
+  nextGuide={{ href: "/guides/control-your-phone", label: "Control Your Phone" }}
+>
+
+  <h2>The YouTube Problem</h2>
+  <p>
+    YouTube is engineered to keep you watching. The homepage feed, the recommended sidebar, Shorts, autoplay
+    — every pixel is designed by teams of engineers whose job is to maximize your time on the platform.
+    PewDiePie's "I Fixed YouTube" video is where the term "tech fencing" was born. His core insight:
+    you don't need to quit YouTube. You need to build a fence around it.
+  </p>
+  <p>
+    The problem isn't that YouTube has bad content. It has incredible content. The problem is that the
+    algorithm decides what you watch instead of you deciding. You open YouTube to watch one specific
+    video, and 90 minutes later you're watching a documentary about deep-sea creatures you never asked
+    for. The algorithm won, and you lost an hour of your life.
+  </p>
+  <p>
+    The solution is <strong>friction</strong>. Make it slightly harder to mindlessly consume. Make
+    YouTube a tool you use intentionally instead of a slot machine you pull the lever on.
+  </p>
+
+  <h2>The Core Setup</h2>
+
+  <div class="step">
+    <span class="step-number">Step 1</span>
+    <h3>Install Unhook</h3>
+    <p>
+      This is the centerpiece. Unhook is a browser extension that lets you selectively remove parts of
+      the YouTube interface. Search for <strong>"Unhook - Remove YouTube Recommended"</strong> in your
+      browser's extension store (Firefox Add-ons or Chrome Web Store).
+    </p>
+    <p>After installing, open the Unhook settings and disable:</p>
+    <ul>
+      <li><strong>Homepage Feed</strong> — The endless scroll of recommended videos. Gone. When you open YouTube, you see a search bar and nothing else.</li>
+      <li><strong>Recommended/Related Videos</strong> — The sidebar that sucks you into the rabbit hole after every video. Gone.</li>
+      <li><strong>Shorts</strong> — YouTube's TikTok clone. Algorithmically addictive by design. Gone.</li>
+      <li><strong>Trending</strong> — Rage bait and clickbait. Gone.</li>
+      <li><strong>End Screen Cards</strong> — Those "watch next" overlays in the last 20 seconds of a video. Gone.</li>
+    </ul>
+    <p>
+      What's left? The search bar, your subscriptions, and your library. That's it. YouTube becomes a
+      place where you go to watch something specific, not a place that decides what you watch.
+    </p>
+    <p>
+      PewDiePie described the experience: "When I open YouTube now, there's nothing there. I actually
+      have to think about what I want to watch." That moment of having to think is the friction. It's
+      the fence.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 2</span>
+    <h3>Install SponsorBlock</h3>
+    <p>
+      SponsorBlock is a community-powered extension that automatically skips sponsored segments in
+      YouTube videos. Users submit timestamps for sponsor reads, intros, outros, subscription reminders,
+      and other non-content segments. The extension skips them automatically.
+    </p>
+    <p>
+      It's not about hurting creators — it's about respecting your time. The average sponsored segment
+      is 60-90 seconds. Watch 10 videos a day and that's 10-15 minutes of your life spent listening to
+      VPN ads. SponsorBlock gives that time back.
+    </p>
+    <p>
+      Install it from your browser's extension store. The default settings are good — it skips sponsor
+      segments and interaction reminders. You can customize what gets skipped in the settings.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 3</span>
+    <h3>Use RSS for Subscriptions</h3>
+    <p>
+      Here's a move most people don't know about: every YouTube channel has an RSS feed. Instead of
+      relying on YouTube's subscription feed (which doesn't show you everything anyway — YouTube
+      algorithmically filters your subscriptions), use an RSS reader to get a chronological list of
+      every video from every channel you care about.
+    </p>
+    <p>
+      To get a channel's RSS feed URL:<br>
+      <code>https://www.youtube.com/feeds/videos.xml?channel_id=CHANNEL_ID</code>
+    </p>
+    <p>
+      You can find a channel's ID by going to their page, clicking "About," and looking at the URL or
+      using a site like commentpicker.com/youtube-channel-id.php.
+    </p>
+    <p><strong>RSS reader options:</strong></p>
+    <ul>
+      <li><strong>Feeder</strong> (Android, free) — Simple, clean RSS reader. Add YouTube channel feeds and get notifications for new videos.</li>
+      <li><strong>Miniflux</strong> (self-hosted) — Minimalist web-based RSS reader. Perfect if you've set up a server from the <a href="/guides/self-hosting">Self-Hosting guide</a>.</li>
+      <li><strong>Thunderbird</strong> (desktop) — Yes, the email client also does RSS. One app for email and YouTube subscriptions.</li>
+      <li><strong>NetNewsWire</strong> (macOS/iOS) — Free, open-source, beautifully designed RSS reader for Apple users.</li>
+    </ul>
+    <p>
+      With RSS, you see every video from channels you choose, in chronological order, with no algorithm
+      deciding what to show or hide. You control the feed. Not YouTube.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 4</span>
+    <h3>Consider Alternative YouTube Frontends</h3>
+    <p>
+      If you want to go further, alternative frontends let you watch YouTube without the YouTube
+      interface entirely:
+    </p>
+    <ul>
+      <li>
+        <strong>FreeTube</strong> (desktop app) — A desktop YouTube client with no ads, no tracking,
+        and a clean interface. Subscribes to channels locally (no Google account needed). Has an
+        import feature for your existing YouTube subscriptions. Available for Windows, macOS, and Linux.
+      </li>
+      <li>
+        <strong>NewPipe</strong> (Android) — An alternative YouTube app for Android. No Google account
+        needed, no ads, background playback, and download support. Install it from F-Droid (not the
+        Play Store — Google wouldn't allow it).
+      </li>
+      <li>
+        <strong>Invidious</strong> (web) — A web-based YouTube frontend you can self-host. No JavaScript
+        required, no tracking, lightweight. Public instances exist but tend to get rate-limited by Google.
+      </li>
+    </ul>
+    <p>
+      These tools strip YouTube down to its content. No recommendations, no comments (unless you want
+      them), no Shorts, no ads. Just videos.
+    </p>
+  </div>
+
+  <div class="step">
+    <span class="step-number">Step 5</span>
+    <h3>DNS-Level Blocking for YouTube Shorts</h3>
+    <p>
+      If you've set up Pi-Hole from the <a href="/guides/self-hosting">Self-Hosting guide</a>, you can
+      block YouTube Shorts at the DNS level. This means Shorts won't load on any device on your network —
+      phones, tablets, smart TVs, everything.
+    </p>
+    <p>
+      The nuclear option: add Shorts-related domains to your Pi-Hole blocklist. This is an arms race
+      (Google changes things frequently), but the community maintains updated blocklists. Search for
+      "Pi-Hole YouTube Shorts blocklist" for current lists.
+    </p>
+    <p>
+      A softer approach: use the Unhook extension on desktop and rely on discipline on mobile, or use
+      NewPipe on Android which doesn't have Shorts at all.
+    </p>
+  </div>
+
+  <h2>The Philosophy: Why Friction Works</h2>
+  <p>
+    The key insight from PewDiePie's approach isn't about blocking content. It's about making
+    consumption <strong>intentional</strong>. When you remove the YouTube homepage feed, you don't lose
+    access to any content. Every video is still there. You can still search for anything. You can still
+    visit any channel directly.
+  </p>
+  <p>
+    What you lose is the autopilot. The zombie mode where you open YouTube and let the algorithm drive.
+    That 2-second pause where you think "what do I actually want to watch?" is the entire point. That's
+    the fence.
+  </p>
+  <p>
+    PewDiePie described catching himself mindlessly opening YouTube out of habit, seeing the blank
+    homepage, and closing it again because he didn't actually want to watch anything. That's a win.
+    That's a moment of your life you got back.
+  </p>
+
+  <div class="downsides">
+    <h2>Honest Downsides</h2>
+    <ul>
+      <li>
+        <strong>You'll miss some discovery.</strong> The YouTube algorithm, for all its evils, does
+        occasionally surface genuinely interesting content you'd never find on your own. When you kill
+        the homepage feed and recommendations, you lose that serendipity. Counterpoint: curated
+        subreddits, newsletters, and word of mouth are better discovery sources anyway.
+      </li>
+      <li>
+        <strong>The setup is tedious.</strong> Finding RSS feed URLs for every channel, setting up an RSS
+        reader, configuring Unhook, installing SponsorBlock — it takes an hour or two. It's not hard,
+        but it's boring. The payoff comes over weeks and months.
+      </li>
+      <li>
+        <strong>It requires ongoing discipline.</strong> The fence only works if you maintain it. If you
+        disable Unhook "just for today" or start browsing Shorts "just for a minute," the habit comes
+        back fast. The algorithm is patient. It will wait for you to lower the fence.
+      </li>
+      <li>
+        <strong>Mobile is harder to fence.</strong> Unhook only works on desktop browsers. On your phone,
+        you need NewPipe (Android) or just willpower. This is where the
+        <a href="/guides/control-your-phone">phone guide</a> comes in — moving YouTube to a second
+        profile adds that friction.
+      </li>
+      <li>
+        <strong>Some extensions get broken by YouTube updates.</strong> YouTube occasionally changes
+        their frontend code, which can temporarily break Unhook, SponsorBlock, or ad blockers. The
+        extension developers are usually fast to update, but you'll occasionally have a day or two
+        where things don't work perfectly.
+      </li>
+    </ul>
+  </div>
+
+</GuideLayout>

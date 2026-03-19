@@ -1,0 +1,126 @@
+---
+interface Props {
+  videoId: string;
+  title: string;
+  class?: string;
+}
+
+const { videoId, title, class: className = '' } = Astro.props;
+const thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+---
+
+<div class:list={['video-embed', className]}>
+  <button
+    class="video-embed-trigger"
+    type="button"
+    aria-label={`Play video: ${title}`}
+    data-video-id={videoId}
+  >
+    <img
+      src={thumbnailUrl}
+      alt={`Thumbnail for ${title}`}
+      loading="lazy"
+      width="480"
+      height="360"
+    />
+    <div class="video-embed-play">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="2" opacity="0.8" />
+        <path d="M19 14L35 24L19 34V14Z" fill="currentColor" opacity="0.9" />
+      </svg>
+    </div>
+    <span class="video-embed-title">{title}</span>
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll('.video-embed-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const videoId = btn.getAttribute('data-video-id');
+      if (!videoId) return;
+
+      const container = btn.parentElement;
+      if (!container) return;
+
+      container.innerHTML = `
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0"
+          title="${btn.getAttribute('aria-label')}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="position:absolute;inset:0;width:100%;height:100%;border:none;"
+        ></iframe>
+      `;
+    });
+  });
+</script>
+
+<style>
+  .video-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    background: var(--bg-surface);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .video-embed-trigger {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-embed-trigger img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+    transition: filter var(--transition-normal);
+  }
+
+  .video-embed-trigger:hover img {
+    filter: brightness(0.65);
+  }
+
+  .video-embed-play {
+    position: relative;
+    z-index: 1;
+    color: var(--text-accent);
+    transition: transform var(--transition-normal);
+  }
+
+  .video-embed-trigger:hover .video-embed-play {
+    transform: scale(1.1);
+  }
+
+  .video-embed-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-4);
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    text-align: left;
+    z-index: 1;
+  }
+
+  .video-embed-trigger:focus-visible {
+    outline: 2px solid var(--text-accent);
+    outline-offset: 2px;
+  }
+</style>
