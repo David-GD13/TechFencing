@@ -1,27 +1,27 @@
 /* ============================================
    TechFencing Design Tokens
-   Dionysus-inspired cool palette
+   Refined crimson on charcoal palette
    ============================================ */
 
 :root {
-  /* ---- Primitive Colors (Dionysus / Nord-inspired) ---- */
-  --color-blue-50: #e8f4fd;
-  --color-blue-100: #c4e1f6;
-  --color-blue-200: #9cdef2;
-  --color-blue-300: #88c0d0;
-  --color-blue-400: #61afef;
-  --color-blue-500: #56b6c2;
-  --color-blue-600: #4c9aaf;
-  --color-blue-700: #3b7a8f;
-  --color-blue-800: #2e5a6a;
-  --color-blue-900: #1e3a4a;
-  --color-blue-950: #0f1d25;
+  /* ---- Primitive Colors (Crimson accent on charcoal) ---- */
+  --color-red-50: #fde8ea;
+  --color-red-100: #f6c4c8;
+  --color-red-200: #f0b8b8;
+  --color-red-300: #e08888;
+  --color-red-400: #d4545e;
+  --color-red-500: #c94450;
+  --color-red-600: #b33a45;
+  --color-red-700: #8c2d36;
+  --color-red-800: #6b2229;
+  --color-red-900: #4a181c;
+  --color-red-950: #2a0e10;
   --color-charcoal: #1a1d23;
   --color-white: #eceff4;
   --color-peach: #fab387;
   --color-gold: #e5c07b;
   --color-green: #a3be8c;
-  --color-red: #e06c75;
+  --color-teal: #56b6c2;
 
   /* ---- Semantic Colors ---- */
   --bg-base: var(--color-charcoal);
@@ -32,15 +32,15 @@
   --bg-card-hover: #2e3440;
 
   --text-primary: var(--color-white);
-  --text-secondary: var(--color-blue-200);
-  --text-accent: var(--color-blue-400);
+  --text-secondary: var(--color-red-200);
+  --text-accent: var(--color-red-400);
   --text-muted: rgba(236, 239, 244, 0.5);
-  --text-link: var(--color-blue-400);
+  --text-link: var(--color-red-400);
   --text-link-hover: var(--color-white);
 
-  --border-primary: var(--color-blue-400);
+  --border-primary: var(--color-red-400);
   --border-secondary: var(--color-white);
-  --border-muted: rgba(97, 175, 239, 0.2);
+  --border-muted: rgba(212, 84, 94, 0.2);
 
   /* ---- Typography ---- */
   --font-display: 'JetBrains Mono', 'Courier New', monospace;
@@ -89,8 +89,8 @@
   /* ---- Shadows ---- */
   --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.3);
   --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 20px rgba(97, 175, 239, 0.1);
-  --shadow-glow-strong: 0 0 40px rgba(97, 175, 239, 0.2);
+  --shadow-glow: 0 0 20px rgba(212, 84, 94, 0.1);
+  --shadow-glow-strong: 0 0 40px rgba(212, 84, 94, 0.2);
 
   /* ---- Transitions ---- */
   --transition-fast: 150ms ease-out;

@@ -1,27 +1,58 @@
 ---
+interface NavChild {
+  href: string;
+  label: string;
+}
+
+interface NavLink {
+  href: string;
+  label: string;
+  id: string;
+  children?: NavChild[];
+}
+
 interface Props {
   activePage?: string;
 }
 
 const { activePage = '' } = Astro.props;
 
-const navLinks = [
+const navLinks: NavLink[] = [
   { href: '/', label: 'Home', id: 'home' },
-  { href: '/bible/layer-1-os', label: 'The Bible', id: 'bible' },
-  { href: '/guides/browsers', label: 'Guides', id: 'guides' },
-  { href: '/arsenal', label: 'Arsenal', id: 'arsenal' },
-  { href: '/damned', label: 'The Damned', id: 'damned' },
-  { href: '/tldr', label: 'TL;DR', id: 'tldr' },
+  {
+    href: '/bible', label: 'The Bible', id: 'bible',
+    children: [
+      { href: '/bible/layer-1-os', label: 'Layer 1: OS Control' },
+      { href: '/bible/layer-2-services', label: 'Layer 2: Service Control' },
+      { href: '/bible/layer-3-behavior', label: 'Layer 3: Behavior Control' },
+    ],
+  },
+  {
+    href: '/guides', label: 'Guides', id: 'guides',
+    children: [
+      { href: '/guides/browsers', label: 'Browsers' },
+      { href: '/guides/linux', label: 'Linux' },
+      { href: '/guides/de-google', label: 'De-Google' },
+      { href: '/guides/self-hosting', label: 'Self-Hosting' },
+      { href: '/guides/open-source-alternatives', label: 'Open-Source Alternatives' },
+      { href: '/guides/fix-youtube', label: 'Fix YouTube' },
+      { href: '/guides/control-your-phone', label: 'Control Your Phone' },
+      { href: '/guides/own-your-ai', label: 'Own Your AI' },
+      { href: '/guides/ricing', label: 'Ricing' },
+    ],
+  },
+  {
+    href: '/tldr', label: 'TL;DR', id: 'tldr',
+    children: [
+      { href: '/arsenal', label: 'Arsenal' },
+      { href: '/damned', label: 'The Damned' },
+    ],
+  },
 ];
 ---
 
 <nav class="navbar" aria-label="Main navigation">
   <div class="navbar-inner container">
-    <a href="/" class="navbar-brand" aria-label="TechFencing home">
-      <span class="brand-icon">[TF]</span>
-      <span class="brand-text">TechFencing</span>
-    </a>
-
     <button
       class="hamburger"
       type="button"
@@ -36,17 +67,60 @@ const navLinks = [
 
     <ul id="nav-menu" class="nav-links" role="list">
       {navLinks.map((link) => (
-        <li>
+        <li class:list={[{ 'has-dropdown': !!link.children }]}>
           <a
             href={link.href}
             class:list={['nav-link', { active: activePage === link.id }]}
             aria-current={activePage === link.id ? 'page' : undefined}
           >
             {link.label}
+            {link.children && (
+              <svg class="chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M2.5 4L5 6.5L7.5 4" />
+              </svg>
+            )}
           </a>
+          {link.children && (
+            <ul class="dropdown" role="list">
+              <li class="dropdown-item mobile-landing">
+                <a href={link.href}>{link.label} Overview</a>
+              </li>
+              {link.children.map((child) => (
+                <li class="dropdown-item">
+                  <a href={child.href}>{child.label}</a>
+                </li>
+              ))}
+            </ul>
+          )}
         </li>
       ))}
     </ul>
+
+    <!-- Settings gear -->
+    <div class="settings-wrapper">
+      <button
+        class="settings-btn"
+        type="button"
+        aria-label="Settings"
+        aria-expanded="false"
+        aria-controls="settings-panel"
+        id="settings-toggle"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+      </button>
+      <div class="settings-panel" id="settings-panel">
+        <label class="settings-toggle">
+          <span class="settings-label">Cinematic Scroll</span>
+          <input type="checkbox" id="cinematic-toggle" checked />
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+        </label>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -61,13 +135,101 @@ const navLinks = [
     hamburger.classList.toggle('open');
   });
 
-  // Close menu on link click (mobile)
+  // Close menu on nav-link click (mobile) — only for links without dropdowns
   document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const li = link.closest('li');
+      const hasDropdown = li?.classList.contains('has-dropdown');
+      const isMobile = window.innerWidth < 1024;
+
+      if (isMobile && hasDropdown) {
+        // On mobile, first tap opens the dropdown instead of navigating
+        const dropdown = li?.querySelector('.dropdown');
+        const isOpen = dropdown?.classList.contains('open');
+        // Close all other dropdowns
+        document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+        if (!isOpen) {
+          e.preventDefault();
+          dropdown?.classList.add('open');
+        }
+      } else {
+        // Close mobile menu on navigation
+        navMenu?.classList.remove('open');
+        hamburger?.classList.remove('open');
+        hamburger?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // Close dropdown links also close the mobile menu
+  document.querySelectorAll('.dropdown a').forEach(link => {
     link.addEventListener('click', () => {
       navMenu?.classList.remove('open');
       hamburger?.classList.remove('open');
       hamburger?.setAttribute('aria-expanded', 'false');
+      document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
     });
+  });
+
+  // Desktop: hover to open/close dropdowns
+  document.querySelectorAll('.has-dropdown').forEach(li => {
+    let timeout: ReturnType<typeof setTimeout>;
+    li.addEventListener('mouseenter', () => {
+      if (window.innerWidth < 1024) return;
+      clearTimeout(timeout);
+      // Close others
+      document.querySelectorAll('.has-dropdown .dropdown.open').forEach(d => {
+        if (d !== li.querySelector('.dropdown')) d.classList.remove('open');
+      });
+      li.querySelector('.dropdown')?.classList.add('open');
+    });
+    li.addEventListener('mouseleave', () => {
+      if (window.innerWidth < 1024) return;
+      timeout = setTimeout(() => {
+        li.querySelector('.dropdown')?.classList.remove('open');
+      }, 150);
+    });
+  });
+
+  // Close dropdowns when clicking outside (mobile)
+  document.addEventListener('click', (e) => {
+    const target = e.target as Node;
+    document.querySelectorAll('.has-dropdown').forEach(li => {
+      if (!li.contains(target)) {
+        li.querySelector('.dropdown')?.classList.remove('open');
+      }
+    });
+  });
+
+  // Settings panel
+  const settingsToggle = document.getElementById('settings-toggle');
+  const settingsPanel = document.getElementById('settings-panel');
+  const cinematicCheckbox = document.getElementById('cinematic-toggle') as HTMLInputElement;
+
+  // Load persisted preference
+  const stored = localStorage.getItem('cinematicMode');
+  const cinematicDefault = stored !== 'false'; // default true
+  if (cinematicCheckbox) cinematicCheckbox.checked = cinematicDefault;
+
+  settingsToggle?.addEventListener('click', () => {
+    const isOpen = settingsToggle.getAttribute('aria-expanded') === 'true';
+    settingsToggle.setAttribute('aria-expanded', String(!isOpen));
+    settingsPanel?.classList.toggle('open');
+  });
+
+  // Close settings when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!settingsToggle?.contains(e.target as Node) && !settingsPanel?.contains(e.target as Node)) {
+      settingsPanel?.classList.remove('open');
+      settingsToggle?.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Cinematic toggle
+  cinematicCheckbox?.addEventListener('change', () => {
+    const enabled = cinematicCheckbox.checked;
+    localStorage.setItem('cinematicMode', String(enabled));
+    window.dispatchEvent(new CustomEvent('cinematicModeChange', { detail: { enabled } }));
   });
 </script>
 
@@ -79,43 +241,14 @@ const navLinks = [
     background: rgba(26, 29, 35, 0.95);
     backdrop-filter: blur(8px);
     border-bottom: 2px solid var(--border-primary);
-    padding: var(--space-3) 0;
+    padding: var(--space-2) 0;
   }
 
   .navbar-inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-  }
-
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    color: var(--text-primary);
-    text-decoration: none;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: var(--text-lg);
-  }
-
-  .navbar-brand:hover {
-    color: var(--text-accent);
-  }
-
-  .brand-icon {
-    color: var(--text-accent);
-    text-shadow: 2px 2px 0 rgba(97, 175, 239, 0.3);
-  }
-
-  .brand-text {
-    display: none;
-  }
-
-  @media (min-width: 768px) {
-    .brand-text {
-      display: inline;
-    }
+    justify-content: center;
+    position: relative;
   }
 
   /* Nav Links */
@@ -155,8 +288,15 @@ const navLinks = [
     }
   }
 
+  /* Dropdown parent */
+  .has-dropdown {
+    position: relative;
+  }
+
   .nav-link {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
     padding: var(--space-2) var(--space-3);
     color: var(--text-secondary);
     font-family: var(--font-display);
@@ -173,7 +313,7 @@ const navLinks = [
 
   .nav-link:hover {
     color: var(--text-primary);
-    background: rgba(97, 175, 239, 0.1);
+    background: rgba(212, 84, 94, 0.1);
     border-color: var(--border-muted);
   }
 
@@ -183,8 +323,89 @@ const navLinks = [
     border-color: var(--text-accent);
   }
 
+  .chevron {
+    transition: transform var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .has-dropdown:hover .chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown menu */
+  .dropdown {
+    display: none;
+    list-style: none;
+    padding: var(--space-2);
+    margin: 0;
+  }
+
+  .dropdown.open {
+    display: block;
+  }
+
+  /* Mobile: dropdown is inline within the menu */
+  .dropdown {
+    padding-left: var(--space-4);
+  }
+
+  .dropdown.open {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Mobile: show the "Overview" link */
+  .mobile-landing {
+    display: list-item;
+  }
+
+  @media (min-width: 1024px) {
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 220px;
+      background: rgba(26, 29, 35, 0.98);
+      border: 1px solid var(--border-muted);
+      border-radius: var(--radius-md);
+      padding: var(--space-2);
+      z-index: 200;
+    }
+
+    .dropdown.open {
+      gap: 0;
+    }
+
+    /* Desktop: hide the "Overview" link — clicking the main label navigates there */
+    .mobile-landing {
+      display: none;
+    }
+  }
+
+  .dropdown-item a {
+    display: block;
+    padding: var(--space-2) var(--space-3);
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+  }
+
+  .dropdown-item a:hover {
+    color: var(--text-primary);
+    background: rgba(212, 84, 94, 0.1);
+  }
+
   /* Hamburger */
   .hamburger {
+    position: absolute;
+    left: var(--space-4);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -232,5 +453,107 @@ const navLinks = [
 
   .hamburger.open .hamburger-line:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Settings */
+  .settings-wrapper {
+    position: absolute;
+    right: var(--space-4);
+    display: flex;
+    align-items: center;
+  }
+
+  .settings-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .settings-btn:hover {
+    border-color: var(--border-primary);
+    color: var(--text-accent);
+  }
+
+  .settings-btn:focus-visible {
+    outline: 2px solid var(--text-accent);
+    outline-offset: 2px;
+  }
+
+  .settings-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: rgba(26, 29, 35, 0.98);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    min-width: 200px;
+    z-index: 200;
+  }
+
+  .settings-panel.open {
+    display: block;
+  }
+
+  .settings-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    cursor: pointer;
+  }
+
+  .settings-label {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    white-space: nowrap;
+  }
+
+  .settings-toggle input {
+    display: none;
+  }
+
+  .toggle-track {
+    position: relative;
+    width: 36px;
+    height: 20px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-muted);
+    border-radius: 10px;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    background: var(--text-secondary);
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+  }
+
+  .settings-toggle input:checked ~ .toggle-track {
+    background: var(--color-red-700);
+    border-color: var(--color-red-400);
+  }
+
+  .settings-toggle input:checked ~ .toggle-track .toggle-thumb {
+    left: 18px;
+    background: var(--color-red-400);
   }
 </style>

@@ -79,7 +79,7 @@ strong {
 code {
   font-family: var(--font-mono);
   font-size: 0.9em;
-  background: rgba(97, 175, 239, 0.1);
+  background: rgba(212, 84, 94, 0.1);
   padding: 0.15em 0.4em;
   border-radius: var(--radius-sm);
   color: var(--text-accent);
@@ -165,12 +165,12 @@ img {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-blue-800);
+  background: var(--color-red-800);
 }
 
 /* ---- Selection ---- */
 ::selection {
-  background: rgba(97, 175, 239, 0.3);
+  background: rgba(212, 84, 94, 0.3);
   color: var(--color-white);
 }
 

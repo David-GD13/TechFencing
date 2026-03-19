@@ -1,0 +1,334 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GlitchText from '../../components/GlitchText.astro';
+import Card from '../../components/Card.astro';
+---
+
+<BaseLayout title="The Bible" activePage="bible" description="The three layers of building your tech fence — OS, services, and behavior. Based on PewDiePie's tech journey.">
+
+  <section class="hero-sm">
+    <div class="container">
+      <div class="hero-label">// THE FOUNDATION OF YOUR TECH FENCE</div>
+      <GlitchText text="The Bible" tag="h1" class="page-title" />
+      <p class="page-subtitle">
+        Your tech fence is built in three layers. Each one gives you more control
+        over your digital life. You don't have to do them all — even Layer 1 is
+        a massive upgrade.
+      </p>
+    </div>
+  </section>
+
+  <div class="flowing-line"></div>
+
+  <section class="section">
+    <div class="container">
+      <div class="layers-grid">
+
+        <a href="/bible/layer-1-os" class="layer-card">
+          <div class="layer-number">01</div>
+          <div class="layer-info">
+            <h2>Layer 1: OS Control</h2>
+            <p class="layer-tagline">What software runs on your machine.</p>
+            <p>
+              Your operating system is the foundation. Replace Windows with Linux —
+              choose an OS that doesn't spy on you, ship ads, or decide what you can install.
+              PewDiePie switched to Linux Mint, then fell into the Arch rabbit hole.
+            </p>
+            <span class="layer-cta">Read Layer 1 →</span>
+          </div>
+        </a>
+
+        <a href="/bible/layer-2-services" class="layer-card">
+          <div class="layer-number">02</div>
+          <div class="layer-info">
+            <h2>Layer 2: Service Control</h2>
+            <p class="layer-tagline">What services handle your data.</p>
+            <p>
+              Your data lives on someone else's computer. De-Google your life —
+              self-host alternatives for passwords, cloud storage, email, and more.
+              Own your data instead of renting it.
+            </p>
+            <span class="layer-cta">Read Layer 2 →</span>
+          </div>
+        </a>
+
+        <a href="/bible/layer-3-behavior" class="layer-card">
+          <div class="layer-number">03</div>
+          <div class="layer-info">
+            <h2>Layer 3: Behavioral Control</h2>
+            <p class="layer-tagline">How you interact with the digital world.</p>
+            <p>
+              It's not just what tools you use — it's how you use them. Fight
+              algorithmic feeds. Add friction to mindless scrolling. Reclaim your
+              attention. This is where PewDiePie coined "tech fencing."
+            </p>
+            <span class="layer-cta">Read Layer 3 →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== EXPERIMENTS ====== -->
+  <section class="section">
+    <div class="container">
+      <div class="experiment-block">
+        <h2 class="section-label">Beyond The Fence</h2>
+        <h3 class="experiment-title glitch-hover" data-text="The Experiments">The Experiments</h3>
+        <p class="experiment-desc">
+          After building his tech fence, PewDiePie went deeper — a 10-GPU
+          supercomputer running local AI, a custom YouTube extension powered by
+          his own models, and Folding@Home for scientific research. No cloud, no
+          API keys, no data leaving his network.
+        </p>
+
+        <div class="grid grid-3 experiment-cards">
+          <div class="takeaway-card">
+            <h4>Start Small</h4>
+            <p>Install Ollama on your existing machine, try a 7B parameter model, and see what local AI can do.</p>
+          </div>
+          <div class="takeaway-card">
+            <h4>Contribute</h4>
+            <p>Folding@Home runs on any GPU. While your computer is idle, it can contribute to real scientific research.</p>
+          </div>
+          <div class="takeaway-card">
+            <h4>Build Tools</h4>
+            <p>The tools you build for yourself — with your own AI, on your own hardware — are tools no one can take away.</p>
+          </div>
+        </div>
+
+        <div class="experiment-cta">
+          <a href="/experiments" class="btn btn-secondary">Full Experiments Page →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <div class="container" style="text-align: center; max-width: 600px;">
+      <h2 class="glitch-hover" data-text="Not Sure Where to Start?">Not Sure Where to Start?</h2>
+      <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">
+        The easiest first step takes 5 minutes. Switch your browser.
+      </p>
+      <a href="/guides/browsers" class="btn btn-primary">Start With Browsers →</a>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero-sm {
+    padding: var(--space-12) 0 var(--space-8);
+    text-align: center;
+    background: rgba(10, 0, 0, 0.6);
+  }
+
+  .hero-label {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    margin-bottom: var(--space-4);
+  }
+
+  :global(.page-title) {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-subtitle {
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .layers-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .layer-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-6);
+    padding: var(--space-8);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+  }
+
+  .layer-card:hover {
+    border-color: var(--text-accent);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 767px) {
+    .layer-card {
+      grid-template-columns: 1fr;
+    }
+    .layer-number {
+      display: none;
+    }
+  }
+
+  .layer-number {
+    font-family: var(--font-display);
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    color: var(--text-accent);
+    opacity: 0.2;
+    line-height: 1;
+  }
+
+  .layer-info h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+
+  .layer-tagline {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    margin-bottom: var(--space-3) !important;
+  }
+
+  .layer-info p {
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    font-size: var(--text-sm);
+  }
+
+  .layer-cta {
+    display: inline-block;
+    margin-top: var(--space-4);
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    transition: color var(--transition-fast);
+  }
+
+  .layer-card:hover .layer-cta {
+    color: var(--text-primary);
+  }
+
+  /* ---- Experiments ---- */
+  .section-label {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    margin-bottom: var(--space-2);
+    opacity: 0.7;
+  }
+
+  .experiment-block {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .experiment-title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+
+  .experiment-desc {
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    font-size: var(--text-sm);
+    max-width: 700px;
+    margin-bottom: var(--space-8);
+  }
+
+  .experiment-cards {
+    margin-bottom: var(--space-6);
+  }
+
+  .takeaway-card {
+    padding: var(--space-5);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  .takeaway-card h4 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+
+  .takeaway-card p {
+    color: var(--text-secondary);
+    font-size: var(--text-xs);
+    line-height: var(--leading-relaxed);
+  }
+
+  .experiment-cta {
+    text-align: center;
+    margin-top: var(--space-6);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-muted);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--border-primary);
+    color: var(--text-accent);
+  }
+
+  .cta-section {
+    padding: var(--space-12) 0;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+  }
+
+  .btn-primary {
+    background: var(--text-accent);
+    color: var(--bg-base);
+    border: 2px solid var(--text-accent);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-white);
+    color: var(--bg-base);
+    border-color: var(--color-white);
+  }
+</style>

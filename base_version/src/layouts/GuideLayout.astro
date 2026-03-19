@@ -79,6 +79,7 @@ const { title, description, level, nextGuide, prevGuide } = Astro.props;
 <style>
   .guide-header {
     padding: var(--space-12) 0 var(--space-6);
+    background: rgba(10, 0, 0, 0.6);
   }
 
   .guide-meta {
@@ -186,7 +187,7 @@ const { title, description, level, nextGuide, prevGuide } = Astro.props;
 
   .guide-content :global(.downsides) {
     padding: var(--space-6);
-    background: rgba(97, 175, 239, 0.03);
+    background: rgba(212, 84, 94, 0.03);
     border: 1px dashed var(--border-muted);
     border-radius: var(--radius-md);
     margin-top: var(--space-8);
@@ -251,7 +252,7 @@ const { title, description, level, nextGuide, prevGuide } = Astro.props;
 
   .guide-nav-list a:hover {
     color: var(--text-accent);
-    background: rgba(97, 175, 239, 0.05);
+    background: rgba(212, 84, 94, 0.05);
   }
 
   /* Pagination */

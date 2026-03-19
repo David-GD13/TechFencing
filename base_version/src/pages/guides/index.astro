@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GlitchText from '../../components/GlitchText.astro';
+import DifficultyBadge from '../../components/DifficultyBadge.astro';
+
+const guides = [
+  { href: '/guides/browsers', title: 'Switch Your Browser', description: 'The easiest first step. 5 minutes to escape Google\'s tracking on every site you visit.', level: 1 },
+  { href: '/guides/de-google', title: 'De-Google Your Life', description: 'Replace Google services with alternatives you can actually trust.', level: 2 },
+  { href: '/guides/open-source-alternatives', title: 'Open-Source Alternatives', description: 'A catalog of replacements for every app you\'re giving up.', level: 2 },
+  { href: '/guides/fix-youtube', title: 'Fix YouTube', description: 'The video that coined "tech fencing." Take back your attention from the algorithm.', level: 2 },
+  { href: '/guides/linux', title: 'Install Linux', description: 'Replace Windows with an OS that actually respects you.', level: 3 },
+  { href: '/guides/control-your-phone', title: 'Control Your Phone', description: 'Your phone is the biggest attention thief. Time to fence it.', level: 3 },
+  { href: '/guides/self-hosting', title: 'Self-Host Your Services', description: 'Run your own server. Own your data for real.', level: 4 },
+  { href: '/guides/own-your-ai', title: 'Own Your AI', description: 'Run AI models locally. No data leaves your machine.', level: 4 },
+  { href: '/guides/ricing', title: 'Rice Your Desktop', description: 'The rabbit hole. Make your desktop look like a nuclear reactor control panel.', level: 5 },
+];
+---
+
+<BaseLayout title="Guides" activePage="guides" description="Step-by-step guides for building your tech fence — from switching your browser to self-hosting everything.">
+
+  <section class="hero-sm">
+    <div class="container">
+      <div class="hero-label">// STEP-BY-STEP, HONEST GUIDES</div>
+      <GlitchText text="Guides" tag="h1" class="page-title" />
+      <p class="page-subtitle">
+        Each guide is a concrete, actionable walkthrough. Sorted by difficulty —
+        start wherever you're comfortable. Every guide includes honest downsides.
+      </p>
+    </div>
+  </section>
+
+  <div class="flowing-line"></div>
+
+  <section class="section">
+    <div class="container">
+      <div class="guides-grid">
+        {guides.map((guide) => (
+          <a href={guide.href} class="guide-card">
+            <div class="guide-header">
+              <DifficultyBadge level={guide.level} />
+              <h2>{guide.title}</h2>
+            </div>
+            <p>{guide.description}</p>
+            <span class="guide-cta">Read Guide →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hero-sm {
+    padding: var(--space-12) 0 var(--space-8);
+    text-align: center;
+    background: rgba(10, 0, 0, 0.6);
+  }
+
+  .hero-label {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    margin-bottom: var(--space-4);
+  }
+
+  :global(.page-title) {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-subtitle {
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-6);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .guide-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-6);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+  }
+
+  .guide-card:hover {
+    border-color: var(--text-accent);
+    transform: translateY(-2px);
+  }
+
+  .guide-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .guide-header h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--text-primary);
+    text-transform: uppercase;
+  }
+
+  .guide-card p {
+    color: var(--text-secondary);
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    flex: 1;
+  }
+
+  .guide-cta {
+    display: inline-block;
+    margin-top: var(--space-4);
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    transition: color var(--transition-fast);
+  }
+
+  .guide-card:hover .guide-cta {
+    color: var(--text-primary);
+  }
+</style>

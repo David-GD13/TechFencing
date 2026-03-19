@@ -3,17 +3,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import GlitchText from '../components/GlitchText.astro';
 import Card from '../components/Card.astro';
 import DifficultyBadge from '../components/DifficultyBadge.astro';
-import WavyShader from '../components/WavyShader.astro';
+import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
 ---
 
 <BaseLayout title="Build Your Tech Fence" activePage="home">
+  <ScrollProgressTrail />
+
+  <!-- Background overlay — fades in/out with sections -->
+  <div class="bg-overlay" id="bg-overlay"></div>
 
   <!-- ====== HERO SECTION ====== -->
-  <section class="hero">
-    <WavyShader position="absolute" />
-    <div class="container hero-inner">
+  <section class="cine-section hero" data-section-id="hero" data-section-label="Home">
+    <div class="cine-heading">
       <div class="hero-label">// INSPIRED BY PEWDIEPIE'S TECH JOURNEY</div>
       <GlitchText text="Build Your Tech Fence" tag="h1" class="hero-title" />
+    </div>
+    <div class="cine-content">
       <p class="hero-subtitle">
         Take control of your data, your privacy, and your digital life.
         Stop being the product. Start being the person who decides what software
@@ -27,239 +32,554 @@ import WavyShader from '../components/WavyShader.astro';
     </div>
   </section>
 
-  <div class="flowing-line"></div>
-
   <!-- ====== TWO PILLARS ====== -->
-  <section class="section">
+  <section class="cine-section" data-section-id="pillars" data-section-label="Two Pillars">
     <div class="container">
-      <h2 class="section-heading glitch-hover" data-text="The Two Pillars">The Two Pillars</h2>
-      <p class="section-intro">
-        Every solution on this site comes back to two ideas. Master these, and
-        the rest is just details.
-      </p>
+      <div class="cine-heading">
+        <h2 class="section-heading glitch-hover" data-text="The Two Pillars">The Two Pillars</h2>
+      </div>
+      <div class="cine-content">
+        <p class="section-intro">
+          Every solution on this site comes back to two ideas. Understand these,
+          and the rest is just details.
+        </p>
 
-      <div class="grid grid-2 pillars-grid">
-        <div class="pillar-card">
-          <div class="pillar-number">01</div>
-          <h3 class="pillar-title">Friction</h3>
-          <div class="flowing-line"></div>
-          <p>
-            Add small delays that let your brain catch up with your fingers.
-            A 5-second profile switch on your phone. A DNS blocker that makes
-            you pause. Removing the YouTube feed so you have to <em>choose</em>
-            what to watch.
-          </p>
-          <p class="pillar-quote">
-            "I catch myself opening apps without even thinking about it."
-            <span class="quote-attr">— PewDiePie, "I Fixed YouTube!"</span>
-          </p>
-        </div>
+        <div class="grid grid-2 pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-number">01</div>
+            <h3 class="pillar-title">You Are Not The Product</h3>
+            <div class="flowing-line"></div>
+            <p>
+              Every "free" service has a cost — your data, your attention, your
+              autonomy. Google knows your search history, your location history,
+              your contacts, your emails. The trade-off between control and
+              convenience is real, but being aware of it lets you <em>choose</em>
+              intentionally instead of sleepwalking into surveillance.
+            </p>
+            <p class="pillar-quote">
+              "I realized Google literally knows everything about me. Everything."
+              <span class="quote-attr">— PewDiePie, "I de-Googled my life"</span>
+            </p>
+          </div>
 
-        <div class="pillar-card">
-          <div class="pillar-number">02</div>
-          <h3 class="pillar-title">Filtering</h3>
-          <div class="flowing-line"></div>
-          <p>
-            Remove the noise. Self-host your own services so corporations can't
-            mine your data. Use browser extensions to strip out algorithmic feeds.
-            Unfollow everything and rebuild with intention using RSS.
-          </p>
-          <p class="pillar-quote">
-            "If you can replace it with something open-source, you should."
-            <span class="quote-attr">— PewDiePie, "I de-Googled my life"</span>
-          </p>
+          <div class="pillar-card">
+            <div class="pillar-number">02</div>
+            <h3 class="pillar-title">Curing Algo Brain</h3>
+            <div class="flowing-line"></div>
+            <p>
+              Algorithms are designed to keep you scrolling, clicking, consuming.
+              The cure is two tools: <strong>friction</strong> (small delays that
+              let your brain catch up with your fingers) and <strong>filtering</strong>
+              (removing algorithmic feeds, rebuilding your digital diet with
+              intention). Together, they break the loop.
+            </p>
+            <p class="pillar-quote">
+              "I catch myself opening apps without even thinking about it."
+              <span class="quote-attr">— PewDiePie, "I Fixed YouTube!"</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ====== THREE LAYERS ====== -->
-  <section class="section">
+  <section class="cine-section" data-section-id="layers" data-section-label="Three Layers">
     <div class="container">
-      <h2 class="section-heading glitch-hover" data-text="The Three Layers">The Three Layers</h2>
-      <p class="section-intro">
-        Your tech fence is built in three layers. Each one gives you more control.
-        You don't have to do them all — even Layer 1 is a massive upgrade.
-      </p>
+      <div class="cine-heading">
+        <h2 class="section-heading glitch-hover" data-text="The Three Layers">The Three Layers</h2>
+      </div>
+      <div class="cine-content">
+        <p class="section-intro">
+          Your tech fence is built in three layers. Each one gives you more control.
+          You don't have to do them all — even Layer 1 is a massive upgrade.
+        </p>
 
-      <div class="grid grid-3">
-        <Card title="Layer 1: OS Control" href="/bible/layer-1-os" accent>
-          <p>
-            <strong>What software runs on your machine.</strong> Replace Windows
-            with Linux. Choose an OS that doesn't spy on you, ship ads, or decide
-            what you can install.
-          </p>
-          <p class="card-meta">Based on: PewDiePie's Linux video</p>
-        </Card>
+        <div class="grid grid-3">
+          <Card title="Layer 1: OS Control" href="/bible/layer-1-os" accent>
+            <p>
+              <strong>What software runs on your machine.</strong> Replace Windows
+              with Linux. Choose an OS that doesn't spy on you, ship ads, or decide
+              what you can install.
+            </p>
+            <p class="card-meta">Based on: PewDiePie's Linux video</p>
+          </Card>
 
-        <Card title="Layer 2: Service Control" href="/bible/layer-2-services" accent>
-          <p>
-            <strong>What services handle your data.</strong> De-Google your life.
-            Self-host alternatives for passwords, cloud storage, email, and more.
-            Own your data instead of renting it.
-          </p>
-          <p class="card-meta">Based on: PewDiePie's de-Google video</p>
-        </Card>
+          <Card title="Layer 2: Service Control" href="/bible/layer-2-services" accent>
+            <p>
+              <strong>What services handle your data.</strong> De-Google your life.
+              Self-host alternatives for passwords, cloud storage, email, and more.
+              Own your data instead of renting it.
+            </p>
+            <p class="card-meta">Based on: PewDiePie's de-Google video</p>
+          </Card>
 
-        <Card title="Layer 3: Behavior Control" href="/bible/layer-3-behavior" accent>
-          <p>
-            <strong>How you interact with the digital world.</strong> Fight
-            algorithmic feeds. Add friction to mindless scrolling. Reclaim your
-            attention from apps designed to steal it.
-          </p>
-          <p class="card-meta">Based on: "I Fixed YouTube!" — where "tech fencing" was born</p>
-        </Card>
+          <Card title="Layer 3: Behavior Control" href="/bible/layer-3-behavior" accent>
+            <p>
+              <strong>How you interact with the digital world.</strong> Fight
+              algorithmic feeds. Add friction to mindless scrolling. Reclaim your
+              attention from apps designed to steal it.
+            </p>
+            <p class="card-meta">Based on: "I Fixed YouTube!" — where "tech fencing" was born</p>
+          </Card>
+        </div>
+
+        <div class="section-cta">
+          <a href="/bible" class="btn btn-secondary">Explore The Bible →</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ====== DIFFICULTY PROGRESSION ====== -->
-  <section class="section">
+  <!-- ====== GETTING STARTED (slim) ====== -->
+  <section class="cine-section" data-section-id="guides" data-section-label="Getting Started">
     <div class="container">
-      <h2 class="section-heading glitch-hover" data-text="Where Do You Start?">Where Do You Start?</h2>
-      <p class="section-intro">
-        You don't need to become a Linux wizard overnight. Pick your level,
-        start there, and go deeper when you're ready.
-      </p>
+      <div class="cine-heading">
+        <h2 class="section-heading glitch-hover" data-text="Getting Started">Getting Started</h2>
+      </div>
+      <div class="cine-content">
+        <p class="section-intro">
+          You don't need to become a Linux wizard overnight. Here are three
+          places to start — pick the one that fits.
+        </p>
 
-      <div class="difficulty-track">
-        <div class="difficulty-item">
-          <DifficultyBadge level={1} />
-          <div class="difficulty-content">
-            <h3>Switch Your Browser & Search</h3>
-            <p>
-              Install Firefox or Brave. Change your search engine to DuckDuckGo.
-              Install uBlock Origin. <strong>Takes 5 minutes</strong>, and you've
-              already escaped Google's tracking on every website you visit.
-            </p>
-            <a href="/guides/browsers" class="difficulty-link">Start Level 1 →</a>
-          </div>
+        <div class="grid grid-3">
+          <a href="/guides/browsers" class="guide-preview-card">
+            <DifficultyBadge level={1} />
+            <h3>Switch Your Browser</h3>
+            <p>Install Firefox or Brave. Change your search engine. Install uBlock Origin. Takes 5 minutes.</p>
+          </a>
+
+          <a href="/guides/de-google" class="guide-preview-card">
+            <DifficultyBadge level={2} />
+            <h3>De-Google Your Life</h3>
+            <p>Replace Google services with open-source alternatives you can trust. An afternoon of work.</p>
+          </a>
+
+          <a href="/guides/linux" class="guide-preview-card">
+            <DifficultyBadge level={3} />
+            <h3>Install Linux</h3>
+            <p>Replace Windows with an OS that respects you. A weekend project that changes everything.</p>
+          </a>
         </div>
 
-        <div class="difficulty-item">
-          <DifficultyBadge level={2} />
-          <div class="difficulty-content">
-            <h3>Replace & Unplug</h3>
-            <p>
-              Swap Google apps for open-source alternatives. Unfollow feeds.
-              Install the Unhook extension. Set up an RSS reader.
-              <strong>An afternoon</strong> of focused work changes your daily digital diet.
-            </p>
-            <a href="/guides/de-google" class="difficulty-link">Start Level 2 →</a>
-          </div>
-        </div>
-
-        <div class="difficulty-item">
-          <DifficultyBadge level={3} />
-          <div class="difficulty-content">
-            <h3>Change Your OS & Phone</h3>
-            <p>
-              Install Linux on your computer. Flash GrapheneOS on your phone.
-              Set up a second phone profile for friction.
-              <strong>A weekend project</strong> that fundamentally changes your relationship with tech.
-            </p>
-            <a href="/guides/linux" class="difficulty-link">Start Level 3 →</a>
-          </div>
-        </div>
-
-        <div class="difficulty-item">
-          <DifficultyBadge level={4} />
-          <div class="difficulty-content">
-            <h3>Self-Host Everything</h3>
-            <p>
-              Set up a Raspberry Pi server. Run Vaultwarden for passwords,
-              Nextcloud for cloud storage, Pi-Hole for DNS blocking, and local
-              AI models. <strong>An ongoing project</strong> — each service you add is another
-              piece of your data you own.
-            </p>
-            <a href="/guides/self-hosting" class="difficulty-link">Start Level 4 →</a>
-          </div>
-        </div>
-
-        <div class="difficulty-item">
-          <DifficultyBadge level={5} />
-          <div class="difficulty-content">
-            <h3>The Rabbit Hole</h3>
-            <p>
-              Rice your desktop with a tiling window manager. Fine-tune AI models.
-              Build custom tools. Host everything on a VPS.
-              <strong>You never really finish this one</strong> — and that's the point.
-            </p>
-            <a href="/guides/ricing" class="difficulty-link">Start Level 5 →</a>
-          </div>
+        <div class="section-cta">
+          <a href="/guides" class="btn btn-secondary">See All 9 Guides →</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ====== HONEST DISCLAIMER ====== -->
-  <section class="section">
+  <section class="cine-section" data-section-id="honesty" data-section-label="Honesty">
     <div class="container">
-      <div class="disclaimer-box">
-        <h3 class="glitch-hover" data-text="A Word of Honesty">A Word of Honesty</h3>
-        <p>
-          This isn't easy, and it's not for everyone. PewDiePie himself still
-          uses Google Maps because "it's too good." He still uses YouTube — "I
-          literally can't escape." His Vaultwarden setup took 2 days. He was 30
-          minutes late somewhere because the Google Maps alternative was terrible.
-        </p>
-        <p>
-          We tell you the downsides because we respect you. Every guide on this
-          site includes an <strong>"Honest Downsides"</strong> section. If
-          something sucks, we'll say so.
-        </p>
-        <p>
-          Also — we're learning too. This site was made by fans who watched the
-          videos and decided to actually do it. We're not experts. We're just
-          people who built the fence.
-        </p>
+      <div class="cine-heading">
+        <h3 class="disclaimer-heading glitch-hover" data-text="A Word of Honesty">A Word of Honesty</h3>
+      </div>
+      <div class="cine-content">
+        <div class="disclaimer-box">
+          <p>
+            This isn't easy, and it's not for everyone. PewDiePie himself still
+            uses Google Maps because "it's too good." He still uses YouTube — "I
+            literally can't escape." His Vaultwarden setup took 2 days. He was 30
+            minutes late somewhere because the Google Maps alternative was terrible.
+          </p>
+          <p>
+            We tell you the downsides because we respect you. Every guide on this
+            site includes an <strong>"Honest Downsides"</strong> section. If
+            something sucks, we'll say so.
+          </p>
+          <p>
+            Also — we're learning too. This site was made by fans who watched the
+            videos and decided to actually do it. We're not experts. We're just
+            people who built the fence.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ====== FINAL CTA ====== -->
-  <section class="section cta-section">
-    <div class="container cta-inner">
-      <GlitchText text="Don't Want to Read?" tag="h2" class="cta-title" />
-      <p class="cta-text">
-        Fair enough. Just watch the three videos that started it all.
-      </p>
-      <a href="/tldr" class="btn btn-primary btn-lg">TL;DR — Just Watch These</a>
+  <!-- ====== EXTRAS ====== -->
+  <section class="cine-section" data-section-id="extras" data-section-label="Extras">
+    <div class="container">
+      <div class="cine-heading">
+        <h2 class="section-heading glitch-hover" data-text="Extras">Extras</h2>
+      </div>
+      <div class="cine-content">
+        <p class="section-intro">
+          More resources, references, and rabbit holes.
+        </p>
+
+        <div class="extras-grid">
+          <a href="/tldr" class="extra-card">
+            <h3>TL;DR</h3>
+            <p>Just watch the three PewDiePie videos that started everything.</p>
+          </a>
+
+          <a href="/arsenal" class="extra-card">
+            <h3>The Arsenal</h3>
+            <p>Every piece of hardware and software PewDiePie actually uses.</p>
+          </a>
+
+          <a href="/damned" class="extra-card">
+            <h3>The Damned</h3>
+            <p>Services we don't recommend — and the honest reasons why.</p>
+          </a>
+
+          <a href="/experiments" class="extra-card">
+            <h3>Experiments</h3>
+            <p>Beyond the fence — supercomputers, local AI, and deeper rabbit holes.</p>
+          </a>
+
+          <a href="/glossary" class="extra-card">
+            <h3>Glossary</h3>
+            <p>Every tech term on this site, explained without jargon.</p>
+          </a>
+
+          <a href="/about" class="extra-card">
+            <h3>About</h3>
+            <p>Who built this site, why, and what we believe.</p>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
 </BaseLayout>
 
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+  // Expose section triggers globally for progress trail
+  (window as any).__sectionTriggers = {};
+
+  function initCinematicScroll() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const overlay = document.getElementById('bg-overlay');
+
+    if (prefersReducedMotion) {
+      document.querySelectorAll<HTMLElement>('.cine-content').forEach(el => {
+        el.style.opacity = '1';
+      });
+      if (overlay) overlay.style.opacity = '0.4';
+      return;
+    }
+
+    const sections = gsap.utils.toArray<HTMLElement>('.cine-section');
+    const sectionTriggers: ScrollTrigger[] = [];
+
+    // ---- Global timing config (tweak these to control all animations) ----
+    // These are relative units — actual speed depends on scroll distance (end value).
+    // Total timeline = enter + reveal + hold + exit. Each section's scroll range
+    // is divided proportionally across these phases.
+    const TIMING = {
+      enterDuration: 2.0,    // how long heading takes to slide in
+      revealDuration: 1.4,    // how long content takes to appear
+      holdDuration: 1.35,     // reading time before exit starts
+      exitDuration: 1.4,      // how long exit animation takes
+      overlayFade: 1.2,       // overlay fade in/out speed
+      slideDistance: 200,      // px distance for horizontal slides
+      headingLift: -80,       // px heading moves up during exit
+      scrollRange: '+=100%',  // scroll distance per section (viewport %)
+    };
+
+    // Measure navbar height so hero pins immediately (no free-scroll gap)
+    const navbar = document.querySelector('.navbar');
+    const navHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+
+    sections.forEach((section, i) => {
+      const heading = section.querySelector('.cine-heading') as HTMLElement;
+      const content = section.querySelector('.cine-content') as HTMLElement;
+      if (!heading || !content) return;
+
+      const isHero = section.dataset.sectionId === 'hero';
+      const isLast = i === sections.length - 1;
+      const sectionId = section.dataset.sectionId || `section-${i}`;
+
+      // Hero: pin as soon as page starts scrolling (offset by navbar height)
+      // Others: pin when section top reaches viewport top
+      const pinStart = isHero ? `top top+=${navHeight}` : 'top top';
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: pinStart,
+          end: TIMING.scrollRange,
+          pin: true,
+          pinSpacing: true,
+          scrub: 2.5,
+          invalidateOnRefresh: true,
+          id: sectionId,
+        },
+      });
+
+      // Store the trigger
+      if (tl.scrollTrigger) {
+        sectionTriggers.push(tl.scrollTrigger);
+        (window as any).__sectionTriggers[sectionId] = tl.scrollTrigger;
+      }
+
+      if (isHero) {
+        // Hero: visible from start, overlay starts visible, both fade out vertically
+        gsap.set(content, { opacity: 1, y: 0 });
+        if (overlay) gsap.set(overlay, { opacity: 0.6 });
+
+        tl.addLabel('visible')
+          .to(heading, { y: -60, opacity: 0, duration: TIMING.exitDuration }, 0.65)
+          .to(content, { y: -40, opacity: 0, duration: TIMING.exitDuration }, 0.65)
+          .to(overlay, { opacity: 0, duration: TIMING.overlayFade }, 0.6);
+      } else {
+        // Non-hero sections: horizontal slideshow transitions
+        gsap.set(heading, { x: TIMING.slideDistance, opacity: 0 });
+        gsap.set(content, { x: TIMING.slideDistance * 0.75, opacity: 0 });
+
+        // Phase 1: Heading slides in from right + overlay fades in
+        tl.addLabel('enter')
+          .to(heading, { x: 0, opacity: 1, duration: TIMING.enterDuration, ease: 'power2.out' })
+          .to(overlay, { opacity: 0.6, duration: TIMING.overlayFade }, '<')
+
+        // Phase 2: Content slides in (heading stays in place)
+          .addLabel('reveal')
+          .to(content, { x: 0, opacity: 1, duration: TIMING.revealDuration, ease: 'power2.out' })
+
+        // Phase 3: Hold for reading (heading + content both fully visible)
+          .addLabel('hold')
+          .to({}, { duration: TIMING.holdDuration });
+
+        // Phase 4: Exit — heading lifts up, then everything slides left
+        tl.addLabel('exit')
+          .to(heading, { y: TIMING.headingLift, opacity: 0, duration: TIMING.exitDuration, ease: 'power1.in' })
+          .to(content, { x: -TIMING.slideDistance, opacity: 0, duration: TIMING.exitDuration, ease: 'power1.in' }, '<0.05')
+          .to(overlay, { opacity: 0, duration: TIMING.overlayFade }, '<0.1');
+      }
+    });
+
+    ScrollTrigger.refresh();
+
+    // ---- Cinematic Mode (auto-scroll on scroll input) ----
+    let cinematicMode = localStorage.getItem('cinematicMode') !== 'false';
+    let isAutoScrolling = false;
+    let currentSectionIndex = 0;
+
+    function getCinematicMode() {
+      return localStorage.getItem('cinematicMode') !== 'false';
+    }
+
+    function findCurrentSectionIndex() {
+      const scrollY = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+      // If we're near the bottom (footer area), return totalSections (footer index)
+      if (scrollY >= maxScroll - 50) {
+        return totalSections;
+      }
+
+      // If we're past the last section's end, we're in the footer zone
+      const lastST = sectionTriggers[sectionTriggers.length - 1];
+      if (lastST && scrollY > lastST.end) {
+        return totalSections;
+      }
+
+      let idx = 0;
+      for (let i = 0; i < sectionTriggers.length; i++) {
+        if (scrollY >= sectionTriggers[i].start - 10) {
+          idx = i;
+        }
+      }
+      return idx;
+    }
+
+    // Scroll target: 50% into section range (where content is fully revealed)
+    // For hero: go to start. For footer: go to document bottom.
+    const CONTENT_VISIBLE_RATIO = 0.5;
+    const totalSections = sectionTriggers.length; // includes footer pseudo-target
+
+    function getScrollTarget(index: number): number {
+      if (index < 0) return 0;
+      // Footer: scroll to document bottom
+      if (index >= totalSections) {
+        return document.documentElement.scrollHeight - window.innerHeight;
+      }
+      const st = sectionTriggers[index];
+      const sId = sections[index]?.dataset.sectionId;
+      if (sId === 'hero') return st.start;
+      return st.start + (st.end - st.start) * CONTENT_VISIBLE_RATIO;
+    }
+
+    function handleWheel(e: WheelEvent) {
+      cinematicMode = getCinematicMode();
+      if (!cinematicMode || isAutoScrolling) {
+        if (isAutoScrolling) e.preventDefault();
+        return;
+      }
+      e.preventDefault();
+      isAutoScrolling = true;
+
+      currentSectionIndex = findCurrentSectionIndex();
+      const direction = e.deltaY > 0 ? 1 : -1;
+      // Allow scrolling one past the last section (to reach footer)
+      const maxIndex = totalSections; // totalSections = footer
+      const nextIndex = Math.max(0, Math.min(maxIndex, currentSectionIndex + direction));
+
+      if (nextIndex === currentSectionIndex) {
+        isAutoScrolling = false;
+        return;
+      }
+
+      currentSectionIndex = nextIndex;
+
+      gsap.to(window, {
+        scrollTo: { y: getScrollTarget(nextIndex) },
+        duration: 0.0,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          setTimeout(() => { isAutoScrolling = false; }, 100);
+        },
+      });
+    }
+
+    // Touch handling for cinematic mode
+    let touchStartY = 0;
+
+    function handleTouchStart(e: TouchEvent) {
+      touchStartY = e.touches[0].clientY;
+    }
+
+    function handleTouchEnd(e: TouchEvent) {
+      cinematicMode = getCinematicMode();
+      if (!cinematicMode || isAutoScrolling) return;
+
+      const touchEndY = e.changedTouches[0].clientY;
+      const diff = touchStartY - touchEndY;
+
+      if (Math.abs(diff) < 30) return; // too small, ignore
+
+      isAutoScrolling = true;
+      currentSectionIndex = findCurrentSectionIndex();
+      const direction = diff > 0 ? 1 : -1;
+      const maxIndex = totalSections;
+      const nextIndex = Math.max(0, Math.min(maxIndex, currentSectionIndex + direction));
+
+      if (nextIndex === currentSectionIndex) {
+        isAutoScrolling = false;
+        return;
+      }
+
+      currentSectionIndex = nextIndex;
+
+      gsap.to(window, {
+        scrollTo: { y: getScrollTarget(nextIndex) },
+        duration: 0.0,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          setTimeout(() => { isAutoScrolling = false; }, 100);
+        },
+      });
+    }
+
+    // Attach cinematic listeners
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    // Listen for toggle from navbar
+    window.addEventListener('cinematicModeChange', ((e: CustomEvent) => {
+      cinematicMode = e.detail.enabled;
+    }) as EventListener);
+  }
+
+  // Init
+  initCinematicScroll();
+
+  // Astro page transition support
+  document.addEventListener('astro:after-swap', () => {
+    ScrollTrigger.getAll().forEach(st => st.kill());
+    (window as any).__sectionTriggers = {};
+    if (document.querySelector('.cine-section')) {
+      initCinematicScroll();
+    }
+  });
+</script>
+
 <style>
-  /* ---- Hero ---- */
-  .hero {
-    padding: var(--space-20) 0 var(--space-16);
-    text-align: center;
+  /* ---- Layout overrides (homepage only) ---- */
+  :global(#main-content) {
+    overflow: visible;
+  }
+
+  /* ---- Background Overlay ---- */
+  .bg-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 0, 0, 0.6);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+  }
+
+  /* ---- Cinematic Sections ---- */
+  .cine-section {
     position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-8) 0;
+    box-sizing: border-box;
     overflow: hidden;
   }
 
-  .hero-inner {
-    max-width: 800px;
-    position: relative;
-    z-index: 1;
+  .cine-heading {
+    text-align: center;
+    will-change: transform, opacity;
+  }
+
+  .cine-content {
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  /* ---- Reduced Motion ---- */
+  @media (prefers-reduced-motion: reduce) {
+    .cine-content {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .cine-heading {
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
+
+  /* ---- Hero ---- */
+  .hero {
+    text-align: center;
+    padding-bottom: calc(var(--space-8) + 124px);
+  }
+
+  .hero .cine-content {
+    opacity: 1;
   }
 
   .hero-label {
     font-family: var(--font-display);
     font-size: var(--text-xs);
-    color: var(--text-accent);
+    color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: var(--tracking-wider);
     margin-bottom: var(--space-6);
-    opacity: 0.7;
   }
 
   .hero :global(.hero-title) {
     font-size: var(--text-5xl);
     color: var(--text-primary);
     text-shadow:
-      3px 3px 0 rgba(97, 175, 239, 0.3),
+      3px 3px 0 rgba(212, 84, 94, 0.3),
       -1px -1px 0 rgba(0, 0, 0, 0.5);
     margin-bottom: var(--space-6);
   }
@@ -326,12 +646,7 @@ import WavyShader from '../components/WavyShader.astro';
     color: var(--text-accent);
   }
 
-  .btn-lg {
-    padding: var(--space-4) var(--space-8);
-    font-size: var(--text-base);
-  }
-
-  /* ---- Section ---- */
+  /* ---- Section Headings ---- */
   .section-heading {
     font-size: var(--text-4xl);
     text-align: center;
@@ -345,6 +660,11 @@ import WavyShader from '../components/WavyShader.astro';
     margin: 0 auto var(--space-10);
     font-size: var(--text-lg);
     color: var(--text-secondary);
+  }
+
+  .section-cta {
+    text-align: center;
+    margin-top: var(--space-8);
   }
 
   /* ---- Pillars ---- */
@@ -415,83 +735,47 @@ import WavyShader from '../components/WavyShader.astro';
     border-top: 1px solid var(--border-muted);
   }
 
-  /* ---- Difficulty Track ---- */
-  .difficulty-track {
+  /* ---- Guide Preview Cards ---- */
+  .guide-preview-card {
     display: flex;
     flex-direction: column;
-    gap: var(--space-6);
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
+    gap: var(--space-3);
+    padding: var(--space-6);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all var(--transition-normal);
   }
 
-  .difficulty-track::before {
-    content: '';
-    position: absolute;
-    left: 40px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(
-      to bottom,
-      #a3be8c,
-      #88c0d0,
-      #e5c07b,
-      #fab387,
-      #e06c75
-    );
-    opacity: 0.3;
+  .guide-preview-card:hover {
+    border-color: var(--text-accent);
+    transform: translateY(-2px);
   }
 
-  @media (max-width: 767px) {
-    .difficulty-track::before {
-      left: 20px;
-    }
-  }
-
-  .difficulty-item {
-    display: flex;
-    gap: var(--space-6);
-    align-items: flex-start;
-    position: relative;
-    padding-left: var(--space-4);
-  }
-
-  .difficulty-item :global(.badge) {
-    flex-shrink: 0;
-    margin-top: var(--space-1);
-  }
-
-  .difficulty-content h3 {
+  .guide-preview-card h3 {
     font-family: var(--font-display);
     font-size: var(--text-lg);
     color: var(--text-primary);
     text-transform: uppercase;
-    margin-bottom: var(--space-2);
   }
 
-  .difficulty-content p {
-    font-size: var(--text-sm);
+  .guide-preview-card p {
     color: var(--text-secondary);
+    font-size: var(--text-sm);
     line-height: var(--leading-relaxed);
-    margin-bottom: var(--space-3);
-  }
-
-  .difficulty-link {
-    font-family: var(--font-display);
-    font-size: var(--text-xs);
-    color: var(--text-accent);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-  }
-
-  .difficulty-link:hover {
-    color: var(--text-primary);
   }
 
   /* ---- Disclaimer ---- */
+  .disclaimer-heading {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: var(--space-4);
+  }
+
   .disclaimer-box {
     max-width: 800px;
     margin: 0 auto;
@@ -511,20 +795,12 @@ import WavyShader from '../components/WavyShader.astro';
     height: 20px;
     background: repeating-linear-gradient(
       -45deg,
-      rgba(97, 175, 239, 0.1),
-      rgba(97, 175, 239, 0.1) 4px,
+      rgba(212, 84, 94, 0.1),
+      rgba(212, 84, 94, 0.1) 4px,
       transparent 4px,
       transparent 8px
     );
     transform: rotate(-2deg);
-  }
-
-  .disclaimer-box h3 {
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    color: var(--text-accent);
-    text-transform: uppercase;
-    margin-bottom: var(--space-4);
   }
 
   .disclaimer-box p {
@@ -533,24 +809,52 @@ import WavyShader from '../components/WavyShader.astro';
     font-size: var(--text-sm);
   }
 
-  /* ---- CTA Section ---- */
-  .cta-section {
-    text-align: center;
-    padding: var(--space-16) 0;
+  /* ---- Extras Grid ---- */
+  .extras-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    max-width: 900px;
+    margin: 0 auto;
   }
 
-  .cta-inner {
-    max-width: 600px;
+  @media (max-width: 767px) {
+    .extras-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
-  :global(.cta-title) {
-    font-size: var(--text-4xl);
-    margin-bottom: var(--space-4);
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .extras-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
-  .cta-text {
-    font-size: var(--text-lg);
+  .extra-card {
+    padding: var(--space-5);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+  }
+
+  .extra-card:hover {
+    border-color: var(--text-accent);
+    transform: translateY(-2px);
+  }
+
+  .extra-card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+
+  .extra-card p {
     color: var(--text-secondary);
-    margin-bottom: var(--space-8);
+    font-size: var(--text-xs);
+    line-height: var(--leading-relaxed);
   }
 </style>

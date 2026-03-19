@@ -2,17 +2,20 @@
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import BrowserBlocker from '../components/BrowserBlocker.astro';
+import WavyShader from '../components/WavyShader.astro';
 
 interface Props {
   title: string;
   description?: string;
   activePage?: string;
+  hideFooter?: boolean;
 }
 
 const {
   title,
   description = "Build your tech fence. Take control of your data, privacy, and digital life — inspired by PewDiePie's journey.",
-  activePage = ''
+  activePage = '',
+  hideFooter = false
 } = Astro.props;
 ---
 
@@ -34,11 +37,12 @@ const {
   <div id="main-app">
     <Navbar activePage={activePage} />
 
-    <main id="main-content">
+    <main id="main-content" style="position:relative;">
+      <WavyShader position="fixed" opacity={0.2} scale={3.5} rotation={1.2} grain={3} thickness={2.6} speed={3}/>
       <slot />
     </main>
 
-    <Footer />
+    {!hideFooter && <Footer />}
   </div>
 </body>
 </html>

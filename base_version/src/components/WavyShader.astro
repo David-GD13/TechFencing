@@ -5,15 +5,31 @@ interface Props {
   position?: 'fixed' | 'absolute';
   /** Opacity of the shader canvas (0-1). Default 1 */
   opacity?: number;
+  /** Zoom level — higher = thicker/fewer lines. Default 1 */
+  scale?: number;
+  /** Rotation in radians. Default uses shader's built-in 0.2. Set to override. */
+  rotation?: number;
+  /** Grain (sand texture) amplitude multiplier. Default 1 */
+  grain?: number;
+  /** Line thickness multiplier. Default 1 */
+  thickness?: number;
+  /** Animation speed multiplier. Default 1 */
+  speed?: number;
 }
 
-const { class: className = '', position = 'absolute', opacity = 1 } = Astro.props;
+const { class: className = '', position = 'absolute', opacity = 1, scale = 1, rotation, grain = 1, thickness = 1, speed = 1 } = Astro.props;
+const rotationValue = rotation !== undefined ? rotation : null;
 ---
 
 <canvas
   class:list={['wavy-shader', className]}
   data-position={position}
   data-opacity={opacity}
+  data-scale={scale}
+  data-rotation={rotationValue !== null ? rotationValue : ''}
+  data-grain={grain}
+  data-thickness={thickness}
+  data-speed={speed}
   aria-hidden="true"
 ></canvas>
 
@@ -50,6 +66,11 @@ const { class: className = '', position = 'absolute', opacity = 1 } = Astro.prop
     precision mediump float;
     uniform vec2 u_resolution;
     uniform float u_time;
+    uniform float u_scale;
+    uniform float u_rotation;
+    uniform float u_grain;
+    uniform float u_thickness;
+    uniform float u_speed;
 
     // Simplex noise for large-scale warp (keeps lines parallel but bends them)
     vec2 hash(vec2 p) {
@@ -76,12 +97,11 @@ const { class: className = '', position = 'absolute', opacity = 1 } = Astro.prop
       float aspect = u_resolution.x / u_resolution.y;
       vec2 p = vec2(uv.x * aspect, uv.y);
 
-      // Rotate lines diagonal
-      float angle = 0.2;
-      float c = cos(angle), s = sin(angle);
+      // Rotate lines
+      float c = cos(u_rotation), s = sin(u_rotation);
       p = vec2(c * p.x - s * p.y, s * p.x + c * p.y);
 
-      float t = u_time * 0.05;
+      float t = u_time * 0.05 * u_speed;
 
       // Use noise to warp ONLY the value fed into stripes, not the UV itself.
       // This creates organic flowing curves that never close into circles.
@@ -92,14 +112,16 @@ const { class: className = '', position = 'absolute', opacity = 1 } = Astro.prop
       float warp = 0.0;
       warp += noise(p * 1.2 + t * 0.12) * 0.3;          // large slow curves
       warp += noise(p * 0.1 + t * 0.08 + 50.0) * 0.25;   // medium detail
-      warp += noise(p * 600.0 + t * 0.5 + 1.1) * 0.01;   // fine detail
+      warp += noise(p * 600.0 + t * 0.5 + 1.1) * 0.01 * u_grain;   // fine detail
 
-      // Stripe on the warped coordinate — dense lines
-      float stripeCoord = (p.y + warp) * 30.0;
+      // Stripe on the warped coordinate — density controlled by u_scale
+      float stripeCoord = (p.y + warp) * (30.0 / u_scale);
       float wave = sin(stripeCoord * 3.14159);
 
-      // Line/gap ratio: lines take ~60% of space, gaps ~40% — dense & homogeneous
-      float pattern = smoothstep(-0.3, -0.05, wave) * (1.0 - smoothstep(0.05, 0.3, wave));
+      // Line/gap ratio — u_thickness widens the outer smoothstep thresholds
+      float t1 = -0.3 * u_thickness;
+      float t2 = 0.3 * u_thickness;
+      float pattern = smoothstep(t1, -0.05, wave) * (1.0 - smoothstep(0.05, t2, wave));
 
       // Dark charcoal tones
       vec3 gap = vec3(0.090, 0.100, 0.122);
@@ -155,8 +177,13 @@ const { class: className = '', position = 'absolute', opacity = 1 } = Astro.prop
 
     const resLoc = gl.getUniformLocation(program, 'u_resolution');
     const timeLoc = gl.getUniformLocation(program, 'u_time');
+    const scaleLoc = gl.getUniformLocation(program, 'u_scale');
+    const rotLoc = gl.getUniformLocation(program, 'u_rotation');
+    const grainLoc = gl.getUniformLocation(program, 'u_grain');
+    const thickLoc = gl.getUniformLocation(program, 'u_thickness');
+    const speedLoc = gl.getUniformLocation(program, 'u_speed');
 
-    return { gl, resLoc, timeLoc };
+    return { gl, resLoc, timeLoc, scaleLoc, rotLoc, grainLoc, thickLoc, speedLoc };
   }
 
   function setupCanvas(canvas: HTMLCanvasElement) {
@@ -171,60 +198,71 @@ const { class: className = '', position = 'absolute', opacity = 1 } = Astro.prop
       return;
     }
 
-    const { gl, resLoc, timeLoc } = ctx;
-    let animId: number;
-    let frozen = false;
+    const { gl, resLoc, timeLoc, scaleLoc, rotLoc, grainLoc, thickLoc, speedLoc } = ctx;
+    const scale = parseFloat(canvas.dataset.scale || '1');
+    const rotation = canvas.dataset.rotation !== '' ? parseFloat(canvas.dataset.rotation || '0.2') : 0.2;
+    const grain = parseFloat(canvas.dataset.grain || '1');
+    const thickness = parseFloat(canvas.dataset.thickness || '1');
+    const speed = parseFloat(canvas.dataset.speed || '1');
+    gl.uniform1f(scaleLoc, scale);
+    gl.uniform1f(rotLoc, rotation);
+    gl.uniform1f(grainLoc, grain);
+    gl.uniform1f(thickLoc, thickness);
+    gl.uniform1f(speedLoc, speed);
 
     function resize() {
-      const dpr = Math.min(window.devicePixelRatio, 1.5); // cap for performance
+      const dpr = Math.min(window.devicePixelRatio, 1.5);
       const rect = canvas.getBoundingClientRect();
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
       gl.viewport(0, 0, canvas.width, canvas.height);
     }
 
+    let animId: number;
+    let lastScrollY = window.scrollY;
+    let velocity = 0;
+    const friction = 0.98;
+    let momentumOffset = 0;
+
     function render(time: number) {
-      if (frozen) return;
+      const idleTime = time * 0.001 * 1.5;
+      const scrollOffset = window.scrollY * 0.005 * speed;
+
+      // Scroll momentum: track velocity, apply friction
+      const scrollDelta = window.scrollY - lastScrollY;
+      lastScrollY = window.scrollY;
+      velocity += scrollDelta * 0.001;
+      velocity *= friction;
+      momentumOffset += velocity;
+
       gl.uniform2f(resLoc, canvas.width, canvas.height);
-      gl.uniform1f(timeLoc, time * 0.001);
+      gl.uniform1f(timeLoc, idleTime + scrollOffset + momentumOffset);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
       animId = requestAnimationFrame(render);
     }
 
-    // IntersectionObserver: only animate when visible
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !frozen) {
-          resize();
-          animId = requestAnimationFrame(render);
-        } else {
-          cancelAnimationFrame(animId);
-        }
-      },
-      { threshold: 0.01 }
-    );
-
-    observer.observe(canvas);
-
-    // Reduced motion: render one frame then freeze
+    // Reduced motion: render once, no animation
     if (reducedMotion) {
       resize();
       gl.uniform2f(resLoc, canvas.width, canvas.height);
       gl.uniform1f(timeLoc, 0);
       gl.drawArrays(gl.TRIANGLES, 0, 6);
-      frozen = true;
+    } else {
+      resize();
+      animId = requestAnimationFrame(render);
     }
 
     window.addEventListener('resize', () => {
       resize();
-      if (frozen) {
-        gl.uniform2f(resLoc, canvas.width, canvas.height);
-        gl.uniform1f(timeLoc, 0);
-        gl.drawArrays(gl.TRIANGLES, 0, 6);
-      }
     });
   }
 
-  // Init all shader canvases
-  document.querySelectorAll<HTMLCanvasElement>('.wavy-shader').forEach(setupCanvas);
+  // Expose for deferred init (e.g. blocker canvas hidden at load time)
+  (window as any).__initWavyShader = setupCanvas;
+
+  // Init all visible shader canvases (skip hidden ones — zero dimensions break WebGL)
+  document.querySelectorAll<HTMLCanvasElement>('.wavy-shader').forEach((canvas) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width > 0 && rect.height > 0) setupCanvas(canvas);
+  });
 </script>

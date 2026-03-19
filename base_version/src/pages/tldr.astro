@@ -122,6 +122,36 @@ import VideoEmbed from '../components/VideoEmbed.astro';
     </div>
   </section>
 
+  <!-- QUICK LINKS: ARSENAL & THE DAMNED -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-label">Also In TL;DR</h2>
+      <div class="quick-links-grid">
+
+        <a href="/arsenal" class="quick-link-card">
+          <h3>Our Savior's Arsenal</h3>
+          <p>
+            Every piece of hardware and software PewDiePie actually uses.
+            Not theoretical recommendations — his real, daily-driver setup,
+            verified from videos with timestamps.
+          </p>
+          <span class="quick-link-cta">View The Arsenal →</span>
+        </a>
+
+        <a href="/damned" class="quick-link-card">
+          <h3>The Damned</h3>
+          <p>
+            Browsers, apps, and services we don't recommend — and the honest
+            reasons why. Some are genuinely good products, but they all take
+            something from you.
+          </p>
+          <span class="quick-link-cta">View The Damned →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="section cta-section">
     <div class="container" style="text-align: center; max-width: 600px;">
@@ -139,6 +169,7 @@ import VideoEmbed from '../components/VideoEmbed.astro';
   .hero-sm {
     padding: var(--space-12) 0 var(--space-8);
     text-align: center;
+    background: rgba(10, 0, 0, 0.6);
   }
 
   :global(.page-title) {
@@ -234,7 +265,7 @@ import VideoEmbed from '../components/VideoEmbed.astro';
   .video-takeaway {
     margin-top: var(--space-3) !important;
     padding: var(--space-3);
-    background: rgba(97, 175, 239, 0.05);
+    background: rgba(212, 84, 94, 0.05);
     border-left: 2px solid var(--border-primary);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   }
@@ -306,6 +337,65 @@ import VideoEmbed from '../components/VideoEmbed.astro';
     background: var(--color-white);
     color: var(--bg-base);
     border-color: var(--color-white);
+  }
+
+  /* Quick Links Grid */
+  .quick-links-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (max-width: 767px) {
+    .quick-links-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .quick-link-card {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-6);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+  }
+
+  .quick-link-card:hover {
+    border-color: var(--text-accent);
+    transform: translateY(-2px);
+  }
+
+  .quick-link-card h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+
+  .quick-link-card p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    flex: 1;
+  }
+
+  .quick-link-cta {
+    display: inline-block;
+    margin-top: var(--space-4);
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    transition: color var(--transition-fast);
+  }
+
+  .quick-link-card:hover .quick-link-cta {
+    color: var(--text-primary);
   }
 
   .cta-section {

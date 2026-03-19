@@ -21,7 +21,7 @@
 }
 
 .glitch-text::before {
-  color: var(--color-blue-400);
+  color: var(--color-red-400);
   animation: glitch-slice-1 8s infinite linear;
   clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
   z-index: -1;
@@ -29,7 +29,7 @@
 }
 
 .glitch-text::after {
-  color: var(--color-blue-500);
+  color: var(--color-red-500);
   animation: glitch-slice-2 8s infinite linear;
   clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
   z-index: -1;
@@ -66,43 +66,9 @@
   86% { transform: translate(0); }
 }
 
-/* Hover-triggered glitch for section headings */
+/* Glitch hover — disabled, kept as no-op class for existing markup */
 .glitch-hover {
-  position: relative;
   display: inline-block;
-}
-
-.glitch-hover::before,
-.glitch-hover::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  opacity: 0;
-  transition: opacity var(--transition-fast);
-}
-
-.glitch-hover::before {
-  color: var(--color-blue-400);
-  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-}
-
-.glitch-hover::after {
-  color: var(--color-blue-500);
-  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
-}
-
-.glitch-hover:hover::before {
-  opacity: 0.7;
-  animation: glitch-slice-1 0.5s linear;
-}
-
-.glitch-hover:hover::after {
-  opacity: 0.7;
-  animation: glitch-slice-2 0.5s linear;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -122,9 +88,9 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    var(--color-blue-400) 20%,
-    var(--color-blue-500) 50%,
-    var(--color-blue-400) 80%,
+    var(--color-red-400) 20%,
+    var(--color-red-500) 50%,
+    var(--color-red-400) 80%,
     transparent 100%
   );
   background-size: 200% 100%;
@@ -157,8 +123,8 @@
   height: 24px;
   background: repeating-linear-gradient(
     -45deg,
-    rgba(97, 175, 239, 0.12),
-    rgba(97, 175, 239, 0.12) 4px,
+    rgba(212, 84, 94, 0.12),
+    rgba(212, 84, 94, 0.12) 4px,
     transparent 4px,
     transparent 8px
   );

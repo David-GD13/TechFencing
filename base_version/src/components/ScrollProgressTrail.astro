@@ -1,0 +1,227 @@
+---
+---
+
+<nav class="progress-trail" aria-label="Page sections" id="progress-trail">
+  <div class="progress-trail__track">
+    <div class="progress-trail__fill" id="trail-fill"></div>
+  </div>
+</nav>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+  function initProgressTrail() {
+    const trail = document.getElementById('progress-trail');
+    const fill = document.getElementById('trail-fill');
+    if (!trail || !fill) return;
+
+    const sections = document.querySelectorAll<HTMLElement>('[data-section-id]');
+    if (!sections.length) return;
+
+    // Clean up existing dots (in case of re-init)
+    trail.querySelectorAll('.progress-trail__dot').forEach(d => d.remove());
+
+    const dots: HTMLElement[] = [];
+
+    sections.forEach((section) => {
+      const sectionId = section.dataset.sectionId || '';
+      const dot = document.createElement('button');
+      dot.className = 'progress-trail__dot';
+      dot.setAttribute('aria-label', `Scroll to ${section.dataset.sectionLabel || 'section'}`);
+      dot.dataset.sectionId = sectionId;
+
+      const label = document.createElement('span');
+      label.className = 'progress-trail__label';
+      label.textContent = section.dataset.sectionLabel || '';
+      dot.appendChild(label);
+
+      dot.addEventListener('click', () => {
+        // Use ScrollTrigger start position if available
+        const triggers = (window as any).__sectionTriggers || {};
+        const st = triggers[sectionId];
+
+        if (st && typeof st.start === 'number') {
+          const target = sectionId === 'hero' ? st.start : st.start + (st.end - st.start) * 0.5;
+          gsap.to(window, {
+            scrollTo: { y: target },
+            duration: 0.0,
+            ease: 'power2.out',
+          });
+        } else {
+          // Fallback: scroll to element
+          gsap.to(window, {
+            scrollTo: { y: section, offsetY: 0 },
+            duration: 0.8,
+            ease: 'power2.out',
+          });
+        }
+      });
+
+      dots.push(dot);
+      trail.appendChild(dot);
+    });
+
+    // Activate first dot
+    if (dots[0]) dots[0].classList.add('active');
+
+    // Track scroll progress
+    ScrollTrigger.create({
+      trigger: document.documentElement,
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        const progress = self.progress;
+        fill.style.height = `${progress * 100}%`;
+
+        // Determine active section using ScrollTrigger positions
+        const triggers = (window as any).__sectionTriggers || {};
+        const scrollY = window.scrollY;
+        let activeIndex = 0;
+
+        sections.forEach((section, i) => {
+          const st = triggers[section.dataset.sectionId || ''];
+          if (st && scrollY >= st.start - 10) {
+            activeIndex = i;
+          }
+        });
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === activeIndex);
+          dot.classList.toggle('visited', i < activeIndex);
+        });
+      },
+    });
+  }
+
+  // Wait briefly for main script to create ScrollTriggers
+  setTimeout(initProgressTrail, 100);
+  document.addEventListener('astro:after-swap', () => setTimeout(initProgressTrail, 100));
+</script>
+
+<style>
+  .progress-trail {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 80;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 0;
+  }
+
+  .progress-trail__track {
+    position: absolute;
+    width: 2px;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--border-muted);
+    border-radius: 1px;
+    pointer-events: none;
+  }
+
+  .progress-trail__fill {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 0;
+    background: linear-gradient(
+      to bottom,
+      var(--color-red-400),
+      var(--color-red-500),
+      var(--color-red-400)
+    );
+    background-size: 100% 200%;
+    animation: trail-flow 3s ease-in-out infinite;
+    border-radius: 1px;
+    transition: height 0.3s ease-out;
+  }
+
+  @keyframes trail-flow {
+    0%, 100% { background-position: 0% 0%; }
+    50% { background-position: 0% 100%; }
+  }
+
+  .progress-trail :global(.progress-trail__dot) {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg-surface);
+    border: 2px solid var(--border-muted);
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    z-index: 1;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  .progress-trail :global(.progress-trail__dot:hover) {
+    border-color: var(--color-red-400);
+    transform: scale(1.3);
+  }
+
+  .progress-trail :global(.progress-trail__dot.visited) {
+    background: var(--color-red-400);
+    border-color: var(--color-red-400);
+  }
+
+  .progress-trail :global(.progress-trail__dot.active) {
+    width: 14px;
+    height: 14px;
+    background: var(--color-red-400);
+    border-color: var(--color-red-400);
+    box-shadow:
+      0 0 10px rgba(212, 84, 94, 0.5),
+      0 0 20px rgba(212, 84, 94, 0.2);
+  }
+
+  .progress-trail :global(.progress-trail__label) {
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-out;
+    background: var(--bg-overlay);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-muted);
+  }
+
+  .progress-trail :global(.progress-trail__dot:hover .progress-trail__label) {
+    opacity: 1;
+  }
+
+  @media (max-width: 767px) {
+    .progress-trail {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress-trail__fill {
+      animation: none;
+      transition: none;
+    }
+
+    .progress-trail :global(.progress-trail__dot) {
+      transition: none;
+    }
+  }
+</style>

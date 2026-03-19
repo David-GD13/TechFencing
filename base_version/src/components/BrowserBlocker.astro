@@ -1,9 +1,11 @@
 ---
 // Browser blocker component — detects Chrome, Edge, Opera, Puffin
 // Whitelists: Brave, Firefox, LibreWolf, Safari
+import WavyShader from './WavyShader.astro';
 ---
 
 <div id="browser-blocker" class="blocker hidden" aria-live="assertive">
+  <WavyShader position="absolute" opacity={0.1} scale={3.5} rotation={0.6} grain={3} thickness={2.6} speed={5} />
   <canvas id="crt-canvas" class="crt-canvas"></canvas>
   <div class="blocker-content">
     <h1 class="blocker-title glitch-text" data-text="ACCESS DENIED">ACCESS DENIED</h1>
@@ -71,6 +73,12 @@
     mainApp.style.display = 'none';
     document.body.style.overflow = 'hidden';
 
+    // Init shader canvas now that the blocker is visible
+    const shaderCanvas = blocker.querySelector<HTMLCanvasElement>('.wavy-shader');
+    if (shaderCanvas && (window as any).__initWavyShader) {
+      (window as any).__initWavyShader(shaderCanvas);
+    }
+
     // Start CRT canvas effect
     initCRTEffect();
 
@@ -114,7 +122,7 @@
         const offset = Math.sin((y + time) * 0.02) * 2;
         const alpha = 0.03 + Math.sin((y + time * 0.5) * 0.01) * 0.02;
 
-        ctx.strokeStyle = `rgba(97, 175, 239, ${Math.max(0, alpha)})`;
+        ctx.strokeStyle = `rgba(212, 84, 94, ${Math.max(0, alpha)})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(offset, y);
@@ -124,7 +132,7 @@
 
       // Occasional bright scanline band
       const bandY = (time * 0.5) % canvas.height;
-      ctx.fillStyle = 'rgba(97, 175, 239, 0.04)';
+      ctx.fillStyle = 'rgba(212, 84, 94, 0.04)';
       ctx.fillRect(0, bandY, canvas.width, 40);
 
       time += 1;
@@ -152,7 +160,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-base);
+    background: rgba(10, 0, 0, 0.7);
     overflow: hidden;
   }
 
@@ -184,7 +192,7 @@
     text-transform: uppercase;
     letter-spacing: var(--tracking-wider);
     text-shadow:
-      4px 4px 0 rgba(97, 175, 239, 0.3),
+      4px 4px 0 rgba(212, 84, 94, 0.3),
       -2px -2px 0 rgba(0, 0, 0, 0.8);
     margin-bottom: var(--space-6);
   }
@@ -204,7 +212,7 @@
 
   .blocker-alternatives {
     text-align: left;
-    background: rgba(97, 175, 239, 0.05);
+    background: rgba(212, 84, 94, 0.05);
     border: 1px solid var(--border-muted);
     border-radius: var(--radius-md);
     padding: var(--space-6);
@@ -229,7 +237,7 @@
     padding: var(--space-2) 0;
     color: var(--text-secondary);
     font-size: var(--text-sm);
-    border-bottom: 1px solid rgba(97, 175, 239, 0.08);
+    border-bottom: 1px solid rgba(212, 84, 94, 0.08);
   }
 
   .blocker-alternatives li:last-child {
@@ -242,9 +250,9 @@
     font-family: var(--font-display);
     font-size: var(--text-sm);
     font-weight: 500;
-    color: var(--text-muted);
-    background: transparent;
-    border: 1px dashed var(--border-muted);
+    color: var(--text-secondary);
+    background: rgba(10, 0, 0, 0.6);
+    border: 1px dashed var(--border-primary);
     border-radius: var(--radius-sm);
     cursor: pointer;
     text-transform: uppercase;
@@ -255,7 +263,7 @@
   .blocker-btn:hover {
     color: var(--text-primary);
     border-color: var(--border-primary);
-    background: rgba(97, 175, 239, 0.05);
+    background: rgba(212, 84, 94, 0.05);
   }
 
   .blocker-btn:focus-visible {
