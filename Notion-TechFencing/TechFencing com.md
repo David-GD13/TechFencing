@@ -92,10 +92,10 @@ This stays as an idea of how the website could be done.
 
 A quick section that explains the core philosophy. The site self-defines “tech fencing” through context rather than a dictionary definition. The key PewDiePie quote anchors it: *“I think you owe it to yourself to take some time today and start building your tech fence.”*
 
-**The two pillars** (from the de-Algo Brain video):
+**The two pillars** (reframed from the original Friction/Filtering concepts):
 
-- **Friction** — slow down the autopilot (second profile, switching delay, DNS blocking, removing algorithmic feeds)
-- **Filtering** — remove the noise (self-hosting, browser extensions, unfollowing, RSS curation)
+- **”You Are Not The Product”** — awareness that every “free” service has a cost (your data, attention, autonomy). The trade-off between control and convenience is real, but being aware of it lets you choose intentionally.
+- **”Curing Algo Brain”** — using friction (slow down the autopilot) and filtering (remove the noise) as tools to break algorithm addiction. Friction and filtering are the practical mechanisms within this pillar.
 
 **The three layers:**
 
@@ -103,9 +103,29 @@ A quick section that explains the core philosophy. The site self-defines “tech
 - Control vs convenience (Layer 2: Services)
 - Cure the algo brain (Layer 3: Behavior)
 
-### Where to Start (Difficulty Progression)
+### Where to Start (Getting Started)
 
-A visual path from Level 1 (5 minutes) to Level 5 (deep rabbit hole), linking to the corresponding guides. This is the “organized with intent” entry point for beginners.
+A simplified “Getting Started” section on the homepage shows three entry-point guide cards (Browser, De-Google, Linux) with difficulty badges, plus a “See All 9 Guides” CTA linking to the Guides index page. This replaces the original Level 1-5 visual progression for a cleaner, less overwhelming entry point. The full difficulty spectrum is still represented across the nine guides.
+
+### Homepage UX — Cinematic Scroll (Implemented)
+
+The homepage uses a cinematic scroll-driven experience powered by GSAP ScrollTrigger:
+
+- **WavyShader background**: Full-viewport WebGL animated shader (crimson topographic wavy lines on charcoal) with scroll-reactive momentum. Fixed behind all content.
+- **Pinned sections**: Each homepage section pins in place while scroll-linked animations play. Headings slide in from the right, content reveals, then exits left on scroll.
+- **Per-section dark backgrounds**: CSS `::before` pseudo-elements with gradient-to-transparent edges (top/bottom) create seamless transitions. No shared overlay — each section owns its own background.
+- **Section spacers**: Empty 35vh divs between sections let the shader background “breathe” and be visible.
+- **Progress trail**: Fixed right-side vertical dot navigation. Active dot glows crimson, visited dots fill solid, flowing gradient fill line tracks scroll progress. Dots are clickable (instant scroll). Hidden on mobile.
+- **Cinematic mode toggle**: Navbar gear icon opens settings with a “Cinematic Scroll” toggle. When enabled, one scroll gesture auto-scrolls to the next section. When disabled, manual scroll scrubs animations freely. Preference persisted in localStorage.
+- **Homepage sections** (in order): Hero → Two Pillars → Three Layers → Getting Started → Honest Disclaimer → Extras
+- **Navigation**: Centered navbar with 3 dropdown items (The Bible, Guides, TL;DR). Hamburger on mobile. Settings gear on right. No brand logo in navbar.
+- **Bible & Guides index pages**: `/bible/` and `/guides/` serve as overview/landing pages.
+
+### Extras Section (Homepage)
+
+A grid of cards at the bottom of the homepage linking to secondary pages: TL;DR, The Arsenal, The Damned, Experiments, Glossary, About.
+
+---
 
 ## The “Bible” (Three-Layer Framework)
 

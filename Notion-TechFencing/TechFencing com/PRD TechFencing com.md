@@ -5,13 +5,13 @@
 ### 1.1 Document title and version
 
 - PRD: TechFencing.com
-- Version: 1.0
+- Version: 2.0 (updated to reflect implementation decisions)
 
 ### 1.2 Product summary
 
 TechFencing.com is a content-driven website that compiles PewDiePie’s teachings about taking control of your data, privacy, and digital life. Inspired by his coining of the term “tech fencing” in the “I Fixed YouTube!” video (March 2026), the site organizes his recommendations, tool choices, philosophy, and honest tradeoffs into a structured, beginner-friendly resource. The entire site is presented in a comical “ignorant (us) vs. savior (PewDiePie)” narrative voice, making dense technical topics approachable and entertaining.
 
-The backbone of the site is a Three-Layer Framework: Layer 1 — OS (what software runs on your machine), Layer 2 — Services (what services handle your data), and Layer 3 — Behavior (how you interact with the digital world). These map directly to PewDiePie’s three main videos: “I installed Linux (so should you),” “I’m DONE with Google,” and “I Fixed YouTube!” Two pillars — Friction (slow down the autopilot) and Filtering (remove the noise) — define the core philosophy. A difficulty progression from Level 1 (5 minutes, switch your browser) through Level 5 (rice your desktop, fine-tune AI) gives visitors a clear, intentional path forward.
+The backbone of the site is a Three-Layer Framework: Layer 1 — OS (what software runs on your machine), Layer 2 — Services (what services handle your data), and Layer 3 — Behavior (how you interact with the digital world). These map directly to PewDiePie’s three main videos: “I installed Linux (so should you),” “I’m DONE with Google,” and “I Fixed YouTube!” Two pillars — "You Are Not The Product" (awareness of control vs. convenience) and "Curing Algo Brain" (using friction and filtering to break algorithm addiction) — define the core philosophy. A simplified "Getting Started" section on the homepage shows three entry-point guides (Browser, De-Google, Linux) to give visitors a clear first step, with the full nine-guide catalog available from the Guides page.
 
 The site is designed as a static website hosted on CloudFlare with no backend required for MVP. PewDiePie’s content is the primary source; the site’s own recommendations are secondary and clearly labeled. Citations from PewDiePie’s videos are embedded throughout, and honest downsides are woven inline using his own quotes rather than siloed into separate disclaimers.
 
@@ -27,7 +27,7 @@ The site is designed as a static website hosted on CloudFlare with no backend re
 ### 2.2 User goals
 
 - Understand what “tech fencing” means and why it matters, without needing prior technical knowledge.
-- Find a clear starting point based on their comfort level (Level 1 through Level 5 difficulty progression).
+- Find a clear starting point via the "Getting Started" section on the homepage (three entry-point guides by difficulty).
 - Access PewDiePie’s specific tool recommendations, citations, and honest tradeoffs in one organized place.
 - Learn step-by-step how to take control of their operating system, services, and digital behavior.
 - Quickly find relevant videos to watch via the curated “TL;DR — Just Watch These” page.
@@ -62,14 +62,19 @@ The site is designed as a static website hosted on CloudFlare with no backend re
 
 ## 4. Functional requirements
 
-- **Landing page with hero section and core philosophy** (Priority: High)
-    - Display the mission and vision of TechFencing.com in the comical savior narrative tone.
-    - Present the two pillars (Friction and Filtering) and three layers (OS, Services, Behavior) visually.
-    - Include the difficulty progression (Level 1 through Level 5) with links to corresponding guides.
-    - Feature a PewDiePie-related visual element (green screen frame, keyframe, or illustration).
-    - Include a prominent link to “TL;DR — Just Watch These” in the header and footer.
+- **Landing page with cinematic scroll experience** (Priority: High)
+    - Display the mission and vision of TechFencing.com in the comical savior narrative tone (copy polish pending).
+    - Present the two pillars (“You Are Not The Product” and “Curing Algo Brain”) and three layers (OS, Services, Behavior) as scroll-driven cinematic sections.
+    - Include a “Getting Started” section with three entry-point guide cards (Browser, De-Google, Linux) plus a “See All 9 Guides” CTA.
+    - Include an “Extras” section linking to TL;DR, Arsenal, The Damned, Experiments, Glossary, and About.
+    - Include an “Honest Disclaimer” section with PewDiePie's own tradeoff quotes.
+    - Feature a PewDiePie-related visual element (future enhancement — currently uses WavyShader background).
+    - GSAP ScrollTrigger powers the homepage: each section pins in place, heading slides in from the right, content reveals, then exits left. Per-section dark backgrounds with gradient-to-transparent edges. Empty spacer divs between sections let the shader background “breathe.”
+    - Fixed progress trail on the right edge: clickable dots per section, glowing fill line, visited dot states.
+    - Cinematic mode toggle in navbar settings gear: when enabled, one scroll gesture auto-scrolls to the next section; when disabled, manual scroll scrubs the animations freely. Preference stored in localStorage.
+    - Include a prominent link to “TL;DR — Just Watch These” accessible from navigation.
 - **The Bible — Three-Layer Framework pages** (Priority: High)
-    - Create a summary section on the landing page and three dedicated sub-pages, one per layer.
+    - A `/bible/` index page serves as the overview, plus three dedicated sub-pages, one per layer. The homepage includes a "Three Layers" section with cards linking to each layer page.
     - Each layer page includes: video summary, extracted lessons, PewDiePie citations, cross-references between layers, and links to relevant guides.
     - Layer 1 — OS maps to the Linux video. Layer 2 — Services maps to the de-Google video. Layer 3 — Behavior maps to the “I Fixed YouTube!” video.
 - **Nine guide pages ordered by learning journey** (Priority: High)
@@ -129,10 +134,10 @@ The site is designed as a static website hosted on CloudFlare with no backend re
 
 ### 5.2 Core experience
 
-- **Land on the homepage**: Visitor sees the hero section with the comical savior narrative, a PewDiePie-related visual, and the core philosophy (two pillars, three layers).
-    - The tone immediately communicates this is fun, irreverent, and beginner-friendly — not a dry wiki.
-- **Assess their level**: The difficulty progression (Level 1 through Level 5) is displayed prominently, each level linking to the relevant guides.
-    - A beginner can see “Level 1: 5 minutes — switch your browser” and feel they can start immediately.
+- **Land on the homepage**: Visitor sees the hero section with the comical savior narrative and the WavyShader background (animated crimson topographic lines on charcoal). The cinematic scroll experience guides them through sections one at a time.
+    - The tone immediately communicates this is fun, irreverent, and beginner-friendly — not a dry wiki. (Note: comical tone copy polish is pending.)
+- **Assess their level**: The “Getting Started” section shows three entry-point guide cards (Browser, De-Google, Linux) with difficulty badges.
+    - A beginner can see “Switch Your Browser — Takes 5 minutes” and feel they can start immediately. A “See All 9 Guides” CTA provides the full catalog.
 - **Read a guide**: Each guide opens with PewDiePie’s citations and choices, then walks through the topic with honest tradeoffs inline.
     - Glossary tooltips explain jargon on hover/tap. A “TL;DR” video link at the top lets quick learners jump to a video instead.
 - **Explore The Bible**: The three-layer framework pages give deeper context on PewDiePie’s journey, with cross-references between layers and links to guides.
@@ -155,7 +160,14 @@ The site is designed as a static website hosted on CloudFlare with no backend re
 
 - Comical “ignorant vs. savior” tone throughout all copy, headers, CTAs, and error states.
 - PewDiePie-related visual assets (green screen frames, keyframes) on the landing page to set the vibe. His brand waves black & red background (can create alternative palettes of that too, like black & grey or black & purple)
-- Difficulty progression displayed as a visual path or ladder on the landing page.
+- **Getting Started**: Three guide preview cards (Browser, De-Google, Linux) with difficulty badges replace the Level 1-5 progression. "See All 9 Guides" CTA links to Guides index.
+- **Cinematic scroll homepage**: GSAP ScrollTrigger pins each section while animations play. Headings slide in from right, content reveals, then exits left. Per-section dark backgrounds with gradient-to-transparent edges. Spacer divs (35vh) between sections let the shader breathe.
+- **Progress trail**: Fixed right-side dot navigation with glowing fill line, click-to-scroll, visited states. Hidden on mobile.
+- **Settings gear**: Navbar gear icon with "Cinematic Scroll" toggle (localStorage persisted).
+- **WavyShader background**: Full-viewport WebGL animated shader (crimson topographic lines on charcoal) with scroll-reactive momentum.
+- **Extras section**: Homepage grid linking to TL;DR, Arsenal, The Damned, Experiments, Glossary, About.
+- **Navigation**: Centered navbar with 3 dropdown items (The Bible, Guides, TL;DR). Hamburger on mobile. No brand logo.
+- **Section index pages**: `/bible/` and `/guides/` serve as overview pages.
 - Glossary hover tooltips with subtle indicators (dotted underline or similar) that don’t clutter the page.
 - Browser blocking overlay that is funny, not hostile — the dismiss button is clearly visible and humorous.
 - Clean, fast-loading pages with minimal JavaScript. Content-first design prioritizing readability.
@@ -194,7 +206,7 @@ Alex is a 24-year-old who just watched PewDiePie’s “I Fixed YouTube!” vide
 
 - CloudFlare for DNS, hosting, and CDN (domain already registered there).
 - YouTube embed links or oEmbed for video references (no self-hosting of video content).
-- A static site generator (e.g., Astro, Hugo, 11ty, or Next.js static export) for build-time rendering.
+- Astro as the static site generator for build-time rendering.
 - Glossary data stored as a JSON or YAML file consumed at build time for tooltip generation.
 
 ### 8.2 Data storage and privacy
@@ -208,7 +220,7 @@ Alex is a 24-year-old who just watched PewDiePie’s “I Fixed YouTube!” vide
 
 - Static site architecture means near-infinite scalability via CloudFlare CDN with zero server-side load.
 - All assets (images, fonts) should be optimized and served with cache headers.
-- Minimal JavaScript: only what is needed for the browser blocking overlay, glossary tooltips, and any interactive difficulty progression UI.
+- JavaScript is used for: GSAP ScrollTrigger (cinematic homepage animations, scroll progress trail, cinematic mode), WebGL WavyShader background, browser blocking overlay, glossary tooltips, and navbar settings gear.
 - Content can grow (new guides, new videos, new Arsenal entries) without architectural changes.
 
 ### 8.4 Potential challenges
@@ -250,8 +262,8 @@ Alex is a 24-year-old who just watched PewDiePie’s “I Fixed YouTube!” vide
 - **Description**: As a visitor, I want to see a landing page with a hero section, core philosophy, and difficulty progression so that I immediately understand what TechFencing.com is and where to start.
 - **Acceptance criteria**:
     - The landing page displays a hero section with the site’s mission in the comical savior narrative tone.
-    - The two pillars (Friction, Filtering) and three layers (OS, Services, Behavior) are visually presented.
-    - The difficulty progression (Level 1 through Level 5) is displayed with descriptions and links to corresponding guides.
+    - The two pillars ("You Are Not The Product", "Curing Algo Brain") and three layers (OS, Services, Behavior) are visually presented as cinematic scroll sections.
+    - A "Getting Started" section shows three entry-point guide cards with difficulty badges and a "See All 9 Guides" CTA.
     - A link to “TL;DR — Just Watch These” is visible in both the header and footer.
     - The page is responsive and loads in under 1.5 seconds on 4G.
 
@@ -370,15 +382,15 @@ Alex is a 24-year-old who just watched PewDiePie’s “I Fixed YouTube!” vide
     - The mission is stated: guidance toward taking control, primarily through PewDiePie’s approach.
     - A disclaimer notes that Linux has many flavors and this is one guide, not the definitive answer.
 
-### 10.13. Navigate the difficulty progression
+### 10.13. Get started from the homepage
 
 - **ID**: US-013
-- **Description**: As a beginner visitor, I want to see a visual difficulty progression on the landing page so that I can pick a starting level that matches my comfort.
+- **Description**: As a beginner visitor, I want to see clear entry points on the landing page so that I can pick a starting guide that matches my comfort.
 - **Acceptance criteria**:
-    - Five levels are displayed: Level 1 (5 min), Level 2 (afternoon), Level 3 (weekend), Level 4 (ongoing), Level 5 (rabbit hole).
-    - Each level has a brief description of what it involves.
-    - Each level links to the relevant guide or set of guides.
-    - The progression is visually clear (e.g., a ladder, path, or timeline).
+    - Three guide preview cards are displayed: Browser (Level 1), De-Google (Level 2), Linux (Level 3).
+    - Each card shows a difficulty badge, title, and brief description.
+    - Each card links to the corresponding guide page.
+    - A "See All 9 Guides" CTA links to the Guides index page for the full catalog.
 
 ### 10.14. Access the site on mobile
 
