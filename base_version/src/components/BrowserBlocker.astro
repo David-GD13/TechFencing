@@ -89,6 +89,18 @@ import WavyShader from './WavyShader.astro';
       mainApp.style.display = '';
       document.body.style.overflow = '';
       stopCRTEffect();
+
+      // Kill the blocker's WavyShader — its rAF loop + WebGL context waste GPU cycles
+      const blockerShader = blocker.querySelector<HTMLCanvasElement>('.wavy-shader');
+      if (blockerShader && (blockerShader as any).__destroyShader) {
+        (blockerShader as any).__destroyShader();
+      }
+
+      // GSAP ScrollTrigger calculated positions while main-app was hidden (display:none).
+      // All measurements are zero/wrong. Dispatch event so the homepage can refresh.
+      requestAnimationFrame(() => {
+        window.dispatchEvent(new CustomEvent('blocker-dismissed'));
+      });
     });
   }
 

@@ -241,6 +241,11 @@ const rotationValue = rotation !== undefined ? rotation : null;
       animId = requestAnimationFrame(render);
     }
 
+    function destroy() {
+      cancelAnimationFrame(animId);
+      gl.getExtension('WEBGL_lose_context')?.loseContext();
+    }
+
     // Reduced motion: render once, no animation
     if (reducedMotion) {
       resize();
@@ -255,6 +260,9 @@ const rotationValue = rotation !== undefined ? rotation : null;
     window.addEventListener('resize', () => {
       resize();
     });
+
+    // Store destroy function on the canvas for external cleanup
+    (canvas as any).__destroyShader = destroy;
   }
 
   // Expose for deferred init (e.g. blocker canvas hidden at load time)
