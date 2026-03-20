@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import DifficultyBadge from '../components/DifficultyBadge.astro';
+import ReadingProgress from '../components/ReadingProgress.astro';
 
 interface Props {
   title: string;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 const { title, description, level, nextGuide, prevGuide } = Astro.props;
+const pageId = `guides/${Astro.url.pathname.split('/guides/')[1]?.replace(/\/$/, '') || ''}`;
 ---
 
 <BaseLayout title={title} description={description} activePage="guides">
@@ -25,6 +27,7 @@ const { title, description, level, nextGuide, prevGuide } = Astro.props;
         </div>
         <h1 class="guide-title glitch-hover" data-text={title}>{title}</h1>
         {description && <p class="guide-description">{description}</p>}
+        <ReadingProgress pageId={pageId} />
       </div>
     </header>
 
@@ -39,15 +42,15 @@ const { title, description, level, nextGuide, prevGuide } = Astro.props;
         <nav class="guide-nav" aria-label="Guide navigation">
           <h3 class="guide-nav-title">All Guides</h3>
           <ul class="guide-nav-list">
-            <li><a href="/guides/browsers">Browsers</a></li>
-            <li><a href="/guides/linux">Linux</a></li>
-            <li><a href="/guides/de-google">De-Google</a></li>
-            <li><a href="/guides/self-hosting">Self-Hosting</a></li>
-            <li><a href="/guides/open-source-alternatives">Open-Source Alternatives</a></li>
-            <li><a href="/guides/fix-youtube">Fix YouTube</a></li>
-            <li><a href="/guides/control-your-phone">Control Your Phone</a></li>
-            <li><a href="/guides/own-your-ai">Own Your AI</a></li>
-            <li><a href="/guides/ricing">Ricing</a></li>
+            <li><a href="/guides/browsers">1 — Browsers</a></li>
+            <li><a href="/guides/linux">2 — Linux</a></li>
+            <li><a href="/guides/de-google">3 — De-Google</a></li>
+            <li><a href="/guides/self-hosting">4 — Self-Hosting</a></li>
+            <li><a href="/guides/open-source-alternatives">5 — Open-Source Alternatives</a></li>
+            <li><a href="/guides/fix-youtube">6 — Fix YouTube</a></li>
+            <li><a href="/guides/control-your-phone">7 — Control Your Phone</a></li>
+            <li><a href="/guides/own-your-ai">8 — Own Your AI</a></li>
+            <li><a href="/guides/ricing">9 — Ricing</a></li>
           </ul>
         </nav>
       </aside>

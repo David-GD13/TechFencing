@@ -1,0 +1,206 @@
+---
+interface Props {
+  pageId: string;
+  label?: string;
+}
+
+const { pageId, label = 'Mark as completed' } = Astro.props;
+---
+
+<div class="reading-progress" data-page-id={pageId}>
+  <label class="progress-toggle">
+    <input type="checkbox" class="progress-checkbox" />
+    <span class="progress-switch">
+      <svg class="progress-check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 7l3 3 5-5" />
+      </svg>
+    </span>
+    <span class="progress-label">{label}</span>
+  </label>
+</div>
+
+<script>
+  function initReadingProgress() {
+    const STORAGE_KEY = 'tf-progress';
+
+    function getProgress(): Record<string, boolean> {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      } catch {
+        return {};
+      }
+    }
+
+    function setProgress(pageId: string, completed: boolean) {
+      const progress = getProgress();
+      if (completed) {
+        progress[pageId] = true;
+      } else {
+        delete progress[pageId];
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+
+      // Dispatch event so nav indicators can update
+      window.dispatchEvent(new CustomEvent('reading-progress-change', {
+        detail: { pageId, completed }
+      }));
+    }
+
+    // Init all progress toggles on the page
+    document.querySelectorAll<HTMLElement>('.reading-progress').forEach(el => {
+      const pageId = el.dataset.pageId;
+      if (!pageId) return;
+
+      const checkbox = el.querySelector<HTMLInputElement>('.progress-checkbox');
+      const label = el.querySelector('.progress-label');
+      if (!checkbox) return;
+
+      const progress = getProgress();
+      checkbox.checked = !!progress[pageId];
+      if (checkbox.checked && label) {
+        label.textContent = 'Completed';
+      }
+
+      checkbox.addEventListener('change', () => {
+        setProgress(pageId, checkbox.checked);
+        if (label) {
+          label.textContent = checkbox.checked ? 'Completed' : 'Mark as completed';
+        }
+      });
+    });
+
+    // Add checkmarks to sidebar nav and navbar dropdown items
+    updateNavProgress();
+  }
+
+  function updateNavProgress() {
+    const STORAGE_KEY = 'tf-progress';
+    let progress: Record<string, boolean>;
+    try {
+      progress = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    } catch {
+      progress = {};
+    }
+
+    // Map page IDs to their href paths
+    const idToHref: Record<string, string> = {
+      'guides/browsers': '/guides/browsers',
+      'guides/linux': '/guides/linux',
+      'guides/de-google': '/guides/de-google',
+      'guides/self-hosting': '/guides/self-hosting',
+      'guides/open-source-alternatives': '/guides/open-source-alternatives',
+      'guides/fix-youtube': '/guides/fix-youtube',
+      'guides/control-your-phone': '/guides/control-your-phone',
+      'guides/own-your-ai': '/guides/own-your-ai',
+      'guides/ricing': '/guides/ricing',
+      'bible/layer-1-os': '/bible/layer-1-os',
+      'bible/layer-2-services': '/bible/layer-2-services',
+      'bible/layer-3-behavior': '/bible/layer-3-behavior',
+    };
+
+    // Find all nav links and mark completed ones
+    for (const [pageId, href] of Object.entries(idToHref)) {
+      if (!progress[pageId]) continue;
+
+      document.querySelectorAll<HTMLAnchorElement>(`a[href="${href}"]`).forEach(link => {
+        if (link.querySelector('.nav-check')) return; // Already has checkmark
+        const check = document.createElement('span');
+        check.className = 'nav-check';
+        check.setAttribute('aria-label', 'completed');
+        check.textContent = ' ✓';
+        link.appendChild(check);
+      });
+    }
+  }
+
+  // Run on page load
+  initReadingProgress();
+
+  // Re-run on Astro page transitions
+  document.addEventListener('astro:after-swap', () => {
+    initReadingProgress();
+  });
+
+  // Update nav when progress changes (from this or other tabs)
+  window.addEventListener('reading-progress-change', () => {
+    // Remove existing checks and re-apply
+    document.querySelectorAll('.nav-check').forEach(el => el.remove());
+    updateNavProgress();
+  });
+</script>
+
+<style>
+  .reading-progress {
+    margin-top: var(--space-4);
+  }
+
+  .progress-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .progress-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .progress-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--border-muted);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .progress-check {
+    opacity: 0;
+    color: var(--bg-base);
+    transition: opacity var(--transition-fast);
+  }
+
+  .progress-checkbox:checked + .progress-switch {
+    background: var(--text-accent);
+    border-color: var(--text-accent);
+  }
+
+  .progress-checkbox:checked + .progress-switch .progress-check {
+    opacity: 1;
+  }
+
+  .progress-checkbox:focus-visible + .progress-switch {
+    outline: 2px solid var(--text-accent);
+    outline-offset: 2px;
+  }
+
+  .progress-toggle:hover .progress-switch {
+    border-color: var(--text-accent);
+  }
+
+  .progress-label {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .progress-checkbox:checked ~ .progress-label {
+    color: var(--text-accent);
+  }
+
+  :global(.nav-check) {
+    color: var(--text-accent);
+    font-size: var(--text-xs);
+    margin-left: var(--space-1);
+  }
+</style>

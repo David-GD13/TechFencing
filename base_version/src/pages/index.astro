@@ -12,19 +12,38 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
   <!-- ====== HERO SECTION ====== -->
   <section class="cine-section hero" data-section-id="hero" data-section-label="Home">
     <div class="cine-heading">
-      <div class="hero-label">// INSPIRED BY PEWDIEPIE'S TECH JOURNEY</div>
+      <div class="hero-label">// BY AN IGNORANT, FOR THE IGNORANTS. INSPIRED BY OUR SAVIOR'S TECH JOURNEY.</div>
       <GlitchText text="Build Your Tech Fence" tag="h1" class="hero-title" />
     </div>
     <div class="cine-content">
       <p class="hero-subtitle">
-        Take control of your data, your privacy, and your digital life.
-        Stop being the product. Start being the person who decides what software
-        runs on their machine, what services handle their data, and how they
-        interact with the internet.
+        Build your fence. Own your data. Control your digital life.
       </p>
+      <div class="hero-quote-block">
+        <img
+          src="/images/pewdiepie-savior.webp"
+          alt="PewDiePie"
+          class="hero-sticker"
+          width="200"
+          height="200"
+          loading="eager"
+        />
+        <blockquote class="hero-quote">
+          <p>
+            "I think you owe it to yourself to take some time today and start
+            building your tech fence. These tech companies don't care about you.
+            So, you're going to have to start caring about yourself. The cheat
+            sheet code is basically build some friction. It's that simple. Let
+            your brain catch up and make the choice yourself. And also filter out
+            the noise. That's your defense and that's your cure. Now you
+            understand the disease. You are free."
+          </p>
+          <cite>— PewDiePie, "I Fixed YouTube!"</cite>
+        </blockquote>
+      </div>
       <div class="hero-actions">
-        <a href="/guides/browsers" class="btn btn-primary">Start Here — 5 Minutes</a>
-        <a href="/tldr" class="btn btn-secondary">Just Show Me The Videos</a>
+        <a href="#pillars" class="btn btn-primary hero-scroll-btn" data-target="pillars">Start Here — 5 Minutes</a>
+        <a href="#extras" class="btn btn-secondary hero-scroll-btn" data-target="extras">I Just Want the TL;DR</a>
       </div>
     </div>
   </section>
@@ -32,50 +51,56 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
   <div class="section-spacer"></div>
 
   <!-- ====== TWO PILLARS ====== -->
-  <section class="cine-section" data-section-id="pillars" data-section-label="Two Pillars">
+  <section id="pillars" class="cine-section" data-section-id="pillars" data-section-label="Two Pillars">
     <div class="container">
       <div class="cine-heading">
         <h2 class="section-heading glitch-hover" data-text="The Two Pillars">The Two Pillars</h2>
       </div>
       <div class="cine-content">
-        <p class="section-intro">
-          Every solution on this site comes back to two ideas. Understand these,
-          and the rest is just details.
-        </p>
+        <blockquote class="section-quote">
+          <p>
+            "If you go around your life not making your own choices, then who the
+            heck are you? You are your choices and your actions. That's what
+            shapes who you are."
+          </p>
+          <cite>— PewDiePie, "I Fixed YouTube!"</cite>
+        </blockquote>
 
-        <div class="grid grid-2 pillars-grid">
-          <div class="pillar-card">
-            <div class="pillar-number">01</div>
-            <h3 class="pillar-title">You Are Not The Product</h3>
-            <div class="flowing-line"></div>
-            <p>
-              Every "free" service has a cost — your data, your attention, your
-              autonomy. Google knows your search history, your location history,
-              your contacts, your emails. The trade-off between control and
-              convenience is real, but being aware of it lets you <em>choose</em>
-              intentionally instead of sleepwalking into surveillance.
-            </p>
-            <p class="pillar-quote">
-              "I realized Google literally knows everything about me. Everything."
-              <span class="quote-attr">— PewDiePie, "I de-Googled my life"</span>
-            </p>
-          </div>
+        <div class="pillars-layout">
+          <img
+            src="/images/pewdiepie-matrix.webp"
+            alt="PewDiePie offering the red and blue pill"
+            class="pillars-bg-sticker"
+            width="500"
+            height="375"
+            loading="lazy"
+          />
+          <div class="grid grid-2 pillars-grid">
+            <div class="pillar-card">
+              <div class="pillar-number">01</div>
+              <h3 class="pillar-title">You Are Not The Product</h3>
+              <div class="flowing-line"></div>
+              <p>
+                Every "free" service has a cost — your data, your attention, your autonomy.
+              </p>
+              <p class="pillar-quote">
+                "If it's so great then why do I feel like I'm the product? I hate my phone. Notifications just feel like they're there to suck me in..."
+                <span class="quote-attr">— PewDiePie, "I'm DONE with Google"</span>
+              </p>
+            </div>
 
-          <div class="pillar-card">
-            <div class="pillar-number">02</div>
-            <h3 class="pillar-title">Curing Algo Brain</h3>
-            <div class="flowing-line"></div>
-            <p>
-              Algorithms are designed to keep you scrolling, clicking, consuming.
-              The cure is two tools: <strong>friction</strong> (small delays that
-              let your brain catch up with your fingers) and <strong>filtering</strong>
-              (removing algorithmic feeds, rebuilding your digital diet with
-              intention). Together, they break the loop.
-            </p>
-            <p class="pillar-quote">
-              "I catch myself opening apps without even thinking about it."
-              <span class="quote-attr">— PewDiePie, "I Fixed YouTube!"</span>
-            </p>
+            <div class="pillar-card">
+              <div class="pillar-number">02</div>
+              <h3 class="pillar-title">Curing Algo Brain</h3>
+              <div class="flowing-line"></div>
+              <p>
+                The cure is <strong>friction</strong> and <strong>filtering</strong>. Let your brain catch up. Break the loop.
+              </p>
+              <p class="pillar-quote">
+                "I used to catch myself all the time being on my phone without intending to and I get so pissed off and I'm like, What the fuck?"
+                <span class="quote-attr">— PewDiePie, "I Fixed YouTube!"</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -91,38 +116,51 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
         <h2 class="section-heading glitch-hover" data-text="The Three Layers">The Three Layers</h2>
       </div>
       <div class="cine-content">
-        <p class="section-intro">
-          Your tech fence is built in three layers. Each one gives you more control.
-          You don't have to do them all — even Layer 1 is a massive upgrade.
-        </p>
+        <blockquote class="section-quote">
+          <p>
+            "I think you owe it to yourself to take some time today and start
+            building your tech fence. That's what I'm calling this — tech fencing."
+          </p>
+          <cite>— PewDiePie, "I Fixed YouTube!"</cite>
+        </blockquote>
 
-        <div class="grid grid-3">
-          <Card title="Layer 1: OS Control" href="/bible/layer-1-os" accent>
-            <p>
-              <strong>What software runs on your machine.</strong> Replace Windows
-              with Linux. Choose an OS that doesn't spy on you, ship ads, or decide
-              what you can install.
-            </p>
-            <p class="card-meta">Based on: PewDiePie's Linux video</p>
-          </Card>
+        <div class="layers-layout">
+          <img
+            src="/images/pewdiepie-revelation.webp"
+            alt="PewDiePie revelation moment"
+            class="layers-bg-sticker"
+            width="500"
+            height="400"
+            loading="lazy"
+          />
+          <div class="grid grid-3 layers-grid">
+            <Card title="Layer 1: OS Control" href="/bible/layer-1-os" accent class="layer-card">
+              <img src="/images/linux-os.webp" alt="" class="layer-card-bg layer-bg-linux" loading="lazy" />
+              <p>
+                Replace Windows with Linux. Choose an OS that doesn't spy on you,
+                ship ads, or decide what you can install.
+              </p>
+              <p class="card-source">Based on "I installed Linux (so should you)"</p>
+            </Card>
 
-          <Card title="Layer 2: Service Control" href="/bible/layer-2-services" accent>
-            <p>
-              <strong>What services handle your data.</strong> De-Google your life.
-              Self-host alternatives for passwords, cloud storage, email, and more.
-              Own your data instead of renting it.
-            </p>
-            <p class="card-meta">Based on: PewDiePie's de-Google video</p>
-          </Card>
+            <Card title="Layer 2: Service Control" href="/bible/layer-2-services" accent class="layer-card">
+              <img src="/images/de-google.webp" alt="" class="layer-card-bg layer-bg-google" loading="lazy" />
+              <p>
+                De-Google your life. Self-host alternatives for passwords, cloud
+                storage, email, and more. Own your data instead of renting it.
+              </p>
+              <p class="card-source">Based on "I'm DONE with Google"</p>
+            </Card>
 
-          <Card title="Layer 3: Behavior Control" href="/bible/layer-3-behavior" accent>
-            <p>
-              <strong>How you interact with the digital world.</strong> Fight
-              algorithmic feeds. Add friction to mindless scrolling. Reclaim your
-              attention from apps designed to steal it.
-            </p>
-            <p class="card-meta">Based on: "I Fixed YouTube!" — where "tech fencing" was born</p>
-          </Card>
+            <Card title="Layer 3: Behavior Control" href="/bible/layer-3-behavior" accent class="layer-card">
+              <img src="/images/brain-control.webp" alt="" class="layer-card-bg layer-bg-brain" loading="lazy" />
+              <p>
+                Fight algorithmic feeds. Add friction to mindless scrolling. Reclaim
+                your attention from apps designed to steal it.
+              </p>
+              <p class="card-source">Based on "I Fixed YouTube!"</p>
+            </Card>
+          </div>
         </div>
 
         <div class="section-cta">
@@ -142,28 +180,41 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
       </div>
       <div class="cine-content">
         <p class="section-intro">
-          You don't need to become a Linux wizard overnight. Here are three
-          places to start — pick the one that fits.
+          You don't need to become a cybersecurity expert overnight. Here are
+          some actionable guides that will inform your decisions.
         </p>
 
-        <div class="grid grid-3">
+        <div class="guides-layout">
+          <img
+            src="/images/pewdiepie-tinfoil.webp"
+            alt="PewDiePie with tinfoil hat"
+            class="guides-bg-sticker"
+            width="500"
+            height="400"
+            loading="lazy"
+          />
+          <div class="grid grid-3 guides-grid">
           <a href="/guides/browsers" class="guide-preview-card">
+            <img src="/images/firefox-logo.webp" alt="" class="guide-card-bg guide-bg-firefox" loading="lazy" />
             <DifficultyBadge level={1} />
-            <h3>Switch Your Browser</h3>
+            <h3>1 — Switch Your Browser</h3>
             <p>Install Firefox or Brave. Change your search engine. Install uBlock Origin. Takes 5 minutes.</p>
           </a>
 
-          <a href="/guides/de-google" class="guide-preview-card">
-            <DifficultyBadge level={2} />
-            <h3>De-Google Your Life</h3>
-            <p>Replace Google services with open-source alternatives you can trust. An afternoon of work.</p>
-          </a>
-
           <a href="/guides/linux" class="guide-preview-card">
-            <DifficultyBadge level={3} />
-            <h3>Install Linux</h3>
+            <img src="/images/archlinux-logo.webp" alt="" class="guide-card-bg guide-bg-arch" loading="lazy" />
+            <DifficultyBadge level={2} />
+            <h3>2 — Install Linux</h3>
             <p>Replace Windows with an OS that respects you. A weekend project that changes everything.</p>
           </a>
+
+          <a href="/guides/de-google" class="guide-preview-card">
+            <img src="/images/opensource-logo.webp" alt="" class="guide-card-bg guide-bg-opensource" loading="lazy" />
+            <DifficultyBadge level={3} />
+            <h3>3 — De-Google Your Life</h3>
+            <p>Replace Google services with open-source alternatives you can trust. An afternoon of work.</p>
+          </a>
+          </div>
         </div>
 
         <div class="section-cta">
@@ -182,6 +233,15 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
         <h3 class="disclaimer-heading glitch-hover" data-text="A Word of Honesty">A Word of Honesty</h3>
       </div>
       <div class="cine-content">
+        <div class="honesty-layout">
+          <img
+            src="/images/pewdiepie-honesty.webp"
+            alt="PewDiePie being honest"
+            class="honesty-bg-sticker"
+            width="500"
+            height="400"
+            loading="lazy"
+          />
         <div class="disclaimer-box">
           <p>
             This isn't easy, and it's not for everyone. PewDiePie himself still
@@ -190,15 +250,21 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
             minutes late somewhere because the Google Maps alternative was terrible.
           </p>
           <p>
-            We tell you the downsides because we respect you. Every guide on this
+            I tell you the downsides because I respect you. Every guide on this
             site includes an <strong>"Honest Downsides"</strong> section. If
-            something sucks, we'll say so.
+            something sucks, I'll say so.
           </p>
           <p>
-            Also — we're learning too. This site was made by fans who watched the
-            videos and decided to actually do it. We're not experts. We're just
-            people who built the fence.
+            Also — I'm learning too. This site was made by a fan who watched the
+            videos and decided to actually do it. I'm not an expert. I'm just
+            someone who built the fence.
           </p>
+          <p>
+            One more thing — this site was vibecoded. The code was AI-generated,
+            but every piece of information, every recommendation, and every design
+            choice was intentionally curated by me, a fellow ignorant.
+          </p>
+        </div>
         </div>
       </div>
     </div>
@@ -207,7 +273,7 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
   <div class="section-spacer"></div>
 
   <!-- ====== EXTRAS ====== -->
-  <section class="cine-section" data-section-id="extras" data-section-label="Extras">
+  <section id="extras" class="cine-section" data-section-id="extras" data-section-label="Extras">
     <div class="container">
       <div class="cine-heading">
         <h2 class="section-heading glitch-hover" data-text="Extras">Extras</h2>
@@ -218,35 +284,41 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
         </p>
 
         <div class="extras-grid">
-          <a href="/tldr" class="extra-card">
+          <a href="/tldr" class="extra-card" data-emoji="⚡">
             <h3>TL;DR</h3>
-            <p>Just watch the three PewDiePie videos that started everything.</p>
+            <p>Read only this page — it contains everything you need to know.</p>
           </a>
 
-          <a href="/arsenal" class="extra-card">
+          <a href="/arsenal" class="extra-card" data-emoji="🛡️">
             <h3>The Arsenal</h3>
             <p>Every piece of hardware and software PewDiePie actually uses.</p>
           </a>
 
-          <a href="/damned" class="extra-card">
+          <a href="/damned" class="extra-card" data-emoji="💀">
             <h3>The Damned</h3>
             <p>Services we don't recommend — and the honest reasons why.</p>
           </a>
 
-          <a href="/experiments" class="extra-card">
-            <h3>Experiments</h3>
-            <p>Beyond the fence — supercomputers, local AI, and deeper rabbit holes.</p>
-          </a>
-
-          <a href="/glossary" class="extra-card">
+          <a href="/glossary" class="extra-card" data-emoji="📖">
             <h3>Glossary</h3>
             <p>Every tech term on this site, explained without jargon.</p>
           </a>
 
-          <a href="/about" class="extra-card">
+          <a href="/about" class="extra-card" data-emoji="👋">
             <h3>About</h3>
             <p>Who built this site, why, and what we believe.</p>
           </a>
+
+          <div class="extras-brofist-cell">
+            <img
+              src="/images/pewdiepie-brofist.webp"
+              alt="PewDiePie brofist"
+              class="extras-brofist"
+              width="300"
+              height="400"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -495,6 +567,28 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
   // Init
   initCinematicScroll();
 
+  // Hero scroll buttons — scroll to target section
+  document.querySelectorAll<HTMLAnchorElement>('.hero-scroll-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = btn.dataset.target;
+      if (!targetId) return;
+
+      const cinematicOn = localStorage.getItem('cinematicMode') !== 'false';
+      const targetTrigger = (window as any).__sectionTriggers?.[targetId] as ScrollTrigger | undefined;
+
+      if (cinematicOn && targetTrigger) {
+        // In cinematic mode, scroll to the trigger's content-visible position
+        const scrollTarget = targetTrigger.start + (targetTrigger.end - targetTrigger.start) * 0.5;
+        gsap.to(window, { scrollTo: { y: scrollTarget }, duration: 0.0, ease: 'power2.inOut' });
+      } else {
+        // Fallback: native smooth scroll to the element
+        const el = document.getElementById(targetId);
+        el?.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
   // When browser blocker is dismissed, main-app goes from display:none to visible.
   // GSAP measured everything as zero while hidden — rebuild all ScrollTriggers.
   window.addEventListener('blocker-dismissed', () => {
@@ -624,10 +718,79 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     font-size: var(--text-lg);
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--space-6);
     max-width: 650px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .hero-quote-block {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto var(--space-8);
+    text-align: left;
+  }
+
+  .hero-sticker {
+    position: absolute;
+    width: 280px;
+    height: auto;
+    opacity: 0.7;
+    transform: rotate(-5deg);
+    filter: drop-shadow(0 4px 16px rgba(212, 84, 94, 0.25));
+    border-radius: var(--radius-md);
+    top: 50%;
+    left: -75px;
+    translate: 0 -50%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-quote {
+    position: relative;
+    z-index: 1;
+    border-left: 3px solid var(--text-accent);
+    padding-left: var(--space-5);
+    margin: 0;
+    margin-left: 180px;
+  }
+
+  .hero-quote p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    font-style: italic;
+    margin-bottom: var(--space-2);
+  }
+
+  .hero-quote cite {
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    font-style: normal;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .hero-sticker {
+      position: relative;
+      display: block;
+      margin: 0 auto var(--space-4);
+      width: 200px;
+      top: auto;
+      left: auto;
+      translate: none;
+      transform: rotate(-3deg);
+      opacity: 0.8;
+    }
+
+    .hero-quote {
+      margin-left: 0;
+      border-left: none;
+      border-top: 3px solid var(--text-accent);
+      padding-left: 0;
+      padding-top: var(--space-4);
+      text-align: center;
+    }
   }
 
   .hero-actions {
@@ -703,13 +866,70 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     margin-top: var(--space-8);
   }
 
+  /* ---- Section Quote (blockquote style for section intros) ---- */
+  .section-quote {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--space-10);
+    padding: var(--space-5) var(--space-6);
+    border-left: 3px solid var(--text-accent);
+    border-right: 3px solid var(--text-accent);
+    background: rgba(212, 84, 94, 0.04);
+    border-radius: var(--radius-sm);
+  }
+
+  .section-quote p {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    font-style: italic;
+    margin-bottom: var(--space-2);
+  }
+
+  .section-quote cite {
+    font-size: var(--text-xs);
+    color: var(--text-accent);
+    font-style: normal;
+    opacity: 0.7;
+  }
+
+  /* ---- Card Quote ---- */
+  :global(.card-quote) {
+    font-style: italic;
+    color: var(--text-muted) !important;
+    font-size: var(--text-xs) !important;
+    border-left: 2px solid var(--border-primary);
+    padding-left: var(--space-3);
+    margin-top: var(--space-3) !important;
+  }
+
   /* ---- Pillars ---- */
+  .pillars-layout {
+    position: relative;
+  }
+
+  .pillars-bg-sticker {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    translate: -50% -60%;
+    width: 700px;
+    height: auto;
+    opacity: 0.15;
+    filter: drop-shadow(0 0 30px rgba(212, 84, 94, 0.15));
+    pointer-events: none;
+    z-index: 0;
+  }
+
   .pillars-grid {
-    gap: var(--space-8);
+    position: relative;
+    z-index: 1;
+    gap: var(--space-6);
   }
 
   .pillar-card {
-    background: var(--bg-card);
+    background: rgba(26, 29, 35, 0.5);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--border-muted);
     border-radius: var(--radius-md);
     padding: var(--space-8);
@@ -759,6 +979,80 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     opacity: 0.7;
   }
 
+  /* ---- Layers ---- */
+  .layers-layout {
+    position: relative;
+  }
+
+  .layers-bg-sticker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 950px;
+    height: auto;
+    opacity: 0.1;
+    filter: drop-shadow(0 0 30px rgba(212, 84, 94, 0.15));
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  :global(.layer-card) {
+    position: relative;
+    overflow: hidden;
+  }
+
+  :global(.layer-card-bg) {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 55%;
+    height: auto;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+    object-fit: contain;
+    object-position: bottom right;
+  }
+
+  /* Per-card position overrides — tweak these freely */
+  :global(.layer-bg-linux) {
+    bottom: -24px;
+    right: -42px;
+    width: 62%;
+  }
+
+  :global(.layer-bg-google) {
+    bottom: -10%;
+    right: -5%;
+    width: 50%;
+  }
+
+  :global(.layer-bg-brain) {
+    bottom: -20px;
+    right: -15px;
+    width: 50%;
+  }
+
+  :global(.layer-card .card-inner) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .layers-grid {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---- Card Source ---- */
+  :global(.card-source) {
+    font-size: var(--text-xs) !important;
+    color: var(--text-muted) !important;
+    font-style: italic;
+    margin-top: var(--space-3) !important;
+    opacity: 0.6;
+  }
+
   /* ---- Card Meta ---- */
   :global(.card-meta) {
     font-family: var(--font-display);
@@ -769,6 +1063,29 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     margin-top: var(--space-3) !important;
     padding-top: var(--space-3);
     border-top: 1px solid var(--border-muted);
+  }
+
+  /* ---- Guides Layout ---- */
+  .guides-layout {
+    position: relative;
+  }
+
+  .guides-bg-sticker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: 20% -40%;
+    width: 800px;
+    height: auto;
+    opacity: 0.12;
+    filter: drop-shadow(0 0 30px rgba(212, 84, 94, 0.15));
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .guides-grid {
+    position: relative;
+    z-index: 1;
   }
 
   /* ---- Guide Preview Cards ---- */
@@ -782,6 +1099,40 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     border-radius: var(--radius-md);
     text-decoration: none;
     transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .guide-card-bg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 45%;
+    height: auto;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+    object-fit: contain;
+    object-position: bottom right;
+  }
+
+  /* Per-guide position overrides — tweak these freely */
+  .guide-bg-firefox {
+    bottom: -10%;
+    right: -5%;
+    width: 50%;
+  }
+
+  .guide-bg-arch {
+    bottom: -5%;
+    right: -5%;
+    width: 45%;
+  }
+
+  .guide-bg-opensource {
+    bottom: -10%;
+    right: -5%;
+    width: 45%;
   }
 
   .guide-preview-card:hover {
@@ -802,6 +1153,25 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     line-height: var(--leading-relaxed);
   }
 
+  /* ---- Honesty Layout ---- */
+  .honesty-layout {
+    position: relative;
+  }
+
+  .honesty-bg-sticker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -100% -50%;
+    width: 1000px;
+    height: auto;
+    opacity: 0.12;
+    filter: drop-shadow(0 0 30px rgba(212, 84, 94, 0.15));
+    pointer-events: none;
+    z-index: 0;
+  }
+
+
   /* ---- Disclaimer ---- */
   .disclaimer-heading {
     font-family: var(--font-display);
@@ -816,10 +1186,12 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     max-width: 800px;
     margin: 0 auto;
     padding: var(--space-8);
-    background: var(--bg-card);
+    background: rgba(26, 29, 35, 0.5);
+    backdrop-filter: blur(4px);
     border: 1px dashed var(--border-muted);
     border-radius: var(--radius-md);
     position: relative;
+    z-index: 1;
   }
 
   .disclaimer-box::before {
@@ -873,6 +1245,19 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     border-radius: var(--radius-md);
     text-decoration: none;
     transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .extra-card::after {
+    content: attr(data-emoji);
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    font-size: 4rem;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
   }
 
   .extra-card:hover {
@@ -892,5 +1277,30 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     color: var(--text-secondary);
     font-size: var(--text-xs);
     line-height: var(--leading-relaxed);
+  }
+
+  .extras-brofist-cell {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    align-self: stretch;
+  }
+
+  .extras-brofist {
+    width: 80px;
+    height: auto;
+    opacity: 0.5;
+    filter: drop-shadow(0 0 20px rgba(212, 84, 94, 0.2));
+    pointer-events: none;
+    max-height: 100%;
+    object-fit: contain;
+    /* Tweak these freely: scale, move (X, Y), rotate */
+    transform: scale(2.25, 1.35) translate(0px, 0px) rotate(0deg);
+  }
+
+  @media (max-width: 1023px) {
+    .extras-brofist-cell {
+      display: none;
+    }
   }
 </style>
