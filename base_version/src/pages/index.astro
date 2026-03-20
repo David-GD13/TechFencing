@@ -9,9 +9,6 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
 <BaseLayout title="Build Your Tech Fence" activePage="home">
   <ScrollProgressTrail />
 
-  <!-- Background overlay — fades in/out with sections -->
-  <div class="bg-overlay" id="bg-overlay"></div>
-
   <!-- ====== HERO SECTION ====== -->
   <section class="cine-section hero" data-section-id="hero" data-section-label="Home">
     <div class="cine-heading">
@@ -31,6 +28,8 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
       </div>
     </div>
   </section>
+
+  <div class="section-spacer"></div>
 
   <!-- ====== TWO PILLARS ====== -->
   <section class="cine-section" data-section-id="pillars" data-section-label="Two Pillars">
@@ -83,6 +82,8 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     </div>
   </section>
 
+  <div class="section-spacer"></div>
+
   <!-- ====== THREE LAYERS ====== -->
   <section class="cine-section" data-section-id="layers" data-section-label="Three Layers">
     <div class="container">
@@ -131,6 +132,8 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     </div>
   </section>
 
+  <div class="section-spacer"></div>
+
   <!-- ====== GETTING STARTED (slim) ====== -->
   <section class="cine-section" data-section-id="guides" data-section-label="Getting Started">
     <div class="container">
@@ -170,6 +173,8 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     </div>
   </section>
 
+  <div class="section-spacer"></div>
+
   <!-- ====== HONEST DISCLAIMER ====== -->
   <section class="cine-section" data-section-id="honesty" data-section-label="Honesty">
     <div class="container">
@@ -198,6 +203,8 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
       </div>
     </div>
   </section>
+
+  <div class="section-spacer"></div>
 
   <!-- ====== EXTRAS ====== -->
   <section class="cine-section" data-section-id="extras" data-section-label="Extras">
@@ -259,13 +266,11 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
 
   function initCinematicScroll() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const overlay = document.getElementById('bg-overlay');
 
     if (prefersReducedMotion) {
       document.querySelectorAll<HTMLElement>('.cine-content').forEach(el => {
         el.style.opacity = '1';
       });
-      if (overlay) overlay.style.opacity = '0.4';
       return;
     }
 
@@ -281,7 +286,6 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
       revealDuration: 1.4,    // how long content takes to appear
       holdDuration: 1.35,     // reading time before exit starts
       exitDuration: 1.4,      // how long exit animation takes
-      overlayFade: 1.2,       // overlay fade in/out speed
       slideDistance: 200,      // px distance for horizontal slides
       headingLift: -80,       // px heading moves up during exit
       scrollRange: '+=100%',  // scroll distance per section (viewport %)
@@ -324,23 +328,20 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
       }
 
       if (isHero) {
-        // Hero: visible from start, overlay starts visible, both fade out vertically
+        // Hero: visible from start, fades out vertically
         gsap.set(content, { opacity: 1, y: 0 });
-        if (overlay) gsap.set(overlay, { opacity: 0.6 });
 
         tl.addLabel('visible')
           .to(heading, { y: -60, opacity: 0, duration: TIMING.exitDuration }, 0.65)
-          .to(content, { y: -40, opacity: 0, duration: TIMING.exitDuration }, 0.65)
-          .to(overlay, { opacity: 0, duration: TIMING.overlayFade }, 0.6);
+          .to(content, { y: -40, opacity: 0, duration: TIMING.exitDuration }, 0.65);
       } else {
         // Non-hero sections: horizontal slideshow transitions
         gsap.set(heading, { x: TIMING.slideDistance, opacity: 0 });
         gsap.set(content, { x: TIMING.slideDistance * 0.75, opacity: 0 });
 
-        // Phase 1: Heading slides in from right + overlay fades in
+        // Phase 1: Heading slides in from right
         tl.addLabel('enter')
           .to(heading, { x: 0, opacity: 1, duration: TIMING.enterDuration, ease: 'power2.out' })
-          .to(overlay, { opacity: 0.6, duration: TIMING.overlayFade }, '<')
 
         // Phase 2: Content slides in (heading stays in place)
           .addLabel('reveal')
@@ -353,8 +354,7 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
         // Phase 4: Exit — heading lifts up, then everything slides left
         tl.addLabel('exit')
           .to(heading, { y: TIMING.headingLift, opacity: 0, duration: TIMING.exitDuration, ease: 'power1.in' })
-          .to(content, { x: -TIMING.slideDistance, opacity: 0, duration: TIMING.exitDuration, ease: 'power1.in' }, '<0.05')
-          .to(overlay, { opacity: 0, duration: TIMING.overlayFade }, '<0.1');
+          .to(content, { x: -TIMING.slideDistance, opacity: 0, duration: TIMING.exitDuration, ease: 'power1.in' }, '<0.05');
       }
     });
 
@@ -511,14 +511,10 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     overflow: visible;
   }
 
-  /* ---- Background Overlay ---- */
-  .bg-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(10, 0, 0, 0.6);
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0;
+  /* ---- Section Spacers ---- */
+  .section-spacer {
+    height: 35vh;
+    position: relative;
   }
 
   /* ---- Cinematic Sections ---- */
@@ -531,6 +527,38 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     padding: var(--space-8) 0;
     box-sizing: border-box;
     overflow: hidden;
+  }
+
+  /* Per-section dark background with gradient edges */
+  .cine-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(10, 0, 0, 0.55) 12%,
+      rgba(10, 0, 0, 0.55) 88%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Hero: no top fade (starts dark) */
+  .hero::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 0, 0, 0.55) 0%,
+      rgba(10, 0, 0, 0.55) 88%,
+      transparent 100%
+    );
+  }
+
+  /* Content sits above the background */
+  .cine-section > :global(*) {
+    position: relative;
+    z-index: 1;
   }
 
   .cine-heading {
