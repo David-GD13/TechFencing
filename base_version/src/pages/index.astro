@@ -591,12 +591,6 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
 
   // When browser blocker is dismissed, main-app goes from display:none to visible.
   // GSAP measured everything as zero while hidden — rebuild all ScrollTriggers.
-  window.addEventListener('blocker-dismissed', () => {
-    ScrollTrigger.getAll().forEach(st => st.kill());
-    (window as any).__sectionTriggers = {};
-    initCinematicScroll();
-  });
-
   // Astro page transition support
   document.addEventListener('astro:after-swap', () => {
     ScrollTrigger.getAll().forEach(st => st.kill());

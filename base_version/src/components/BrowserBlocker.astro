@@ -8,10 +8,10 @@ import WavyShader from './WavyShader.astro';
   <WavyShader position="absolute" opacity={0.1} scale={3.5} rotation={0.6} grain={3} thickness={2.6} speed={5} />
   <canvas id="crt-canvas" class="crt-canvas"></canvas>
   <div class="blocker-content">
-    <h1 class="blocker-title glitch-text" data-text="ACCESS DENIED">ACCESS DENIED</h1>
+    <h1 id="blocker-title" class="blocker-title glitch-text" data-text=""></h1>
     <div class="flowing-line"></div>
     <p class="blocker-subtitle">
-      You're using <strong id="detected-browser">a surveilled browser</strong>.
+      ...on a privacy website. Bold move.
     </p>
     <p class="blocker-message">
       This is literally a website about digital privacy, and you showed up in a
@@ -19,11 +19,36 @@ import WavyShader from './WavyShader.astro';
     </p>
     <div class="blocker-alternatives">
       <p>Try one of these instead:</p>
-      <ul>
-        <li><strong>Firefox</strong> — The OG privacy browser</li>
-        <li><strong>Brave</strong> — Chromium without the Google</li>
-        <li><strong>LibreWolf</strong> — Firefox, hardened</li>
-      </ul>
+      <div class="alt-grid">
+        <a href="https://www.firefox.com/" target="_blank" rel="noopener noreferrer" class="alt-card">
+          <img src="/images/firefox-logo.webp" alt="Firefox logo" class="alt-logo" width="36" height="36" />
+          <div class="alt-info">
+            <strong>Firefox</strong>
+            <span>To be hardened — what PewDiePie uses</span>
+          </div>
+        </a>
+        <a href="https://librewolf.net/" target="_blank" rel="noopener noreferrer" class="alt-card">
+          <img src="/images/LibreWolf_icon.webp" alt="LibreWolf logo" class="alt-logo" width="36" height="36" />
+          <div class="alt-info">
+            <strong>LibreWolf</strong>
+            <span>Pre-hardened Firefox, easy install</span>
+          </div>
+        </a>
+        <a href="https://brave.com/" target="_blank" rel="noopener noreferrer" class="alt-card">
+          <img src="/images/Brave_lion_icon.webp" alt="Brave logo" class="alt-logo" width="36" height="36" />
+          <div class="alt-info">
+            <strong>Brave</strong>
+            <span>Chromium without the Google</span>
+          </div>
+        </a>
+        <a href="https://mullvad.net/en/browser" target="_blank" rel="noopener noreferrer" class="alt-card">
+          <img src="/images/Mullvad_Browser_logo.webp" alt="Mullvad Browser logo" class="alt-logo" width="36" height="36" />
+          <div class="alt-info">
+            <strong>Mullvad Browser</strong>
+            <span>The cybersecurity experts' choice</span>
+          </div>
+        </a>
+      </div>
     </div>
     <button id="blocker-dismiss" class="blocker-btn" type="button">
       I know, I know... let me in anyway
@@ -62,45 +87,36 @@ import WavyShader from './WavyShader.astro';
 
     const blocker = document.getElementById('browser-blocker');
     const mainApp = document.getElementById('main-app');
-    const browserName = document.getElementById('detected-browser');
     const dismissBtn = document.getElementById('blocker-dismiss');
 
     if (!blocker || !mainApp) return;
 
+    // Set dynamic title
+    const titleEl = document.getElementById('blocker-title');
+    const titleText = `You're using ${blockedBrowser}`;
+    if (titleEl) {
+      titleEl.textContent = titleText;
+      titleEl.setAttribute('data-text', titleText);
+    }
+
     // Show blocker
-    if (browserName) browserName.textContent = blockedBrowser;
     blocker.classList.remove('hidden');
     mainApp.style.display = 'none';
     document.body.style.overflow = 'hidden';
 
-    // Init shader canvas now that the blocker is visible
-    const shaderCanvas = blocker.querySelector<HTMLCanvasElement>('.wavy-shader');
-    if (shaderCanvas && (window as any).__initWavyShader) {
-      (window as any).__initWavyShader(shaderCanvas);
-    }
+    // Defer shader + CRT init to next frame so layout has settled
+    requestAnimationFrame(() => {
+      const shaderCanvas = blocker.querySelector<HTMLCanvasElement>('.wavy-shader');
+      if (shaderCanvas && (window as any).__initWavyShader) {
+        (window as any).__initWavyShader(shaderCanvas);
+      }
+      initCRTEffect();
+    });
 
-    // Start CRT canvas effect
-    initCRTEffect();
-
-    // Dismiss handler
+    // Dismiss handler — reload for a clean slate (avoids stale ScrollTrigger state)
     dismissBtn?.addEventListener('click', () => {
       sessionStorage.setItem('tf-blocker-dismissed', 'true');
-      blocker.classList.add('hidden');
-      mainApp.style.display = '';
-      document.body.style.overflow = '';
-      stopCRTEffect();
-
-      // Kill the blocker's WavyShader — its rAF loop + WebGL context waste GPU cycles
-      const blockerShader = blocker.querySelector<HTMLCanvasElement>('.wavy-shader');
-      if (blockerShader && (blockerShader as any).__destroyShader) {
-        (blockerShader as any).__destroyShader();
-      }
-
-      // GSAP ScrollTrigger calculated positions while main-app was hidden (display:none).
-      // All measurements are zero/wrong. Dispatch event so the homepage can refresh.
-      requestAnimationFrame(() => {
-        window.dispatchEvent(new CustomEvent('blocker-dismissed'));
-      });
+      window.location.reload();
     });
   }
 
@@ -192,13 +208,13 @@ import WavyShader from './WavyShader.astro';
     position: relative;
     z-index: 1;
     max-width: 600px;
-    padding: var(--space-8);
+    padding: var(--space-4) var(--space-8);
     text-align: center;
   }
 
   .blocker-title {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
     font-weight: 700;
     color: var(--text-accent);
     text-transform: uppercase;
@@ -206,19 +222,19 @@ import WavyShader from './WavyShader.astro';
     text-shadow:
       4px 4px 0 rgba(212, 84, 94, 0.3),
       -2px -2px 0 rgba(0, 0, 0, 0.8);
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-3);
   }
 
   .blocker-subtitle {
     font-size: var(--text-xl);
     color: var(--text-primary);
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-2);
   }
 
   .blocker-message {
-    font-size: var(--text-base);
+    font-size: var(--text-sm);
     color: var(--text-secondary);
-    margin-bottom: var(--space-8);
+    margin-bottom: var(--space-4);
     line-height: var(--leading-relaxed);
   }
 
@@ -227,11 +243,11 @@ import WavyShader from './WavyShader.astro';
     background: rgba(212, 84, 94, 0.05);
     border: 1px solid var(--border-muted);
     border-radius: var(--radius-md);
-    padding: var(--space-6);
-    margin-bottom: var(--space-8);
+    padding: var(--space-4);
+    margin-bottom: var(--space-4);
   }
 
-  .blocker-alternatives p {
+  .blocker-alternatives > p {
     font-family: var(--font-display);
     font-size: var(--text-sm);
     color: var(--text-accent);
@@ -239,21 +255,66 @@ import WavyShader from './WavyShader.astro';
     margin-bottom: var(--space-3);
   }
 
-  .blocker-alternatives ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .alt-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
   }
 
-  .blocker-alternatives li {
-    padding: var(--space-2) 0;
+  .alt-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    text-decoration: none;
     color: var(--text-secondary);
-    font-size: var(--text-sm);
-    border-bottom: 1px solid rgba(212, 84, 94, 0.08);
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
   }
 
-  .blocker-alternatives li:last-child {
-    border-bottom: none;
+  .alt-card:hover {
+    background: rgba(212, 84, 94, 0.08);
+    border-color: var(--border-primary);
+    box-shadow: var(--shadow-glow);
+    transform: translateX(4px);
+  }
+
+  .alt-card:focus-visible {
+    outline: 2px solid var(--text-accent);
+    outline-offset: 2px;
+  }
+
+  .alt-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: grayscale(0.3);
+    transition: filter var(--transition-normal);
+  }
+
+  .alt-card:hover .alt-logo {
+    filter: grayscale(0);
+  }
+
+  .alt-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    text-align: left;
+  }
+
+  .alt-info strong {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+  }
+
+  .alt-info span {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    opacity: 0.7;
   }
 
   .blocker-btn {
@@ -281,5 +342,11 @@ import WavyShader from './WavyShader.astro';
   .blocker-btn:focus-visible {
     outline: 2px solid var(--text-accent);
     outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .alt-card:hover {
+      transform: none;
+    }
   }
 </style>

@@ -254,7 +254,18 @@ const rotationValue = rotation !== undefined ? rotation : null;
       gl.drawArrays(gl.TRIANGLES, 0, 6);
     } else {
       resize();
-      animId = requestAnimationFrame(render);
+
+      // Warm-up: render one silent frame to force GPU shader compilation,
+      // then wait a frame before starting the animation loop.
+      // This prevents the visible stutter from the compilation stall.
+      gl.uniform2f(resLoc, canvas.width, canvas.height);
+      gl.uniform1f(timeLoc, 0);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+      gl.finish(); // block until GPU compilation completes
+
+      requestAnimationFrame(() => {
+        animId = requestAnimationFrame(render);
+      });
     }
 
     window.addEventListener('resize', () => {
@@ -268,9 +279,20 @@ const rotationValue = rotation !== undefined ? rotation : null;
   // Expose for deferred init (e.g. blocker canvas hidden at load time)
   (window as any).__initWavyShader = setupCanvas;
 
-  // Init all visible shader canvases (skip hidden ones — zero dimensions break WebGL)
-  document.querySelectorAll<HTMLCanvasElement>('.wavy-shader').forEach((canvas) => {
-    const rect = canvas.getBoundingClientRect();
-    if (rect.width > 0 && rect.height > 0) setupCanvas(canvas);
+  function initVisibleShaders() {
+    document.querySelectorAll<HTMLCanvasElement>('.wavy-shader').forEach((canvas) => {
+      if ((canvas as any).__destroyShader) return; // already initialized
+      const rect = canvas.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) setupCanvas(canvas);
+    });
+  }
+
+  // Defer init to after DOMContentLoaded — ensures CSS is computed AND the blocker
+  // has had a chance to hide #main-app. If main-app is hidden, skip init entirely
+  // (page reloads on blocker dismiss, so the shader will init fresh then).
+  // This avoids two WebGL contexts running simultaneously which causes visible lag.
+  document.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(initVisibleShaders);
   });
+
 </script>
