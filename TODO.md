@@ -23,9 +23,9 @@
 - [ ] **Note:** Do this AFTER content verification (item 1) is complete
 
 ### 5. Contact Email & About Page
-- [ ] Create custom domain email: contact@techfencing.com
-- [ ] Add contact email to footer
-- [ ] Add contact email to About page with message: "This site is open to contributions. If you spot an error, have a better alternative, or want to improve a guide — reach out."
+- [x] Create custom domain email: contact@techfencing.com
+- [x] Add contact email to footer
+- [x] Add contact email to About page with message: "This site is open to contributions. If you spot an error, have a better alternative, or want to improve a guide — reach out."
 
 ### 6. Homepage Visitor Counter (Privacy Awareness Feature)
 - [ ] Research Cloudflare analytics — does it track visitors? Do they respect privacy? (practice what we preach)
@@ -34,7 +34,7 @@
 - [ ] This ties into the broader question: is Cloudflare a good host for a privacy-focused site?
 
 ### 7. Pre-Publish on Cloudflare
-- [ ] Deploy to .pages.dev using Cloudflare Pages
+- [x] Deploy to .pages.dev using Cloudflare Pages (config ready: `.node-version`, build cmd set)
 - [ ] Test the deployment
 - [ ] Verify all features work in production
 

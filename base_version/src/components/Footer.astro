@@ -16,6 +16,9 @@ const currentYear = new Date().getFullYear();
           Inspired by <strong>PewDiePie's</strong> tech journey.
           We're learning too.
         </p>
+        <p class="footer-contact">
+          Got something to say? <a href="mailto:contact@techfencing.com">contact@techfencing.com</a>
+        </p>
       </div>
 
       <div class="footer-section">
@@ -103,6 +106,21 @@ const currentYear = new Date().getFullYear();
   .footer-credit {
     font-size: var(--text-xs);
     color: var(--text-muted);
+  }
+
+  .footer-contact {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-top: var(--space-3);
+  }
+
+  .footer-contact a {
+    color: var(--text-accent);
+    transition: opacity var(--transition-fast);
+  }
+
+  .footer-contact a:hover {
+    opacity: 0.8;
   }
 
   .footer-links {
