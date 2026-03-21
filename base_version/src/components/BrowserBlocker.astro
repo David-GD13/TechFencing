@@ -17,11 +17,11 @@ import WavyShader from './WavyShader.astro';
       This is literally a website about digital privacy, and you showed up in a
       browser that tracks everything you do. The irony is not lost on us.
     </p>
-    <div class="blocker-counter" id="blocker-counter" style="display:none;">
+    <div class="blocker-counter" id="blocker-counter">
       <span class="blocker-counter-stat">
-        <span id="blocker-counter-unprotected">—</span> of <span id="blocker-counter-total">—</span>
+        This is your <span id="blocker-visit-count">1st</span> visit with this browser.
       </span>
-      <span class="blocker-counter-label">visitors came here using a browser that tracks them</span>
+      <span class="blocker-counter-label">just saying.</span>
     </div>
     <div class="blocker-alternatives">
       <p>Try one of these instead:</p>
@@ -119,31 +119,19 @@ import WavyShader from './WavyShader.astro';
       initCRTEffect();
     });
 
-    // Fetch privacy counter data for the blocker
-    (async () => {
-      const blockerCounter = document.getElementById('blocker-counter');
-      if (!blockerCounter) return;
+    // Increment local bad-browser visit count (localStorage, no server calls)
+    const key = 'tf-bad-browser-visits';
+    const visits = parseInt(localStorage.getItem(key) || '0', 10) + 1;
+    localStorage.setItem(key, String(visits));
 
-      let total = 0;
-      let unprotectedCount = 0;
+    const ordinal = (n: number): string => {
+      const s = ['th','st','nd','rd'];
+      const v = n % 100;
+      return n + (s[(v - 20) % 10] || s[v] || s[0]);
+    };
 
-      try {
-        const res = await fetch('/api/counter');
-        if (!res.ok) return;
-        const data = await res.json();
-        total = data.total;
-        unprotectedCount = data.unprotected;
-      } catch {
-        // API unavailable — silently hide counter
-        return;
-      }
-
-      if (total > 0) {
-        document.getElementById('blocker-counter-unprotected')!.textContent = unprotectedCount.toLocaleString();
-        document.getElementById('blocker-counter-total')!.textContent = total.toLocaleString();
-        blockerCounter.style.display = '';
-      }
-    })();
+    const visitEl = document.getElementById('blocker-visit-count');
+    if (visitEl) visitEl.textContent = ordinal(visits);
 
     // Dismiss handler — reload for a clean slate (avoids stale ScrollTrigger state)
     dismissBtn?.addEventListener('click', () => {
