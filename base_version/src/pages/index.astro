@@ -614,13 +614,20 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     const counter = document.getElementById('privacy-counter');
     if (!counter) return;
 
-    let unprotected = false;
-    try {
-      const res = await fetch('/ads/tracker.js', { cache: 'no-store' });
-      if (res.ok) unprotected = true;
-    } catch {
-      // Blocked by tracker blocker — good, the visitor is protected
-    }
+    // Detect tracker blockers using a bait div. Blockers hide elements with
+    // ad-related class names. No external requests, no scripts, no ads — just
+    // an invisible div that gets checked and removed.
+    const bait = document.createElement('div');
+    bait.className = 'adsbox ad-placement ad-banner';
+    bait.style.cssText = 'position:absolute;top:-1px;left:-1px;width:1px;height:1px;overflow:hidden;pointer-events:none;';
+    bait.innerHTML = '&nbsp;';
+    document.body.appendChild(bait);
+
+    // Give blockers a moment to process the DOM
+    await new Promise(r => setTimeout(r, 100));
+
+    const unprotected = bait.offsetHeight > 0 && bait.clientHeight > 0;
+    bait.remove();
 
     let total = 0;
     let unprotectedCount = 0;
