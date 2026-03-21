@@ -41,6 +41,12 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
           <cite>— PewDiePie, "I Fixed YouTube!"</cite>
         </blockquote>
       </div>
+      <div class="privacy-counter" id="privacy-counter" style="display:none;">
+        <span class="counter-stat">
+          <span id="counter-unprotected">—</span> of <span id="counter-total">—</span>
+        </span>
+        <span class="counter-label">visitors browsed this site without tracker protection</span>
+      </div>
       <div class="hero-actions">
         <a href="#pillars" class="btn btn-primary hero-scroll-btn" data-target="pillars">Start Here — 5 Minutes</a>
         <a href="#extras" class="btn btn-secondary hero-scroll-btn" data-target="extras">I Just Want the TL;DR</a>
@@ -601,6 +607,52 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
   });
 </script>
 
+<script>
+  // Privacy awareness counter — detects if the visitor has a tracker blocker
+  // by fetching a self-hosted bait URL that blockers will block.
+  (async () => {
+    const counter = document.getElementById('privacy-counter');
+    if (!counter) return;
+
+    let unprotected = false;
+    try {
+      const res = await fetch('/ads/tracker.js', { cache: 'no-store' });
+      if (res.ok) unprotected = true;
+    } catch {
+      // Blocked by tracker blocker — good, the visitor is protected
+    }
+
+    let total = 0;
+    let unprotectedCount = 0;
+
+    try {
+      const postRes = await fetch('/api/counter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ unprotected }),
+      });
+      if (!postRes.ok) return;
+
+      const res = await fetch('/api/counter');
+      if (!res.ok) return;
+
+      const data = await res.json();
+      total = data.total;
+      unprotectedCount = data.unprotected;
+    } catch {
+      // API unavailable — silently hide counter
+      return;
+    }
+
+    if (total > 0) {
+      document.getElementById('counter-unprotected')!.textContent = unprotectedCount.toLocaleString();
+      document.getElementById('counter-total')!.textContent = total.toLocaleString();
+      counter.style.display = '';
+      requestAnimationFrame(() => counter.classList.add('visible'));
+    }
+  })();
+</script>
+
 <style>
   /* ---- Layout overrides (homepage only) ---- */
   :global(#main-content) {
@@ -785,6 +837,34 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
       padding-top: var(--space-4);
       text-align: center;
     }
+  }
+
+  .privacy-counter {
+    text-align: center;
+    margin-bottom: var(--space-4);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    letter-spacing: var(--tracking-wide);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  .privacy-counter.visible {
+    opacity: 1;
+  }
+
+  .counter-stat {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: var(--text-base);
+  }
+
+  .counter-label {
+    display: block;
+    margin-top: var(--space-1);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
   }
 
   .hero-actions {

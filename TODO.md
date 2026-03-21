@@ -38,11 +38,6 @@
 - [ ] Test footer, navbar, and glossary tooltips on mobile
 - [ ] Verify on actual device after fixes
 
-### 9. Google Stitch UI/UX Review
-- [ ] Use Google Stitch (UI/UX AI service) to review the website
-- [ ] Document the score and any recommendations
-- [ ] Address critical UX issues found
-
 ---
 
 ## Secondary
@@ -71,3 +66,8 @@ _(Move items here as they're done)_
 - [x] Deploy to .pages.dev using Cloudflare Pages (config ready: `.node-version`, build cmd set)
 - [x] Test the deployment
 - [x] Verify all features work in production
+
+### 9. Google Stitch UI/UX Review
+- [x] Use Google Stitch (UI/UX AI service) to review the website
+- [x] Document the score and any recommendations
+- [x] Address critical UX issues found

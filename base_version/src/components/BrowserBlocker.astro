@@ -17,14 +17,20 @@ import WavyShader from './WavyShader.astro';
       This is literally a website about digital privacy, and you showed up in a
       browser that tracks everything you do. The irony is not lost on us.
     </p>
+    <div class="blocker-counter" id="blocker-counter" style="display:none;">
+      <span class="blocker-counter-stat">
+        <span id="blocker-counter-unprotected">—</span> of <span id="blocker-counter-total">—</span>
+      </span>
+      <span class="blocker-counter-label">visitors browsed this site without tracker protection</span>
+    </div>
     <div class="blocker-alternatives">
       <p>Try one of these instead:</p>
       <div class="alt-grid">
         <a href="https://www.firefox.com/" target="_blank" rel="noopener noreferrer" class="alt-card">
           <img src="/images/firefox-logo.webp" alt="Firefox logo" class="alt-logo" width="36" height="36" />
           <div class="alt-info">
-            <strong>Firefox</strong>
-            <span>To be hardened — what PewDiePie uses</span>
+            <strong>Firefox (Hardened)</strong>
+            <span>To harden — PewDiePie's choice</span>
           </div>
         </a>
         <a href="https://librewolf.net/" target="_blank" rel="noopener noreferrer" class="alt-card">
@@ -112,6 +118,32 @@ import WavyShader from './WavyShader.astro';
       }
       initCRTEffect();
     });
+
+    // Fetch privacy counter data for the blocker
+    (async () => {
+      const blockerCounter = document.getElementById('blocker-counter');
+      if (!blockerCounter) return;
+
+      let total = 0;
+      let unprotectedCount = 0;
+
+      try {
+        const res = await fetch('/api/counter');
+        if (!res.ok) return;
+        const data = await res.json();
+        total = data.total;
+        unprotectedCount = data.unprotected;
+      } catch {
+        // API unavailable — silently hide counter
+        return;
+      }
+
+      if (total > 0) {
+        document.getElementById('blocker-counter-unprotected')!.textContent = unprotectedCount.toLocaleString();
+        document.getElementById('blocker-counter-total')!.textContent = total.toLocaleString();
+        blockerCounter.style.display = '';
+      }
+    })();
 
     // Dismiss handler — reload for a clean slate (avoids stale ScrollTrigger state)
     dismissBtn?.addEventListener('click', () => {
@@ -208,13 +240,13 @@ import WavyShader from './WavyShader.astro';
     position: relative;
     z-index: 1;
     max-width: 600px;
-    padding: var(--space-4) var(--space-8);
+    padding: var(--space-2) var(--space-6);
     text-align: center;
   }
 
   .blocker-title {
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
     font-weight: 700;
     color: var(--text-accent);
     text-transform: uppercase;
@@ -222,20 +254,45 @@ import WavyShader from './WavyShader.astro';
     text-shadow:
       4px 4px 0 rgba(212, 84, 94, 0.3),
       -2px -2px 0 rgba(0, 0, 0, 0.8);
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-2);
   }
 
   .blocker-subtitle {
-    font-size: var(--text-xl);
+    font-size: var(--text-base);
     color: var(--text-primary);
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-1);
   }
 
   .blocker-message {
     font-size: var(--text-sm);
     color: var(--text-secondary);
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
     line-height: var(--leading-relaxed);
+  }
+
+  .blocker-counter {
+    text-align: center;
+    margin-bottom: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    background: rgba(212, 84, 94, 0.06);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  .blocker-counter-stat {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    color: var(--accent);
+  }
+
+  .blocker-counter-label {
+    display: block;
+    margin-top: 2px;
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
   }
 
   .blocker-alternatives {
@@ -243,29 +300,29 @@ import WavyShader from './WavyShader.astro';
     background: rgba(212, 84, 94, 0.05);
     border: 1px solid var(--border-muted);
     border-radius: var(--radius-md);
-    padding: var(--space-4);
-    margin-bottom: var(--space-4);
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
   }
 
   .blocker-alternatives > p {
     font-family: var(--font-display);
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
     color: var(--text-accent);
     text-transform: uppercase;
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-2);
   }
 
   .alt-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: var(--space-1);
   }
 
   .alt-card {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-2) var(--space-3);
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-2);
     text-decoration: none;
     color: var(--text-secondary);
     border: 1px solid transparent;
@@ -286,8 +343,8 @@ import WavyShader from './WavyShader.astro';
   }
 
   .alt-logo {
-    width: 48px;
-    height: 48px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
     flex-shrink: 0;
     filter: grayscale(0.3);
@@ -301,7 +358,7 @@ import WavyShader from './WavyShader.astro';
   .alt-info {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
+    gap: 0;
     text-align: left;
   }
 
@@ -319,7 +376,7 @@ import WavyShader from './WavyShader.astro';
 
   .blocker-btn {
     display: inline-block;
-    padding: var(--space-3) var(--space-6);
+    padding: var(--space-2) var(--space-5);
     font-family: var(--font-display);
     font-size: var(--text-sm);
     font-weight: 500;

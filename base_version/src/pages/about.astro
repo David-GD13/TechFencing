@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import GlitchText from '../components/GlitchText.astro';
 ---
 
-<BaseLayout title="About TechFencing" description="Who made this, why, and what we're trying to do.">
+<BaseLayout title="About TechFencing" description="Who made this, why, and what I'm trying to do.">
 
   <section class="hero-sm">
     <div class="container" style="position:relative;z-index:1;">
@@ -17,18 +17,18 @@ import GlitchText from '../components/GlitchText.astro';
     <div class="container about-content">
 
       <div class="about-block">
-        <h2 class="glitch-hover" data-text="Who We Are">Who We Are</h2>
+        <h2 class="glitch-hover" data-text="Who I Am">Who I Am</h2>
         <p>
-          We're fans. That's it. We watched PewDiePie's tech videos — the Linux
-          one, the de-Google one, the "I Fixed YouTube!" one — and we actually
-          did the stuff he talked about. We switched to Firefox. We installed Linux.
-          We set up a Pi and self-hosted our passwords.
+          I'm a fan. That's it. I watched PewDiePie's tech videos — the Linux
+          one, the de-Google one, the "I Fixed YouTube!" one — and decided to
+          actually do the stuff he talked about. I'm logging it all and working
+          through it as I go.
         </p>
         <p>
-          We are not cybersecurity experts. We are not Linux veterans. We're people
-          who were tired of feeling like products and decided to do something about
-          it. This site is our attempt to organize everything we learned so you
-          don't have to piece it together from 3-hour YouTube videos.
+          I'm not a cybersecurity expert. I'm not a Linux veteran. I'm someone
+          who was tired of feeling like a product and decided to do something about
+          it. This site is my attempt to organize everything into one place so you
+          don't have to piece it together yourself.
         </p>
       </div>
 
@@ -41,9 +41,8 @@ import GlitchText from '../components/GlitchText.astro';
         </p>
         <p>
           The video resonated. People wanted to do it. But the information was spread
-          across multiple videos, each over an hour long, with specific tool names
-          dropped casually and setup instructions buried in tangents about nuclear
-          reactors and anime.
+          across multiple videos, with specific tool names dropped casually and setup
+          details easy to miss if you weren't paying attention.
         </p>
         <p>
           This site gathers all of that into one place. Every recommendation is
@@ -54,26 +53,26 @@ import GlitchText from '../components/GlitchText.astro';
       </div>
 
       <div class="about-block">
-        <h2 class="glitch-hover" data-text="What We Believe">What We Believe</h2>
+        <h2 class="glitch-hover" data-text="What I Believe">What I Believe</h2>
         <ul class="belief-list">
           <li>
-            <strong>Privacy is not paranoia.</strong> You lock your front door. You
-            close the blinds. Wanting control over your digital life is the same
-            impulse.
+            <strong>Privacy is a default, not a stance.</strong> You don't need a
+            reason to not want strangers reading your messages. It's not about
+            having something to hide — it's about having something that's yours.
           </li>
           <li>
             <strong>Progress over perfection.</strong> Switching your browser is
             better than doing nothing. You don't need to install Linux on day one.
           </li>
           <li>
-            <strong>Honesty over evangelism.</strong> If something sucks, we say so.
-            If PewDiePie still uses Google Maps, we mention it. We're not here to
-            sell you on a lifestyle — we're here to give you information.
+            <strong>Honesty over evangelism.</strong> If something sucks, I say so.
+            If PewDiePie still uses Google Maps, I mention it. I'm not here to
+            sell you on a lifestyle — I'm here to give you information.
           </li>
           <li>
-            <strong>Learning is the point.</strong> We're still figuring this out.
+            <strong>Learning is the point.</strong> I'm still figuring this out.
             Every guide is written by someone who recently went through the same
-            process. If we got something wrong, that's a feature — it means we're
+            process. If I got something wrong, that's a feature — it means I'm
             still learning.
           </li>
         </ul>
@@ -82,20 +81,12 @@ import GlitchText from '../components/GlitchText.astro';
       <div class="about-block">
         <h2 class="glitch-hover" data-text="Disclaimers">Disclaimers</h2>
         <ul class="disclaimer-list">
-          <li>This site is <strong>not affiliated with PewDiePie</strong>. We're fans who organized his publicly available content.</li>
-          <li>We note when products are <strong>PewDiePie sponsors</strong> (Hostinger, Incogni) so you can factor that into your decisions.</li>
-          <li>We don't run analytics on this site. No cookies, no tracking, no Google Analytics. Practice what you preach.</li>
+          <li>This site is <strong>not affiliated with PewDiePie</strong>. I'm a fan who organized his publicly available content.</li>
+          <li>I note when products are <strong>PewDiePie sponsors</strong> (Hostinger, Incogni) so you can factor that into your decisions.</li>
+          <li>I don't run Google Analytics or any third-party tracking. <strong>Cloudflare Web Analytics</strong> is auto-injected by the hosting platform — it's cookie-free, collects no personal data, and I can't disable it. The only thing I track myself is an aggregate visitor counter to show how many people browse without tracker protection. No cookies, no fingerprinting.</li>
+          <li>This site was <strong>vibecoded</strong>. The code is AI-generated, but every piece of information, every recommendation, and every design choice was intentionally curated by me.</li>
           <li>This site is open to contributions. If you spot an error, have a better alternative, or want to improve a guide — reach out at <a href="mailto:contact@techfencing.com"><strong>contact@techfencing.com</strong></a>.</li>
         </ul>
-      </div>
-
-      <div class="about-sign-off">
-        <div class="flowing-line"></div>
-        <p>
-          "The best time to build a fence was yesterday.<br />
-          The second best time is now."
-        </p>
-        <p class="sign-off-credit">— TechFencing.com, est. 2026</p>
       </div>
 
     </div>
@@ -145,7 +136,7 @@ import GlitchText from '../components/GlitchText.astro';
   .disclaimer-list li {
     padding: var(--space-4) 0;
     border-bottom: 1px solid rgba(212, 84, 94, 0.08);
-    font-size: var(--text-sm);
+    font-size: var(--text-base);
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);
   }
@@ -155,24 +146,4 @@ import GlitchText from '../components/GlitchText.astro';
     border-bottom: none;
   }
 
-  .about-sign-off {
-    text-align: center;
-    padding: var(--space-8) 0;
-  }
-
-  .about-sign-off p {
-    font-family: var(--font-display);
-    font-style: italic;
-    color: var(--text-accent);
-    font-size: var(--text-lg);
-    margin-top: var(--space-6);
-    line-height: var(--leading-relaxed);
-  }
-
-  .sign-off-credit {
-    font-size: var(--text-xs) !important;
-    color: var(--text-muted) !important;
-    opacity: 0.5;
-    margin-top: var(--space-2) !important;
-  }
 </style>
