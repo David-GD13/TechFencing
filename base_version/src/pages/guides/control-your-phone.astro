@@ -1,6 +1,8 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
 import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
+import DownsidesSection from '../../components/DownsidesSection.astro';
+import GlossaryTerm from '../../components/GlossaryTerm.astro';
 ---
 
 <GuideLayout
@@ -12,24 +14,28 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
 >
 
   <h2>Why Your Phone Is the Problem</h2>
-  <p>
-    You can install Linux on your computer, de-Google your email, and fence YouTube — but if your phone
-    is still a dopamine delivery device in your pocket, you haven't solved the real problem. Your phone
-    is with you every waking minute. It buzzes, it notifies, it tempts. Every app on it was designed by
-    a team whose job is to get you to pick it up.
-  </p>
-  <p>
-    PewDiePie's approach to phones is one of the most practical ideas in the whole tech-fencing concept:
-    the <strong>second user profile</strong>. On Android, you can create a separate user profile on the
-    same phone. Put all your distracting apps (social media, YouTube, games) on the second profile. To
-    access them, you have to switch profiles — a process that takes 5-6 seconds and requires intentional
-    action.
-  </p>
-  <p>
-    Five seconds doesn't sound like much. But that tiny bit of friction is enough to make your brain
-    pause and ask "do I actually want to do this?" PewDiePie said he catches himself reaching for apps
-    dozens of times a day and stopping because of that pause. That's the fence working.
-  </p>
+  <div class="content-block">
+    <p>
+      You can install Linux on your computer, de-Google your email, and fence YouTube — but if your phone
+      is still a dopamine delivery device in your pocket, you haven't solved the real problem. Your phone
+      is with you every waking minute. It buzzes, it notifies, it tempts. Every app on it was designed by
+      a team whose job is to get you to pick it up.
+    </p>
+    <p>
+      PewDiePie's approach to phones is one of the most practical ideas in the whole tech-fencing concept:
+      the <strong>second user profile</strong>. On Android, you can create a separate user profile on the
+      same phone. Put all your distracting apps (social media, YouTube, games) on the second profile. To
+      access them, you have to switch profiles — a process that takes 5-6 seconds and requires intentional
+      action.
+    </p>
+    <p>
+      Five seconds doesn't sound like much. But that tiny bit of friction is enough to make your brain
+      pause and ask "do I actually want to do this?" PewDiePie said he catches himself reaching for apps
+      dozens of times a day and stopping because of that pause. That's the fence working.
+    </p>
+  </div>
+
+  <div class="flowing-line"></div>
 
   <h2>Option A: GrapheneOS (The Full Solution)</h2>
 
@@ -37,7 +43,7 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
     <span class="step-number">Step 1</span>
     <h3>What Is GrapheneOS?</h3>
     <p>
-      GrapheneOS is a privacy-focused Android operating system that replaces the stock Google Android on
+      <a href="https://grapheneos.org/" target="_blank" rel="noopener">GrapheneOS</a> is a privacy-focused Android operating system that replaces the stock Google Android on
       your phone. It's Android without Google. No Google Play Services running in the background, no
       constant location tracking, no advertising ID, no Google account required.
     </p>
@@ -50,13 +56,20 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       <strong>You need a Google Pixel phone.</strong> GrapheneOS only works on Pixel devices (Pixel 4
       and newer). If you don't have a Pixel and don't want to buy one, skip to Option B below.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="1" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
     <span class="step-number">Step 2</span>
     <h3>Flash GrapheneOS</h3>
     <p>
-      GrapheneOS has a web-based installer at <strong>grapheneos.org/install/web</strong> that makes
+      GrapheneOS has a web-based installer at <a href="https://grapheneos.org/install/web" target="_blank" rel="noopener">grapheneos.org/install/web</a> that makes
       flashing surprisingly easy. Connect your Pixel to your computer via USB, follow the guided steps
       in the browser, and it handles everything. The whole process takes about 15 minutes.
     </p>
@@ -64,13 +77,20 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
     <ul>
       <li>Back up everything on your phone</li>
       <li>Charge your phone to at least 80%</li>
-      <li>Enable OEM unlocking in Developer Options (Settings &rarr; About Phone &rarr; tap Build Number 7 times &rarr; Developer Options &rarr; OEM Unlocking)</li>
+      <li>Enable <GlossaryTerm term="oem unlocking">OEM unlocking</GlossaryTerm> in Developer Options (Settings &rarr; About Phone &rarr; tap Build Number 7 times &rarr; Developer Options &rarr; OEM Unlocking)</li>
       <li>Use a USB-C to USB-C cable if possible (more reliable than USB-A)</li>
     </ul>
     <p>
       The installer unlocks your bootloader, flashes GrapheneOS, and re-locks the bootloader for security.
       When it's done, you have a clean Android phone with zero Google services.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="2" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
@@ -101,6 +121,13 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       second profile only. This means apps that require Google Play (banking apps, some social media
       apps) still work, but they're sandboxed — they can't access your main profile's data.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="3" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
@@ -116,14 +143,23 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       <li><strong>OsmAnd</strong> — Offline maps based on OpenStreetMap.</li>
       <li><strong>Signal</strong> — Encrypted messaging (also available directly from signal.org).</li>
       <li><strong>K-9 Mail</strong> — Open-source email client (now officially Thunderbird for Android).</li>
-      <li><strong>Obtainium</strong> — Gets APK updates directly from GitHub releases, so you can install apps that aren't on F-Droid.</li>
+      <li><strong>Obtainium</strong> — Gets APK updates directly from GitHub releases, so you can install apps that aren't on F-Droid. <strong>Be careful:</strong> since Obtainium pulls directly from GitHub, always verify you're downloading from the official repository of the app. Check the developer name, star count, and repo age before installing — malicious forks exist.</li>
     </ul>
     <p>
       For apps that aren't on F-Droid and need Google Play, install the <strong>Aurora Store</strong>
       from F-Droid — it's an open-source Google Play client that lets you download Play Store apps
       without a Google account.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="4" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
+
+  <div class="flowing-line"></div>
 
   <h2>Option B: Fence Your Stock Phone</h2>
   <p>
@@ -144,6 +180,13 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       Samsung phones have a feature called <strong>Secure Folder</strong> that serves a similar purpose —
       a separate, locked space for apps. Not as clean as a full second profile, but it adds friction.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="5" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
@@ -156,6 +199,13 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       <li><strong>Revoke unnecessary permissions:</strong> Settings &rarr; Apps &rarr; for each app, review and revoke permissions it doesn't need</li>
       <li><strong>Disable activity tracking:</strong> Go to myactivity.google.com and pause Web & App Activity, Location History, and YouTube History</li>
     </ul>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="6" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
@@ -171,13 +221,20 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       fully remove them: <code>adb shell pm uninstall -k --user 0 com.package.name</code>. Search for
       your phone model's specific bloatware removal guide.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="7" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
     <span class="step-number">Step 8</span>
     <h3>Install NetGuard Firewall</h3>
     <p>
-      NetGuard is an open-source firewall for Android that blocks apps from accessing the internet. No
+      <a href="https://netguard.me/" target="_blank" rel="noopener">NetGuard</a> is an open-source firewall for Android that blocks apps from accessing the internet. (<a href="https://github.com/M66B/NetGuard" target="_blank" rel="noopener">GitHub</a>) No
       root required — it works by creating a local VPN on your phone. You can selectively allow or block
       internet access per app.
     </p>
@@ -186,6 +243,13 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       block their internet access so they can't phone home with your data. Many apps that don't need
       internet still send analytics data — NetGuard stops that.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="8" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
@@ -198,46 +262,45 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       <li><strong>Camera:</strong> <strong>Open Camera</strong> from F-Droid. Full-featured, no tracking.</li>
       <li><strong>File manager:</strong> <strong>Material Files</strong> from F-Droid.</li>
     </ul>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="9" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
-  <div class="downsides">
-    <h2>Honest Downsides</h2>
-    <ul>
-      <li>
-        <strong>GrapheneOS only works on Pixel phones.</strong> If you have a Samsung, OnePlus, or any
-        other Android phone, you can't use GrapheneOS. There are alternatives like CalyxOS and
-        LineageOS, but they don't have GrapheneOS's security model and support fewer devices.
-      </li>
-      <li>
-        <strong>Some banking apps don't work.</strong> A few banking and payment apps check for Google
-        Play Services or detect custom ROMs and refuse to run. GrapheneOS's sandboxed Play Services
-        fix most of these, but not all. Check your specific banking app's compatibility before switching.
-      </li>
-      <li>
-        <strong>Push notifications can be unreliable.</strong> Without Google Play Services, push
-        notifications depend on the app's own implementation. Some apps handle this well (Signal works
-        perfectly). Others don't get notifications until you open them. GrapheneOS's sandboxed Play
-        Services in the second profile can help, but it's not as seamless as stock Android.
-      </li>
-      <li>
-        <strong>The second profile trick requires discipline.</strong> Just like the YouTube fence, this
-        only works if you maintain it. If you start putting "just one more app" in your main profile,
-        the fence erodes. PewDiePie himself admits he still catches himself mindlessly reaching for
-        his phone — the difference is now there's a barrier.
-      </li>
-      <li>
-        <strong>Camera quality can be slightly worse.</strong> Google Pixel cameras rely on Google's
-        processing algorithms. On GrapheneOS, you lose some of Google Camera's post-processing magic.
-        The photos are still good, but the computational photography (Night Sight, Magic Eraser)
-        requires Google Camera, which you may or may not want to install.
-      </li>
-      <li>
-        <strong>You're trading convenience for control.</strong> Every friction point you add to your
-        phone is also friction for legitimate use. Switching profiles to check something quickly is
-        annoying by design. That's the point — but it's still annoying.
-      </li>
-    </ul>
-  </div>
+  <div class="flowing-line"></div>
+
+  <DownsidesSection
+    items={[
+      {
+        title: "GrapheneOS only works on Pixel phones",
+        description: "Samsung, OnePlus, or any other Android — you can't use GrapheneOS. Alternatives like CalyxOS and LineageOS exist but don't match GrapheneOS's security model."
+      },
+      {
+        title: "Some banking apps don't work",
+        description: "A few banking and payment apps check for Google Play Services or detect custom ROMs. GrapheneOS's sandboxed Play Services fix most, but not all. Check compatibility before switching."
+      },
+      {
+        title: "Push notifications can be unreliable",
+        description: "Without Google Play Services, notifications depend on each app's implementation. Signal works perfectly, others may not notify until opened. Sandboxed Play Services help but aren't seamless."
+      },
+      {
+        title: "The second profile trick requires discipline",
+        description: "Just like the YouTube fence, this only works if you maintain it. Put 'just one more app' in your main profile and the fence erodes. PewDiePie admits he still catches himself reaching for his phone."
+      },
+      {
+        title: "Camera quality can be slightly worse",
+        description: "Pixel cameras rely on Google's processing algorithms. On GrapheneOS, you lose some post-processing magic (Night Sight, Magic Eraser). Photos are still good, but computational photography requires Google Camera."
+      },
+      {
+        title: "You're trading convenience for control",
+        description: "Every friction point you add is also friction for legitimate use. Switching profiles to check something quickly is annoying by design. That's the point — but it's still annoying."
+      },
+    ]}
+  />
 
   <DeepDiveLinks links={[
     { label: "Android Distributions", url: "https://www.privacyguides.org/en/android/" },

@@ -33,6 +33,11 @@ const glossaryData: Record<string, string> = {
   "vaultwarden": "Self-hosted password manager. PewDiePie's took 2 days to set up.",
   "vps": "Virtual Private Server. Rented server, alternative to Raspberry Pi.",
   "waybar": "Customizable status bar for Linux. Part of the ricing toolkit.",
+  "snap": "A package format by Canonical (Ubuntu). Auto-updating and sandboxed, but centrally controlled by Canonical. Controversial in the Linux community.",
+  "flatpak": "A universal Linux package format. Apps run sandboxed, available from Flathub. The community-preferred alternative to Snap.",
+  "system snapshots": "A saved state of your entire system. If an update breaks something, restore to a snapshot. Timeshift is the most popular tool on Linux.",
+  "backup": "A copy of your data stored separately from the original. The 3-2-1 rule: 3 copies, 2 different media, 1 offsite.",
+  "oem unlocking": "A setting that allows your phone's bootloader to be unlocked. Required for installing custom ROMs like GrapheneOS. Found in Developer Options on Android.",
 };
 
 let tooltipEl: HTMLDivElement | null = null;

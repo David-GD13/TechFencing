@@ -1,6 +1,7 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
 import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
+import DownsidesSection from '../../components/DownsidesSection.astro';
 ---
 
 <GuideLayout
@@ -11,62 +12,110 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
 >
 
   <h2>Why Your Browser Matters</h2>
-  <p>
-    Your browser is the single most important piece of software on your computer. Every website you visit,
-    every search you make, every form you fill out — it all goes through your browser. If you're using
-    Google Chrome, congratulations: you're running a program made by an advertising company whose entire
-    business model is knowing everything about you.
-  </p>
-  <p>
-    Chrome isn't free because Google is generous. Chrome is free because <strong>you are the product</strong>.
-    Every tab you open feeds Google's profile of you. Your browsing history, your bookmarks, your passwords,
-    your autofill data — all of it flows back to Google's servers where it's used to sell ads targeted at you.
-  </p>
-  <p>
-    The good news? Switching your browser is the single easiest thing on this entire site. Five minutes
-    and you've already built the first section of your tech fence.
-  </p>
-
-  <h2>Pick Your New Browser</h2>
-  <p>You have three solid options. Pick one and move on — don't overthink it.</p>
-
-  <h3>Firefox — The Balanced Choice</h3>
-  <p>
-    Mozilla Firefox is the most popular privacy-focused browser. It's open-source, backed by a nonprofit,
-    and has a massive extension library. It's what PewDiePie uses alongside LibreWolf. Firefox works on
-    Windows, macOS, Linux, Android, and iOS. It syncs across devices with a Firefox account (encrypted,
-    not sold to advertisers). For most people, this is the right answer.
-  </p>
-
-  <h3>LibreWolf — Firefox But Stricter</h3>
-  <p>
-    LibreWolf is a fork of Firefox with all telemetry removed and privacy settings cranked to maximum
-    out of the box. No Mozilla telemetry, no Pocket integration, no sponsored shortcuts. It's Firefox
-    for people who don't want to spend 20 minutes tweaking about:config settings. The downside is it
-    doesn't auto-update as smoothly as Firefox, and you lose Firefox Sync by default.
-  </p>
-
-  <h3>Brave — The Easy Switch from Chrome</h3>
-  <p>
-    Brave is built on Chromium (the same engine as Chrome) so all your Chrome extensions work. It has a
-    built-in ad blocker and tracker blocker. The interface will feel instantly familiar if you're coming
-    from Chrome. The controversy: Brave has its own crypto token (BAT) and opt-in ads. Some privacy
-    purists don't trust it. But it's still a massive upgrade from Chrome.
-  </p>
-
-  <h2>Step-by-Step Setup</h2>
-
-  <div class="step">
-    <span class="step-number">Step 1</span>
-    <h3>Install Your New Browser</h3>
+  <div class="content-block">
     <p>
-      Go to <strong>firefox.com</strong>, <strong>librewolf.net</strong>, or <strong>brave.com</strong>
-      and download the installer. Run it. That's it. Don't uninstall Chrome yet — you'll want it as a
-      fallback for the first week while you adjust.
+      Your browser is the single most important piece of software on your computer. Every website you visit,
+      every search you make, every form you fill out — it all goes through your browser. If you're using
+      Google Chrome, congratulations: you're running a program made by an advertising company whose entire
+      business model is knowing everything about you.
+    </p>
+    <p>
+      Chrome isn't free because Google is generous. Chrome is free because <strong>you are the product</strong>.
+      Every tab you open feeds Google's profile of you. Your browsing history, your bookmarks, your passwords,
+      your autofill data — all of it flows back to Google's servers where it's used to sell ads targeted at you.
+    </p>
+    <p>
+      The good news? Switching your browser is the single easiest thing on this entire site. Five minutes
+      and you've already built the first section of your tech fence.
     </p>
   </div>
 
-  <div class="step">
+  <div class="flowing-line"></div>
+
+  <h2>Pick Your New Browser</h2>
+  <div class="content-block">
+    <p>You have four solid options. Pick one and move on — don't overthink it.</p>
+    <p>
+      <strong>A note on Mozilla:</strong> Mozilla, the organization behind Firefox, receives a significant
+      portion of its revenue from Google (~$500M/year) through a default search engine deal. This is a valid
+      concern. However, Firefox is still open-source, still the most privacy-respecting mainstream browser,
+      and still the only major browser engine not controlled by Google. The alternative is letting Google's
+      Chromium monopolize the web entirely. Use Firefox — but stay aware.
+    </p>
+  </div>
+
+  <div class="browser-grid">
+    <div class="browser-card">
+      <h3>Firefox — The Balanced Choice</h3>
+      <p>
+        Mozilla Firefox is the most popular privacy-focused browser. It's open-source, has a massive extension
+        library, and is what PewDiePie uses alongside LibreWolf. Works on Windows, macOS, Linux, Android, and
+        iOS. Syncs across devices with a Firefox account (encrypted, not sold to advertisers). For most people,
+        this is the right answer.
+      </p>
+      <p><a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="noopener">Download Firefox →</a></p>
+    </div>
+
+    <div class="browser-card">
+      <h3>LibreWolf — Firefox But Stricter</h3>
+      <p>
+        A fork of Firefox with all telemetry removed and privacy settings cranked to maximum out of the box.
+        No Mozilla telemetry, no Pocket, no sponsored shortcuts. Firefox for people who don't want to spend
+        20 minutes tweaking about:config. Downside: no auto-update, no Firefox Sync by default.
+      </p>
+      <p><a href="https://librewolf.net/" target="_blank" rel="noopener">Download LibreWolf →</a></p>
+    </div>
+
+    <div class="browser-card">
+      <h3>Brave — The Easy Switch from Chrome</h3>
+      <p>
+        Built on Chromium (same engine as Chrome) so all your Chrome extensions work. Built-in ad and tracker
+        blocker. Familiar interface for Chrome users. Controversy: has its own crypto token (BAT) and opt-in
+        ads. Privacy purists don't fully trust it, but it's still a massive upgrade from Chrome.
+      </p>
+      <p><a href="https://brave.com/download/" target="_blank" rel="noopener">Download Brave →</a></p>
+    </div>
+
+    <div class="browser-card">
+      <h3>Mullvad Browser — The Cybersecurity Expert's Choice</h3>
+      <p>
+        Built by the Tor Project and Mullvad VPN. Designed to minimize browser fingerprinting — every
+        Mullvad Browser user looks identical to websites. Comes with uBlock Origin pre-installed. No sync,
+        no accounts, no frills. For those who want maximum anti-fingerprinting without the Tor network.
+      </p>
+      <p><a href="https://mullvad.net/en/browser" target="_blank" rel="noopener">Download Mullvad Browser →</a></p>
+    </div>
+  </div>
+
+  <div class="flowing-line"></div>
+
+  <h2>Step-by-Step Setup</h2>
+
+  <div class="step"="1">
+    <span class="step-number">Step 1</span>
+    <h3>Install Your New Browser</h3>
+    <p>
+      Download the installer from the official site of your chosen browser:
+    </p>
+    <ul>
+      <li><a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="noopener">Firefox</a> — mozilla.org</li>
+      <li><a href="https://librewolf.net/" target="_blank" rel="noopener">LibreWolf</a> — librewolf.net</li>
+      <li><a href="https://brave.com/download/" target="_blank" rel="noopener">Brave</a> — brave.com</li>
+      <li><a href="https://mullvad.net/en/browser" target="_blank" rel="noopener">Mullvad Browser</a> — mullvad.net</li>
+    </ul>
+    <p>
+      Run the installer. Don't uninstall Chrome yet — keep it as a fallback for the first week while you adjust.
+    </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="1" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
+  </div>
+
+  <div class="step"="2">
     <span class="step-number">Step 2</span>
     <h3>Import Your Data</h3>
     <p>
@@ -74,9 +123,16 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       from Chrome. Say yes. This takes about 30 seconds and means you're not starting from scratch.
       In Firefox, go to <strong>Settings &rarr; Import Data</strong> if you missed the prompt.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="2" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
-  <div class="step">
+  <div class="step"="3">
     <span class="step-number">Step 3</span>
     <h3>Change Your Default Search Engine</h3>
     <p>
@@ -91,30 +147,53 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       search). Other bangs: <strong>!w</strong> for Wikipedia, <strong>!yt</strong> for YouTube,
       <strong>!r</strong> for Reddit.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="3" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
-  <div class="step">
+  <div class="step"="4">
     <span class="step-number">Step 4</span>
     <h3>Install uBlock Origin</h3>
     <p>
-      This is non-negotiable. uBlock Origin is the best ad and tracker blocker available. It's free,
-      open-source, and blocks ads, trackers, malware domains, and annoyances. Go to your browser's
-      extension store and search for <strong>uBlock Origin</strong> (not "uBlock" — that's a different,
-      inferior extension).
+      This is non-negotiable. uBlock Origin is the best ad and tracker blocker available. Free,
+      open-source, and blocks ads, trackers, malware domains, and annoyances. <strong>Not</strong> "uBlock" —
+      that's a different, inferior extension.
     </p>
-    <p>
-      For Firefox: <strong>addons.mozilla.org</strong> &rarr; search "uBlock Origin" &rarr; Add to Firefox.<br>
-      For Brave: Brave has a built-in blocker, but uBlock Origin is still better. Install it from the
-      Chrome Web Store.
-    </p>
+    <p>Install uBlock Origin for your browser:</p>
+    <ul>
+      <li>
+        <strong>Firefox / LibreWolf:</strong>
+        <a href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/" target="_blank" rel="noopener">Firefox Add-ons Store</a>
+      </li>
+      <li>
+        <strong>Brave:</strong>
+        <a href="https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm" target="_blank" rel="noopener">Chrome Web Store</a>
+        (Brave uses Chrome extensions — its built-in blocker exists but uBlock Origin is better)
+      </li>
+      <li>
+        <strong>Mullvad Browser:</strong> Comes pre-installed. You're good.
+      </li>
+    </ul>
     <p>
       <strong>Important note:</strong> Google is actively killing ad blockers in Chrome through Manifest V3.
       This is one of the biggest reasons to leave Chrome — uBlock Origin will eventually stop working
       properly there. Firefox has committed to supporting Manifest V2 extensions indefinitely.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="4" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
-  <div class="step">
+  <div class="step"="5">
     <span class="step-number">Step 5</span>
     <h3>Install Unhook for YouTube</h3>
     <p>
@@ -123,15 +202,36 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       Shorts, trending, comments — whatever you want. The idea is to turn YouTube from a slot machine
       into a tool you use intentionally.
     </p>
+    <p>Install Unhook for your browser:</p>
+    <ul>
+      <li>
+        <strong>Firefox / LibreWolf:</strong>
+        <a href="https://addons.mozilla.org/en-US/firefox/addon/youtube-recommended-videos/" target="_blank" rel="noopener">Firefox Add-ons Store</a>
+      </li>
+      <li>
+        <strong>Brave:</strong>
+        <a href="https://chromewebstore.google.com/detail/unhook-remove-youtube-rec/khncfooichmfjbepaaaebmommgaepoid" target="_blank" rel="noopener">Chrome Web Store</a>
+      </li>
+      <li>
+        <strong>Mullvad Browser:</strong>
+        <a href="https://addons.mozilla.org/en-US/firefox/addon/youtube-recommended-videos/" target="_blank" rel="noopener">Firefox Add-ons Store</a> (Mullvad is Firefox-based)
+      </li>
+    </ul>
     <p>
-      Search for <strong>"Unhook - Remove YouTube Recommended"</strong> in your browser's extension store.
       After installing, open the extension settings and disable: Homepage Feed, Recommended Videos,
       Shorts, and Trending. You can still search for videos and visit channels directly — you just won't
       be ambushed by the algorithm anymore.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="5" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
-  <div class="step">
+  <div class="step"="6">
     <span class="step-number">Step 6</span>
     <h3>Consider Extra Privacy Extensions</h3>
     <p>These are optional but worth considering:</p>
@@ -160,9 +260,16 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       (ironically making you more trackable in some ways). The core three — uBlock Origin, Unhook,
       and SponsorBlock — are enough for most people.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="6" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
-  <div class="step">
+  <div class="step"="7">
     <span class="step-number">Step 7</span>
     <h3>Set Your New Browser as Default</h3>
     <p>
@@ -175,57 +282,110 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       After a week of using your new browser without issues, uninstall Chrome. If you need a Chromium-based
       browser as a fallback for that one weird site, keep Brave around for that purpose.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="7" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
+
+  <div class="flowing-line"></div>
 
   <h2>What You've Gained</h2>
-  <p>In about five minutes of work, you've accomplished:</p>
-  <ul>
-    <li>Stopped feeding Google your entire browsing history</li>
-    <li>Blocked ads and trackers on every website you visit</li>
-    <li>Made your YouTube experience intentional instead of algorithmic</li>
-    <li>Started using a search engine that doesn't profile you</li>
-    <li>Protected yourself from Manifest V3 killing your ad blocker</li>
-  </ul>
-  <p>
-    This is the foundation. Everything else on this site builds on top of this. You went from "ignorant"
-    to "savior of your own browsing experience" in the time it takes to make a cup of coffee.
-  </p>
-
-  <div class="downsides">
-    <h2>Honest Downsides</h2>
-    <p>We're not going to pretend this is all sunshine. Here's what might annoy you:</p>
+  <div class="content-block">
+    <p>In about five minutes of work, you've accomplished:</p>
     <ul>
-      <li>
-        <strong>Some websites break with strict privacy settings.</strong> Banking sites, government portals,
-        and some e-commerce sites may not work properly. You'll occasionally need to disable uBlock Origin
-        for a specific site (click the extension icon &rarr; click the power button to whitelist).
-      </li>
-      <li>
-        <strong>Chrome extensions don't all work in Firefox.</strong> If you're switching to Firefox or
-        LibreWolf, some Chrome-only extensions won't be available. Most popular ones have Firefox versions,
-        but niche ones might not. Brave avoids this problem since it's Chromium-based.
-      </li>
-      <li>
-        <strong>DuckDuckGo results aren't always as good as Google's.</strong> For most searches, they're
-        fine. For very specific, localized, or time-sensitive queries, Google is still better. Use the
-        <strong>!g</strong> bang when you need to.
-      </li>
-      <li>
-        <strong>You lose Google's password sync ecosystem.</strong> If you were relying on Chrome's built-in
-        password manager, you'll need an alternative. We recommend Vaultwarden (covered in the self-hosting
-        guide) or Bitwarden's free cloud tier as a start.
-      </li>
-      <li>
-        <strong>YouTube without recommendations feels empty at first.</strong> You'll open YouTube and see...
-        nothing. That's the point. But it takes a few days to adjust to actually deciding what you want to
-        watch instead of being fed content. Stick with it.
-      </li>
+      <li>Stopped feeding Google your entire browsing history</li>
+      <li>Blocked ads and trackers on every website you visit</li>
+      <li>Made your YouTube experience intentional instead of algorithmic</li>
+      <li>Started using a search engine that doesn't profile you</li>
+      <li>Protected yourself from Manifest V3 killing your ad blocker</li>
     </ul>
+    <p>
+      This is the foundation. Everything else on this site builds on top of this. You went from "ignorant"
+      to "savior of your own browsing experience" in the time it takes to make a cup of coffee.
+    </p>
   </div>
+
+  <div class="flowing-line"></div>
+
+  <DownsidesSection
+    intro="We're not going to pretend this is all sunshine. Here's what might annoy you:"
+    items={[
+      {
+        title: "Some websites break with strict privacy settings",
+        description: "Banking sites, government portals, and some e-commerce sites may not work properly. You'll occasionally need to disable uBlock Origin for a specific site (click the extension icon → click the power button to whitelist)."
+      },
+      {
+        title: "Chrome extensions don't all work in Firefox",
+        description: "If you're switching to Firefox or LibreWolf, some Chrome-only extensions won't be available. Most popular ones have Firefox versions, but niche ones might not. Brave avoids this since it's Chromium-based."
+      },
+      {
+        title: "DuckDuckGo results aren't always as good as Google's",
+        description: "For most searches, they're fine. For very specific, localized, or time-sensitive queries, Google is still better. Use the <strong>!g</strong> bang when you need to."
+      },
+      {
+        title: "You lose Google's password sync ecosystem",
+        description: "If you relied on Chrome's built-in password manager, you'll need an alternative. We recommend <a href='/guides/self-hosting'>Vaultwarden</a> (covered in the self-hosting guide) or <a href='https://bitwarden.com/' target='_blank' rel='noopener'>Bitwarden's</a> free cloud tier."
+      },
+      {
+        title: "YouTube without recommendations feels empty at first",
+        description: "You'll open YouTube and see... nothing. That's the point. It takes a few days to adjust to actually deciding what you want to watch. Stick with it."
+      },
+    ]}
+  />
 
   <DeepDiveLinks links={[
     { label: "Private Web Browsers", url: "https://www.privacyguides.org/en/desktop-browsers/" },
     { label: "Search Engines", url: "https://www.privacyguides.org/en/search-engines/" },
+    { label: "Browser Extensions", url: "https://www.privacyguides.org/en/browser-extensions/" },
   ]} />
 
 </GuideLayout>
+
+<style>
+  .browser-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  @media (max-width: 768px) {
+    .browser-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .browser-card {
+    padding: var(--space-5);
+    background: rgba(26, 29, 35, 0.5);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  .browser-card h3 {
+    font-size: var(--text-lg);
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+  }
+
+  .browser-card p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .browser-card a {
+    color: var(--text-accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .browser-card a:hover {
+    text-decoration: underline;
+  }
+</style>

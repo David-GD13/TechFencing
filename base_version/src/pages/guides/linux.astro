@@ -2,6 +2,7 @@
 import GuideLayout from '../../layouts/GuideLayout.astro';
 import GlossaryTerm from '../../components/GlossaryTerm.astro';
 import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
+import DownsidesSection from '../../components/DownsidesSection.astro';
 ---
 
 <GuideLayout
@@ -13,119 +14,218 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
 >
 
   <h2>Why Linux?</h2>
-  <p>
-    Windows 11 has ads in the Start menu. It tracks your activity through "Diagnostic Data." It forces
-    you to create a <GlossaryTerm term="microslop">Microslop</GlossaryTerm> account. It decides when to restart your computer for updates. It ships with
-    Candy Crush pre-installed on a $2000 machine. Microslop's own operating system treats you like a
-    tenant in your own house.
-  </p>
-  <p>
-    Linux is an operating system that you actually own. No ads. No telemetry (unless you opt in). No
-    forced updates. No Microslop account. No corporation deciding what you can and can't do with your
-    own hardware. PewDiePie switched to Linux and called it one of the best tech decisions he's made — he
-    runs Linux Mint on his desktop and Arch Linux on his laptop.
-  </p>
-  <p>
-    Is it harder than Windows? In some ways, yes. But the gap has closed dramatically. If you can follow
-    instructions and aren't afraid to Google error messages, you can use Linux daily.
-  </p>
+  <div class="content-block">
+    <p>
+      Windows 11 has ads in the Start menu. It tracks your activity through "Diagnostic Data." It forces
+      you to create a <GlossaryTerm term="microslop">Microslop</GlossaryTerm> account. It decides when to restart your computer for updates. It ships with
+      Candy Crush pre-installed on a $2000 machine. Microslop's own operating system treats you like a
+      tenant in your own house.
+    </p>
+    <p>
+      Linux is an operating system that you actually own. No ads. No telemetry (unless you opt in). No
+      forced updates. No Microslop account. No corporation deciding what you can and can't do with your
+      own hardware. PewDiePie switched to Linux and called it one of the best tech decisions he's made — he
+      runs Linux Mint on his desktop and Arch Linux on his laptop.
+    </p>
+    <p>
+      Is it harder than Windows? In some ways, yes. But the gap has closed dramatically. If you can follow
+      instructions and aren't afraid to <s>Google</s> browse error messages, you can use Linux daily.
+    </p>
+  </div>
+
+  <div class="flowing-line"></div>
 
   <h2>Choose Your Distro</h2>
-  <p>
-    A "distro" (distribution) is a version of Linux packaged with different software and configurations.
-    Think of it like this: Linux is the engine, and a distro is the complete car built around it.
-  </p>
+  <div class="content-block">
+    <p>
+      A "distro" (distribution) is a version of Linux packaged with different software and configurations.
+      Think of it like this: Linux is the engine, and a distro is the complete car built around it.
+    </p>
+  </div>
 
-  <h3>Linux Mint — Start Here</h3>
-  <p>
-    This is what PewDiePie uses on his main desktop and what he recommends for beginners. Mint looks
-    and feels like Windows. The Start menu is where you expect it. File management works the same way.
-    Installing software is actually easier than Windows (there's an app store). If you've never used
-    Linux before, use Mint. Don't overthink it.
-  </p>
+  <h3>Beginner-Friendly</h3>
 
-  <h3>Ubuntu — The Most Popular</h3>
-  <p>
-    Ubuntu is the most widely used desktop Linux distro. It has the biggest community, which means
-    the most tutorials and Stack Overflow answers when something goes wrong. The downside: Canonical
-    (the company behind Ubuntu) has made some questionable decisions around Snap packages and telemetry.
-    Mint is based on Ubuntu but strips out the controversial stuff.
-  </p>
+  <div class="distro-grid">
+    <div class="distro-card">
+      <h4>Linux Mint — Start Here</h4>
+      <p>
+        PewDiePie's daily driver on his main desktop. Looks and feels like Windows — start menu, taskbar,
+        file manager all where you expect them. Installing software is easier than Windows (built-in app store).
+        Based on Ubuntu but with the controversial stuff stripped out. <strong>If you've never used Linux before,
+        use Mint.</strong>
+      </p>
+      <a href="https://linuxmint.com/download.php" target="_blank" rel="noopener">Download Linux Mint →</a>
+    </div>
 
-  <h3>Fedora — Cutting Edge</h3>
-  <p>
-    Fedora ships newer software than Mint or Ubuntu. It's backed by Red Hat and tends to be where new
-    Linux features land first. Good if you want the latest and greatest, but slightly less beginner-friendly.
-  </p>
+    <div class="distro-card">
+      <h4>Zorin OS — The Windows Convert's Choice</h4>
+      <p>
+        Designed specifically for people switching from Windows. The interface mimics Windows so closely you
+        might forget you switched. Comes with a curated software selection and Wine pre-configured for running
+        some Windows apps. Great polish out of the box.
+      </p>
+      <a href="https://zorin.com/os/download/" target="_blank" rel="noopener">Download Zorin OS →</a>
+    </div>
 
-  <h3>Arch Linux — The Deep End</h3>
-  <p>
-    PewDiePie runs Arch on his laptop. Arch is a "build it yourself" distro — you install it from a
-    command line and add every component manually. It teaches you how Linux actually works at a deep level.
-    Do not start with Arch. Come back to it after you've used Mint for a few months and want to understand
-    what's happening under the hood.
-  </p>
+    <div class="distro-card">
+      <h4>Pop!_OS — For Gamers & NVIDIA</h4>
+      <p>
+        Made by System76 (a Linux hardware company). Ships with NVIDIA drivers pre-installed — no fiddling
+        required. Excellent for gaming and creative work. Has a built-in tiling window manager for productivity.
+        Ubuntu-based with better defaults.
+      </p>
+      <a href="https://pop.system76.com/" target="_blank" rel="noopener">Download Pop!_OS →</a>
+    </div>
+
+    <div class="distro-card">
+      <h4>Ubuntu — The Most Popular</h4>
+      <p>
+        The biggest community means the most tutorials and Stack Overflow answers. Downside: Canonical
+        (the company behind it) pushes <GlossaryTerm term="snap">Snap</GlossaryTerm> packages and has added
+        some telemetry. Mint is based on Ubuntu but strips the controversial stuff.
+      </p>
+      <a href="https://ubuntu.com/download" target="_blank" rel="noopener">Download Ubuntu →</a>
+    </div>
+
+    <div class="distro-card">
+      <h4>Tuxedo OS — Hardware-Optimized Ubuntu</h4>
+      <p>
+        Ubuntu-based with no <GlossaryTerm term="snap">Snap</GlossaryTerm> packages
+        (uses <GlossaryTerm term="flatpak">Flatpak</GlossaryTerm> instead), KDE Plasma desktop for deep
+        customization, and a semi-rolling release model with verification from the Tuxedo team. Best
+        compatibility for work tools while staying privacy-friendly. Simple install, simple use.
+      </p>
+      <a href="https://www.tuxedocomputers.com/en/TUXEDO-OS_1.tuxedo" target="_blank" rel="noopener">Download Tuxedo OS →</a>
+    </div>
+  </div>
+
+  <h3>Advanced</h3>
+
+  <div class="distro-grid">
+    <div class="distro-card">
+      <h4>Fedora — Cutting Edge</h4>
+      <p>
+        Ships newer software than Mint or Ubuntu. Backed by Red Hat — where new Linux features land first.
+        Good if you want the latest and greatest, but slightly less beginner-friendly.
+      </p>
+      <a href="https://fedoraproject.org/workstation/download" target="_blank" rel="noopener">Download Fedora →</a>
+    </div>
+
+    <div class="distro-card">
+      <h4>CachyOS — Performance-Optimized Arch</h4>
+      <p>
+        Arch Linux-based with a graphical installer and performance optimizations out of the box. Compiled
+        with aggressive CPU optimizations for modern hardware. Good middle ground between Arch's flexibility
+        and a user-friendly install experience.
+      </p>
+      <a href="https://cachyos.org/download/" target="_blank" rel="noopener">Download CachyOS →</a>
+    </div>
+
+    <div class="distro-card">
+      <h4>Arch Linux — The Deep End</h4>
+      <p>
+        PewDiePie runs this on his laptop. A "build it yourself" distro — install from a command line and
+        add every component manually. Teaches you how Linux actually works. <strong>Do not start here.</strong>
+        Come back after you've used Mint for a few months.
+      </p>
+      <a href="https://archlinux.org/download/" target="_blank" rel="noopener">Download Arch Linux →</a>
+    </div>
+  </div>
+
+  <div class="flowing-line"></div>
 
   <h2>Step-by-Step Installation</h2>
 
   <div class="step">
     <span class="step-number">Step 1</span>
-    <h3>Download Linux Mint</h3>
+    <h3>Download Your Distro</h3>
     <p>
-      Go to <strong>linuxmint.com/download.php</strong> and download the Cinnamon edition (the default).
-      You'll get an ISO file — this is a disc image that contains the entire operating system. It's about
-      2.5 GB.
+      Go to the download page of your chosen distro (we'll use Linux Mint as the example). Download the
+      Cinnamon edition (the default). You'll get an ISO file — a disc image containing the entire operating
+      system. It's about 2.5 GB.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="1" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
     <span class="step-number">Step 2</span>
     <h3>Create a Bootable USB</h3>
     <p>
-      You need a USB drive (at least 4 GB) and a tool to write the ISO to it. Download
-      <strong>balenaEtcher</strong> (balena.io/etcher) — it's the simplest option. Open Etcher, select the
-      ISO file you downloaded, select your USB drive, and click "Flash." This takes about 5 minutes. Your
-      USB drive will be wiped, so make sure there's nothing important on it.
+      You need a USB drive (at least 4 GB) and a tool to write the ISO to it. Pick one:
     </p>
+    <ul>
+      <li><a href="https://etcher.balena.io/" target="_blank" rel="noopener"><strong>balenaEtcher</strong></a> — The simplest option. Select ISO, select USB, click Flash.</li>
+      <li><a href="https://rufus.ie/en/" target="_blank" rel="noopener"><strong>Rufus</strong></a> — Windows only, more options and faster.</li>
+      <li><a href="https://www.ventoy.net/en/index.html" target="_blank" rel="noopener"><strong>Ventoy</strong></a> — Lets you put multiple ISOs on one USB — great for trying several distros.</li>
+    </ul>
     <p>
-      Alternative tools: <strong>Rufus</strong> (Windows only, more options), <strong>Ventoy</strong>
-      (lets you put multiple ISOs on one USB — great if you want to try several distros).
+      Your USB drive will be wiped, so make sure there's nothing important on it. Flashing takes about 5 minutes.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="2" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
     <span class="step-number">Step 3</span>
     <h3>Boot from USB</h3>
     <p>
-      Restart your computer and boot from the USB drive. You'll need to press a key during startup to
-      access the boot menu — usually <strong>F12</strong>, <strong>F2</strong>, <strong>Esc</strong>, or
-      <strong>Del</strong> depending on your motherboard. Select the USB drive from the boot menu.
+      Restart your computer and boot from the USB drive. Press a key during startup to access the boot
+      menu — usually <strong>F12</strong>, <strong>F2</strong>, <strong>Esc</strong>, or
+      <strong>Del</strong> depending on your motherboard. Select the USB drive.
     </p>
     <p>
-      Mint will boot into a "live" environment — this is a fully working version of the OS running from
-      the USB drive. Nothing is installed yet. You can try it out, see if your WiFi works, see if the
-      display looks right. Take your time here.
+      Mint will boot into a "live" environment — a fully working version of the OS running from
+      the USB. Nothing is installed yet. Test your WiFi, check the display, and take your time.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="3" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
     <span class="step-number">Step 4</span>
     <h3>Decide: Dual-Boot or Full Install</h3>
     <p>
-      <strong>Dual-boot</strong> means keeping Windows alongside Linux. Every time you restart, you choose
-      which OS to boot into. This is the safe option if you're not sure about fully committing. The Mint
-      installer makes this easy — it will detect Windows and offer to shrink the Windows partition.
+      <strong>Dual-boot</strong> means keeping Windows alongside Linux. Every restart, you choose which OS
+      to boot. The Mint installer detects Windows and offers to shrink the Windows partition.
     </p>
     <p>
-      <strong>Full install</strong> means wiping Windows entirely. More disk space for Linux, cleaner
-      setup, no temptation to fall back. If you've backed up everything important and you're ready to
-      commit, go for it.
+      <strong>Full install</strong> means wiping Windows entirely. More disk space, cleaner setup, no
+      temptation to fall back. If you've backed up everything and you're ready to commit, go for it.
     </p>
     <p>
-      Double-click the "Install Linux Mint" icon on the desktop and follow the installer. It's a
-      graphical wizard — pick your language, timezone, keyboard layout, username, and where to install.
-      The whole process takes about 15-20 minutes.
+      <strong>Can Windows see your Linux files if dual-booted?</strong> No — Windows cannot natively read
+      Linux's ext4 filesystem. Your Linux data is invisible to Windows by default. However, Linux
+      <em>can</em> read Windows NTFS partitions. For maximum security, enable <strong>full-disk encryption
+      (LUKS)</strong> during the Linux installation — the installer will offer this option. This ensures even
+      if someone boots a live USB or removes your drive, they can't read your Linux data without the password.
     </p>
+    <p>
+      Double-click "Install Linux Mint" on the desktop and follow the graphical installer. Pick your
+      language, timezone, keyboard, username, and where to install. The whole process takes 15-20 minutes.
+    </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="4" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
@@ -149,88 +249,171 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
     </ul>
     <p>
       The package manager (<strong>apt</strong> on Mint/Ubuntu) is one of the best things about Linux.
-      Instead of going to a website, downloading an installer, and clicking through a wizard, you just
-      type <code>sudo apt install firefox</code> and it's done. If you end up on Arch later, the
-      package manager is <strong>pacman</strong> (e.g., <code>sudo pacman -S firefox</code>).
+      Instead of downloading installers from random websites, you type <code>sudo apt install firefox</code>
+      and it's done. On Arch, the package manager is <strong>pacman</strong> (<code>sudo pacman -S firefox</code>).
     </p>
+    <p>
+      Want a more comprehensive commands reference? Check out
+      <a href="https://gist.github.com/bradtraversy/cc180de0edee05075a6139e42d5f28ce" target="_blank" rel="noopener">this Linux commands cheat sheet</a>
+      or
+      <a href="https://www.digitalocean.com/community/tutorials/linux-commands" target="_blank" rel="noopener">DigitalOcean's tutorial</a>
+      (note: DigitalOcean uses trackers and cookies — make sure you already have your browser extensions from
+      <a href="/guides/browsers">Guide 1</a> installed first).
+    </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="5" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
     <span class="step-number">Step 6</span>
     <h3>Install Your Essential Software</h3>
     <p>
-      Mint comes with a lot pre-installed (Firefox, LibreOffice, a text editor, media player), but here
+      Mint comes with a lot pre-installed (Firefox, LibreOffice, text editor, media player), but here
       are some things you might want to add:
     </p>
     <ul>
-      <li><strong>Flatpak</strong> — Already installed on Mint. Lets you install apps in sandboxed containers from Flathub.</li>
+      <li><strong><GlossaryTerm term="flatpak">Flatpak</GlossaryTerm></strong> — Already installed on Mint. Lets you install apps in sandboxed containers from Flathub.</li>
       <li><strong>VLC</strong> — Best media player, handles everything: <code>sudo apt install vlc</code></li>
-      <li><strong>Timeshift</strong> — Already on Mint. Create system snapshots so you can roll back if something breaks.</li>
+      <li><strong>Timeshift</strong> — Already on Mint. Create <GlossaryTerm term="system snapshots">system snapshots</GlossaryTerm> so you can roll back if something breaks.</li>
       <li><strong>OBS Studio</strong> — Screen recording and streaming: <code>flatpak install flathub com.obsproject.Studio</code></li>
       <li><strong>Steam</strong> — Yes, gaming on Linux works. Valve's Proton compatibility layer runs most Windows games.</li>
     </ul>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="6" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
+
+  <div class="flowing-line"></div>
 
   <h2>Desktop Environments</h2>
-  <p>
-    One of the best things about Linux is that you can completely change how your desktop looks and works.
-    These aren't themes — they're entirely different interfaces.
-  </p>
-  <ul>
-    <li><strong>Cinnamon</strong> (Mint default) — Traditional Windows-like layout. Taskbar at the bottom, start menu, system tray. Familiar and functional.</li>
-    <li><strong>GNOME</strong> (Ubuntu/Fedora default) — macOS-like workflow with activities overview. Modern but polarizing.</li>
-    <li><strong>KDE Plasma</strong> — The most customizable desktop environment. You can make it look like anything. Heavy on options, which some people love and others find overwhelming.</li>
-    <li><strong>XFCE</strong> — Lightweight and fast. Great for older hardware.</li>
-  </ul>
-  <p>
-    Stick with Cinnamon for now. You can always try others later — that's the beauty of Linux.
-    And if you get really deep into customization, check out the <a href="/guides/ricing">Ricing guide</a>
-    for tiling window managers.
-  </p>
-
-  <div class="downsides">
-    <h2>Honest Downsides</h2>
-    <p>Linux is great, but we're not going to lie to you about the rough edges:</p>
-    <ul>
-      <li>
-        <strong>Adobe software doesn't run on Linux.</strong> Photoshop, Premiere, Illustrator — none of
-        them. The alternatives are GIMP (or PhotoGIMP, a plugin that makes GIMP's interface match
-        Photoshop), Kdenlive/DaVinci Resolve for video editing, and Inkscape for vector graphics. They're
-        good, but they're not Adobe. If your livelihood depends on Adobe, this is a real problem.
-      </li>
-      <li>
-        <strong>Some games don't work.</strong> Specifically, games with kernel-level anti-cheat (Valorant,
-        Fortnite, FACEIT CS2) won't run on Linux. Most other Steam games work fine through Proton — check
-        protondb.com before you switch. PewDiePie acknowledged this is a real issue.
-      </li>
-      <li>
-        <strong>Adobe charges ~$65 to cancel your subscription.</strong> PewDiePie specifically called
-        this out. If you're on an annual plan paid monthly, Adobe hits you with an early termination fee.
-        Factor this into your switch cost.
-      </li>
-      <li>
-        <strong>The learning curve is real.</strong> You will encounter situations where the solution is
-        "open a terminal and type these commands." This can feel intimidating at first. But every problem
-        you solve teaches you something, and the Linux community is incredibly helpful — forums, Reddit
-        (r/linuxmint, r/linux4noobs), and wikis are your best friends.
-      </li>
-      <li>
-        <strong>Hardware compatibility can be hit or miss.</strong> Most things work out of the box, but
-        some WiFi cards, printers, and peripherals need extra drivers. Nvidia GPUs work but require
-        proprietary drivers (Mint makes this easy in Driver Manager). If possible, test with the live
-        USB before committing.
-      </li>
-      <li>
-        <strong>Microslop Office doesn't exist on Linux.</strong> LibreOffice handles most Word/Excel/
-        PowerPoint files fine, but complex formatting sometimes breaks. If you need exact Microslop Office
-        compatibility, use the web versions (Office 365 works in the browser) or run Windows in a virtual
-        machine.
-      </li>
-    </ul>
+  <div class="content-block">
+    <p>
+      One of the best things about Linux is that you can completely change how your desktop looks and works.
+      These aren't themes — they're entirely different interfaces.
+    </p>
   </div>
+
+  <div class="distro-grid">
+    <div class="distro-card">
+      <h4>Cinnamon</h4>
+      <p>Mint's default. Traditional Windows-like layout — taskbar at the bottom, start menu, system tray. Familiar and functional.</p>
+      <a href="https://en.wikipedia.org/wiki/Cinnamon_(desktop_environment)" target="_blank" rel="noopener">Learn more →</a>
+    </div>
+    <div class="distro-card">
+      <h4>GNOME</h4>
+      <p>Ubuntu/Fedora default. macOS-like workflow with activities overview. Modern but polarizing.</p>
+      <a href="https://www.gnome.org/" target="_blank" rel="noopener">gnome.org →</a>
+    </div>
+    <div class="distro-card">
+      <h4>KDE Plasma</h4>
+      <p>The most customizable desktop environment. You can make it look like anything. Heavy on options.</p>
+      <a href="https://kde.org/plasma-desktop/" target="_blank" rel="noopener">kde.org →</a>
+    </div>
+    <div class="distro-card">
+      <h4>XFCE</h4>
+      <p>Lightweight and fast. Great for older hardware or anyone who wants minimal resource usage.</p>
+      <a href="https://www.xfce.org/" target="_blank" rel="noopener">xfce.org →</a>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <p>
+      Stick with Cinnamon for now. You can always try others later — that's the beauty of Linux.
+      And if you get really deep into customization, check out the <a href="/guides/ricing">Ricing guide</a>
+      for tiling window managers.
+    </p>
+  </div>
+
+  <div class="flowing-line"></div>
+
+  <DownsidesSection
+    intro="Linux is great, but we're not going to lie about the rough edges:"
+    items={[
+      {
+        title: "Adobe software doesn't run on Linux",
+        description: "Photoshop, Premiere, Illustrator — none of them. Alternatives are GIMP (or PhotoGIMP), Kdenlive/DaVinci Resolve for video, Inkscape for vectors. They're good, but they're not Adobe. If your livelihood depends on Adobe, this is a real problem."
+      },
+      {
+        title: "Some games don't work",
+        description: "Games with kernel-level anti-cheat (Valorant, Fortnite, FACEIT CS2) won't run. Most Steam games work through Proton — check <a href='https://www.protondb.com/' target='_blank' rel='noopener'>protondb.com</a> before you switch."
+      },
+      {
+        title: "Adobe charges ~$65 to cancel your subscription",
+        description: "PewDiePie called this out. If you're on an annual plan paid monthly, Adobe charges an early termination fee. Factor this into your switch cost."
+      },
+      {
+        title: "The learning curve is real",
+        description: "You will encounter situations where the solution is 'open a terminal and type these commands.' Every problem you solve teaches you something, and the Linux community (r/linuxmint, r/linux4noobs) is incredibly helpful."
+      },
+      {
+        title: "Hardware compatibility can be hit or miss",
+        description: "Most things work out of the box, but some WiFi cards, printers, and peripherals need extra drivers. NVIDIA GPUs require proprietary drivers (Mint makes this easy in Driver Manager). Test with the live USB first."
+      },
+      {
+        title: "Microslop Office doesn't exist on Linux",
+        description: "LibreOffice handles most Word/Excel/PowerPoint files fine, but complex formatting sometimes breaks. Use the web versions (Office 365 in browser) or run Windows in a virtual machine for exact compatibility."
+      },
+    ]}
+  />
 
   <DeepDiveLinks links={[
     { label: "Desktop OS Recommendations", url: "https://www.privacyguides.org/en/desktop/" },
   ]} />
 
 </GuideLayout>
+
+<style>
+  .distro-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  @media (max-width: 768px) {
+    .distro-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .distro-card {
+    padding: var(--space-5);
+    background: rgba(26, 29, 35, 0.5);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  .distro-card h4 {
+    font-size: var(--text-base);
+    margin-top: 0;
+    margin-bottom: var(--space-2);
+  }
+
+  .distro-card p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-3);
+  }
+
+  .distro-card a {
+    color: var(--text-accent);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 600;
+  }
+
+  .distro-card a:hover {
+    text-decoration: underline;
+  }
+</style>

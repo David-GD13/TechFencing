@@ -1,6 +1,7 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
 import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
+import DownsidesSection from '../../components/DownsidesSection.astro';
 ---
 
 <GuideLayout
@@ -12,23 +13,27 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
 >
 
   <h2>The Google Problem</h2>
-  <p>
-    Think about how many Google products you use: Gmail, Google Drive, Google Maps, Google Calendar,
-    Google Photos, Chrome, Google Search, YouTube, Google Docs, Google Contacts, Google Keep,
-    Android with Google Play. Each one of these is a data pipeline flowing straight to Google's
-    advertising machine.
-  </p>
-  <p>
-    PewDiePie described it perfectly — Google knows where you are, where you've been, who you email,
-    what you search for, what you write in your documents, what photos you take, what appointments you
-    have, and what you watch. That's not a service provider. That's a surveillance company you happen
-    to get free email from.
-  </p>
-  <p>
-    De-Googling doesn't mean going off-grid. It means replacing Google's services with alternatives
-    that don't monetize your personal data. Some replacements are great. Some are... honestly not.
-    We'll tell you which is which.
-  </p>
+  <div class="content-block">
+    <p>
+      Think about how many Google products you use: Gmail, Google Drive, Google Maps, Google Calendar,
+      Google Photos, Chrome, Google Search, YouTube, Google Docs, Google Contacts, Google Keep,
+      Android with Google Play. Each one of these is a data pipeline flowing straight to Google's
+      advertising machine.
+    </p>
+    <p>
+      PewDiePie described it perfectly — Google knows where you are, where you've been, who you email,
+      what you search for, what you write in your documents, what photos you take, what appointments you
+      have, and what you watch. That's not a service provider. That's a surveillance company you happen
+      to get free email from.
+    </p>
+    <p>
+      De-Googling doesn't mean going off-grid. It means replacing Google's services with alternatives
+      that don't monetize your personal data. Some replacements are great. Some are... honestly not.
+      We'll tell you which is which.
+    </p>
+  </div>
+
+  <div class="flowing-line"></div>
 
   <h2>Map Your Google Services</h2>
 
@@ -45,39 +50,79 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       Make a list. Be honest about which services you use daily vs. occasionally. Prioritize replacing
       the daily ones first.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="1" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
+  <div class="flowing-line"></div>
+
   <h2>The Replacement Map</h2>
-  <p>Here's every major Google service and what to replace it with, ranked by how good the replacement actually is.</p>
+  <div class="content-block">
+    <p>Here's every major Google service and what to replace it with, ranked by how good the replacement actually is.</p>
+    <p>
+      <strong>A word of caution:</strong> Don't replace all of Google with all of Proton. Trading one single
+      provider for another means you're still putting all your eggs in one basket. If Proton goes down, gets
+      compromised, or changes their policies — you lose everything at once. Mix and match providers where it
+      makes sense.
+    </p>
+  </div>
 
   <div class="step">
     <span class="step-number">Step 2</span>
-    <h3>Gmail &rarr; ProtonMail</h3>
+    <h3>Gmail &rarr; ProtonMail or Tuta</h3>
     <p>
-      ProtonMail is end-to-end encrypted email based in Switzerland. The free tier gives you 1 GB of
-      storage and 1 email address. The paid plan (Proton Unlimited, ~$10/month) gives you 500 GB,
-      15 email addresses, and includes Proton Calendar, Proton Drive, and Proton VPN.
+      <a href="https://proton.me/" target="_blank" rel="noopener"><strong>ProtonMail</strong></a> is end-to-end
+      encrypted email based in Switzerland. The free tier gives you 1 GB of storage and 1 email address.
+      The paid plan (Proton Unlimited, ~$10/month) gives you 500 GB, 15 email addresses, and includes
+      Proton Calendar, Proton Drive, and Proton VPN.
     </p>
     <p>
-      <strong>Migration tip:</strong> Don't switch overnight. Set up email forwarding from Gmail to your
-      new ProtonMail address. Over the next few months, update your email address on every service you
-      use. This gradual approach means you never miss an important email.
+      <a href="https://tuta.com/" target="_blank" rel="noopener"><strong>Tuta</strong></a> (formerly Tutanota)
+      is another excellent encrypted email provider based in Germany. Free tier includes 1 GB storage. Their
+      encryption approach is slightly different from Proton's — both are solid choices. Having your email on
+      one provider and your calendar/drive on another reduces your single-point-of-failure risk.
     </p>
-    <p><strong>Quality rating: Excellent.</strong> ProtonMail is genuinely good. The web interface is
-    clean, the mobile apps work well, and the security is real.</p>
+    <p>
+      <strong>Migration tip:</strong> Set up email forwarding from Gmail to your new address. Over the next
+      few months, update your email on every service you use. Gradual approach = never miss an important email.
+    </p>
+    <p><strong>Quality rating: Excellent.</strong> Both ProtonMail and Tuta are genuinely good. Clean interfaces,
+    solid mobile apps, real security.</p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="2" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
     <span class="step-number">Step 3</span>
-    <h3>Google Drive &rarr; Nextcloud / Proton Drive</h3>
+    <h3>Google Drive &rarr; Nextcloud / Proton Drive / Syncthing</h3>
     <p>
-      Nextcloud is a self-hosted cloud storage solution (see the <a href="/guides/self-hosting">Self-Hosting
-      guide</a> for setup). If you don't want to self-host, Proton Drive comes with your Proton subscription
-      and is end-to-end encrypted. For simple file syncing between devices, Syncthing is peer-to-peer
-      and never touches a server.
+      <a href="https://nextcloud.com/" target="_blank" rel="noopener"><strong>Nextcloud</strong></a> is a
+      self-hosted cloud storage solution (see the <a href="/guides/self-hosting">Self-Hosting guide</a> for
+      setup). If you don't want to self-host,
+      <a href="https://proton.me/drive" target="_blank" rel="noopener"><strong>Proton Drive</strong></a> comes
+      with your Proton subscription and is end-to-end encrypted. For simple file syncing between devices,
+      <a href="https://syncthing.net/" target="_blank" rel="noopener"><strong>Syncthing</strong></a> is
+      peer-to-peer and never touches a third-party server.
     </p>
     <p><strong>Quality rating: Good.</strong> Proton Drive is polished but has less storage than Google.
     Nextcloud is powerful but requires self-hosting. Syncthing is excellent for device-to-device sync.</p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="3" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
@@ -87,7 +132,14 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       You've already done this if you followed the <a href="/guides/browsers">Browser guide</a>. If not,
       go do that first. It's the easiest win on this entire site.
     </p>
-    <p><strong>Quality rating: Excellent.</strong> Firefox is a fantastic browser. No compromises here.</p>
+    <p><strong>Quality rating: Very good.</strong> Firefox is a fantastic starter though you need to harden it. There are better out of the box options out there.</p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="4" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
@@ -99,123 +151,175 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
       specific query.
     </p>
     <p><strong>Quality rating: Good.</strong> 90% of the time it's fine. The other 10%, you'll use !g.</p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="5" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
     <span class="step-number">Step 6</span>
     <h3>Google Maps &rarr; OsmAnd / Organic Maps</h3>
     <p>
-      This is the one that hurt PewDiePie the most. He switched to OsmAnd (based on OpenStreetMap data)
-      and was <strong>30 minutes late</strong> to where he was going because the navigation was that bad.
-      Google Maps is genuinely one of the hardest services to replace because Google has spent billions
-      on map data, real-time traffic, and business listings.
+      This is the one that hurt PewDiePie the most. He was <strong>30 minutes late</strong> because
+      the navigation was that bad. Google Maps is genuinely one of the hardest services to replace.
     </p>
     <p>
-      <strong>OsmAnd</strong> is free, open-source, and works offline. It's great for hiking, cycling,
-      and areas where OpenStreetMap data is good (most of Europe, urban areas worldwide). For driving
-      navigation in less-mapped areas, it struggles.
+      <a href="https://osmand.net/" target="_blank" rel="noopener"><strong>OsmAnd</strong></a> is free,
+      open-source, and works offline. Great for hiking, cycling, and areas where OpenStreetMap data is
+      good (most of Europe, urban areas worldwide). Driving navigation in less-mapped areas struggles.
     </p>
     <p>
-      <strong>Organic Maps</strong> is another OpenStreetMap-based option with a cleaner interface.
-      Good for walking and general navigation.
+      <a href="https://organicmaps.app/" target="_blank" rel="noopener"><strong>Organic Maps</strong></a>
+      is another OpenStreetMap option with a cleaner interface. Good for walking and general navigation.
     </p>
-    <p><strong>Quality rating: Poor to mediocre.</strong> Let's be honest — this is where de-Googling
-    hurts the most. PewDiePie himself still uses Google Maps for driving. If you need reliable turn-by-turn
-    navigation, you might keep Google Maps as a reluctant exception.</p>
+    <p><strong>Quality rating: Poor to mediocre.</strong> This is where de-Googling hurts the most.
+    PewDiePie himself still uses Google Maps for driving. You might keep it as a reluctant exception.</p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="6" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
     <span class="step-number">Step 7</span>
-    <h3>Google Photos &rarr; Immich / Nextcloud</h3>
+    <h3>Google Photos &rarr; Immich / Ente / Nextcloud</h3>
     <p>
-      <strong>Immich</strong> is a self-hosted Google Photos replacement that's genuinely impressive.
-      It has face recognition, location-based browsing, memories, sharing, and a mobile app that does
-      automatic photo backup. It looks and feels like Google Photos. You need to self-host it (see the
+      <a href="https://immich.app/" target="_blank" rel="noopener"><strong>Immich</strong></a> is a self-hosted
+      Google Photos replacement that's genuinely impressive. Face recognition, location browsing, memories,
+      sharing, and automatic mobile backup. Looks and feels like Google Photos. Requires self-hosting (see
       <a href="/guides/self-hosting">Self-Hosting guide</a>).
     </p>
     <p>
-      If you don't want to self-host, Nextcloud has a photos feature, though it's less polished than Immich.
+      <a href="https://ente.io/" target="_blank" rel="noopener"><strong>Ente</strong></a> is an excellent
+      cloud-based alternative if you don't want to self-host. End-to-end encrypted photo storage with
+      automatic backup, sharing, and a polished mobile app. Paid service, but no self-hosting required.
     </p>
-    <p><strong>Quality rating: Very good (Immich).</strong> One of the best open-source replacements out there.</p>
+    <p>
+      <a href="https://nextcloud.com/" target="_blank" rel="noopener"><strong>Nextcloud</strong></a> also
+      has a photos feature, though less polished than Immich or Ente.
+    </p>
+    <p><strong>Quality rating: Very good.</strong> Immich and Ente are both excellent options depending on
+    whether you prefer self-hosting or cloud.</p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="7" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
     <span class="step-number">Step 8</span>
-    <h3>Google Calendar &rarr; Proton Calendar</h3>
+    <h3>Google Calendar &rarr; Proton Calendar / Tuta Calendar</h3>
     <p>
-      Proton Calendar comes with your Proton subscription. It's encrypted, syncs with the Proton mobile
-      app, and handles CalDAV for third-party clients. If you self-host, Nextcloud Calendar is also solid.
+      <a href="https://proton.me/calendar" target="_blank" rel="noopener"><strong>Proton Calendar</strong></a>
+      comes with your Proton subscription. Encrypted, syncs with the Proton mobile app, handles CalDAV
+      for third-party clients.
     </p>
-    <p><strong>Quality rating: Good.</strong> Does everything a calendar needs to do. Sharing with non-Proton
-    users is slightly clunky.</p>
+    <p>
+      <a href="https://tuta.com/calendar" target="_blank" rel="noopener"><strong>Tuta Calendar</strong></a>
+      is included with Tuta email. If you went with Tuta for email, keep your calendar there too.
+      If you self-host, Nextcloud Calendar is also solid.
+    </p>
+    <p><strong>Quality rating: Good.</strong> Both do everything a calendar needs. Sharing with users on
+    other platforms is slightly clunky.</p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="8" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
     <span class="step-number">Step 9</span>
-    <h3>Google Docs &rarr; LibreOffice / CryptPad</h3>
+    <h3>Google Docs &rarr; LibreOffice / OpenOffice / CryptPad</h3>
     <p>
-      <strong>LibreOffice</strong> is a full office suite that runs locally on your machine. It handles
-      Word, Excel, and PowerPoint files. It's free and open-source. The interface is dated but functional.
+      <a href="https://www.libreoffice.org/" target="_blank" rel="noopener"><strong>LibreOffice</strong></a>
+      is a full office suite that runs locally. Handles Word, Excel, and PowerPoint files. Free, open-source.
+      Interface is dated but functional.
     </p>
     <p>
-      <strong>CryptPad</strong> is an encrypted, web-based collaborative editing tool — the closest
-      replacement for the real-time collaboration feature of Google Docs. You can self-host it or use
-      the free tier at cryptpad.fr.
+      <a href="https://www.openoffice.org/" target="_blank" rel="noopener"><strong>OpenOffice</strong></a>
+      is an alternative to LibreOffice with a more familiar interface that looks closer to the Microslop
+      Office suite. More stable for some users, though less actively developed.
     </p>
-    <p><strong>Quality rating: Good for solo work, mediocre for collaboration.</strong> If you need
-    real-time collaboration with non-technical people, this is a weak spot.</p>
+    <p>
+      <a href="https://cryptpad.fr/" target="_blank" rel="noopener"><strong>CryptPad</strong></a> is an
+      encrypted, web-based collaborative editor — the closest replacement for Google Docs' real-time
+      collaboration. Self-host it or use the free tier.
+    </p>
+    <p><strong>Quality rating: Good for solo work, mediocre for collaboration.</strong> Real-time collaboration
+    with non-technical people is still a weak spot.</p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="9" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
+
+  <div class="flowing-line"></div>
 
   <h2>The Migration Strategy</h2>
-  <p>Don't try to do everything at once. Here's the order that makes the most sense:</p>
-  <ol>
-    <li><strong>Week 1:</strong> Browser and search (you've already done this)</li>
-    <li><strong>Week 2:</strong> Set up ProtonMail, start forwarding Gmail</li>
-    <li><strong>Week 3:</strong> Move your files to Nextcloud or Proton Drive</li>
-    <li><strong>Week 4:</strong> Switch calendar, start updating email addresses on services</li>
-    <li><strong>Ongoing:</strong> As each account gets moved to ProtonMail, update it and move on</li>
-  </ol>
-  <p>
-    The full migration takes 2-3 months if you do it properly. That's fine. This is a marathon, not a sprint.
-    Every service you move is one less data pipeline to Google.
-  </p>
-
-  <div class="downsides">
-    <h2>Honest Downsides</h2>
-    <ul>
-      <li>
-        <strong>Google Maps is irreplaceable for driving.</strong> PewDiePie was 30 minutes late because
-        of OsmAnd. The real-time traffic data, business hours, reviews, and street-level imagery simply
-        don't exist in the open-source world at the same quality. You may need to keep Google Maps as
-        a guilty exception.
-      </li>
-      <li>
-        <strong>The free tier of ProtonMail is limiting.</strong> 1 GB of storage fills up fast. You'll
-        likely need to pay for Proton Unlimited ($10/month) to make it your primary email. That's $120/year
-        for something Google gives you for "free" (in exchange for your soul).
-      </li>
-      <li>
-        <strong>Collaborative document editing is worse.</strong> If you work with people who use Google
-        Docs, sending them a CryptPad link is a harder sell than "just share it on Google Docs." The
-        network effect is real.
-      </li>
-      <li>
-        <strong>Some Google services have no good replacement.</strong> Google Translate, Google Scholar,
-        Google Flights — these are services where Google's data advantage is so massive that alternatives
-        feel primitive.
-      </li>
-      <li>
-        <strong>Android without Google Play Services is its own adventure.</strong> See the
-        <a href="/guides/control-your-phone">Control Your Phone guide</a> for that rabbit hole. Most
-        people keep a Google account on their phone while de-Googling everything else.
-      </li>
-      <li>
-        <strong>You'll feel the friction.</strong> Logging into a new email, forgetting which password
-        manager has which account, realizing your calendar invite went to the wrong address — these little
-        annoyances are real. They fade after a month, but the first few weeks are rough.
-      </li>
-    </ul>
+  <div class="content-block">
+    <p>Don't try to do everything at once. Here's the order that makes the most sense:</p>
+    <ol>
+      <li><strong>Week 1:</strong> Browser and search (you've already done this)</li>
+      <li><strong>Week 2:</strong> Set up ProtonMail or Tuta, start forwarding Gmail</li>
+      <li><strong>Week 3:</strong> Move your files to Nextcloud, Proton Drive, or Syncthing</li>
+      <li><strong>Week 4:</strong> Switch calendar, start updating email addresses on services</li>
+      <li><strong>Week 5:</strong> Photos migration (Immich, Ente, or Nextcloud)</li>
+      <li><strong>Ongoing:</strong> As each account gets moved to your new email, update it and move on</li>
+    </ol>
+    <p>
+      The full migration takes 2-3 months if you do it properly. That's fine. This is a marathon, not a sprint.
+      Every service you move is one less data pipeline to Google. Remember: spread your services across
+      different providers rather than replacing Google with a single alternative.
+    </p>
   </div>
+
+  <div class="flowing-line"></div>
+
+  <DownsidesSection
+    intro="De-Googling has real costs. Here's what to expect:"
+    items={[
+      {
+        title: "Google Maps is irreplaceable for driving",
+        description: "PewDiePie was 30 minutes late because of OsmAnd. Real-time traffic, business hours, reviews, and street-level imagery don't exist in the open-source world at the same quality. You may need to keep Google Maps as a guilty exception."
+      },
+      {
+        title: "The free tier of encrypted email is limiting",
+        description: "1 GB fills up fast. You'll likely need to pay for Proton Unlimited ($10/month) or Tuta Premium (~$3/month). That's money for something Google gives you 'for free' (in exchange for your data)."
+      },
+      {
+        title: "Collaborative document editing is worse",
+        description: "Sending someone a CryptPad link is a harder sell than 'just share it on Google Docs.' The network effect is real."
+      },
+      {
+        title: "Some Google services have no good replacement",
+        description: "Google Translate, Google Scholar, Google Flights — Google's data advantage is so massive that alternatives feel primitive."
+      },
+      {
+        title: "Don't replace one monopoly with another",
+        description: "Going all-in on Proton (email + calendar + drive + VPN) means Proton becomes your new single point of failure. Mix providers: email on one, files on another, calendar on a third."
+      },
+      {
+        title: "You'll feel the friction",
+        description: "Logging into a new email, forgetting which account is where, calendar invites going to the wrong address — these annoyances fade after a month, but the first few weeks are rough."
+      },
+    ]}
+  />
 
   <DeepDiveLinks links={[
     { label: "Email Providers", url: "https://www.privacyguides.org/en/email/" },

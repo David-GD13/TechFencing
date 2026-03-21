@@ -25,7 +25,8 @@ const Tag = href ? 'a' : 'div';
 <style>
   .card {
     display: block;
-    background: var(--bg-card);
+    background: rgba(26, 29, 35, 0.5);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--border-muted);
     border-radius: var(--radius-md);
     padding: var(--space-6);
@@ -37,9 +38,11 @@ const Tag = href ? 'a' : 'div';
 
   .card--link {
     cursor: pointer;
+    background: var(--bg-card);
+    backdrop-filter: none;
   }
 
-  .card:hover {
+  .card--link:hover {
     transform: translateY(-2px);
     border-color: var(--border-primary);
     box-shadow: var(--shadow-card-hover);

@@ -41,6 +41,11 @@ const glossary: Record<string, string> = {
   "vllm": "A fast, memory-efficient inference engine for large language models. PewDiePie runs it on his 10-GPU rig for local AI.",
   "vps": "Virtual Private Server. A server you rent from a hosting company instead of running hardware at home. Alternative to Raspberry Pi for self-hosting.",
   "waybar": "A customizable status bar for Wayland compositors. Shows system info, workspaces, clock, etc. Part of the ricing toolkit.",
+  "snap": "A package format by Canonical (Ubuntu). Auto-updating and sandboxed, but centrally controlled by Canonical. Controversial in the Linux community.",
+  "flatpak": "A universal Linux package format. Apps run sandboxed, available from Flathub. The community-preferred alternative to Snap.",
+  "system snapshots": "A saved state of your entire system. If an update breaks something, restore to a snapshot. Timeshift is the most popular tool on Linux.",
+  "backup": "A copy of your data stored separately from the original. The 3-2-1 rule: 3 copies, 2 different media, 1 offsite.",
+  "oem unlocking": "A setting that allows your phone's bootloader to be unlocked. Required for installing custom ROMs like GrapheneOS. Found in Developer Options on Android.",
 };
 
 const sortedTerms = Object.entries(glossary).sort(([a], [b]) => a.localeCompare(b));

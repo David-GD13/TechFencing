@@ -1,5 +1,7 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
+import DownsidesSection from '../../components/DownsidesSection.astro';
+import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
 ---
 
 <GuideLayout
@@ -10,27 +12,31 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
 >
 
   <h2>What Is Ricing?</h2>
-  <p>
-    "Ricing" is the art of customizing your Linux desktop to look and behave exactly how you want it.
-    The term comes from the car modding community ("Race Inspired Cosmetic Enhancements") and was
-    adopted by the Linux community for the same idea — making something look cool, sometimes at the
-    expense of practicality.
-  </p>
-  <p>
-    Ricing goes far beyond changing your wallpaper or adjusting the taskbar color. It means replacing
-    your entire desktop environment with a tiling window manager, configuring custom status bars,
-    building widgets, writing scripts, and spending an unreasonable number of hours getting your terminal
-    transparency just right.
-  </p>
-  <p>
-    PewDiePie described his rice as looking like a "nuclear reactor control dashboard." That's the
-    aesthetic — dense, information-rich, cyberpunk, deeply personalized. His setup: Hyprland as the
-    window manager, Waybar for the status bar, EWW for widgets, Rofi as the application launcher,
-    and a custom daemon that auto-hides the taskbar.
-  </p>
-  <p>
-    This is the deepest rabbit hole on this site. You have been warned.
-  </p>
+  <div class="content-block">
+    <p>
+      "Ricing" is the art of customizing your Linux desktop to look and behave exactly how you want it.
+      The term comes from the car modding community ("Race Inspired Cosmetic Enhancements") and was
+      adopted by the Linux community for the same idea — making something look cool, sometimes at the
+      expense of practicality.
+    </p>
+    <p>
+      Ricing goes far beyond changing your wallpaper or adjusting the taskbar color. It means replacing
+      your entire desktop environment with a tiling window manager, configuring custom status bars,
+      building widgets, writing scripts, and spending an unreasonable number of hours getting your terminal
+      transparency just right.
+    </p>
+    <p>
+      PewDiePie described his rice as looking like a "nuclear reactor control dashboard." That's the
+      aesthetic — dense, information-rich, cyberpunk, deeply personalized. His setup: Hyprland as the
+      window manager, Waybar for the status bar, EWW for widgets, Rofi as the application launcher,
+      and a custom daemon that auto-hides the taskbar.
+    </p>
+    <p>
+      This is the deepest rabbit hole on this site. You have been warned.
+    </p>
+  </div>
+
+  <div class="flowing-line"></div>
 
   <h2>The Foundation: Tiling Window Managers</h2>
   <p>
@@ -50,7 +56,7 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
     <h3>Choose Your Window Manager</h3>
     <p>There are two major protocols for window managers on Linux: X11 (old) and Wayland (new). Wayland is the future.</p>
 
-    <h3>Hyprland (Wayland) — PewDiePie's Choice</h3>
+    <h3><a href="https://hypr.land/" target="_blank" rel="noopener">Hyprland</a> (Wayland) — PewDiePie's Choice</h3>
     <p>
       Hyprland is a dynamic tiling window manager for Wayland with smooth animations, rounded corners,
       and blur effects. It's what PewDiePie uses. The configuration is done through a single text file
@@ -62,14 +68,14 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
       highly functional. It's the window manager most responsible for making ricing mainstream.
     </p>
 
-    <h3>i3 (X11) — The Classic</h3>
+    <h3><a href="https://i3wm.org/" target="_blank" rel="noopener">i3</a> (X11) — The Classic</h3>
     <p>
       i3 is the most established tiling window manager. It's rock-solid, well-documented, and the
       easiest to learn. If you're brand new to tiling WMs, i3 is a safe starting point. Configuration
       is a simple text file. Hundreds of tutorials exist.
     </p>
 
-    <h3>Sway (Wayland) — i3 for Wayland</h3>
+    <h3><a href="https://swaywm.org/" target="_blank" rel="noopener">Sway</a> (Wayland) — i3 for Wayland</h3>
     <p>
       Sway is a drop-in replacement for i3 that runs on Wayland instead of X11. If you like i3's
       philosophy but want Wayland benefits (better HiDPI, smoother rendering, better security), Sway
@@ -82,6 +88,13 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
       code. You add features by applying patches (diffs). It's the most minimalist option and appeals to
       people who want absolute control. Not for beginners.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="1" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
@@ -104,7 +117,16 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
       The first hour with a tiling WM is disorienting. The second hour, things start to click. By the
       end of the first day, you'll be faster than you ever were with floating windows.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="2" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
+
+  <div class="flowing-line"></div>
 
   <h2>The Layers of a Rice</h2>
 
@@ -116,7 +138,7 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
       time, battery, CPU usage, workspace indicators, network status, and whatever else you want.
     </p>
     <p>
-      <strong>Waybar</strong> (PewDiePie's choice) is a Wayland-native status bar that's highly
+      <strong><a href="https://github.com/Alexays/Waybar" target="_blank" rel="noopener">Waybar</a></strong> (PewDiePie's choice) is a Wayland-native status bar that's highly
       customizable. You configure it with JSON (what to show) and CSS (how it looks). You can add
       custom modules that run scripts and display their output. PewDiePie's Waybar shows system stats,
       workspaces, and custom information modules.
@@ -129,6 +151,13 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
       The status bar is where a lot of the "nuclear reactor" aesthetic comes from — dense information
       presented in monospace fonts with color-coded indicators.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="3" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
@@ -140,7 +169,7 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
       launches.
     </p>
     <p>
-      <strong>Rofi</strong> (PewDiePie's choice) is the most popular and most themeable. It can also
+      <strong><a href="https://github.com/davatorium/rofi" target="_blank" rel="noopener">Rofi</a></strong> (PewDiePie's choice) is the most popular and most themeable. It can also
       serve as a window switcher, SSH client selector, clipboard manager, and power menu. Rofi themes
       are written in a CSS-like language, and the community has produced hundreds of themes.
     </p>
@@ -148,13 +177,20 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
       <strong>Wofi</strong> is a simpler Wayland-native alternative. Less customizable, but it works
       well and requires minimal configuration.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="4" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
     <span class="step-number">Step 5</span>
     <h3>Widgets: EWW</h3>
     <p>
-      <strong>EWW (Elkowar's Wacky Widgets)</strong> is a widget system that lets you build custom
+      <strong><a href="https://github.com/elkowar/eww" target="_blank" rel="noopener">EWW (Elkowar's Wacky Widgets)</a></strong> is a widget system that lets you build custom
       overlays and panels for your desktop. Think: a music player widget, a system monitor dashboard,
       a calendar overlay, a notification center — anything you can imagine.
     </p>
@@ -167,6 +203,13 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
       Alternative: <strong>AGS (Aylur's GTK Shell)</strong> lets you build widgets in JavaScript/TypeScript.
       Some people find this more approachable than EWW's custom language.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="5" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
@@ -176,9 +219,9 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
       Your terminal emulator is where you'll spend a lot of time. Popular choices:
     </p>
     <ul>
-      <li><strong>Kitty</strong> — GPU-accelerated, supports images, ligatures, and splits. Highly configurable.</li>
-      <li><strong>Alacritty</strong> — GPU-accelerated, minimal, fast. Config in TOML. No tabs or splits (use a multiplexer).</li>
-      <li><strong>WezTerm</strong> — GPU-accelerated, configurable in Lua, supports tabs, splits, and multiplexing built in.</li>
+      <li><strong><a href="https://github.com/kovidgoyal/kitty" target="_blank" rel="noopener">Kitty</a></strong> — GPU-accelerated, supports images, ligatures, and splits. Highly configurable.</li>
+      <li><strong><a href="https://github.com/alacritty/alacritty" target="_blank" rel="noopener">Alacritty</a></strong> — GPU-accelerated, minimal, fast. Config in TOML. No tabs or splits (use a multiplexer).</li>
+      <li><strong><a href="https://wezterm.org/" target="_blank" rel="noopener">WezTerm</a></strong> — GPU-accelerated, configurable in Lua, supports tabs, splits, and multiplexing built in.</li>
       <li><strong>Foot</strong> — Wayland-native, very lightweight and fast. Good default for Hyprland.</li>
     </ul>
     <p>
@@ -191,6 +234,13 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
       Nord are popular), a Nerd Font (font with built-in icons), and tools like <strong>neofetch</strong>
       (displays system info in ASCII art) or <strong>fastfetch</strong> (faster alternative).
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="6" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
 
   <div class="step">
@@ -215,7 +265,16 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
       Alternative: a bare Git repo (<code>git init --bare ~/.dotfiles</code>) with a custom alias. This
       is more manual but doesn't require any extra tools.
     </p>
+    <label class="step-progress">
+      <input type="checkbox" class="step-progress-checkbox" data-step-checkbox data-step-index="7" />
+      <span class="step-progress-switch">
+        <svg class="step-progress-check" width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l3 3 5-5" /></svg>
+      </span>
+      <span class="step-progress-label">Mark step as done</span>
+    </label>
   </div>
+
+  <div class="flowing-line"></div>
 
   <h2>PewDiePie's Rice</h2>
   <p>For reference, here's PewDiePie's setup as shown in his videos:</p>
@@ -228,10 +287,17 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
     <li><strong>Aesthetic:</strong> "Nuclear reactor control dashboard" — dark theme, dense information, monospace fonts, color-coded indicators</li>
   </ul>
   <p>
+    PewDiePie's dotfiles (configuration files) are publicly available:
+    <a href="https://github.com/pewdiepie-archdaemon/dionysus" target="_blank" rel="noopener">github.com/pewdiepie-archdaemon/dionysus</a>.
+    You can study his configuration or use it as a starting point for your own rice.
+  </p>
+  <p>
     He spent significant time building this setup. It's not something you throw together in an afternoon.
     But that's part of the appeal — your desktop becomes something you've crafted, not something a
     corporation handed you.
   </p>
+
+  <div class="flowing-line"></div>
 
   <h2>Where to Find Inspiration</h2>
   <ul>
@@ -241,46 +307,40 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
     <li><strong>GitHub dotfiles repos</strong> — Search "dotfiles hyprland" or "dotfiles rice" for complete configurations you can study and adapt.</li>
   </ul>
 
-  <div class="downsides">
-    <h2>Honest Downsides</h2>
-    <ul>
-      <li>
-        <strong>This is an infinite time sink.</strong> Ricing never ends. You'll tweak one thing, which
-        requires adjusting another thing, which reveals a bug in a third thing, and suddenly it's 4 AM
-        and you've been adjusting terminal padding for two hours. PewDiePie himself acknowledges spending
-        way too much time on his rice. If you have addictive tendencies toward tinkering, be warned.
-      </li>
-      <li>
-        <strong>Things break with updates.</strong> Hyprland is under active development and breaking
-        changes happen. A system update might change how a config option works, break a plugin, or require
-        you to rewrite part of your setup. This is less of an issue with mature tools like i3 but very
-        real with Hyprland and EWW.
-      </li>
-      <li>
-        <strong>The learning curve is steep.</strong> Tiling window managers require keyboard-driven
-        navigation. You need to memorize keybindings, learn configuration file syntax, and understand
-        how Wayland/X11 works. The first few days feel like learning to type again. It gets better, but
-        the initial investment is significant.
-      </li>
-      <li>
-        <strong>Screen sharing can be problematic.</strong> Wayland screen sharing is still maturing. Some
-        video call apps (Zoom, Teams) may not handle Wayland screen sharing well. Hyprland supports the
-        xdg-desktop-portal protocol, but you may need extra configuration. This is a real issue if you
-        do video calls for work.
-      </li>
-      <li>
-        <strong>Some apps don't play well with tiling.</strong> Dialog boxes, pop-ups, floating windows
-        from certain apps (looking at you, GIMP) can behave strangely in tiling WMs. You'll need to
-        write window rules to handle specific apps. Most WMs support floating windows as an override,
-        but it requires per-app configuration.
-      </li>
-      <li>
-        <strong>You become insufferable.</strong> Once you rice your desktop, you'll want to show everyone.
-        You'll look at other people's Windows or macOS desktops with pity. You'll judge people by their
-        terminal font choices. You'll say things like "I use Arch, by the way" unironically. There is no
-        cure for this. Welcome to the community.
-      </li>
-    </ul>
-  </div>
+  <div class="flowing-line"></div>
+
+  <DownsidesSection
+    items={[
+      {
+        title: "This is an infinite time sink",
+        description: "Ricing never ends. Tweak one thing, adjust another, find a bug in a third — suddenly it's 4 AM and you've been adjusting terminal padding for two hours. PewDiePie acknowledges spending way too much time on his rice."
+      },
+      {
+        title: "Things break with updates",
+        description: "Hyprland is under active development and breaking changes happen. A system update might change config options, break plugins, or require rewriting part of your setup. Less of an issue with mature tools like i3."
+      },
+      {
+        title: "The learning curve is steep",
+        description: "Tiling WMs require keyboard-driven navigation. Memorize keybindings, learn config syntax, understand Wayland/X11. The first few days feel like learning to type again."
+      },
+      {
+        title: "Screen sharing can be problematic",
+        description: "Wayland screen sharing is still maturing. Video call apps (Zoom, Teams) may not handle it well. Hyprland supports xdg-desktop-portal, but extra config may be needed. Real issue for work video calls."
+      },
+      {
+        title: "Some apps don't play well with tiling",
+        description: "Dialog boxes, pop-ups, and floating windows from certain apps (GIMP) behave strangely. You'll need window rules per app. Most WMs support floating as an override."
+      },
+      {
+        title: "You become insufferable",
+        description: "You'll want to show everyone. You'll look at Windows desktops with pity. You'll judge people by their terminal font choices. You'll say 'I use Arch, by the way' unironically. There is no cure."
+      },
+    ]}
+  />
+
+  <DeepDiveLinks links={[
+    { label: "Hyprland Wiki", url: "https://wiki.hyprland.org/" },
+    { label: "r/unixporn", url: "https://www.reddit.com/r/unixporn/" },
+  ]} />
 
 </GuideLayout>

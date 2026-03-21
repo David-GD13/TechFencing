@@ -98,7 +98,7 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
             <strong>Replaces: Google Password Manager / Chrome passwords</strong>
           </p>
           <p>
-            A self-hosted Bitwarden-compatible password manager. All your passwords live on
+            A self-hosted <a href="https://bitwarden.com/" target="_blank" rel="noopener">Bitwarden</a>-compatible password manager. All your passwords live on
             your own server instead of Google's. The Bitwarden apps work seamlessly with it
             across all devices.
           </p>
@@ -107,6 +107,7 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
             get this working. Two. Days. Or just use Bitwarden's free cloud tier — still
             infinitely better than Chrome passwords, and zero setup.
           </p>
+          <p><a href="https://github.com/dani-garcia/vaultwarden" target="_blank" rel="noopener">Vaultwarden on GitHub →</a></p>
         </Card>
 
         <Card title="Nextcloud">
@@ -122,6 +123,7 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
             Pain level: Medium. Easier to set up than Vaultwarden, but you need to think
             about storage space and backups.
           </p>
+          <p><a href="https://nextcloud.com/" target="_blank" rel="noopener">nextcloud.com →</a></p>
         </Card>
 
         <Card title="File Browser">
@@ -129,7 +131,7 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
             <strong>Replaces: Google Drive (simple file access)</strong>
           </p>
           <p>
-            File Browser (filebrowser.org) is a lightweight, self-hosted web app that gives
+            <a href="https://filebrowser.org/" target="_blank" rel="noopener">File Browser</a> is a lightweight, self-hosted web app that gives
             you a file explorer in your browser. Less feature-heavy than Nextcloud, but
             perfect for quick access to files on your server without the overhead.
           </p>
@@ -152,6 +154,7 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
             Pain level: Medium. The app itself is great. The self-hosted sync server can
             have quirks depending on your hardware.
           </p>
+          <p><a href="https://joplinapp.org/" target="_blank" rel="noopener">joplinapp.org →</a></p>
         </Card>
 
         <Card title="Self-Hosted Email">
@@ -162,7 +165,7 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
             The nuclear option. Running your own email server means Google can't read your
             emails or use them for ad targeting. It also means you're responsible for spam
             filtering, deliverability, backups, and uptime. PewDiePie did it. Most people
-            recommend a privacy-focused provider like ProtonMail or Tuta instead.
+            recommend a privacy-focused provider like <a href="https://proton.me/" target="_blank" rel="noopener">ProtonMail</a> or <a href="https://tuta.com/" target="_blank" rel="noopener">Tuta</a> instead.
           </p>
           <p class="pain-level">
             Pain level: VERY HIGH. Self-hosted email is a meme in the self-hosting
@@ -184,6 +187,7 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
             Pain level: Medium. The flash process is straightforward. Learning to live
             without certain Google-dependent apps takes adjustment.
           </p>
+          <p><a href="https://grapheneos.org/" target="_blank" rel="noopener">grapheneos.org →</a></p>
         </Card>
 
         <Card title="Kodi">
@@ -198,6 +202,7 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
           <p class="pain-level">
             Pain level: Low. Install it, point it at your media, done.
           </p>
+          <p><a href="https://kodi.tv/download/" target="_blank" rel="noopener">kodi.tv →</a></p>
         </Card>
       </div>
     </div>
@@ -420,7 +425,8 @@ import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
   /* ---- Sponsor Note ---- */
   .sponsor-note {
     padding: var(--space-6);
-    background: var(--bg-card);
+    background: rgba(26, 29, 35, 0.5);
+    backdrop-filter: blur(4px);
     border: 1px dashed var(--border-muted);
     border-radius: var(--radius-md);
   }

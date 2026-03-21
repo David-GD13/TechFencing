@@ -7,9 +7,28 @@
 - [x] PewDiePie citations/quotes verified against transcripts
 - [x] Experiments page deprecated and removed
 - [x] About page — rewritten to singular voice, fixed factual inaccuracies, added vibecoded disclaimer, updated analytics transparency
-- [ ] Re-check ALL information on remaining pages (Bible, Guides, Arsenal, Damned, Glossary, TL;DR)
+- [x] Browser Blocker — reviewed
+- [x] Bible pages (all 3 layers) — content verified and styling unified
+- [x] Guides main page — redesigned from grid to cinematic timeline
+- [x] Glossary page — reviewed
+- [x] Guide sub-pages (all 9) — content verified, links added, layout overhauled:
+  - [x] Removed right sidebar (navbar handles navigation)
+  - [x] Added per-step completion checkboxes with bidirectional hero sync
+  - [x] Converted all Honest Downsides to DownsidesSection component (consistent with Bible)
+  - [x] Added flowing-line dividers and content-block spacing
+  - [x] Fixed breadcrumb link to /guides
+  - [x] Browsers: Mozilla/Google disclaimer, 4 browser cards with download links, uBlock/Unhook per-browser install links
+  - [x] Linux: Added Zorin, Pop!_OS, CachyOS, Tuxedo OS distros with links, USB tools, dual-boot encryption, commands tutorial, DE links
+  - [x] De-Google: Added Tuta, Ente, OpenOffice, single-provider risk warning, all service links
+  - [x] Self-Hosting: Added all tool links (Pi, Vaultwarden, Pi-Hole, File Browser, Tailscale, Cloudflare Tunnel)
+  - [x] Open-Source: Added all tool links, OpenOffice, AFFiNE, Plex (with skepticism), Tuta
+  - [x] Fix YouTube: Added RSS reader links, FreeTube/NewPipe/Invidious links
+  - [x] Control Your Phone: Added GrapheneOS/NetGuard links, OEM unlocking glossary, Obtainium malware disclaimer
+  - [x] Own Your AI: DownsidesSection + flowing-line dividers
+  - [x] Ricing: PewDiePie dotfiles link, all tool links (Hyprland, i3, Sway, Waybar, Rofi, EWW, Kitty, Alacritty, WezTerm)
+  - [x] Glossary terms added: snap, flatpak, system snapshots, backup, OEM unlocking
+- [ ] Re-check remaining pages: TL;DR, Arsenal, The Damned
 - [ ] Verify cross-references between pages are accurate and working
-- [ ] Check if any pages are missing content or incomplete
 
 ### 3. Light/Dark Mode
 - [ ] Add accessibility light/dark mode toggle

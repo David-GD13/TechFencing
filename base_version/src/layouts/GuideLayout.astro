@@ -21,7 +21,7 @@ const pageId = `guides/${Astro.url.pathname.split('/guides/')[1]?.replace(/\/$/,
     <header class="guide-header">
       <div class="container">
         <div class="guide-meta">
-          <a href="/guides/browsers" class="guide-breadcrumb">Guides</a>
+          <a href="/guides" class="guide-breadcrumb">Guides</a>
           <span class="guide-separator">/</span>
           <DifficultyBadge level={level} />
         </div>
@@ -37,23 +37,6 @@ const pageId = `guides/${Astro.url.pathname.split('/guides/')[1]?.replace(/\/$/,
       <div class="guide-content">
         <slot />
       </div>
-
-      <aside class="guide-sidebar">
-        <nav class="guide-nav" aria-label="Guide navigation">
-          <h3 class="guide-nav-title">All Guides</h3>
-          <ul class="guide-nav-list">
-            <li><a href="/guides/browsers">1 — Browsers</a></li>
-            <li><a href="/guides/linux">2 — Linux</a></li>
-            <li><a href="/guides/de-google">3 — De-Google</a></li>
-            <li><a href="/guides/self-hosting">4 — Self-Hosting</a></li>
-            <li><a href="/guides/open-source-alternatives">5 — Open-Source Alternatives</a></li>
-            <li><a href="/guides/fix-youtube">6 — Fix YouTube</a></li>
-            <li><a href="/guides/control-your-phone">7 — Control Your Phone</a></li>
-            <li><a href="/guides/own-your-ai">8 — Own Your AI</a></li>
-            <li><a href="/guides/ricing">9 — Ricing</a></li>
-          </ul>
-        </nav>
-      </aside>
     </div>
 
     {(prevGuide || nextGuide) && (
@@ -83,6 +66,10 @@ const pageId = `guides/${Astro.url.pathname.split('/guides/')[1]?.replace(/\/$/,
   .guide-header {
     padding: var(--space-12) 0 var(--space-6);
     background: rgba(10, 0, 0, 0.6);
+  }
+
+  .guide-header .container {
+    max-width: calc(900px + var(--container-padding) * 2);
   }
 
   .guide-meta {
@@ -124,21 +111,14 @@ const pageId = `guides/${Astro.url.pathname.split('/guides/')[1]?.replace(/\/$/,
 
   /* Guide Body Layout */
   .guide-body {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
     padding-top: var(--space-8);
     padding-bottom: var(--space-8);
   }
 
-  @media (min-width: 1024px) {
-    .guide-body {
-      grid-template-columns: 1fr 250px;
-    }
-  }
-
   /* Guide Content */
   .guide-content {
+    max-width: 900px;
+    margin: 0 auto;
     min-width: 0;
   }
 
@@ -172,9 +152,25 @@ const pageId = `guides/${Astro.url.pathname.split('/guides/')[1]?.replace(/\/$/,
 
   .guide-content :global(.step) {
     padding: var(--space-6);
-    background: var(--bg-card);
+    background: rgba(26, 29, 35, 0.5);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--border-muted);
     border-radius: var(--radius-md);
+    margin-bottom: var(--space-6);
+    position: relative;
+  }
+
+  .guide-content :global(.flowing-line) {
+    margin: var(--space-8) 0;
+  }
+
+  .guide-content :global(.content-block) {
+    margin: 0 0 var(--space-8);
+  }
+
+  .guide-content :global(.content-block p) {
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
     margin-bottom: var(--space-4);
   }
 
@@ -186,6 +182,67 @@ const pageId = `guides/${Astro.url.pathname.split('/guides/')[1]?.replace(/\/$/,
     letter-spacing: var(--tracking-wider);
     margin-bottom: var(--space-2);
     display: block;
+  }
+
+  /* Step checkboxes */
+  .guide-content :global(.step-progress) {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .guide-content :global(.step-progress-checkbox) {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .guide-content :global(.step-progress-switch) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-muted);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .guide-content :global(.step-progress-check) {
+    opacity: 0;
+    color: var(--bg-base);
+    transition: opacity var(--transition-fast);
+  }
+
+  .guide-content :global(.step-progress-checkbox:checked + .step-progress-switch) {
+    background: var(--text-accent);
+    border-color: var(--text-accent);
+  }
+
+  .guide-content :global(.step-progress-checkbox:checked + .step-progress-switch .step-progress-check) {
+    opacity: 1;
+  }
+
+  .guide-content :global(.step-progress:hover .step-progress-switch) {
+    border-color: var(--text-accent);
+  }
+
+  .guide-content :global(.step-progress-label) {
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .guide-content :global(.step-progress-checkbox:checked ~ .step-progress-label) {
+    color: var(--text-accent);
   }
 
   .guide-content :global(.downsides) {
@@ -203,63 +260,9 @@ const pageId = `guides/${Astro.url.pathname.split('/guides/')[1]?.replace(/\/$/,
     margin-top: 0;
   }
 
-  /* Sidebar */
-  .guide-sidebar {
-    display: none;
-  }
-
-  @media (min-width: 1024px) {
-    .guide-sidebar {
-      display: block;
-      position: sticky;
-      top: 80px;
-      align-self: start;
-    }
-  }
-
-  .guide-nav {
-    padding: var(--space-4);
-    background: var(--bg-card);
-    border: 1px solid var(--border-muted);
-    border-radius: var(--radius-md);
-  }
-
-  .guide-nav-title {
-    font-family: var(--font-display);
-    font-size: var(--text-xs);
-    color: var(--text-accent);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
-    margin-bottom: var(--space-3);
-  }
-
-  .guide-nav-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .guide-nav-list li {
-    margin-bottom: 0;
-  }
-
-  .guide-nav-list a {
-    display: block;
-    padding: var(--space-2) var(--space-3);
-    font-size: var(--text-sm);
-    color: var(--text-muted);
-    text-decoration: none;
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-fast);
-  }
-
-  .guide-nav-list a:hover {
-    color: var(--text-accent);
-    background: rgba(212, 84, 94, 0.05);
-  }
-
   /* Pagination */
   .guide-pagination {
+    max-width: calc(900px + var(--container-padding) * 2);
     padding-bottom: var(--space-8);
   }
 

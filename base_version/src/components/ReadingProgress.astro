@@ -23,7 +23,10 @@ const { pageId, label = 'Mark as completed' } = Astro.props;
   function initReadingProgress() {
     const STORAGE_KEY = 'tf-progress';
 
-    function getProgress(): Record<string, boolean> {
+    type PageProgress = { completed: boolean; steps: Record<string, boolean> };
+    type ProgressData = Record<string, boolean | PageProgress>;
+
+    function getRawProgress(): ProgressData {
       try {
         return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
       } catch {
@@ -31,22 +34,42 @@ const { pageId, label = 'Mark as completed' } = Astro.props;
       }
     }
 
-    function setProgress(pageId: string, completed: boolean) {
-      const progress = getProgress();
-      if (completed) {
-        progress[pageId] = true;
-      } else {
-        delete progress[pageId];
+    function getPageProgress(pageId: string): PageProgress {
+      const raw = getRawProgress();
+      const entry = raw[pageId];
+      // Migrate old boolean format
+      if (entry === true) {
+        return { completed: true, steps: {} };
       }
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+      if (entry && typeof entry === 'object') {
+        return entry as PageProgress;
+      }
+      return { completed: false, steps: {} };
+    }
 
-      // Dispatch event so nav indicators can update
+    function isPageCompleted(pageId: string): boolean {
+      const raw = getRawProgress();
+      const entry = raw[pageId];
+      if (entry === true) return true;
+      if (entry && typeof entry === 'object') return (entry as PageProgress).completed;
+      return false;
+    }
+
+    function savePageProgress(pageId: string, data: PageProgress) {
+      const raw = getRawProgress();
+      if (!data.completed && Object.keys(data.steps).length === 0) {
+        delete raw[pageId];
+      } else {
+        raw[pageId] = data;
+      }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(raw));
+
       window.dispatchEvent(new CustomEvent('reading-progress-change', {
-        detail: { pageId, completed }
+        detail: { pageId, completed: data.completed }
       }));
     }
 
-    // Init all progress toggles on the page
+    // Init all hero progress toggles on the page
     document.querySelectorAll<HTMLElement>('.reading-progress').forEach(el => {
       const pageId = el.dataset.pageId;
       if (!pageId) return;
@@ -55,34 +78,98 @@ const { pageId, label = 'Mark as completed' } = Astro.props;
       const label = el.querySelector('.progress-label');
       if (!checkbox) return;
 
-      const progress = getProgress();
-      checkbox.checked = !!progress[pageId];
+      const pageData = getPageProgress(pageId);
+      checkbox.checked = pageData.completed;
       if (checkbox.checked && label) {
         label.textContent = 'Completed';
       }
 
       checkbox.addEventListener('change', () => {
-        setProgress(pageId, checkbox.checked);
+        const data = getPageProgress(pageId);
+        data.completed = checkbox.checked;
+
+        // Bidirectional: hero toggle controls all step checkboxes
+        const stepBoxes = document.querySelectorAll<HTMLInputElement>('input[data-step-checkbox]');
+        stepBoxes.forEach(stepBox => {
+          const idx = stepBox.dataset.stepIndex;
+          if (idx) {
+            data.steps[idx] = checkbox.checked;
+            stepBox.checked = checkbox.checked;
+            updateStepLabel(stepBox);
+          }
+        });
+
+        savePageProgress(pageId, data);
         if (label) {
           label.textContent = checkbox.checked ? 'Completed' : 'Mark as completed';
         }
       });
     });
 
-    // Add checkmarks to sidebar nav and navbar dropdown items
+    // Init step checkboxes
+    const stepBoxes = document.querySelectorAll<HTMLInputElement>('input[data-step-checkbox]');
+    if (stepBoxes.length > 0) {
+      // Find the pageId from the hero reading-progress element
+      const heroEl = document.querySelector<HTMLElement>('.reading-progress[data-page-id]');
+      const pageId = heroEl?.dataset.pageId;
+      if (pageId) {
+        const pageData = getPageProgress(pageId);
+
+        stepBoxes.forEach(stepBox => {
+          const idx = stepBox.dataset.stepIndex;
+          if (!idx) return;
+
+          // If page was completed (including old format migration), check all steps
+          stepBox.checked = pageData.completed || !!pageData.steps[idx];
+          updateStepLabel(stepBox);
+
+          stepBox.addEventListener('change', () => {
+            const data = getPageProgress(pageId);
+            data.steps[idx] = stepBox.checked;
+
+            // Check if all steps are now completed
+            const allSteps = document.querySelectorAll<HTMLInputElement>('input[data-step-checkbox]');
+            const allChecked = Array.from(allSteps).every(s => s.checked);
+            const anyChecked = Array.from(allSteps).some(s => s.checked);
+            data.completed = allChecked;
+
+            // Update hero checkbox
+            const heroCheckbox = heroEl?.querySelector<HTMLInputElement>('.progress-checkbox');
+            const heroLabel = heroEl?.querySelector('.progress-label');
+            if (heroCheckbox) {
+              heroCheckbox.checked = allChecked;
+              if (heroLabel) {
+                heroLabel.textContent = allChecked ? 'Completed' : 'Mark as completed';
+              }
+            }
+
+            updateStepLabel(stepBox);
+            savePageProgress(pageId, data);
+          });
+        });
+      }
+    }
+
+    function updateStepLabel(stepBox: HTMLInputElement) {
+      const label = stepBox.closest('.step-progress')?.querySelector('.step-progress-label');
+      if (label) {
+        label.textContent = stepBox.checked ? 'Done' : 'Mark step as done';
+      }
+    }
+
+    // Add checkmarks to navbar dropdown items
     updateNavProgress();
   }
 
   function updateNavProgress() {
     const STORAGE_KEY = 'tf-progress';
-    let progress: Record<string, boolean>;
+    let raw: Record<string, any>;
     try {
-      progress = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
     } catch {
-      progress = {};
+      raw = {};
     }
 
-    // Map page IDs to their href paths
     const idToHref: Record<string, string> = {
       'guides/browsers': '/guides/browsers',
       'guides/linux': '/guides/linux',
@@ -98,12 +185,13 @@ const { pageId, label = 'Mark as completed' } = Astro.props;
       'bible/layer-3-behavior': '/bible/layer-3-behavior',
     };
 
-    // Find all nav links and mark completed ones
     for (const [pageId, href] of Object.entries(idToHref)) {
-      if (!progress[pageId]) continue;
+      const entry = raw[pageId];
+      const completed = entry === true || (entry && typeof entry === 'object' && entry.completed);
+      if (!completed) continue;
 
       document.querySelectorAll<HTMLAnchorElement>(`a[href="${href}"]`).forEach(link => {
-        if (link.querySelector('.nav-check')) return; // Already has checkmark
+        if (link.querySelector('.nav-check')) return;
         const check = document.createElement('span');
         check.className = 'nav-check';
         check.setAttribute('aria-label', 'completed');
@@ -123,7 +211,6 @@ const { pageId, label = 'Mark as completed' } = Astro.props;
 
   // Update nav when progress changes (from this or other tabs)
   window.addEventListener('reading-progress-change', () => {
-    // Remove existing checks and re-apply
     document.querySelectorAll('.nav-check').forEach(el => el.remove());
     updateNavProgress();
   });
