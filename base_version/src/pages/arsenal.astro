@@ -25,32 +25,32 @@ import Card from '../components/Card.astro';
       <h2 class="section-label glitch-hover" data-text="Hardware">Hardware</h2>
 
       <div class="grid grid-2">
-        <Card title="Desktop PC" accent>
+        <Card title="Desktop PC" accent icon="/images/archlinux-logo.webp">
           <p><strong>OS:</strong> Arch Linux</p>
           <p>The main workhorse. Originally ran Linux Mint, then ascended to Arch.
           This is where most of the content creation happens.</p>
         </Card>
 
-        <Card title="Laptop" accent>
+        <Card title="Laptop" accent icon="/images/archlinux-logo.webp">
           <p><strong>OS:</strong> Arch Linux + Hyprland</p>
           <p>Tiling window manager setup. The "nuclear reactor control panel" rice
           that made every Linux user's jaw drop. Running Hyprland with custom
           Waybar, EWW widgets, and Rofi launcher.</p>
         </Card>
 
-        <Card title="Raspberry Pi 5" accent>
+        <Card title="Raspberry Pi 5" accent icon="/images/raspberry-pi-logo.webp">
           <p><strong>Role:</strong> Self-hosting server</p>
           <p>Runs the core self-hosted stack: Vaultwarden, Nextcloud, File Browser,
           Pi-Hole. The little box that replaced Google's entire cloud for him.</p>
         </Card>
 
-        <Card title="Steam Deck" accent>
+        <Card title="Steam Deck" accent icon="/images/archlinux-logo.webp">
           <p><strong>OS:</strong> Arch Linux (not SteamOS)</p>
           <p>Wiped SteamOS and installed clean Arch. Used as a secondary server
           for services that need x86 (like Joplin). Also still games on it.</p>
         </Card>
 
-        <Card title="Google Pixel 9" accent>
+        <Card title="Google Pixel 9" accent icon="/images/GrapheneOS_logo.webp">
           <p><strong>OS:</strong> GrapheneOS</p>
           <p>Running a privacy-focused fork of Android. Two user profiles — main
           and a secondary "distraction" profile with a 5-6 second switch delay
@@ -72,65 +72,56 @@ import Card from '../components/Card.astro';
       <h2 class="section-label glitch-hover" data-text="Software Stack">Software Stack</h2>
 
       <div class="grid grid-3">
-        <div class="stack-item">
-          <h3>Browser</h3>
-          <p class="stack-pick">Firefox</p>
+        <Card title="Firefox" accent icon="/images/firefox-logo.webp">
+          <p class="stack-category">Browser</p>
           <p>With uBlock Origin, Unhook, and custom privacy settings. No Chrome in sight.</p>
-        </div>
+        </Card>
 
-        <div class="stack-item">
-          <h3>Search Engine</h3>
-          <p class="stack-pick">DuckDuckGo</p>
+        <Card title="DuckDuckGo" accent icon="/images/The_DuckDuckGo_Duck.webp">
+          <p class="stack-category">Search Engine</p>
           <p>No tracking, no filter bubbles. It just searches.</p>
-        </div>
+        </Card>
 
-        <div class="stack-item">
-          <h3>Password Manager</h3>
-          <p class="stack-pick">Vaultwarden</p>
+        <Card title="Vaultwarden" accent icon="/images/vaultwarden.webp">
+          <p class="stack-category">Password Manager</p>
           <p>Self-hosted on Raspberry Pi. Took 2 days of "spinny circle" to set up.
           Worth every frustrating minute.</p>
-        </div>
+        </Card>
 
-        <div class="stack-item">
-          <h3>Cloud Storage</h3>
-          <p class="stack-pick">Nextcloud + File Browser</p>
+        <Card title="Nextcloud + File Browser" accent icon="/images/nextcloud.webp">
+          <p class="stack-category">Cloud Storage</p>
           <p>Both self-hosted. Nextcloud for sync, File Browser for a simple web
           file manager.</p>
-        </div>
+        </Card>
 
-        <div class="stack-item">
-          <h3>Notes</h3>
-          <p class="stack-pick">Joplin</p>
+        <Card title="Joplin" accent icon="/images/joplin-logo.webp">
+          <p class="stack-category">Notes</p>
           <p>Runs on the Steam Deck (not Pi — needs x86). Open-source Evernote
           replacement.</p>
-        </div>
+        </Card>
 
-        <div class="stack-item">
-          <h3>Email</h3>
-          <p class="stack-pick">Self-hosted</p>
+        <Card title="Self-hosted" accent>
+          <p class="stack-category">Email</p>
           <p>Custom domain, self-hosted email server. Full control over the inbox.</p>
-        </div>
+        </Card>
 
-        <div class="stack-item">
-          <h3>TV / Media</h3>
-          <p class="stack-pick">Kodi</p>
+        <Card title="Kodi" accent icon="/images/kodi.webp">
+          <p class="stack-category">TV / Media</p>
           <p>Replaced Google TV. Open-source media center that doesn't track your
           viewing habits.</p>
-        </div>
+        </Card>
 
-        <div class="stack-item">
-          <h3>AI</h3>
-          <p class="stack-pick">vLLM</p>
+        <Card title="vLLM" accent>
+          <p class="stack-category">AI</p>
           <p>Running on the 10-GPU rig. Built a custom YouTube extension powered
           by local models. No data leaves his network.</p>
-        </div>
+        </Card>
 
-        <div class="stack-item">
-          <h3>DNS Blocker</h3>
-          <p class="stack-pick">Pi-Hole</p>
+        <Card title="Pi-Hole" accent icon="/images/pi-hole.webp">
+          <p class="stack-category">DNS Blocker</p>
           <p>Network-wide ad and tracker blocking. Every device on his network is
           protected.</p>
-        </div>
+        </Card>
       </div>
     </div>
   </section>
@@ -260,40 +251,21 @@ import Card from '../components/Card.astro';
     margin-bottom: var(--space-6);
   }
 
-  /* Stack Items */
-  .stack-item {
-    padding: var(--space-5);
-    background: var(--bg-card);
-    border: 1px solid var(--border-muted);
-    border-radius: var(--radius-md);
-  }
-
-  .stack-item h3 {
+  /* Stack Category Labels */
+  .stack-category {
     font-family: var(--font-display);
     font-size: var(--text-xs);
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: var(--tracking-wider);
-    margin-bottom: var(--space-1);
-  }
-
-  .stack-pick {
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    color: var(--text-accent);
-    font-weight: 700;
-    margin-bottom: var(--space-2) !important;
-  }
-
-  .stack-item p:last-child {
-    font-size: var(--text-sm);
-    color: var(--text-secondary);
+    margin-bottom: var(--space-1) !important;
   }
 
   /* Terminal Groups */
   .terminal-group {
     padding: var(--space-6);
-    background: var(--bg-card);
+    background: rgba(26, 29, 35, 0.5);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--border-muted);
     border-radius: var(--radius-md);
   }
@@ -345,7 +317,8 @@ import Card from '../components/Card.astro';
 
   .sponsor-item {
     padding: var(--space-5);
-    background: var(--bg-card);
+    background: rgba(26, 29, 35, 0.5);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--border-muted);
     border-radius: var(--radius-md);
     position: relative;
@@ -380,7 +353,8 @@ import Card from '../components/Card.astro';
   /* Still Uses */
   .still-uses {
     padding: var(--space-8);
-    background: var(--bg-card);
+    background: rgba(26, 29, 35, 0.5);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--border-muted);
     border-radius: var(--radius-md);
   }

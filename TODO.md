@@ -27,7 +27,9 @@
   - [x] Own Your AI: DownsidesSection + flowing-line dividers
   - [x] Ricing: PewDiePie dotfiles link, all tool links (Hyprland, i3, Sway, Waybar, Rofi, EWW, Kitty, Alacritty, WezTerm)
   - [x] Glossary terms added: snap, flatpak, system snapshots, backup, OEM unlocking
-- [ ] Re-check remaining pages: TL;DR, Arsenal, The Damned
+- [x] Arsenal — semi-transparent cards, accent borders, logo watermarks added
+- [x] The Damned — semi-transparent cards (no logos, intentional)
+- [ ] Re-check remaining page: TL;DR
 - [ ] Verify cross-references between pages are accurate and working
 
 ### 3. Light/Dark Mode
