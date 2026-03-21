@@ -1,404 +1,160 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GlitchText from '../components/GlitchText.astro';
-import VideoEmbed from '../components/VideoEmbed.astro';
+import '../styles/tldr.css';
+
+const trinity = [
+  { id: 'pVI_smLgTY0', title: 'I installed Linux (so should you)' },
+  { id: 'u_Lxkt50xOg', title: "I'm DONE with Google" },
+  { id: '5nL-Eq1lpDU', title: 'I Fixed YouTube!' },
+];
+
+const categories = [
+  {
+    label: 'Linux',
+    videos: [
+      { id: 'DB5mk6bQt9A', title: 'Every Linux Distro Explained' },
+      { id: 'cnb_XGULKbc', title: 'Every Linux Desktop Explained' },
+    ],
+  },
+  {
+    label: 'Privacy',
+    videos: [
+      { id: '8_J0SS21ep0', title: 'Best & Worst Browsers for Privacy (2026)' },
+      { id: 'aGibWKd3KP8', title: 'My 2026 Privacy Stack' },
+    ],
+  },
+  {
+    label: 'De-Google',
+    videos: [
+      { id: '8eLJlLkyuMA', title: 'I Self-Hosted Everything… The Truth' },
+      { id: 'XOcfMVXmkfM', title: 'Ultimate Degoogle Tutorial' },
+    ],
+  },
+];
 ---
 
-<BaseLayout title="TL;DR — Just Watch These" activePage="tldr" description="Don't want to read? Just watch the three PewDiePie videos that started it all.">
+<BaseLayout title="TL;DR — Just Watch These" activePage="tldr" description="Don't want to read? Just watch the videos that started it all.">
 
-  <section class="hero-sm">
+  <section class="tldr-hero">
     <div class="container">
-      <GlitchText text="TL;DR — Just Watch These" tag="h1" class="page-title" />
-      <p class="page-subtitle">
-        We get it — reading is a lot. Here are the three PewDiePie videos that started everything.
-        Watch them in order. By the end, you'll either be inspired to build your fence,
-        or you'll at least understand why other people are.
+      <GlitchText text="TL;DR" tag="h1" class="page-title" />
+      <p class="tldr-hero-sub">
+        Three videos started everything. Seven more go deeper. Just hit play.
       </p>
     </div>
   </section>
 
   <div class="flowing-line"></div>
 
-  <!-- THE THREE CORE VIDEOS -->
-  <section class="section">
+  <!-- THE HOLY TRINITY -->
+  <section class="tldr-sect">
     <div class="container">
-      <h2 class="section-label">The Holy Trinity</h2>
-
-      <div class="video-list">
-        <div class="video-item">
-          <div class="video-number">01</div>
-          <div class="video-info">
-            <h3>I installed Linux (so should you)</h3>
-            <p class="video-layer">Layer 1: OS Control</p>
-            <p>
-              PewDiePie switches from Windows to Linux and never looks back.
-              He discovers Linux Mint for simplicity, then falls down the Arch Linux rabbit hole.
-              He rices his desktop with Hyprland until it looks like a nuclear reactor control panel.
-              By the end, he's running a fully custom tiling window manager and questioning
-              why he ever used Windows.
-            </p>
-            <p class="video-takeaway">
-              <strong>Key takeaway:</strong> Your operating system should serve you, not spy on you.
-              Linux isn't as scary as it sounds — and it's way more fun.
-            </p>
-          </div>
-          <div class="video-embed-wrapper">
-            <VideoEmbed videoId="pVI_smLgTY0" title="I installed Linux (so should you) — PewDiePie" />
-          </div>
-        </div>
-
-        <div class="video-item">
-          <div class="video-number">02</div>
-          <div class="video-info">
-            <h3>I de-Googled my life</h3>
-            <p class="video-layer">Layer 2: Service Control</p>
-            <p>
-              PewDiePie systematically removes Google from his life. He sets up
-              Vaultwarden for passwords (which took 2 days), Nextcloud for cloud
-              storage, self-hosted email, and flashes GrapheneOS on his phone.
-              He replaces Google TV with Kodi and admits Google Maps is still too
-              good to fully abandon.
-            </p>
-            <p class="video-takeaway">
-              <strong>Key takeaway:</strong> You can replace almost every Google service with
-              something you own. The ones you can't? At least you'll know what you're trading.
-            </p>
-          </div>
-          <div class="video-embed-wrapper">
-            <VideoEmbed videoId="ZJmhJnlFBgg" title="I de-Googled my life — PewDiePie" />
-          </div>
-        </div>
-
-        <div class="video-item">
-          <div class="video-number">03</div>
-          <div class="video-info">
-            <h3>I Fixed YouTube!</h3>
-            <p class="video-layer">Layer 3: Behavioral Control</p>
-            <p>
-              The video where PewDiePie coins the term "tech fencing." He realizes
-              the problem isn't just which services you use — it's <em>how</em> you
-              use them. He sets up a second phone profile that takes 5-6 seconds
-              to switch to, creating friction against mindless app-opening. He
-              installs DNS blockers, strips YouTube's homepage with extensions,
-              and switches to RSS feeds.
-            </p>
-            <p class="video-takeaway">
-              <strong>Key takeaway:</strong> The algorithm can't control you if you
-              add enough friction. A 5-second delay is all it takes to catch yourself.
-            </p>
-          </div>
-          <div class="video-embed-wrapper">
-            <VideoEmbed videoId="tCdMb9RIEII" title="I Fixed YouTube! — PewDiePie" />
-          </div>
+      <h2 class="tldr-label">The Holy Trinity</h2>
+      <div class="tldr-card-wrap">
+        <div class="tldr-grid-3">
+          {trinity.map(v => (
+            <a href={`https://youtu.be/${v.id}`} target="_blank" rel="noopener noreferrer" class="tldr-vid">
+              <img src={`https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`} alt={v.title} loading="lazy" />
+              <div class="tldr-vid-overlay">
+                <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="2" opacity="0.8" />
+                  <path d="M19 14L35 24L19 34V14Z" fill="currentColor" opacity="0.9" />
+                </svg>
+              </div>
+              <span class="tldr-vid-title">{v.title}</span>
+            </a>
+          ))}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BONUS VIDEOS -->
-  <section class="section">
+  <!-- FAVORITE VIDEO -->
+  <section class="tldr-sect">
     <div class="container">
-      <h2 class="section-label">Bonus: The Experiments</h2>
-      <p class="section-note">
-        After building his tech fence, PewDiePie went deeper. These videos show
-        what happens when you take control of your hardware too.
-      </p>
-
-      <div class="video-list compact">
-        <div class="video-item-compact">
-          <div class="video-embed-wrapper">
-            <VideoEmbed videoId="dQw4w9WgXcQ" title="I Built a Supercomputer — PewDiePie" />
+      <h2 class="tldr-label">My Favorite Of All</h2>
+      <div class="tldr-card-wrap tldr-featured-wrap">
+        <a href="https://youtu.be/AtgCcMjtqF0" target="_blank" rel="noopener noreferrer" class="tldr-featured">
+          <div class="tldr-featured-thumb">
+            <img src="https://i.ytimg.com/vi/AtgCcMjtqF0/mqdefault.jpg" alt="I Spent a Year Replacing My Subscriptions" loading="lazy" />
+            <div class="tldr-vid-overlay">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="2" opacity="0.8" />
+                <path d="M19 14L35 24L19 34V14Z" fill="currentColor" opacity="0.9" />
+              </svg>
+            </div>
           </div>
-          <div class="video-info-compact">
-            <h3>I Built a Supercomputer</h3>
+          <div class="tldr-featured-info">
+            <h3>I Spent a Year Replacing My Subscriptions. Here's How.</h3>
             <p>
-              PewDiePie builds a 10-GPU rig, runs vLLM for local AI,
-              and builds a custom YouTube extension powered by his own models.
-              Also runs Folding@Home to contribute to scientific research.
+              In this single video, all of the concepts of this site are found.
+              Browsers, Linux, self-hosting, de-Googling, privacy — everything
+              covered in one place. If you only watch one video, make it this one.
             </p>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- QUICK LINKS: ARSENAL & THE DAMNED -->
-  <section class="section">
+  <!-- GO DEEPER — 3 categories -->
+  <section class="tldr-sect">
     <div class="container">
-      <h2 class="section-label">Also In TL;DR</h2>
-      <div class="quick-links-grid">
+      <h2 class="tldr-label">Go Deeper</h2>
+      <div class="tldr-cat-grid">
+        {categories.map(cat => (
+          <div class="tldr-cat">
+            <span class="tldr-cat-label">{cat.label}</span>
+            <div class="tldr-cat-videos">
+              {cat.videos.map(v => (
+                <a href={`https://youtu.be/${v.id}`} target="_blank" rel="noopener noreferrer" class="tldr-vid tldr-vid-sm">
+                  <img src={`https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`} alt={v.title} loading="lazy" />
+                  <div class="tldr-vid-overlay">
+                    <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
+                      <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="2" opacity="0.8" />
+                      <path d="M19 14L35 24L19 34V14Z" fill="currentColor" opacity="0.9" />
+                    </svg>
+                  </div>
+                  <span class="tldr-vid-title">{v.title}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-        <a href="/arsenal" class="quick-link-card">
+  <div class="flowing-line"></div>
+
+  <!-- ALSO IN TL;DR -->
+  <section class="tldr-sect">
+    <div class="container">
+      <h2 class="tldr-label">Also In TL;DR</h2>
+      <div class="tldr-links-row">
+        <a href="/arsenal" class="tldr-link-card">
           <h3>Our Savior's Arsenal</h3>
-          <p>
-            Every piece of hardware and software PewDiePie actually uses.
-            Not theoretical recommendations — his real, daily-driver setup,
-            verified from videos with timestamps.
-          </p>
-          <span class="quick-link-cta">View The Arsenal →</span>
+          <p>Every piece of hardware and software PewDiePie actually uses — verified from videos.</p>
+          <span class="tldr-link-cta">View The Arsenal →</span>
         </a>
-
-        <a href="/damned" class="quick-link-card">
+        <a href="/damned" class="tldr-link-card">
           <h3>The Damned</h3>
-          <p>
-            Browsers, apps, and services we don't recommend — and the honest
-            reasons why. Some are genuinely good products, but they all take
-            something from you.
-          </p>
-          <span class="quick-link-cta">View The Damned →</span>
+          <p>Browsers, apps, and services we don't recommend — and why. They all take something.</p>
+          <span class="tldr-link-cta">View The Damned →</span>
         </a>
-
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="section cta-section">
+  <section class="tldr-cta-sect">
     <div class="container" style="text-align: center; max-width: 600px;">
       <h2 class="glitch-hover" data-text="Ready to Start?">Ready to Start?</h2>
-      <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">
-        The easiest first step takes 5 minutes. Switch your browser.
-      </p>
-      <a href="/guides/browsers" class="btn btn-primary">Start With Browsers →</a>
+      <p class="tldr-cta-desc">Pick a layer. Start building your fence.</p>
+      <a href="/bible" class="tldr-cta-btn">Open The Bible →</a>
     </div>
   </section>
 
 </BaseLayout>
 
-<style>
-  .hero-sm {
-    padding: var(--space-12) 0 var(--space-8);
-    text-align: center;
-    background: rgba(10, 0, 0, 0.6);
-  }
-
-  :global(.page-title) {
-    font-size: var(--text-4xl);
-    margin-bottom: var(--space-4);
-  }
-
-  .page-subtitle {
-    max-width: 650px;
-    margin: 0 auto;
-    font-size: var(--text-lg);
-    color: var(--text-secondary);
-    line-height: var(--leading-relaxed);
-  }
-
-  .section-label {
-    font-family: var(--font-display);
-    font-size: var(--text-sm);
-    color: var(--text-accent);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
-    margin-bottom: var(--space-8);
-  }
-
-  .section-note {
-    color: var(--text-secondary);
-    margin-bottom: var(--space-8);
-    max-width: 600px;
-  }
-
-  /* Video List */
-  .video-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-12);
-  }
-
-  .video-item {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto;
-    gap: var(--space-4) var(--space-6);
-    padding: var(--space-6);
-    background: var(--bg-card);
-    border: 1px solid var(--border-muted);
-    border-radius: var(--radius-md);
-  }
-
-  .video-number {
-    grid-row: 1 / -1;
-    font-family: var(--font-display);
-    font-size: var(--text-4xl);
-    font-weight: 700;
-    color: var(--text-accent);
-    opacity: 0.2;
-    line-height: 1;
-    padding-top: var(--space-1);
-  }
-
-  @media (max-width: 767px) {
-    .video-number {
-      display: none;
-    }
-    .video-item {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .video-info h3 {
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    color: var(--text-primary);
-    text-transform: uppercase;
-    margin-bottom: var(--space-2);
-  }
-
-  .video-layer {
-    font-family: var(--font-display);
-    font-size: var(--text-xs);
-    color: var(--text-accent);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
-    margin-bottom: var(--space-3) !important;
-    opacity: 0.7;
-  }
-
-  .video-info p {
-    font-size: var(--text-sm);
-    color: var(--text-secondary);
-    line-height: var(--leading-relaxed);
-  }
-
-  .video-takeaway {
-    margin-top: var(--space-3) !important;
-    padding: var(--space-3);
-    background: rgba(212, 84, 94, 0.05);
-    border-left: 2px solid var(--border-primary);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  }
-
-  .video-embed-wrapper {
-    max-width: 100%;
-  }
-
-  /* Compact list for bonus videos */
-  .video-list.compact {
-    gap: var(--space-6);
-  }
-
-  .video-item-compact {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-6);
-    align-items: center;
-    padding: var(--space-6);
-    background: var(--bg-card);
-    border: 1px solid var(--border-muted);
-    border-radius: var(--radius-md);
-  }
-
-  @media (max-width: 767px) {
-    .video-item-compact {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .video-info-compact h3 {
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    color: var(--text-primary);
-    text-transform: uppercase;
-    margin-bottom: var(--space-3);
-  }
-
-  .video-info-compact p {
-    font-size: var(--text-sm);
-    color: var(--text-secondary);
-    line-height: var(--leading-relaxed);
-  }
-
-  /* Buttons reused from index */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-3) var(--space-6);
-    font-family: var(--font-display);
-    font-size: var(--text-sm);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wide);
-    text-decoration: none;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: all var(--transition-normal);
-  }
-
-  .btn-primary {
-    background: var(--text-accent);
-    color: var(--bg-base);
-    border: 2px solid var(--text-accent);
-  }
-
-  .btn-primary:hover {
-    background: var(--color-white);
-    color: var(--bg-base);
-    border-color: var(--color-white);
-  }
-
-  /* Quick Links Grid */
-  .quick-links-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-6);
-  }
-
-  @media (max-width: 767px) {
-    .quick-links-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .quick-link-card {
-    display: flex;
-    flex-direction: column;
-    padding: var(--space-6);
-    background: var(--bg-card);
-    border: 1px solid var(--border-muted);
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    transition: all var(--transition-normal);
-  }
-
-  .quick-link-card:hover {
-    border-color: var(--text-accent);
-    transform: translateY(-2px);
-  }
-
-  .quick-link-card h3 {
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    color: var(--text-primary);
-    text-transform: uppercase;
-    margin-bottom: var(--space-3);
-  }
-
-  .quick-link-card p {
-    font-size: var(--text-sm);
-    color: var(--text-secondary);
-    line-height: var(--leading-relaxed);
-    flex: 1;
-  }
-
-  .quick-link-cta {
-    display: inline-block;
-    margin-top: var(--space-4);
-    font-family: var(--font-display);
-    font-size: var(--text-xs);
-    color: var(--text-accent);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
-    transition: color var(--transition-fast);
-  }
-
-  .quick-link-card:hover .quick-link-cta {
-    color: var(--text-primary);
-  }
-
-  .cta-section {
-    padding: var(--space-12) 0;
-  }
-</style>

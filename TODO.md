@@ -29,17 +29,24 @@
   - [x] Glossary terms added: snap, flatpak, system snapshots, backup, OEM unlocking
 - [x] Arsenal — semi-transparent cards, accent borders, logo watermarks added
 - [x] The Damned — semi-transparent cards (no logos, intentional)
-- [ ] Re-check remaining page: TL;DR
+- [x] TL;DR — complete overhaul: compact video grid (Holy Trinity + favorite + 3 categorized columns), semi-transparent cards, proper spacing
 - [ ] Verify cross-references between pages are accurate and working
+
+### 12. Consider making GitHub public
+- I want to know if theres risk in making the git repo public, however, I do want to be transparent in my use of AI and the process of making the page. Also, if we want people to contribute maybe git is the best option? Manually approve PR's? Still, dont approve PRs directly to our master branch, approve on a separate develop branch. Is this safe? How to setup?
+
+### 13. Publish & Index
+- Publish using cloudflare and the techfence.com custom domain
+- Index on google & bing (any other way to index too?)
+- Communicate: post on PewDiePie reddit, send email to PewDiePie, and maybe send email to The Prime Time.
+
+---
+
+## Secondary
 
 ### 3. Light/Dark Mode
 - [ ] Add accessibility light/dark mode toggle
-- [ ] Add to navbar settings gear (alongside cinematic scroll toggle)
-
-### 4. Glossary Hover Verification
-- [ ] Verify glossary hover tooltips work across all pages
-- [ ] Test on desktop (hover) and mobile (tap)
-- [ ] **Note:** Do this AFTER content verification (item 1) is complete
+- [ ] Add to navbar settings gear (alongside auto-scroll toggle)
 
 ### 8. Mobile Responsiveness Fix
 - [ ] Audit all pages at mobile resolutions (375px, 390px, 428px)
@@ -48,12 +55,10 @@
 - [ ] Test footer, navbar, and glossary tooltips on mobile
 - [ ] Verify on actual device after fixes
 
-### 12. Consider making GitHub public
-- I want to know if theres risk in making the git repo public, however, I do want to be transparent in my use of AI and the process of making the page. Also, if we want people to contribute maybe git is the best option? Manually approve PR's? Still, dont approve PRs directly to our master branch, approve on a separate develop branch. Is this safe? How to setup?
-
----
-
-## Secondary
+### 4. Glossary Hover Verification
+- [ ] Verify glossary hover tooltips work across all pages
+- [ ] Test on desktop (hover) and mobile (tap)
+- [ ] **Note:** Do this AFTER content verification (item 1) is complete
 
 ### 10. Juxtopposed Collaboration
 - [ ] After publishing: contact juxtopposed (YouTube channel) about UI/UX collaboration review

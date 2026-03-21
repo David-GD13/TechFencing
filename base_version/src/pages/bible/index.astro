@@ -691,9 +691,11 @@ import ScrollProgressTrail from '../../components/ScrollProgressTrail.astro';
 
   .takeaway-card {
     padding: var(--space-5);
-    background: var(--bg-card);
+    background: rgba(26, 29, 35, 0.5);
+    backdrop-filter: blur(4px);
     border: 1px solid var(--border-muted);
     border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
   }
 
   .takeaway-card h4 {
