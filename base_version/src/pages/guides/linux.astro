@@ -47,6 +47,7 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
 
   <div class="distro-grid">
     <div class="distro-card">
+      <img src="/images/Linux_Mint_logo.webp" alt="" class="distro-card-bg" width="120" height="120" />
       <h4>Linux Mint — Start Here</h4>
       <p>
         PewDiePie's daily driver on his main desktop. Looks and feels like Windows — start menu, taskbar,
@@ -58,6 +59,7 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
     </div>
 
     <div class="distro-card">
+      <img src="/images/Zorin_OS.webp" alt="" class="distro-card-bg" width="120" height="120" />
       <h4>Zorin OS — The Windows Convert's Choice</h4>
       <p>
         Designed specifically for people switching from Windows. The interface mimics Windows so closely you
@@ -68,6 +70,7 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
     </div>
 
     <div class="distro-card">
+      <img src="/images/Pop!_OS_Icon.webp" alt="" class="distro-card-bg" width="120" height="120" />
       <h4>Pop!_OS — For Gamers & NVIDIA</h4>
       <p>
         Made by System76 (a Linux hardware company). Ships with NVIDIA drivers pre-installed — no fiddling
@@ -78,6 +81,7 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
     </div>
 
     <div class="distro-card">
+      <img src="/images/ubuntu-logo.webp" alt="" class="distro-card-bg" width="120" height="120" />
       <h4>Ubuntu — The Most Popular</h4>
       <p>
         The biggest community means the most tutorials and Stack Overflow answers. Downside: Canonical
@@ -88,6 +92,7 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
     </div>
 
     <div class="distro-card">
+      <img src="/images/tuxedo-os.webp" alt="" class="distro-card-bg" width="120" height="120" />
       <h4>Tuxedo OS — Hardware-Optimized Ubuntu</h4>
       <p>
         Ubuntu-based with no <GlossaryTerm term="snap">Snap</GlossaryTerm> packages
@@ -103,6 +108,7 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
 
   <div class="distro-grid">
     <div class="distro-card">
+      <img src="/images/Fedora_icon.webp" alt="" class="distro-card-bg" width="120" height="120" />
       <h4>Fedora — Cutting Edge</h4>
       <p>
         Ships newer software than Mint or Ubuntu. Backed by Red Hat — where new Linux features land first.
@@ -112,6 +118,7 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
     </div>
 
     <div class="distro-card">
+      <img src="/images/cachyos-linux.webp" alt="" class="distro-card-bg" width="120" height="120" />
       <h4>CachyOS — Performance-Optimized Arch</h4>
       <p>
         Arch Linux-based with a graphical installer and performance optimizations out of the box. Compiled
@@ -122,6 +129,7 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
     </div>
 
     <div class="distro-card">
+      <img src="/images/archlinux-logo.webp" alt="" class="distro-card-bg" width="120" height="120" />
       <h4>Arch Linux — The Deep End</h4>
       <p>
         PewDiePie runs this on his laptop. A "build it yourself" distro — install from a command line and
@@ -304,21 +312,25 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
 
   <div class="distro-grid">
     <div class="distro-card">
+      <img src="/images/Cinnamon-logo.webp" alt="" class="distro-card-bg" width="120" height="120" />
       <h4>Cinnamon</h4>
       <p>Mint's default. Traditional Windows-like layout — taskbar at the bottom, start menu, system tray. Familiar and functional.</p>
       <a href="https://en.wikipedia.org/wiki/Cinnamon_(desktop_environment)" target="_blank" rel="noopener">Learn more →</a>
     </div>
     <div class="distro-card">
+      <img src="/images/gnome-logo.webp" alt="" class="distro-card-bg" width="120" height="120" />
       <h4>GNOME</h4>
       <p>Ubuntu/Fedora default. macOS-like workflow with activities overview. Modern but polarizing.</p>
       <a href="https://www.gnome.org/" target="_blank" rel="noopener">gnome.org →</a>
     </div>
     <div class="distro-card">
+      <img src="/images/kdeplasma-logo.webp" alt="" class="distro-card-bg" width="120" height="120" />
       <h4>KDE Plasma</h4>
       <p>The most customizable desktop environment. You can make it look like anything. Heavy on options.</p>
       <a href="https://kde.org/plasma-desktop/" target="_blank" rel="noopener">kde.org →</a>
     </div>
     <div class="distro-card">
+      <img src="/images/Xfce_logo.webp" alt="" class="distro-card-bg" width="120" height="120" />
       <h4>XFCE</h4>
       <p>Lightweight and fast. Great for older hardware or anyone who wants minimal resource usage.</p>
       <a href="https://www.xfce.org/" target="_blank" rel="noopener">xfce.org →</a>
@@ -391,6 +403,20 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
     backdrop-filter: blur(4px);
     border: 1px solid var(--border-muted);
     border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .distro-card-bg {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    width: 120px;
+    height: 120px;
+    opacity: 0.08;
+    pointer-events: none;
+    user-select: none;
+    object-fit: contain;
   }
 
   .distro-card h4 {

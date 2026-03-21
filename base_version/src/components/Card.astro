@@ -4,9 +4,10 @@ interface Props {
   href?: string;
   class?: string;
   accent?: boolean;
+  icon?: string;
 }
 
-const { title, href, class: className = '', accent = false } = Astro.props;
+const { title, href, class: className = '', accent = false, icon } = Astro.props;
 const Tag = href ? 'a' : 'div';
 ---
 
@@ -14,6 +15,7 @@ const Tag = href ? 'a' : 'div';
   class:list={['card', { 'card--accent': accent, 'card--link': !!href }, className]}
   href={href}
 >
+  {icon && <img src={icon} alt="" class="card-bg-icon" width="120" height="120" />}
   <div class="card-inner">
     <h3 class="card-title glitch-hover" data-text={title}>{title}</h3>
     <div class="card-body">
@@ -34,6 +36,20 @@ const Tag = href ? 'a' : 'div';
     transition: all var(--transition-normal);
     text-decoration: none;
     color: inherit;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-bg-icon {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    width: 120px;
+    height: 120px;
+    opacity: 0.08;
+    pointer-events: none;
+    user-select: none;
+    object-fit: contain;
   }
 
   .card--link {

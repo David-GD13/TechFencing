@@ -46,6 +46,7 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
 
   <div class="browser-grid">
     <div class="browser-card">
+      <img src="/images/firefox-logo.webp" alt="" class="browser-card-bg" width="120" height="120" />
       <h3>Firefox — The Balanced Choice</h3>
       <p>
         Mozilla Firefox is the most popular privacy-focused browser. It's open-source, has a massive extension
@@ -57,6 +58,7 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
     </div>
 
     <div class="browser-card">
+      <img src="/images/LibreWolf_icon.webp" alt="" class="browser-card-bg" width="120" height="120" />
       <h3>LibreWolf — Firefox But Stricter</h3>
       <p>
         A fork of Firefox with all telemetry removed and privacy settings cranked to maximum out of the box.
@@ -67,6 +69,7 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
     </div>
 
     <div class="browser-card">
+      <img src="/images/Brave_lion_icon.webp" alt="" class="browser-card-bg" width="120" height="120" />
       <h3>Brave — The Easy Switch from Chrome</h3>
       <p>
         Built on Chromium (same engine as Chrome) so all your Chrome extensions work. Built-in ad and tracker
@@ -77,6 +80,7 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
     </div>
 
     <div class="browser-card">
+      <img src="/images/Mullvad_Browser_logo.webp" alt="" class="browser-card-bg" width="120" height="120" />
       <h3>Mullvad Browser — The Cybersecurity Expert's Choice</h3>
       <p>
         Built by the Tor Project and Mullvad VPN. Designed to minimize browser fingerprinting — every
@@ -365,6 +369,20 @@ import DownsidesSection from '../../components/DownsidesSection.astro';
     backdrop-filter: blur(4px);
     border: 1px solid var(--border-muted);
     border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .browser-card-bg {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    width: 120px;
+    height: 120px;
+    opacity: 0.08;
+    pointer-events: none;
+    user-select: none;
+    object-fit: contain;
   }
 
   .browser-card h3 {

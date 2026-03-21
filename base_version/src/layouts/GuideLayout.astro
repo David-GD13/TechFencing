@@ -158,6 +158,19 @@ const pageId = `guides/${Astro.url.pathname.split('/guides/')[1]?.replace(/\/$/,
     border-radius: var(--radius-md);
     margin-bottom: var(--space-6);
     position: relative;
+    overflow: hidden;
+  }
+
+  .guide-content :global(.step-bg-icon) {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    width: 120px;
+    height: 120px;
+    opacity: 0.08;
+    pointer-events: none;
+    user-select: none;
+    object-fit: contain;
   }
 
   .guide-content :global(.flowing-line) {
