@@ -20,6 +20,9 @@ import ScrollProgressTrail from '../../components/ScrollProgressTrail.astro';
           Your tech fence is built in three layers. Each one gives you more control
           over your digital life.
         </p>
+        <div class="hero-actions">
+          <a href="#layer1" class="btn btn-primary hero-scroll-btn" data-target="layer1">Start Learning →</a>
+        </div>
       </div>
     </div>
   </section>
@@ -399,6 +402,26 @@ import ScrollProgressTrail from '../../components/ScrollProgressTrail.astro';
 
   initCinematicScroll();
 
+  // Hero scroll buttons — scroll to target section
+  document.querySelectorAll<HTMLAnchorElement>('.hero-scroll-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = btn.dataset.target;
+      if (!targetId) return;
+
+      const cinematicOn = localStorage.getItem('cinematicMode') !== 'false';
+      const targetTrigger = (window as any).__sectionTriggers?.[targetId] as ScrollTrigger | undefined;
+
+      if (cinematicOn && targetTrigger) {
+        const scrollTarget = targetTrigger.start + (targetTrigger.end - targetTrigger.start) * 0.5;
+        gsap.to(window, { scrollTo: { y: scrollTarget }, duration: 0.0, ease: 'power2.inOut' });
+      } else {
+        const el = document.querySelector(`[data-section-id="${targetId}"]`);
+        el?.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
   document.addEventListener('astro:after-swap', () => {
     ScrollTrigger.getAll().forEach(st => st.kill());
     (window as any).__sectionTriggers = {};
@@ -492,6 +515,14 @@ import ScrollProgressTrail from '../../components/ScrollProgressTrail.astro';
 
   .hero .cine-content {
     opacity: 1;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    justify-content: center;
+    margin-top: var(--space-8);
   }
 
   .hero-label {
