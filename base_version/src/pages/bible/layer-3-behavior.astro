@@ -5,6 +5,7 @@ import Card from '../../components/Card.astro';
 import ReadingProgress from '../../components/ReadingProgress.astro';
 import DownsidesSection from '../../components/DownsidesSection.astro';
 import DifficultyBadge from '../../components/DifficultyBadge.astro';
+import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
 ---
 
 <BaseLayout title="Layer 3: Behavioral Control" activePage="bible" description="It's not just what tools you use — it's how you use them. This is where PewDiePie coined 'tech fencing.'">
@@ -279,6 +280,12 @@ import DifficultyBadge from '../../components/DifficultyBadge.astro';
           </p>
         </Card>
       </div>
+
+      <DeepDiveLinks links={[
+        { label: "Browser Extensions", url: "https://www.privacyguides.org/en/browser-extensions/" },
+        { label: "DNS Resolvers", url: "https://www.privacyguides.org/en/dns/" },
+        { label: "News Aggregators", url: "https://www.privacyguides.org/en/news-aggregators/" },
+      ]} />
 
       <div class="layer-nav">
         <a href="/bible/layer-2-services" class="btn btn-secondary">Back: Layer 2 — Service Control</a>

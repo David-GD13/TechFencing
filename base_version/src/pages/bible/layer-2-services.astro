@@ -6,6 +6,7 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
 import DownsidesSection from '../../components/DownsidesSection.astro';
 import GlossaryTerm from '../../components/GlossaryTerm.astro';
 import DifficultyBadge from '../../components/DifficultyBadge.astro';
+import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
 ---
 
 <BaseLayout title="Layer 2: Service Control" activePage="bible" description="Your data lives on someone else's computer. PewDiePie de-Googled his life — here's how he did it and what broke.">
@@ -301,6 +302,13 @@ import DifficultyBadge from '../../components/DifficultyBadge.astro';
           </p>
         </Card>
       </div>
+
+      <DeepDiveLinks links={[
+        { label: "Password Managers", url: "https://www.privacyguides.org/en/passwords/" },
+        { label: "Cloud Storage", url: "https://www.privacyguides.org/en/cloud/" },
+        { label: "Email Providers", url: "https://www.privacyguides.org/en/email/" },
+        { label: "Photo Management", url: "https://www.privacyguides.org/en/photo-management/" },
+      ]} />
 
       <div class="layer-nav">
         <a href="/bible/layer-1-os" class="btn btn-secondary">Back: Layer 1 — OS Control</a>

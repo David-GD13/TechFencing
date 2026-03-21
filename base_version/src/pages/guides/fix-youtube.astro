@@ -1,5 +1,6 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
+import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
 ---
 
 <GuideLayout
@@ -205,5 +206,10 @@ import GuideLayout from '../../layouts/GuideLayout.astro';
       </li>
     </ul>
   </div>
+
+  <DeepDiveLinks links={[
+    { label: "Browser Extensions", url: "https://www.privacyguides.org/en/browser-extensions/" },
+    { label: "News Aggregators", url: "https://www.privacyguides.org/en/news-aggregators/" },
+  ]} />
 
 </GuideLayout>

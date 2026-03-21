@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GlitchText from '../components/GlitchText.astro';
 import GlossaryTerm from '../components/GlossaryTerm.astro';
+import DeepDiveLinks from '../components/DeepDiveLinks.astro';
 ---
 
 <BaseLayout title="The Damned" activePage="damned" description="Browsers, apps, and services we don't recommend — and the honest reasons why.">
@@ -197,6 +198,15 @@ import GlossaryTerm from '../components/GlossaryTerm.astro';
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <DeepDiveLinks links={[
+        { label: "Private Web Browsers", url: "https://www.privacyguides.org/en/desktop-browsers/" },
+        { label: "All Tool Recommendations", url: "https://www.privacyguides.org/en/tools/" },
+      ]} />
     </div>
   </section>
 

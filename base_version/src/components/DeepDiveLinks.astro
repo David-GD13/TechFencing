@@ -1,0 +1,70 @@
+---
+interface Props {
+  links: Array<{ label: string; url: string }>;
+}
+
+const { links } = Astro.props;
+---
+
+<div class="deep-dive">
+  <p class="deep-dive-intro">
+    Want to go deeper? <a href="https://www.privacyguides.org/en/" target="_blank" rel="noopener noreferrer">Privacy Guides</a> has comprehensive, crowd-sourced reviews on these topics:
+  </p>
+  <ul class="deep-dive-links">
+    {links.map(link => (
+      <li>
+        <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .deep-dive {
+    margin-top: var(--space-8);
+    padding: var(--space-4) var(--space-6);
+    border-left: 2px solid var(--border-muted);
+  }
+
+  .deep-dive-intro {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--space-3);
+  }
+
+  .deep-dive-intro a {
+    color: var(--text-link);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .deep-dive-intro a:hover {
+    color: var(--text-link-hover);
+  }
+
+  .deep-dive-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+  }
+
+  .deep-dive-links a {
+    font-size: var(--text-sm);
+    color: var(--text-link);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .deep-dive-links a:hover {
+    color: var(--text-link-hover);
+  }
+
+  .deep-dive-links a::before {
+    content: '→ ';
+    opacity: 0.5;
+  }
+
+</style>

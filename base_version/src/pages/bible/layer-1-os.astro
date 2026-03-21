@@ -6,6 +6,7 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
 import DifficultyBadge from '../../components/DifficultyBadge.astro';
 import DownsidesSection from '../../components/DownsidesSection.astro';
 import GlossaryTerm from '../../components/GlossaryTerm.astro';
+import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
 ---
 
 <BaseLayout title="Layer 1: OS Control" activePage="bible" description="Your operating system is the foundation of your tech fence. PewDiePie switched to Linux — here's why you should too.">
@@ -277,6 +278,11 @@ import GlossaryTerm from '../../components/GlossaryTerm.astro';
           </p>
         </Card>
       </div>
+
+      <DeepDiveLinks links={[
+        { label: "Desktop OS Recommendations", url: "https://www.privacyguides.org/en/desktop/" },
+        { label: "Desktop/PC Tools", url: "https://www.privacyguides.org/en/tools/#desktoppc" },
+      ]} />
 
       <div class="layer-nav">
         <a href="/bible/layer-2-services" class="btn btn-primary">Next: Layer 2 — Service Control</a>

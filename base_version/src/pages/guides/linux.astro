@@ -1,6 +1,7 @@
 ---
 import GuideLayout from '../../layouts/GuideLayout.astro';
 import GlossaryTerm from '../../components/GlossaryTerm.astro';
+import DeepDiveLinks from '../../components/DeepDiveLinks.astro';
 ---
 
 <GuideLayout
@@ -227,5 +228,9 @@ import GlossaryTerm from '../../components/GlossaryTerm.astro';
       </li>
     </ul>
   </div>
+
+  <DeepDiveLinks links={[
+    { label: "Desktop OS Recommendations", url: "https://www.privacyguides.org/en/desktop/" },
+  ]} />
 
 </GuideLayout>
