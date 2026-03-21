@@ -1,82 +1,111 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GlitchText from '../../components/GlitchText.astro';
-import Card from '../../components/Card.astro';
+import ScrollProgressTrail from '../../components/ScrollProgressTrail.astro';
 ---
 
 <BaseLayout title="The Bible" activePage="bible" description="The three layers of building your tech fence — OS, services, and behavior. Based on PewDiePie's tech journey.">
 
-  <section class="hero-sm">
+  <ScrollProgressTrail />
+
+  <!-- ====== HERO ====== -->
+  <section class="cine-section hero" data-section-id="hero" data-section-label="The Bible">
     <div class="container">
-      <div class="hero-label">// THE FOUNDATION OF YOUR TECH FENCE</div>
-      <GlitchText text="The Bible" tag="h1" class="page-title" />
-      <p class="page-subtitle">
-        Your tech fence is built in three layers. Each one gives you more control
-        over your digital life. You don't have to do them all — even Layer 1 is
-        a massive upgrade.
-      </p>
-    </div>
-  </section>
-
-  <div class="flowing-line"></div>
-
-  <section class="section">
-    <div class="container">
-      <div class="layers-grid">
-
-        <a href="/bible/layer-1-os" class="layer-card">
-          <div class="layer-number">01</div>
-          <div class="layer-info">
-            <h2>Layer 1: OS Control</h2>
-            <p class="layer-tagline">What software runs on your machine.</p>
-            <p>
-              Your operating system is the foundation. Replace Windows with Linux —
-              choose an OS that doesn't spy on you, ship ads, or decide what you can install.
-              PewDiePie switched to Linux Mint, then fell into the Arch rabbit hole.
-            </p>
-            <span class="layer-cta">Read Layer 1 →</span>
-          </div>
-        </a>
-
-        <a href="/bible/layer-2-services" class="layer-card">
-          <div class="layer-number">02</div>
-          <div class="layer-info">
-            <h2>Layer 2: Service Control</h2>
-            <p class="layer-tagline">What services handle your data.</p>
-            <p>
-              Your data lives on someone else's computer. De-Google your life —
-              self-host alternatives for passwords, cloud storage, email, and more.
-              Own your data instead of renting it.
-            </p>
-            <span class="layer-cta">Read Layer 2 →</span>
-          </div>
-        </a>
-
-        <a href="/bible/layer-3-behavior" class="layer-card">
-          <div class="layer-number">03</div>
-          <div class="layer-info">
-            <h2>Layer 3: Behavioral Control</h2>
-            <p class="layer-tagline">How you interact with the digital world.</p>
-            <p>
-              It's not just what tools you use — it's how you use them. Fight
-              algorithmic feeds. Add friction to mindless scrolling. Reclaim your
-              attention. This is where PewDiePie coined "tech fencing."
-            </p>
-            <span class="layer-cta">Read Layer 3 →</span>
-          </div>
-        </a>
-
+      <div class="cine-heading">
+        <div class="hero-label">// THE FOUNDATION OF YOUR TECH FENCE</div>
+        <GlitchText text="The Bible" tag="h1" class="page-title" />
+      </div>
+      <div class="cine-content">
+        <p class="hero-subtitle">
+          Your tech fence is built in three layers. Each one gives you more control
+          over your digital life.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ====== EXPERIMENTS ====== -->
-  <section class="section">
+  <div class="section-spacer"></div>
+
+  <!-- ====== LAYER 1: OS CONTROL ====== -->
+  <section class="cine-section layer-section" data-section-id="layer1" data-section-label="OS Control">
+    <img src="/images/linux-os.webp" alt="" class="section-bg section-bg-linux" loading="lazy" />
     <div class="container">
-      <div class="experiment-block">
-        <h2 class="section-label">Beyond The Fence</h2>
-        <h3 class="experiment-title glitch-hover" data-text="The Experiments">The Experiments</h3>
-        <p class="experiment-desc">
+      <div class="cine-heading">
+        <div class="layer-number">01</div>
+        <h2 class="section-heading glitch-hover" data-text="Layer 1: OS Control">Layer 1: OS Control</h2>
+      </div>
+      <div class="cine-content">
+        <p class="layer-tagline">What software runs on your machine.</p>
+        <p class="layer-desc">
+          Your operating system is the foundation. Replace Windows with Linux —
+          choose an OS that doesn't spy on you, ship ads, or decide what you can install.
+          PewDiePie switched to Linux Mint, then fell into the Arch rabbit hole.
+        </p>
+        <p class="card-source">Based on "I installed Linux (so should you)"</p>
+        <a href="/bible/layer-1-os" class="btn btn-primary">Read Layer 1 →</a>
+        <div class="completion-status" data-check-page="bible/layer-1-os"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-spacer"></div>
+
+  <!-- ====== LAYER 2: SERVICE CONTROL ====== -->
+  <section class="cine-section layer-section" data-section-id="layer2" data-section-label="Service Control">
+    <img src="/images/de-google.webp" alt="" class="section-bg section-bg-google" loading="lazy" />
+    <div class="container">
+      <div class="cine-heading">
+        <div class="layer-number">02</div>
+        <h2 class="section-heading glitch-hover" data-text="Layer 2: Service Control">Layer 2: Service Control</h2>
+      </div>
+      <div class="cine-content">
+        <p class="layer-tagline">What services handle your data.</p>
+        <p class="layer-desc">
+          Your data lives on someone else's computer. De-Google your life —
+          self-host alternatives for passwords, cloud storage, email, and more.
+          Own your data instead of renting it.
+        </p>
+        <p class="card-source">Based on "I'm DONE with Google"</p>
+        <a href="/bible/layer-2-services" class="btn btn-primary">Read Layer 2 →</a>
+        <div class="completion-status" data-check-page="bible/layer-2-services"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-spacer"></div>
+
+  <!-- ====== LAYER 3: BEHAVIORAL CONTROL ====== -->
+  <section class="cine-section layer-section" data-section-id="layer3" data-section-label="Behavioral Control">
+    <img src="/images/brain-control.webp" alt="" class="section-bg section-bg-brain" loading="lazy" />
+    <div class="container">
+      <div class="cine-heading">
+        <div class="layer-number">03</div>
+        <h2 class="section-heading glitch-hover" data-text="Layer 3: Behavioral Control">Layer 3: Behavioral Control</h2>
+      </div>
+      <div class="cine-content">
+        <p class="layer-tagline">How you interact with the digital world.</p>
+        <p class="layer-desc">
+          It's not just what tools you use — it's how you use them. Fight
+          algorithmic feeds. Add friction to mindless scrolling. Reclaim your
+          attention. This is where PewDiePie coined "tech fencing."
+        </p>
+        <p class="card-source">Based on "I Fixed YouTube!"</p>
+        <a href="/bible/layer-3-behavior" class="btn btn-primary">Read Layer 3 →</a>
+        <div class="completion-status" data-check-page="bible/layer-3-behavior"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-spacer"></div>
+
+  <!-- ====== EXPERIMENTS ====== -->
+  <section class="cine-section" data-section-id="experiments" data-section-label="Experiments">
+    <div class="container">
+      <div class="cine-heading">
+        <h2 class="section-heading glitch-hover" data-text="The Experiments">The Experiments</h2>
+      </div>
+      <div class="cine-content">
+        <p class="section-intro">
           After building his tech fence, PewDiePie went deeper — a 10-GPU
           supercomputer running local AI, a custom YouTube extension powered by
           his own models, and Folding@Home for scientific research. No cloud, no
@@ -90,35 +119,379 @@ import Card from '../../components/Card.astro';
           </div>
           <div class="takeaway-card">
             <h4>Contribute</h4>
-            <p>Folding@Home runs on any GPU. While your computer is idle, it can contribute to real scientific research.</p>
+            <p>Folding@Home runs on any GPU. While your computer is idle, it can contribute to real scientific research. Join PewDiePie's team: <strong>1066966</strong>.</p>
           </div>
           <div class="takeaway-card">
             <h4>Build Tools</h4>
             <p>The tools you build for yourself — with your own AI, on your own hardware — are tools no one can take away.</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <section class="section cta-section">
+  <div class="section-spacer"></div>
+
+  <!-- ====== CTA ====== -->
+  <section class="cine-section cta-section" data-section-id="cta" data-section-label="Get Started">
     <div class="container" style="text-align: center; max-width: 600px;">
-      <h2 class="glitch-hover" data-text="Not Sure Where to Start?">Not Sure Where to Start?</h2>
-      <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">
-        The easiest first step takes 5 minutes. Switch your browser.
-      </p>
-      <a href="/guides/browsers" class="btn btn-primary">Start With Browsers →</a>
+      <div class="cine-heading">
+        <h2 class="glitch-hover" data-text="Not Sure Where to Start?">Not Sure Where to Start?</h2>
+      </div>
+      <div class="cine-content">
+        <p style="color: var(--text-secondary); margin-bottom: var(--space-6);">
+          Start by learning about your operating system. It's the foundation everything else is built on.
+        </p>
+        <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+          <a href="/bible/layer-1-os" class="btn btn-primary">Start Reading →</a>
+          <a href="/guides" class="btn btn-secondary">Browse Guides →</a>
+        </div>
+      </div>
     </div>
   </section>
 
 </BaseLayout>
 
+<script>
+  // Read-only completion status indicators
+  function updateCompletionStatus() {
+    const STORAGE_KEY = 'tf-progress';
+    let progress: Record<string, boolean>;
+    try {
+      progress = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    } catch {
+      progress = {};
+    }
+
+    document.querySelectorAll<HTMLElement>('.completion-status').forEach(el => {
+      const pageId = el.dataset.checkPage;
+      if (!pageId) return;
+
+      const completed = !!progress[pageId];
+      if (completed) {
+        el.innerHTML = '<span class="status-icon">✓</span> Completed';
+        el.classList.add('is-completed');
+      } else {
+        el.innerHTML = 'Not yet read';
+        el.classList.remove('is-completed');
+      }
+    });
+  }
+
+  updateCompletionStatus();
+  document.addEventListener('astro:after-swap', updateCompletionStatus);
+  window.addEventListener('reading-progress-change', updateCompletionStatus);
+</script>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+  // Expose section triggers globally for progress trail
+  (window as any).__sectionTriggers = {};
+
+  function initCinematicScroll() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      document.querySelectorAll<HTMLElement>('.cine-content').forEach(el => {
+        el.style.opacity = '1';
+      });
+      return;
+    }
+
+    const sections = gsap.utils.toArray<HTMLElement>('.cine-section');
+    const sectionTriggers: ScrollTrigger[] = [];
+
+    const TIMING = {
+      enterDuration: 2.0,
+      revealDuration: 1.4,
+      holdDuration: 1.35,
+      exitDuration: 1.4,
+      slideDistance: 200,
+      headingLift: -80,
+      scrollRange: '+=100%',
+    };
+
+    const navbar = document.querySelector('.navbar');
+    const navHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+
+    sections.forEach((section, i) => {
+      const heading = section.querySelector('.cine-heading') as HTMLElement;
+      const content = section.querySelector('.cine-content') as HTMLElement;
+      if (!heading || !content) return;
+
+      const isHero = section.dataset.sectionId === 'hero';
+      const sectionId = section.dataset.sectionId || `section-${i}`;
+
+      const pinStart = isHero ? `top top+=${navHeight}` : 'top top';
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: pinStart,
+          end: TIMING.scrollRange,
+          pin: true,
+          pinSpacing: true,
+          scrub: 2.5,
+          invalidateOnRefresh: true,
+          id: sectionId,
+        },
+      });
+
+      if (tl.scrollTrigger) {
+        sectionTriggers.push(tl.scrollTrigger);
+        (window as any).__sectionTriggers[sectionId] = tl.scrollTrigger;
+      }
+
+      if (isHero) {
+        gsap.set(content, { opacity: 1, y: 0 });
+
+        tl.addLabel('visible')
+          .to(heading, { y: -60, opacity: 0, duration: TIMING.exitDuration }, 0.65)
+          .to(content, { y: -40, opacity: 0, duration: TIMING.exitDuration }, 0.65);
+      } else {
+        gsap.set(heading, { x: TIMING.slideDistance, opacity: 0 });
+        gsap.set(content, { x: TIMING.slideDistance * 0.75, opacity: 0 });
+
+        tl.addLabel('enter')
+          .to(heading, { x: 0, opacity: 1, duration: TIMING.enterDuration, ease: 'power2.out' })
+
+          .addLabel('reveal')
+          .to(content, { x: 0, opacity: 1, duration: TIMING.revealDuration, ease: 'power2.out' })
+
+          .addLabel('hold')
+          .to({}, { duration: TIMING.holdDuration });
+
+        tl.addLabel('exit')
+          .to(heading, { y: TIMING.headingLift, opacity: 0, duration: TIMING.exitDuration, ease: 'power1.in' })
+          .to(content, { x: -TIMING.slideDistance, opacity: 0, duration: TIMING.exitDuration, ease: 'power1.in' }, '<0.05');
+      }
+    });
+
+    ScrollTrigger.refresh();
+
+    // ---- Auto-Scroll Mode ----
+    let cinematicMode = localStorage.getItem('cinematicMode') !== 'false';
+    let isAutoScrolling = false;
+    let currentSectionIndex = 0;
+
+    function getCinematicMode() {
+      return localStorage.getItem('cinematicMode') !== 'false';
+    }
+
+    function findCurrentSectionIndex() {
+      const scrollY = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+      if (scrollY >= maxScroll - 50) {
+        return totalSections;
+      }
+
+      const lastST = sectionTriggers[sectionTriggers.length - 1];
+      if (lastST && scrollY > lastST.end) {
+        return totalSections;
+      }
+
+      let idx = 0;
+      for (let i = 0; i < sectionTriggers.length; i++) {
+        if (scrollY >= sectionTriggers[i].start - 10) {
+          idx = i;
+        }
+      }
+      return idx;
+    }
+
+    const CONTENT_VISIBLE_RATIO = 0.5;
+    const totalSections = sectionTriggers.length;
+
+    function getScrollTarget(index: number): number {
+      if (index < 0) return 0;
+      if (index >= totalSections) {
+        return document.documentElement.scrollHeight - window.innerHeight;
+      }
+      const st = sectionTriggers[index];
+      const sId = sections[index]?.dataset.sectionId;
+      if (sId === 'hero') return st.start;
+      return st.start + (st.end - st.start) * CONTENT_VISIBLE_RATIO;
+    }
+
+    function handleWheel(e: WheelEvent) {
+      cinematicMode = getCinematicMode();
+      if (!cinematicMode || isAutoScrolling) {
+        if (isAutoScrolling) e.preventDefault();
+        return;
+      }
+      e.preventDefault();
+      isAutoScrolling = true;
+
+      currentSectionIndex = findCurrentSectionIndex();
+      const direction = e.deltaY > 0 ? 1 : -1;
+      const maxIndex = totalSections;
+      const nextIndex = Math.max(0, Math.min(maxIndex, currentSectionIndex + direction));
+
+      if (nextIndex === currentSectionIndex) {
+        isAutoScrolling = false;
+        return;
+      }
+
+      currentSectionIndex = nextIndex;
+
+      gsap.to(window, {
+        scrollTo: { y: getScrollTarget(nextIndex) },
+        duration: 0.0,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          setTimeout(() => { isAutoScrolling = false; }, 100);
+        },
+      });
+    }
+
+    let touchStartY = 0;
+
+    function handleTouchStart(e: TouchEvent) {
+      touchStartY = e.touches[0].clientY;
+    }
+
+    function handleTouchEnd(e: TouchEvent) {
+      cinematicMode = getCinematicMode();
+      if (!cinematicMode || isAutoScrolling) return;
+
+      const touchEndY = e.changedTouches[0].clientY;
+      const diff = touchStartY - touchEndY;
+
+      if (Math.abs(diff) < 30) return;
+
+      isAutoScrolling = true;
+      currentSectionIndex = findCurrentSectionIndex();
+      const direction = diff > 0 ? 1 : -1;
+      const maxIndex = totalSections;
+      const nextIndex = Math.max(0, Math.min(maxIndex, currentSectionIndex + direction));
+
+      if (nextIndex === currentSectionIndex) {
+        isAutoScrolling = false;
+        return;
+      }
+
+      currentSectionIndex = nextIndex;
+
+      gsap.to(window, {
+        scrollTo: { y: getScrollTarget(nextIndex) },
+        duration: 0.0,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          setTimeout(() => { isAutoScrolling = false; }, 100);
+        },
+      });
+    }
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    window.addEventListener('cinematicModeChange', ((e: CustomEvent) => {
+      cinematicMode = e.detail.enabled;
+    }) as EventListener);
+  }
+
+  initCinematicScroll();
+
+  document.addEventListener('astro:after-swap', () => {
+    ScrollTrigger.getAll().forEach(st => st.kill());
+    (window as any).__sectionTriggers = {};
+    if (document.querySelector('.cine-section')) {
+      initCinematicScroll();
+    }
+  });
+</script>
+
 <style>
-  .hero-sm {
-    padding: var(--space-12) 0 var(--space-8);
+  /* ---- Layout overrides ---- */
+  :global(#main-content) {
+    overflow: visible;
+  }
+
+  /* ---- Section Spacers ---- */
+  .section-spacer {
+    height: 35vh;
+    position: relative;
+  }
+
+  /* ---- Cinematic Sections ---- */
+  .cine-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-8) 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .cine-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(10, 0, 0, 0.55) 12%,
+      rgba(10, 0, 0, 0.55) 88%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 0, 0, 0.55) 0%,
+      rgba(10, 0, 0, 0.55) 88%,
+      transparent 100%
+    );
+  }
+
+  .cine-section > :global(*) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cine-heading {
     text-align: center;
-    background: rgba(10, 0, 0, 0.6);
+    will-change: transform, opacity;
+  }
+
+  .cine-content {
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  /* ---- Reduced Motion ---- */
+  @media (prefers-reduced-motion: reduce) {
+    .cine-content {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .cine-heading {
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
+
+  /* ---- Hero ---- */
+  .hero {
+    text-align: center;
+    padding-bottom: calc(var(--space-8) + 80px);
+  }
+
+  .hero .cine-content {
+    opacity: 1;
   }
 
   .hero-label {
@@ -127,56 +500,79 @@ import Card from '../../components/Card.astro';
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: var(--tracking-wider);
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
   }
 
   :global(.page-title) {
-    font-size: var(--text-4xl);
-    margin-bottom: var(--space-4);
+    font-size: var(--text-5xl);
+    color: var(--text-primary);
+    text-shadow:
+      3px 3px 0 rgba(212, 84, 94, 0.3),
+      -1px -1px 0 rgba(0, 0, 0, 0.5);
+    margin-bottom: var(--space-6);
   }
 
-  .page-subtitle {
-    max-width: 650px;
-    margin: 0 auto;
+  .hero-subtitle {
     font-size: var(--text-lg);
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);
-  }
-
-  .layers-grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-8);
-    max-width: 800px;
+    max-width: 650px;
     margin: 0 auto;
   }
 
-  .layer-card {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--space-6);
-    padding: var(--space-8);
-    background: var(--bg-card);
-    border: 1px solid var(--border-muted);
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    transition: all var(--transition-normal);
+  /* ---- Section Headings ---- */
+  .section-heading {
+    font-size: var(--text-4xl);
+    text-align: center;
+    margin-bottom: var(--space-4);
+    color: var(--text-primary);
   }
 
-  .layer-card:hover {
-    border-color: var(--text-accent);
-    transform: translateY(-2px);
+  .section-intro {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto var(--space-10);
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+  }
+
+  /* ---- Background Images ---- */
+  .section-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 80%;
+    max-width: 900px;
+    height: auto;
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+    object-fit: contain;
+  }
+
+  .section-bg-linux {
+    width: 70%;
+    max-width: 700px;
+  }
+
+  .section-bg-google {
+    width: 60%;
+    max-width: 600px;
+  }
+
+  .section-bg-brain {
+    width: 85%;
+    max-width: 800px;
   }
 
   @media (max-width: 767px) {
-    .layer-card {
-      grid-template-columns: 1fr;
-    }
-    .layer-number {
+    .section-bg {
       display: none;
     }
   }
 
+  /* ---- Layer Sections ---- */
   .layer-number {
     font-family: var(--font-display);
     font-size: var(--text-5xl);
@@ -184,13 +580,6 @@ import Card from '../../components/Card.astro';
     color: var(--text-accent);
     opacity: 0.2;
     line-height: 1;
-  }
-
-  .layer-info h2 {
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    color: var(--text-primary);
-    text-transform: uppercase;
     margin-bottom: var(--space-2);
   }
 
@@ -200,62 +589,71 @@ import Card from '../../components/Card.astro';
     color: var(--text-accent);
     text-transform: uppercase;
     letter-spacing: var(--tracking-wider);
-    margin-bottom: var(--space-3) !important;
-  }
-
-  .layer-info p {
-    color: var(--text-secondary);
-    line-height: var(--leading-relaxed);
-    font-size: var(--text-sm);
-  }
-
-  .layer-cta {
-    display: inline-block;
-    margin-top: var(--space-4);
-    font-family: var(--font-display);
-    font-size: var(--text-xs);
-    color: var(--text-accent);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
-    transition: color var(--transition-fast);
-  }
-
-  .layer-card:hover .layer-cta {
-    color: var(--text-primary);
-  }
-
-  /* ---- Experiments ---- */
-  .section-label {
-    font-family: var(--font-display);
-    font-size: var(--text-xs);
-    color: var(--text-accent);
-    text-transform: uppercase;
-    letter-spacing: var(--tracking-wider);
-    margin-bottom: var(--space-2);
-    opacity: 0.7;
-  }
-
-  .experiment-block {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .experiment-title {
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    color: var(--text-primary);
-    text-transform: uppercase;
     margin-bottom: var(--space-4);
   }
 
-  .experiment-desc {
+  .layer-desc {
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);
-    font-size: var(--text-sm);
-    max-width: 700px;
-    margin-bottom: var(--space-8);
+    font-size: var(--text-base);
+    max-width: 650px;
   }
 
+  .card-source {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-6);
+    opacity: 0.6;
+  }
+
+  /* ---- Buttons ---- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid var(--text-accent);
+    outline-offset: 2px;
+  }
+
+  .btn-primary {
+    background: var(--text-accent);
+    color: var(--bg-base);
+    border: 2px solid var(--text-accent);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-white);
+    color: var(--bg-base);
+    border-color: var(--color-white);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-muted);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--border-primary);
+    color: var(--text-accent);
+  }
+
+  /* ---- Experiments ---- */
   .experiment-cards {
     margin-bottom: var(--space-6);
   }
@@ -281,51 +679,28 @@ import Card from '../../components/Card.astro';
     line-height: var(--leading-relaxed);
   }
 
-  .experiment-cta {
-    text-align: center;
-    margin-top: var(--space-6);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--text-primary);
-    border: 2px solid var(--border-muted);
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--border-primary);
-    color: var(--text-accent);
-  }
-
-  .cta-section {
-    padding: var(--space-12) 0;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-3) var(--space-6);
+  /* ---- Completion Status ---- */
+  .completion-status {
+    margin-top: var(--space-4);
     font-family: var(--font-display);
-    font-size: var(--text-sm);
-    font-weight: 700;
+    font-size: var(--text-xs);
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: var(--tracking-wide);
-    text-decoration: none;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: all var(--transition-normal);
+    opacity: 0.6;
   }
 
-  .btn-primary {
-    background: var(--text-accent);
-    color: var(--bg-base);
-    border: 2px solid var(--text-accent);
+  .completion-status.is-completed {
+    color: var(--text-accent);
+    opacity: 1;
   }
 
-  .btn-primary:hover {
-    background: var(--color-white);
-    color: var(--bg-base);
-    border-color: var(--color-white);
+  .status-icon {
+    margin-right: var(--space-1);
+  }
+
+  /* ---- CTA Section ---- */
+  .cta-section {
+    padding: var(--space-12) 0;
   }
 </style>

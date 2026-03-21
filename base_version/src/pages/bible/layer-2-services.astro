@@ -3,6 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import GlitchText from '../../components/GlitchText.astro';
 import Card from '../../components/Card.astro';
 import ReadingProgress from '../../components/ReadingProgress.astro';
+import DownsidesSection from '../../components/DownsidesSection.astro';
+import GlossaryTerm from '../../components/GlossaryTerm.astro';
+import DifficultyBadge from '../../components/DifficultyBadge.astro';
 ---
 
 <BaseLayout title="Layer 2: Service Control" activePage="bible" description="Your data lives on someone else's computer. PewDiePie de-Googled his life — here's how he did it and what broke.">
@@ -19,7 +22,7 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
         lock your account one day, all of it disappears.
       </p>
       <p class="page-source">
-        Based on: PewDiePie's <em>"I de-Googled my life"</em>
+        Based on: PewDiePie's <a href="https://youtu.be/u_Lxkt50xOg?si=VfxjixYlvDL5635U" target="_blank" rel="noopener noreferrer"><em>"I de-Googled my life"</em></a>
       </p>
       <ReadingProgress pageId="bible/layer-2-services" />
     </div>
@@ -54,6 +57,32 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
     </div>
   </section>
 
+  <!-- ====== SELF-HOSTING EXPLAINED ====== -->
+  <section class="section">
+    <div class="container">
+      <GlitchText text="What Is Self-Hosting?" tag="h2" class="section-heading" hoverOnly />
+      <div class="content-block">
+        <p>
+          Self-hosting means running services on hardware <strong>you</strong> own and control.
+          Instead of your passwords living on Google's servers, they live on a Raspberry Pi
+          in your closet or a <GlossaryTerm term="vps">VPS</GlossaryTerm> (Virtual Private Server) you rent. Instead of Google reading
+          your files, they sit on your own Nextcloud instance.
+        </p>
+        <p>
+          You can self-host on a Raspberry Pi ($35-80), an old laptop, or a <GlossaryTerm term="vps">VPS</GlossaryTerm> from a
+          provider like Hostinger (which PewDiePie sponsors — take that for what it's worth).
+          The key is: <em>you</em> decide what runs, <em>you</em> decide who has access,
+          and if you want to delete your data, it's actually deleted — not "deleted" in the
+          way Google means it (which is "we'll keep it for 60 days and also in our backups
+          forever").
+        </p>
+        <p>
+          It's more work. It's more responsibility. But it's <em>yours</em>.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ====== THE SELF-HOSTED STACK ====== -->
   <section class="section">
     <div class="container">
@@ -63,7 +92,7 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
       </p>
 
       <div class="grid grid-2">
-        <Card title="Vaultwarden" accent>
+        <Card title="Vaultwarden">
           <p>
             <strong>Replaces: Google Password Manager / Chrome passwords</strong>
           </p>
@@ -74,12 +103,12 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
           </p>
           <p class="pain-level">
             Pain level: HIGH. PewDiePie stared at a "spinny circle" for two days trying to
-            get this working. Two. Days. It was the hardest part of his entire de-Google
-            journey. But once it works, it works beautifully.
+            get this working. Two. Days. Or just use Bitwarden's free cloud tier — still
+            infinitely better than Chrome passwords, and zero setup.
           </p>
         </Card>
 
-        <Card title="Nextcloud" accent>
+        <Card title="Nextcloud">
           <p>
             <strong>Replaces: Google Drive / Google Photos</strong>
           </p>
@@ -94,37 +123,37 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
           </p>
         </Card>
 
-        <Card title="File Browser" accent>
+        <Card title="File Browser">
           <p>
             <strong>Replaces: Google Drive (simple file access)</strong>
           </p>
           <p>
-            A lightweight web-based file manager for your server. Less feature-heavy than
-            Nextcloud, but perfect for quick access to files without the overhead. Think of
-            it as a simple, fast file explorer in your browser.
+            File Browser (filebrowser.org) is a lightweight, self-hosted web app that gives
+            you a file explorer in your browser. Less feature-heavy than Nextcloud, but
+            perfect for quick access to files on your server without the overhead.
           </p>
           <p class="pain-level">
             Pain level: Low. One of the easiest self-hosted apps to set up.
           </p>
         </Card>
 
-        <Card title="Joplin" accent>
+        <Card title="Joplin">
           <p>
             <strong>Replaces: Google Keep / Google Docs (notes)</strong>
           </p>
           <p>
             An open-source note-taking app with Markdown support, sync, and encryption.
-            PewDiePie self-hosts the sync server. One catch — Joplin's server needs an x86
-            processor, so he runs it on his Steam Deck server, not his Raspberry Pi (which
-            uses ARM). This is the kind of gotcha you'll hit with self-hosting.
+            PewDiePie self-hosts the sync server. At the time, Joplin's server didn't have
+            great ARM support, so he ran it on his Steam Deck server instead of his
+            Raspberry Pi — though this has since improved.
           </p>
           <p class="pain-level">
-            Pain level: Medium. The app itself is great. The self-hosted sync server has
-            architecture requirements that might surprise you.
+            Pain level: Medium. The app itself is great. The self-hosted sync server can
+            have quirks depending on your hardware.
           </p>
         </Card>
 
-        <Card title="Self-Hosted Email" accent>
+        <Card title="Self-Hosted Email">
           <p>
             <strong>Replaces: Gmail</strong>
           </p>
@@ -140,7 +169,7 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
           </p>
         </Card>
 
-        <Card title="GrapheneOS" accent>
+        <Card title="GrapheneOS">
           <p>
             <strong>Replaces: Stock Android (Google's phone OS)</strong>
           </p>
@@ -156,7 +185,7 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
           </p>
         </Card>
 
-        <Card title="Kodi" accent>
+        <Card title="Kodi">
           <p>
             <strong>Replaces: Google TV / Chromecast</strong>
           </p>
@@ -173,107 +202,34 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
     </div>
   </section>
 
-  <!-- ====== SELF-HOSTING EXPLAINED ====== -->
-  <section class="section">
-    <div class="container">
-      <GlitchText text="What Is Self-Hosting?" tag="h2" class="section-heading" hoverOnly />
-      <div class="content-block">
-        <p>
-          Self-hosting means running services on hardware <strong>you</strong> own and control.
-          Instead of your passwords living on Google's servers, they live on a Raspberry Pi
-          in your closet or a VPS (Virtual Private Server) you rent. Instead of Google reading
-          your files, they sit on your own Nextcloud instance.
-        </p>
-        <p>
-          You can self-host on a Raspberry Pi ($35-80), an old laptop, or a VPS from a
-          provider like Hostinger (which PewDiePie sponsors — take that for what it's worth).
-          The key is: <em>you</em> decide what runs, <em>you</em> decide who has access,
-          and if you want to delete your data, it's actually deleted — not "deleted" in the
-          way Google means it (which is "we'll keep it for 60 days and also in our backups
-          forever").
-        </p>
-        <p>
-          It's more work. It's more responsibility. But it's <em>yours</em>.
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- ====== HONEST DOWNSIDES ====== -->
   <section class="section">
     <div class="container">
-      <GlitchText text="Honest Downsides" tag="h2" class="section-heading" hoverOnly />
-      <p class="section-intro">
-        De-Googling is not a smooth ride. Here's what PewDiePie hit — and what you'll hit too.
-      </p>
-
-      <div class="downsides-list">
-        <div class="downside-item">
-          <div class="downside-icon">X</div>
-          <div class="downside-content">
-            <h3>The Vaultwarden Spinny Circle of Doom</h3>
-            <p>
-              PewDiePie spent two entire days staring at a loading spinner trying to get
-              Vaultwarden running. Two days. For a password manager. Self-hosting has moments
-              like this where you question every life decision that led you here. The community
-              is helpful, but you <em>will</em> hit walls that take hours to debug.
-            </p>
-          </div>
-        </div>
-
-        <div class="downside-item">
-          <div class="downside-icon">X</div>
-          <div class="downside-content">
-            <h3>Google Maps Is Still King</h3>
-            <p>
-              PewDiePie tried an open-source alternative to Google Maps and was 30 minutes
-              late to where he was going. Thirty minutes. OpenStreetMap-based navigation has
-              gotten better, but in many regions it's still noticeably worse than Google Maps.
-              Some people keep Google Maps as their one exception. That's okay.
-            </p>
-          </div>
-        </div>
-
-        <div class="downside-item">
-          <div class="downside-icon">X</div>
-          <div class="downside-content">
-            <h3>YouTube: The Inescapable One</h3>
-            <p>
-              "I literally can't escape." PewDiePie still uses YouTube. His career is on
-              YouTube. Most creators he watches are on YouTube. There's no real open-source
-              alternative with the same content library. You can use frontends like Invidious
-              or FreeTube to reduce tracking, but the content still comes from Google's servers.
-              This is the one service where the best answer is damage control, not replacement.
-            </p>
-          </div>
-        </div>
-
-        <div class="downside-item">
-          <div class="downside-icon">X</div>
-          <div class="downside-content">
-            <h3>Architecture Gotchas</h3>
-            <p>
-              PewDiePie couldn't run Joplin's sync server on his Raspberry Pi because it
-              requires x86 and the Pi uses ARM. These kinds of compatibility issues come up
-              constantly in self-hosting. Always check if the software you want supports your
-              hardware before committing to a setup.
-            </p>
-          </div>
-        </div>
-
-        <div class="downside-item">
-          <div class="downside-icon">X</div>
-          <div class="downside-content">
-            <h3>You're the IT Department Now</h3>
-            <p>
-              When Google goes down, you complain on Twitter and wait. When your self-hosted
-              setup goes down, <em>you</em> fix it. At 2 AM. Because your password manager
-              is offline and you can't log into anything. Backups become your responsibility.
-              Uptime becomes your responsibility. Security updates become your responsibility.
-            </p>
-          </div>
-        </div>
-      </div>
+      <DownsidesSection
+        intro="De-Googling is not a smooth ride. Here's what PewDiePie hit — and what you'll hit too."
+        items={[
+          {
+            title: "The Vaultwarden Spinny Circle of Doom",
+            description: "PewDiePie spent two entire days staring at a loading spinner trying to get Vaultwarden running. Two days. For a password manager. Self-hosting has moments like this where you question every life decision that led you here. The community is helpful, but you <em>will</em> hit walls that take hours to debug."
+          },
+          {
+            title: "Google Maps Is Still King",
+            description: "PewDiePie tried an open-source alternative to Google Maps and was 30 minutes late to where he was going. Thirty minutes. OpenStreetMap-based navigation has gotten better — OrganicMaps is widely recommended by privacy advocates as the best open-source option — but in many regions it's still noticeably worse than Google Maps. Some people keep Google Maps as their one exception. That's okay."
+          },
+          {
+            title: "YouTube: The Inescapable One",
+            description: "\"I literally can't escape.\" PewDiePie still uses YouTube. His career is on YouTube. Most creators he watches are on YouTube. There's no real open-source alternative with the same content library. You can use frontends like Invidious or FreeTube to reduce tracking, but the content still comes from Google's servers. This is the one service where the best answer is damage control, not replacement."
+          },
+          {
+            title: "Architecture Gotchas",
+            description: "PewDiePie couldn't run Joplin's sync server on his Raspberry Pi at the time due to ARM compatibility issues (this has since improved). These kinds of compatibility surprises come up in self-hosting. Always check if the software you want supports your hardware before committing to a setup."
+          },
+          {
+            title: "You're the IT Department Now",
+            description: "When Google goes down, you complain on Twitter and wait. When your self-hosted setup goes down, <em>you</em> fix it. At 2 AM. Because your password manager is offline and you can't log into anything. Backups become your responsibility. Uptime becomes your responsibility. Security updates become your responsibility."
+          }
+        ]}
+      />
     </div>
   </section>
 
@@ -284,7 +240,7 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
         <h3>A Note on Sponsors</h3>
         <div class="flowing-line"></div>
         <p>
-          PewDiePie used <strong>Hostinger</strong> for his VPS (Virtual Private Server) setup
+          PewDiePie used <strong>Hostinger</strong> for his <GlossaryTerm term="vps">VPS</GlossaryTerm> (Virtual Private Server) setup
           and <strong>Incogni</strong> for data removal from data brokers. Both were sponsors
           of his videos. We mention them because he genuinely used them in his setup, but
           we're not affiliated with either. Do your own research — there are plenty of
@@ -305,37 +261,49 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
       </p>
 
       <div class="grid grid-2">
-        <Card title="Guide: De-Google Your Life" href="/guides/de-google" accent>
+        <Card title="Guide 1: Switch Your Browser" href="/guides/browsers">
+          <DifficultyBadge level={1} />
+          <p>
+            The easiest first step. 5 minutes to stop using Chrome and escape
+            Google's tracking on every site you visit.
+          </p>
+        </Card>
+
+        <Card title="Guide 3: De-Google Your Life" href="/guides/de-google">
+          <DifficultyBadge level={3} />
           <p>
             A prioritized checklist of which Google services to replace first and
             what to replace them with. Start with the easiest wins.
           </p>
         </Card>
 
-        <Card title="Guide: Self-Hosting" href="/guides/self-hosting" accent>
+        <Card title="Guide 4: Self-Hosting" href="/guides/self-hosting">
+          <DifficultyBadge level={4} />
           <p>
             Set up your first self-hosted service. We walk you through Vaultwarden
             so it takes hours, not days. (We learned from PewDiePie's pain.)
           </p>
         </Card>
 
-        <Card title="Guide: Control Your Phone" href="/guides/control-your-phone" accent>
-          <p>
-            Flash GrapheneOS, set up a second profile for friction, and reconfigure
-            your phone to work for you instead of against you.
-          </p>
-        </Card>
-
-        <Card title="Guide: Open-Source Alternatives" href="/guides/open-source-alternatives" accent>
+        <Card title="Guide 5: Open-Source Alternatives" href="/guides/open-source-alternatives">
+          <DifficultyBadge level={2} />
           <p>
             A comprehensive list of open-source replacements for every common
             proprietary app. Some are great. Some are terrible. We tell you which.
           </p>
         </Card>
+
+        <Card title="Guide 7: Control Your Phone" href="/guides/control-your-phone">
+          <DifficultyBadge level={3} />
+          <p>
+            Flash GrapheneOS, set up a second profile for friction, and reconfigure
+            your phone to work for you instead of against you.
+          </p>
+        </Card>
       </div>
 
       <div class="layer-nav">
-        <a href="/bible/layer-1-os" class="btn btn-secondary">Back: Layer 1</a>
+        <a href="/bible/layer-1-os" class="btn btn-secondary">Back: Layer 1 — OS Control</a>
         <a href="/bible/layer-3-behavior" class="btn btn-primary">Next: Layer 3 — Behavioral Control</a>
       </div>
     </div>
@@ -382,31 +350,42 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
     letter-spacing: var(--tracking-wide);
   }
 
+  .page-source a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .page-source a:hover em {
+    text-decoration: underline;
+  }
+
   .page-source em {
     color: var(--text-accent);
     font-style: normal;
   }
 
   /* ---- Sections ---- */
+  .section :global(.container) {
+    max-width: 900px;
+  }
+
   :global(.section-heading) {
-    font-size: var(--text-3xl);
-    text-align: center;
-    margin-bottom: var(--space-6);
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border-muted);
     color: var(--text-primary);
   }
 
   .section-intro {
-    text-align: center;
-    max-width: 650px;
-    margin: 0 auto var(--space-10);
-    font-size: var(--text-lg);
+    margin: 0 0 var(--space-8);
+    font-size: var(--text-base);
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);
   }
 
   .content-block {
-    max-width: 750px;
-    margin: 0 auto var(--space-10);
+    margin: 0 0 var(--space-8);
   }
 
   .content-block p {
@@ -430,54 +409,8 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
     font-style: italic;
   }
 
-  /* ---- Downsides ---- */
-  .downsides-list {
-    max-width: 750px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-6);
-  }
-
-  .downside-item {
-    display: flex;
-    gap: var(--space-4);
-    align-items: flex-start;
-    padding: var(--space-5);
-    background: var(--bg-card);
-    border: 1px solid var(--border-muted);
-    border-radius: var(--radius-md);
-    border-left: 3px solid var(--text-accent);
-  }
-
-  .downside-icon {
-    flex-shrink: 0;
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    font-weight: 700;
-    color: var(--text-accent);
-    opacity: 0.6;
-    line-height: 1.4;
-  }
-
-  .downside-content h3 {
-    font-family: var(--font-display);
-    font-size: var(--text-base);
-    color: var(--text-primary);
-    text-transform: uppercase;
-    margin-bottom: var(--space-2);
-  }
-
-  .downside-content p {
-    font-size: var(--text-sm);
-    color: var(--text-secondary);
-    line-height: var(--leading-relaxed);
-  }
-
   /* ---- Sponsor Note ---- */
   .sponsor-note {
-    max-width: 750px;
-    margin: 0 auto;
     padding: var(--space-6);
     background: var(--bg-card);
     border: 1px dashed var(--border-muted);

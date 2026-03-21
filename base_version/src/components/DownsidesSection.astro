@@ -1,0 +1,94 @@
+---
+import GlitchText from './GlitchText.astro';
+
+interface DownsideItem {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  intro?: string;
+  items: DownsideItem[];
+}
+
+const { intro, items } = Astro.props;
+---
+
+<div class="downsides-section">
+  <GlitchText text="Honest Downsides" tag="h2" class="downsides-title" hoverOnly />
+  {intro && <p class="downsides-intro">{intro}</p>}
+  <div class="downsides-items">
+    {items.map((item) => (
+      <div class="downsides-item">
+        <span class="downsides-icon">X</span>
+        <div class="downsides-body">
+          <h3>{item.title}</h3>
+          <p set:html={item.description} />
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .downsides-section {
+    padding: var(--space-6);
+    background: rgba(212, 84, 94, 0.03);
+    border: 1px dashed var(--border-muted);
+    border-radius: var(--radius-md);
+  }
+
+  :global(.downsides-title) {
+    font-size: var(--text-2xl);
+    color: var(--text-accent);
+    margin-bottom: var(--space-4);
+  }
+
+  .downsides-intro {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-6);
+  }
+
+  .downsides-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .downsides-item {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    padding: var(--space-5);
+    background: var(--bg-card);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--text-accent);
+  }
+
+  .downsides-icon {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--text-accent);
+    opacity: 0.6;
+    line-height: 1.4;
+  }
+
+  .downsides-body h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+
+  .downsides-body :global(p) {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+</style>

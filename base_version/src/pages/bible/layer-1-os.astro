@@ -3,6 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import GlitchText from '../../components/GlitchText.astro';
 import Card from '../../components/Card.astro';
 import ReadingProgress from '../../components/ReadingProgress.astro';
+import DifficultyBadge from '../../components/DifficultyBadge.astro';
+import DownsidesSection from '../../components/DownsidesSection.astro';
+import GlossaryTerm from '../../components/GlossaryTerm.astro';
 ---
 
 <BaseLayout title="Layer 1: OS Control" activePage="bible" description="Your operating system is the foundation of your tech fence. PewDiePie switched to Linux — here's why you should too.">
@@ -19,7 +22,7 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
         on quicksand.
       </p>
       <p class="page-source">
-        Based on: PewDiePie's <em>"I installed Linux (so should you)"</em>
+        Based on: PewDiePie's <a href="https://youtu.be/pVI_smLgTY0?si=Rz8ZCTKsVXTnkNLX" target="_blank" rel="noopener noreferrer"><em>"I installed Linux (so should you)"</em></a>
       </p>
       <ReadingProgress pageId="bible/layer-1-os" />
     </div>
@@ -39,7 +42,7 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
           into them, you've already lost.
         </p>
         <p>
-          That's Windows. Microsoft's telemetry sends data about what you install, how you
+          That's Windows. <GlossaryTerm term="microslop">Microslop</GlossaryTerm>'s telemetry sends data about what you install, how you
           use your PC, what you search for, and — with Copilot and Recall — potentially
           screenshots of everything you do. You agreed to this in the Terms of Service
           that nobody reads. Windows also ships with ads in the Start Menu. <em>Ads. In your
@@ -70,7 +73,7 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
             <h3>Windows (The Before Times)</h3>
             <p>
               Like most of us, PewDiePie used Windows for years. It worked. It ran his games.
-              It ran Photoshop. He didn't think about it — which is exactly the point. Microsoft
+              It ran Photoshop. He didn't think about it — which is exactly the point. Microslop
               counts on you not thinking about it while they harvest your data and serve you
               ads in your own Start Menu.
             </p>
@@ -139,29 +142,29 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
       </div>
 
       <div class="grid grid-3">
-        <Card title="Linux Mint" accent>
+        <Card title="Mint / Zorin OS" href="/guides/linux">
           <p>
             <strong>Start here.</strong> Looks like Windows, feels like Windows, but without the
-            spyware. Comes with everything pre-installed. Your grandma could use it (seriously).
-            This is what PewDiePie uses on his main desktop.
+            spyware. Everything comes pre-installed. Even your grandma could use it (seriously).
+            Zorin OS is another option that mimics Windows even more closely.
           </p>
           <p class="card-meta">Difficulty: Beginner</p>
         </Card>
 
-        <Card title="Ubuntu / Pop!_OS">
+        <Card title="Ubuntu / Pop!_OS" href="/guides/linux">
           <p>
             The other popular beginner choices. Ubuntu has the biggest community, so every
             problem you encounter has already been solved on a forum somewhere. Pop!_OS is
-            great for gaming and Nvidia GPUs.
+            great for gaming & Nvidia GPUs and is constantly updated.
           </p>
           <p class="card-meta">Difficulty: Beginner</p>
         </Card>
 
-        <Card title="Arch Linux">
+        <Card title="Linux / CachyOS" href="/guides/linux">
           <p>
             You install everything yourself, piece by piece. You'll learn more about how
-            a computer works in one Arch install than in years of using Windows. It's painful.
-            It's beautiful. It's what PewDiePie runs on his laptop.
+            a computer works in one Arch install than in years of using Windows. CachyOS
+            makes this easier & more optimized. It's painful. It's beautiful.
           </p>
           <p class="card-meta">Difficulty: Advanced</p>
         </Card>
@@ -193,7 +196,7 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
             No config files to edit.
           </p>
           <p>
-            <strong>Cons:</strong> Uses more system resources. Less keyboard-driven. Some people
+            <strong>Cons:</strong> Uses more system resources than a tiling WM (though still far lighter than Microslop Windows). Less keyboard-driven. Some people
             find them boring (though KDE Plasma is insanely customizable).
           </p>
           <p class="compare-verdict">Best for: People who want Linux without learning new habits.</p>
@@ -224,65 +227,27 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
   <!-- ====== HONEST DOWNSIDES ====== -->
   <section class="section">
     <div class="container">
-      <GlitchText text="Honest Downsides" tag="h2" class="section-heading" hoverOnly />
-      <p class="section-intro">
-        We promised honesty. Here's what sucks about switching to Linux.
-      </p>
-
-      <div class="downsides-list">
-        <div class="downside-item">
-          <div class="downside-icon">X</div>
-          <div class="downside-content">
-            <h3>Photoshop Alternatives Are... Not Great</h3>
-            <p>
-              GIMP exists. PhotoGIMP (a mod that makes GIMP look like Photoshop) exists.
-              They're functional. They're also clunky, unintuitive, and will make you miss
-              Photoshop daily if you're a serious user. Krita is good for digital art but
-              it's not a Photoshop replacement. If Photoshop is your livelihood, this is a
-              real problem. Some people run it in a VM or use Wine — results vary.
-            </p>
-          </div>
-        </div>
-
-        <div class="downside-item">
-          <div class="downside-icon">X</div>
-          <div class="downside-content">
-            <h3>Anti-Cheat Games Don't Work</h3>
-            <p>
-              Valorant, Fortnite, Destiny 2, and many other online games with kernel-level
-              anti-cheat simply refuse to run on Linux. Steam Deck and Proton have made huge
-              progress for single-player games (most just work), but competitive multiplayer
-              with anti-cheat is still a wall. If you play these games daily, you'll need a
-              dual-boot setup or a Windows VM for gaming.
-            </p>
-          </div>
-        </div>
-
-        <div class="downside-item">
-          <div class="downside-icon">X</div>
-          <div class="downside-content">
-            <h3>The Adobe Unsubscription Tax</h3>
-            <p>
-              Want to cancel Adobe Creative Cloud? That'll be roughly $65 in early
-              termination fees. Adobe locks you into annual contracts disguised as monthly
-              subscriptions. You'll pay this "freedom tax" on your way out the door. It's
-              infuriating, it's by design, and it's worth paying to get out.
-            </p>
-          </div>
-        </div>
-
-        <div class="downside-item">
-          <div class="downside-icon">X</div>
-          <div class="downside-content">
-            <h3>The Learning Curve Is Real</h3>
-            <p>
-              You will spend time in the terminal. Things will break and you'll have to fix them
-              by reading forum posts. Your first week will involve a lot of Googling. This gets
-              better fast, but the first few days can feel like learning to drive again.
-            </p>
-          </div>
-        </div>
-      </div>
+      <DownsidesSection
+        intro="We promised honesty. Here's what sucks about switching to Linux."
+        items={[
+          {
+            title: "Photoshop Alternatives Are... Not Great",
+            description: "GIMP exists. PhotoGIMP (a mod that makes GIMP look like Photoshop) exists. They're functional. They're also clunky, unintuitive, and will make you miss Photoshop daily if you're a serious user. Krita is good for digital art but it's not a Photoshop replacement. If Photoshop is your livelihood, this is a real problem. Some people run it in a VM or use Wine — results vary."
+          },
+          {
+            title: "Anti-Cheat Games Don't Work",
+            description: "Valorant, Fortnite, Destiny 2, and many other online games with kernel-level anti-cheat simply refuse to run on Linux. Steam Deck and Proton have made huge progress for single-player games (most just work), but competitive multiplayer with anti-cheat is still a wall. If you play these games daily, you'll need a dual-boot setup or a Windows VM for gaming."
+          },
+          {
+            title: "The Adobe Unsubscription Tax",
+            description: "Want to cancel Adobe Creative Cloud? That'll be roughly $65 in early termination fees. Adobe locks you into annual contracts disguised as monthly subscriptions. You'll pay this \"freedom tax\" on your way out the door. It's infuriating, it's by design, and it's worth paying to get out."
+          },
+          {
+            title: "The Learning Curve Is Real",
+            description: "You will spend time in the terminal. Things will break and you'll have to fix them by reading forum posts. Your first week will involve a lot of <s>Googling</s> web browsing. This gets better fast, but the first few days can feel like learning to drive again."
+          }
+        ]}
+      />
     </div>
   </section>
 
@@ -291,23 +256,24 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
     <div class="container">
       <GlitchText text="Ready to Switch?" tag="h2" class="section-heading" hoverOnly />
       <p class="section-intro">
-        Start with Linux Mint. Seriously. Don't let anyone tell you to start with Arch.
+        Start with Linux Mint / Zorin OS. Seriously. Don't let anyone tell you to start with Arch.
         Get comfortable, then go deeper.
       </p>
 
       <div class="grid grid-2">
-        <Card title="Guide: Install Linux" href="/guides/linux" accent>
+        <Card title="Guide 2: Install Linux" href="/guides/linux" accent>
+          <DifficultyBadge level={3} />
           <p>
             Step-by-step guide to installing Linux Mint. From downloading the ISO to
             your first boot. Written for people who've never touched a terminal.
           </p>
         </Card>
 
-        <Card title="Guide: Rice Your Desktop" href="/guides/ricing" accent>
+        <Card title="Guide 9: Rice Your Desktop" href="/guides/ricing" accent>
+          <DifficultyBadge level={5} />
           <p>
             Fell down the rabbit hole? Good. Here's how to set up a tiling window manager,
-            customize your bar, terminal, and make your desktop look like it belongs in a
-            cyberpunk movie.
+            customize your bar, terminal, and make your desktop yours.
           </p>
         </Card>
       </div>
@@ -359,31 +325,42 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
     letter-spacing: var(--tracking-wide);
   }
 
+  .page-source a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .page-source a:hover em {
+    text-decoration: underline;
+  }
+
   .page-source em {
     color: var(--text-accent);
     font-style: normal;
   }
 
   /* ---- Sections ---- */
+  .section :global(.container) {
+    max-width: 900px;
+  }
+
   :global(.section-heading) {
-    font-size: var(--text-3xl);
-    text-align: center;
-    margin-bottom: var(--space-6);
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border-muted);
     color: var(--text-primary);
   }
 
   .section-intro {
-    text-align: center;
-    max-width: 650px;
-    margin: 0 auto var(--space-10);
-    font-size: var(--text-lg);
+    margin: 0 0 var(--space-8);
+    font-size: var(--text-base);
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);
   }
 
   .content-block {
-    max-width: 750px;
-    margin: 0 auto var(--space-10);
+    margin: 0 0 var(--space-8);
   }
 
   .content-block p {
@@ -399,8 +376,6 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
 
   /* ---- Journey Timeline ---- */
   .journey-timeline {
-    max-width: 750px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: var(--space-8);
@@ -498,50 +473,6 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
     padding-top: var(--space-3);
     border-top: 1px solid var(--border-muted);
     margin-bottom: 0 !important;
-  }
-
-  /* ---- Downsides ---- */
-  .downsides-list {
-    max-width: 750px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-6);
-  }
-
-  .downside-item {
-    display: flex;
-    gap: var(--space-4);
-    align-items: flex-start;
-    padding: var(--space-5);
-    background: var(--bg-card);
-    border: 1px solid var(--border-muted);
-    border-radius: var(--radius-md);
-    border-left: 3px solid var(--text-accent);
-  }
-
-  .downside-icon {
-    flex-shrink: 0;
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    font-weight: 700;
-    color: var(--text-accent);
-    opacity: 0.6;
-    line-height: 1.4;
-  }
-
-  .downside-content h3 {
-    font-family: var(--font-display);
-    font-size: var(--text-base);
-    color: var(--text-primary);
-    text-transform: uppercase;
-    margin-bottom: var(--space-2);
-  }
-
-  .downside-content p {
-    font-size: var(--text-sm);
-    color: var(--text-secondary);
-    line-height: var(--leading-relaxed);
   }
 
   /* ---- Card Meta ---- */

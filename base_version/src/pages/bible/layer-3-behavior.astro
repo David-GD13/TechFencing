@@ -3,6 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import GlitchText from '../../components/GlitchText.astro';
 import Card from '../../components/Card.astro';
 import ReadingProgress from '../../components/ReadingProgress.astro';
+import DownsidesSection from '../../components/DownsidesSection.astro';
+import DifficultyBadge from '../../components/DifficultyBadge.astro';
 ---
 
 <BaseLayout title="Layer 3: Behavioral Control" activePage="bible" description="It's not just what tools you use — it's how you use them. This is where PewDiePie coined 'tech fencing.'">
@@ -19,7 +21,7 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
         and it might be the most important one.
       </p>
       <p class="page-source">
-        Based on: PewDiePie's <em>"I Fixed YouTube!"</em>
+        Based on: PewDiePie's <a href="https://youtu.be/5nL-Eq1lpDU?si=mLnkGw8v3Bw5-_OQ" target="_blank" rel="noopener noreferrer"><em>"I Fixed YouTube!"</em></a>
       </p>
       <ReadingProgress pageId="bible/layer-3-behavior" />
     </div>
@@ -64,7 +66,7 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
   <!-- ====== THE TWO PILLARS ====== -->
   <section class="section">
     <div class="container">
-      <GlitchText text="The Two Pillars" tag="h2" class="section-heading" hoverOnly />
+      <GlitchText text="Friction & Filtering" tag="h2" class="section-heading" hoverOnly />
       <p class="section-intro">
         Every technique in Layer 3 comes back to two ideas. These are the foundation
         of tech fencing.
@@ -227,68 +229,27 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
   <!-- ====== HONEST DOWNSIDES ====== -->
   <section class="section">
     <div class="container">
-      <GlitchText text="Honest Downsides" tag="h2" class="section-heading" hoverOnly />
-      <p class="section-intro">
-        Layer 3 sounds elegant. Living it is messier. Here's what actually sucks.
-      </p>
-
-      <div class="downsides-list">
-        <div class="downside-item">
-          <div class="downside-icon">X</div>
-          <div class="downside-content">
-            <h3>It Requires Constant Vigilance</h3>
-            <p>
-              Unlike Layers 1 and 2, which are "set it up once and it works," behavioral
-              control is a daily practice. You'll find yourself disabling the Unhook extension
-              "just this once." You'll switch to the distracting profile "real quick" and
-              emerge 45 minutes later. The friction helps, but your brain is creative and will
-              find workarounds. This is an ongoing battle, not a one-time fix.
-            </p>
-          </div>
-        </div>
-
-        <div class="downside-item">
-          <div class="downside-icon">X</div>
-          <div class="downside-content">
-            <h3>You'll Miss Some Content</h3>
-            <p>
-              When you strip the algorithm and move to RSS, you'll miss things. The algorithm
-              was actually good at surfacing new creators and content you didn't know you
-              wanted. RSS gives you only what you explicitly subscribe to. You'll need to
-              actively seek out new voices, ask for recommendations from actual humans, and
-              accept that your content diet will be narrower (but more intentional).
-            </p>
-          </div>
-        </div>
-
-        <div class="downside-item">
-          <div class="downside-icon">X</div>
-          <div class="downside-content">
-            <h3>Initial Setup Is Tedious</h3>
-            <p>
-              Unfollowing everyone on every platform. Finding RSS feeds for all your channels.
-              Configuring DNS blockers. Setting up phone profiles. Installing and configuring
-              extensions. The initial setup takes a solid afternoon, maybe a weekend. It's not
-              hard — it's just tedious. And you'll probably need to tweak things for weeks
-              after as you discover what works and what's too aggressive.
-            </p>
-          </div>
-        </div>
-
-        <div class="downside-item">
-          <div class="downside-icon">X</div>
-          <div class="downside-content">
-            <h3>People Will Think You're Weird</h3>
-            <p>
-              "Why can't you just check Instagram?" "Why do you have a whole separate phone
-              profile?" "Why is your YouTube blank?" Be prepared to explain yourself or just
-              shrug it off. Most people haven't thought about their relationship with technology
-              at this level, and your setup will seem extreme to them. It's fine. You're not
-              doing this for them.
-            </p>
-          </div>
-        </div>
-      </div>
+      <DownsidesSection
+        intro="Layer 3 sounds elegant. Living it is messier. Here's what actually sucks."
+        items={[
+          {
+            title: "It Requires Constant Vigilance",
+            description: "Unlike Layers 1 and 2, which are \"set it up once and it works,\" behavioral control is a daily practice. You'll find yourself disabling the Unhook extension \"just this once.\" You'll switch to the distracting profile \"real quick\" and emerge 45 minutes later. The friction helps, but your brain is creative and will find workarounds. This is an ongoing battle, not a one-time fix."
+          },
+          {
+            title: "You'll Miss Some Content",
+            description: "When you strip the algorithm and move to RSS, you'll miss things. The algorithm was actually good at surfacing new creators and content you didn't know you wanted. RSS gives you only what you explicitly subscribe to. You'll need to actively seek out new voices, ask for recommendations from actual humans, and accept that your content diet will be narrower (but more intentional)."
+          },
+          {
+            title: "Initial Setup Is Tedious",
+            description: "Unfollowing everyone on every platform. Finding RSS feeds for all your channels. Configuring DNS blockers. Setting up phone profiles. Installing and configuring extensions. The initial setup takes a solid afternoon, maybe a weekend. It's not hard — it's just tedious. And you'll probably need to tweak things for weeks after as you discover what works and what's too aggressive."
+          },
+          {
+            title: "People Will Think You're Weird",
+            description: "\"Why can't you just check Instagram?\" \"Why do you have a whole separate phone profile?\" \"Why is your YouTube blank?\" Be prepared to explain yourself or just shrug it off. Most people haven't thought about their relationship with technology at this level, and your setup will seem extreme to them. It's fine. You're not doing this for them."
+          }
+        ]}
+      />
     </div>
   </section>
 
@@ -302,24 +263,26 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
       </p>
 
       <div class="grid grid-2">
-        <Card title="Guide: Fix YouTube" href="/guides/fix-youtube" accent>
-          <p>
-            Strip the algorithm from YouTube. Install Unhook, set up RSS feeds for
-            your channels, and turn YouTube from a slot machine into a library.
-          </p>
-        </Card>
-
-        <Card title="Guide: Browsers & Extensions" href="/guides/browsers" accent>
+        <Card title="Guide 1: Switch Your Browser" href="/guides/browsers">
+          <DifficultyBadge level={1} />
           <p>
             Your browser is your window to the internet. Make sure that window has
             good blinds. Firefox, uBlock Origin, and the extensions that matter.
           </p>
         </Card>
+
+        <Card title="Guide 6: Fix YouTube" href="/guides/fix-youtube">
+          <DifficultyBadge level={2} />
+          <p>
+            Strip the algorithm from YouTube. Install Unhook, set up RSS feeds for
+            your channels, and turn YouTube from a slot machine into a library.
+          </p>
+        </Card>
       </div>
 
       <div class="layer-nav">
-        <a href="/bible/layer-2-services" class="btn btn-secondary">Back: Layer 2</a>
-        <a href="/guides/browsers" class="btn btn-primary">Start Building — 5 Minutes</a>
+        <a href="/bible/layer-2-services" class="btn btn-secondary">Back: Layer 2 — Service Control</a>
+        <a href="/guides" class="btn btn-primary">Start Building — 5 Minutes</a>
       </div>
     </div>
   </section>
@@ -365,31 +328,42 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
     letter-spacing: var(--tracking-wide);
   }
 
+  .page-source a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .page-source a:hover em {
+    text-decoration: underline;
+  }
+
   .page-source em {
     color: var(--text-accent);
     font-style: normal;
   }
 
   /* ---- Sections ---- */
+  .section :global(.container) {
+    max-width: 900px;
+  }
+
   :global(.section-heading) {
-    font-size: var(--text-3xl);
-    text-align: center;
-    margin-bottom: var(--space-6);
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--border-muted);
     color: var(--text-primary);
   }
 
   .section-intro {
-    text-align: center;
-    max-width: 650px;
-    margin: 0 auto var(--space-10);
-    font-size: var(--text-lg);
+    margin: 0 0 var(--space-8);
+    font-size: var(--text-base);
     color: var(--text-secondary);
     line-height: var(--leading-relaxed);
   }
 
   .content-block {
-    max-width: 750px;
-    margin: 0 auto var(--space-10);
+    margin: 0 0 var(--space-8);
   }
 
   .content-block p {
@@ -528,50 +502,6 @@ import ReadingProgress from '../../components/ReadingProgress.astro';
 
   .technique-body p:last-child {
     margin-bottom: 0;
-  }
-
-  /* ---- Downsides ---- */
-  .downsides-list {
-    max-width: 750px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-6);
-  }
-
-  .downside-item {
-    display: flex;
-    gap: var(--space-4);
-    align-items: flex-start;
-    padding: var(--space-5);
-    background: var(--bg-card);
-    border: 1px solid var(--border-muted);
-    border-radius: var(--radius-md);
-    border-left: 3px solid var(--text-accent);
-  }
-
-  .downside-icon {
-    flex-shrink: 0;
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    font-weight: 700;
-    color: var(--text-accent);
-    opacity: 0.6;
-    line-height: 1.4;
-  }
-
-  .downside-content h3 {
-    font-family: var(--font-display);
-    font-size: var(--text-base);
-    color: var(--text-primary);
-    text-transform: uppercase;
-    margin-bottom: var(--space-2);
-  }
-
-  .downside-content p {
-    font-size: var(--text-sm);
-    color: var(--text-secondary);
-    line-height: var(--leading-relaxed);
   }
 
   /* ---- Layer Nav ---- */

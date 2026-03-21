@@ -17,6 +17,7 @@ const glossaryData: Record<string, string> = {
   "hyprland": "A tiling Wayland compositor. PewDiePie's window manager of choice.",
   "linux mint": "Beginner-friendly Linux. PewDiePie's recommendation for first-timers.",
   "local llm": "AI models running on your own hardware. Your data never leaves your machine.",
+  "microslop": "Microsoft. We call them Microslop because... well, look at Windows.",
   "nextcloud": "Self-hosted cloud storage. Replaces Google Drive, Calendar, Contacts.",
   "ollama": "Makes running local AI models easy. The simplest entry point for local AI.",
   "package manager": "Installs, updates, and removes Linux programs. apt, pacman, dnf.",

@@ -85,6 +85,7 @@
 .flowing-line {
   width: 100%;
   height: 2px;
+  margin-bottom: var(--space-4);
   background: linear-gradient(
     90deg,
     transparent 0%,
