@@ -43,7 +43,7 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
       </div>
       <div class="privacy-counter" id="privacy-counter" style="display:none;">
         <span class="counter-stat">
-          <span id="counter-unprotected">—</span> of <span id="counter-total">—</span>
+          <span id="counter-unprotected">—</span> of <span id="counter-total">—</span> <span id="counter-percent" class="counter-percent"></span>
         </span>
         <span class="counter-label">visitors came here using a browser that tracks them</span>
       </div>
@@ -651,6 +651,8 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     if (total > 0) {
       document.getElementById('counter-unprotected')!.textContent = unprotectedCount.toLocaleString();
       document.getElementById('counter-total')!.textContent = total.toLocaleString();
+      const pct = ((unprotectedCount / total) * 100).toFixed(2);
+      document.getElementById('counter-percent')!.textContent = `(${pct}%)`;
       counter.style.display = '';
       requestAnimationFrame(() => counter.classList.add('visible'));
     }
@@ -862,6 +864,12 @@ import ScrollProgressTrail from '../components/ScrollProgressTrail.astro';
     color: var(--accent);
     font-weight: 700;
     font-size: var(--text-base);
+  }
+
+  .counter-percent {
+    font-weight: 400;
+    font-size: var(--text-sm);
+    opacity: 0.7;
   }
 
   .counter-label {
