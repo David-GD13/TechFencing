@@ -1,6 +1,11 @@
 # Resources (local reference only — not for public repo)
 resources/
 
+# Internal planning & docs (not for public repo)
+Notion-TechFencing/
+planning/
+functions/
+
 # Astro
 site/node_modules/
 site/dist/
