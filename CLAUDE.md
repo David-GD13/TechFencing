@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-TechFencing.com is a privacy-focused educational site built with **Astro 6** (requires Node.js >= 22.12.0). The active site lives in `base_version/`. The `ui-ux-pro-max-skill/` directory is a separate AI design toolkit — see its own CLAUDE.md.
+TechFencing.com is a privacy-focused educational site built with **Astro 6** (requires Node.js >= 22.12.0). The active site lives in `site/`.
 
 ## Commands
 
-All commands run from `base_version/`:
+All commands run from `site/`:
 
 ```bash
-cd base_version
+cd site
 npm run dev        # Dev server at localhost:4321
 npm run build      # Production build to dist/
 npm run preview    # Preview production build

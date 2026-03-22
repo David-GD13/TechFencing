@@ -1,9 +1,10 @@
-ui-ux-pro-max-skill/
+# Resources (local reference only — not for public repo)
+resources/
 
 # Astro
-base_version/node_modules/
-base_version/dist/
-base_version/.astro/
+site/node_modules/
+site/dist/
+site/.astro/
 
 # Backup
 base_version_old/

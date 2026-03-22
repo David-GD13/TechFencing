@@ -2,36 +2,6 @@
 
 ## Primary
 
-### 1. Content Verification
-- [x] Homepage — all sections reviewed and updated (hero, pillars, layers, getting started, extras, disclaimer, footer)
-- [x] PewDiePie citations/quotes verified against transcripts
-- [x] Experiments page deprecated and removed
-- [x] About page — rewritten to singular voice, fixed factual inaccuracies, added vibecoded disclaimer, updated analytics transparency
-- [x] Browser Blocker — reviewed
-- [x] Bible pages (all 3 layers) — content verified and styling unified
-- [x] Guides main page — redesigned from grid to cinematic timeline
-- [x] Glossary page — reviewed
-- [x] Guide sub-pages (all 9) — content verified, links added, layout overhauled:
-  - [x] Removed right sidebar (navbar handles navigation)
-  - [x] Added per-step completion checkboxes with bidirectional hero sync
-  - [x] Converted all Honest Downsides to DownsidesSection component (consistent with Bible)
-  - [x] Added flowing-line dividers and content-block spacing
-  - [x] Fixed breadcrumb link to /guides
-  - [x] Browsers: Mozilla/Google disclaimer, 4 browser cards with download links, uBlock/Unhook per-browser install links
-  - [x] Linux: Added Zorin, Pop!_OS, CachyOS, Tuxedo OS distros with links, USB tools, dual-boot encryption, commands tutorial, DE links
-  - [x] De-Google: Added Tuta, Ente, OpenOffice, single-provider risk warning, all service links
-  - [x] Self-Hosting: Added all tool links (Pi, Vaultwarden, Pi-Hole, File Browser, Tailscale, Cloudflare Tunnel)
-  - [x] Open-Source: Added all tool links, OpenOffice, AFFiNE, Plex (with skepticism), Tuta
-  - [x] Fix YouTube: Added RSS reader links, FreeTube/NewPipe/Invidious links
-  - [x] Control Your Phone: Added GrapheneOS/NetGuard links, OEM unlocking glossary, Obtainium malware disclaimer
-  - [x] Own Your AI: DownsidesSection + flowing-line dividers
-  - [x] Ricing: PewDiePie dotfiles link, all tool links (Hyprland, i3, Sway, Waybar, Rofi, EWW, Kitty, Alacritty, WezTerm)
-  - [x] Glossary terms added: snap, flatpak, system snapshots, backup, OEM unlocking
-- [x] Arsenal — semi-transparent cards, accent borders, logo watermarks added
-- [x] The Damned — semi-transparent cards (no logos, intentional)
-- [x] TL;DR — complete overhaul: compact video grid (Holy Trinity + favorite + 3 categorized columns), semi-transparent cards, proper spacing
-- [ ] Verify cross-references between pages are accurate and working
-
 ### 12. Consider making GitHub public
 - I want to know if theres risk in making the git repo public, however, I do want to be transparent in my use of AI and the process of making the page. Also, if we want people to contribute maybe git is the best option? Manually approve PR's? Still, dont approve PRs directly to our master branch, approve on a separate develop branch. Is this safe? How to setup?
 
@@ -102,3 +72,32 @@ _(Move items here as they're done)_
 - [x] Use Google Stitch (UI/UX AI service) to review the website
 - [x] Document the score and any recommendations
 - [x] Address critical UX issues found
+
+### 1. Content Verification
+- [x] Homepage — all sections reviewed and updated (hero, pillars, layers, getting started, extras, disclaimer, footer)
+- [x] PewDiePie citations/quotes verified against transcripts
+- [x] Experiments page deprecated and removed
+- [x] About page — rewritten to singular voice, fixed factual inaccuracies, added vibecoded disclaimer, updated analytics transparency
+- [x] Browser Blocker — reviewed
+- [x] Bible pages (all 3 layers) — content verified and styling unified
+- [x] Guides main page — redesigned from grid to cinematic timeline
+- [x] Glossary page — reviewed
+- [x] Guide sub-pages (all 9) — content verified, links added, layout overhauled:
+  - [x] Removed right sidebar (navbar handles navigation)
+  - [x] Added per-step completion checkboxes with bidirectional hero sync
+  - [x] Converted all Honest Downsides to DownsidesSection component (consistent with Bible)
+  - [x] Added flowing-line dividers and content-block spacing
+  - [x] Fixed breadcrumb link to /guides
+  - [x] Browsers: Mozilla/Google disclaimer, 4 browser cards with download links, uBlock/Unhook per-browser install links
+  - [x] Linux: Added Zorin, Pop!_OS, CachyOS, Tuxedo OS distros with links, USB tools, dual-boot encryption, commands tutorial, DE links
+  - [x] De-Google: Added Tuta, Ente, OpenOffice, single-provider risk warning, all service links
+  - [x] Self-Hosting: Added all tool links (Pi, Vaultwarden, Pi-Hole, File Browser, Tailscale, Cloudflare Tunnel)
+  - [x] Open-Source: Added all tool links, OpenOffice, AFFiNE, Plex (with skepticism), Tuta
+  - [x] Fix YouTube: Added RSS reader links, FreeTube/NewPipe/Invidious links
+  - [x] Control Your Phone: Added GrapheneOS/NetGuard links, OEM unlocking glossary, Obtainium malware disclaimer
+  - [x] Own Your AI: DownsidesSection + flowing-line dividers
+  - [x] Ricing: PewDiePie dotfiles link, all tool links (Hyprland, i3, Sway, Waybar, Rofi, EWW, Kitty, Alacritty, WezTerm)
+  - [x] Glossary terms added: snap, flatpak, system snapshots, backup, OEM unlocking
+- [x] Arsenal — semi-transparent cards, accent borders, logo watermarks added
+- [x] The Damned — semi-transparent cards (no logos, intentional)
+- [x] TL;DR — complete overhaul: compact video grid (Holy Trinity + favorite + 3 categorized columns), semi-transparent cards, proper spacing
