@@ -1,2 +1,0 @@
-I've left the base_version files to have a comparison. However, I want this to be based on the info available in the Notion-TechFencing folder.
-I want claude to redesign everything to match a better PewDiePie website style, free will to him to determine and plan the styling.
